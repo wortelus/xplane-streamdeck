@@ -1,0 +1,10 @@
+aircraft: B738X
+xp-ip: 127.0.0.1
+xp-port: 49000
+server-ip: 127.0.0.1
+server-port: 49008
+total-directories: 3 # important!!!
+stream-decks:
+  - serial: CL41I1A00651
+    keys: 32
+    directory: B737-800X
