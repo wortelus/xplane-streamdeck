@@ -44,8 +44,8 @@ you're going to reference the directories by their name in key configs with keys
 - pyxpudpserver
 
 ## License
-Mozilla Public License 2.0
+BSD 2-Clause License
 
-by wortelus, no warranty provided
+Copyright (c) 2022, Daniel Slavík All rights reserved.
 
 www.wortelus.eu
