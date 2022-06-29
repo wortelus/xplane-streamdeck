@@ -60,9 +60,19 @@ def key_change_callback(deck, key_index, state):
                         XPUDP.pyXPUDPServer.sendXPCmd(cmd)
             # update direction
             key.switch_direction = next_direction
+        elif key.cmd_type == "dir":
+            change_dir(deck, key.name)
+    else:
+        # button release (commonly used for momentary switches as the fire test on pedestal of 737)
+        key = current_preset[key_index]
+        if key is None:
+            return
 
-            # todo auto_switch (global)
-            # todo locking (switching directories)
+        if key.cmd_release is not None:
+            XPUDP.pyXPUDPServer.sendXPCmd(key.cmd_release)
+        elif key.cmd_release_mul is not None:
+            for _, cmd in enumerate(key.cmd_release_mul):
+                XPUDP.pyXPUDPServer.sendXPCmd(cmd)
 
 
 def update_key_image(deck, key, image):
@@ -70,31 +80,60 @@ def update_key_image(deck, key, image):
         deck.set_key_image(key, image)
 
 
-def deck_show(deck, datarefs, images_all):
+def deck_show(deck, datarefs):
     for dref in datarefs:
         sd_index = dref["index"]
-        fd = fetch_datarefs[sd_index]
         cur_val = XPUDP.pyXPUDPServer.getData(dref["dataref"])
+        cur_val *= dref["dataref-multiplier"]
         floor_cur_val = math.floor(cur_val)
         fetch_datarefs[sd_index] = floor_cur_val
         if floor_cur_val in dref["dataref-states"]:
             dref_index = dref["dataref-states"].index(floor_cur_val)
-            image_name = dref["file_names"][dref_index]
+            image_name = dref["file-names"][dref_index]
             update_key_image(deck, sd_index, images_all[image_name])
 
 
-def deck_show_static(deck, preset_current, images_all):
-    for dir_button in preset_current:
-        if dir_button.type != "dir" or dir_button.dataref is not None:
+def deck_show_static(deck):
+    for index, dir_button in enumerate(current_preset):
+        if dir_button is None:
+            update_key_image(deck, index, images_all["none.png"])
             continue
-        if not dir_button["icon"]:
+        if dir_button.dataref is not None or dir_button.cmd_type != "dir":
+            continue
+        if not dir_button.icon:
             print("Warning: button {} with index of {} is trying to display static, "
                   "but icon parameter was not set in config, skipping..."
                   .format(dir_button.name, dir_button.index))
             continue
 
-        image_name = dir_button["icon"]
+        image_name = dir_button.file_names[0]
         update_key_image(deck, dir_button.index, images_all[image_name])
+
+
+def update_fetch_datarefs(current_deck):
+    for dref in current_datarefs:
+        sd_index = dref["index"]
+        fd = fetch_datarefs[sd_index]
+        cur_val = XPUDP.pyXPUDPServer.getData(dref["dataref"])
+        cur_val *= dref["dataref-multiplier"]
+        floor_cur_val = math.floor(cur_val)
+        if fd == floor_cur_val:
+            continue
+
+        fetch_datarefs[sd_index] = floor_cur_val
+        if floor_cur_val in dref["dataref-states"]:
+            dref_index = dref["dataref-states"].index(floor_cur_val)
+            image_name = dref["file-names"][dref_index]
+            update_key_image(current_deck, sd_index, images_all[image_name])
+
+
+def change_dir(current_deck, name):
+    global current_preset
+    current_preset = presets_all[name]
+    global current_datarefs
+    current_datarefs = datarefs_all[name]
+    deck_show_static(current_deck)
+    deck_show(current_deck, current_datarefs)
 
 
 def main():
@@ -121,6 +160,7 @@ def main():
 
         print("\tDeck #{} with key count {}".format(index, deck.key_count()))
         print("\twith serial {}".format(serial))
+        # todo not all stream decks should be opened ?
 
     if not current_deck:
         print("Deck for current session NOT FOUND, verify the serial in config.yaml and index specified")
@@ -146,12 +186,16 @@ def main():
     key_count = panel["keys"]
     dir_count = preprocessing.count_presets(keys_dir)
 
+    global presets_all
     presets_all = preprocessing.load_all_presets(keys_dir, key_count)
+    global datarefs_all
     datarefs_all = preprocessing.load_datarefs(presets_all)
-    images_all = preprocessing.load_images_datarefs_all(current_deck, "ms33558.ttf", datarefs_all)
+    global images_all
+    images_all = preprocessing.load_images_datarefs_all(current_deck, "ms33558.ttf", presets_all)
 
     global current_preset
-    current_preset = presets_all["actions"]     # key index and preset index is the same, contains entire Button objects
+    current_preset = presets_all["actions"]  # key index and preset index is the same, contains entire Button objects
+    global current_datarefs
     current_datarefs = datarefs_all["actions"]  # used for updating, contains only the showable buttons
     global fetch_datarefs
     fetch_datarefs = np.zeros(dtype=float, shape=key_count)
@@ -159,27 +203,18 @@ def main():
     current_deck.set_key_callback(key_change_callback)
 
     # show deck and set fetch_datarefs
-    deck_show(current_deck, current_datarefs, images_all)
+    deck_show(current_deck, current_datarefs)
+    deck_show_static(current_deck)
 
-    while True:
-        time.sleep(0.1)
-        for dref in current_datarefs:
-            sd_index = dref["index"]
-            fd = fetch_datarefs[sd_index]
-            cur_val = XPUDP.pyXPUDPServer.getData(dref["dataref"])
-            floor_cur_val = math.floor(cur_val)
-            if fd == floor_cur_val:
-                continue
-
-            fetch_datarefs[sd_index] = floor_cur_val
-            if floor_cur_val in dref["dataref-states"]:
-                dref_index = dref["dataref-states"].index(floor_cur_val)
-                image_name = dref["file_names"][dref_index]
-                update_key_image(current_deck, sd_index, images_all[image_name])
-
-
-
-    print("done")
+    try:
+        while True:
+            time.sleep(0.05)
+            update_fetch_datarefs(current_deck)
+    except KeyboardInterrupt:
+        print('X-Plane Manager by wortelus interrupted! closing the deck connection...')
+        # note: closing only current deck
+        current_deck.close()
+        print('deck closed, stopping...')
 
 
 if __name__ == "__main__":

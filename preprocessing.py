@@ -21,20 +21,29 @@ ASSETS_DIR = "icons"
 #
 
 
+def get_filename_button_static_png(icon_name):
+    return os.path.join(ASSETS_DIR, icon_name + ".png")
+
+
 def get_filename_button_dataref_png(icon_name, state):
     return os.path.join(ASSETS_DIR, icon_name + "." + str(state) + ".png")
 
 
 class Button(object):
-    def __init__(self, index, name, icon, cmd_type, dataref=None,
-                 dataref_states=None, dataref_default=None, auto_switch=True, cmd=None, cmd_mul=None,
-                 cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None):
+    def __init__(self, index, name, icon, cmd_type, dataref=None, dataref_multiplier=None,
+                 dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
+                 cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None, cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None):
         # Constants
         self.index = index
         self.name = name
         self.icon = icon
         self.cmd_type = cmd_type
         self.dataref = dataref
+        if dataref_multiplier is None:
+            self.dataref_multiplier = 1.0
+        else:
+            self.dataref_multiplier = float(dataref_multiplier)
+
         self.switch_direction = 1   # up / cmd_on / cmd_on_mul
         if dataref_states is None:
             # if it dataref is None, then it is single-image key
@@ -57,6 +66,9 @@ class Button(object):
 
         self.cmd = cmd
         self.cmd_mul = cmd_mul
+        self.cmd_release = cmd_release
+        self.cmd_release_mul = cmd_release_mul
+
         self.cmd_on = cmd_on
         self.cmd_off = cmd_off
         self.cmd_on_mul = cmd_on_mul
@@ -65,13 +77,17 @@ class Button(object):
         # Runtime Variables
         self.current = dataref_default
 
-        if self.dataref_states is not None:
+        if file_names is not None:
+            self.file_names = np.empty(len(file_names), dtype=object)
+            for i, fn in enumerate(file_names):
+                self.file_names[i] = get_filename_button_static_png(fn)
+        elif self.dataref_states is not None:
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
                 self.file_names[i] = get_filename_button_dataref_png(icon, state)
         else:
             self.file_names = np.empty(1, dtype=object)
-            self.file_names[0] = icon + ".png"
+            self.file_names[0] = get_filename_button_static_png(icon)
 
 
 def count_presets(target_dir):
@@ -101,17 +117,21 @@ def load_preset(target_dir, yaml_keyset, deck_key_count):
             key.get("icon"),
             cmd_type,
             key.get("dataref"),
+            key.get("dataref-multiplier"),
             key.get("dataref-states"),
             key.get("dataref-default"),
+            key.get("file-names"),
             key.get("auto-switch"),
             key.get("command"),
             key.get("commands"),
+            key.get("command-release"),
+            key.get("commands-release"),
             key.get("command-on"),
             key.get("command-off"),
             key.get("commands-on"),
             key.get("commands-off"),
         )
-        if cmd_type == "directory":
+        if cmd_type == "dir":
             other_keysets = np.append(other_keysets, name)
 
     return preset, other_keysets
@@ -159,8 +179,9 @@ def load_datarefs(presets_all):
                     "index": button.index,
                     "icon": button.icon,
                     "dataref": button.dataref,
+                    "dataref-multiplier": button.dataref_multiplier,
                     "dataref-states": button.dataref_states,
-                    "file_names": button.file_names,
+                    "file-names": button.file_names,
                     "current": button.current,
                     "dataref-min": button.dataref_min,
                     "dataref-max": button.dataref_max,
@@ -194,10 +215,13 @@ def render_key_image(deck, icon_filename, font_filename, label_text):
     return PILHelper.to_native_format(deck, image)
 
 
-def load_images_datarefs(deck, font_filename, datarefs_dir):
+def load_images_datarefs(deck, font_filename, presets_dir):
     set_images = {}
-    for _, dref in enumerate(datarefs_dir):
-        for _, state_name in enumerate(dref["file_names"]):
+    for _, button in enumerate(presets_dir):
+        if button is None:
+            continue
+
+        for _, state_name in enumerate(button.file_names):
             if state_name not in set_images:
                 state_image = render_key_image(deck, state_name, font_filename, "")
                 set_images[state_name] = state_image
@@ -205,9 +229,9 @@ def load_images_datarefs(deck, font_filename, datarefs_dir):
     return set_images
 
 
-def load_images_datarefs_all(deck, font_filename, datarefs_all):
-    set_images_all = {}
-    for _, dataref_dir in datarefs_all.items():
+def load_images_datarefs_all(deck, font_filename, presets_all):
+    set_images_all = {"none.png": render_key_image(deck, get_filename_button_static_png("none"), font_filename, "")}
+    for _, dataref_dir in presets_all.items():
         images_single_dir = load_images_datarefs(deck, font_filename, dataref_dir)
         set_images_all.update(images_single_dir)
 
