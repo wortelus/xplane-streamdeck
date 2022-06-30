@@ -1,0 +1,146 @@
+actions:
+  - index: 24
+    name: actions
+    type: dir
+    icon: dir
+    label: Main Deck
+  - index: 0
+    name: at arm
+    type: single
+    icon: atarm
+    dataref: laminar/B738/autopilot/autothrottle_status1
+    command: FlyWithLua/streamdeck_handler/at_arm_start
+    command-release: FlyWithLua/streamdeck_handler/at_arm_end
+  - index: 1
+    name: c/o
+    type: single
+    icon: blue-button
+    label: C/O
+    command: laminar/B738/autopilot/change_over_press
+  - index: 3
+    name: vnav
+    type: single
+    icon: vnav
+    dataref: laminar/B738/autopilot/vnav_status1
+    command: laminar/B738/autopilot/vnav_press
+  - index: 4
+    name: bank angle
+    type: dual
+    icon: bankangle
+    dataref: laminar/B738/autopilot/bank_angle_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+    command-on: laminar/B738/autopilot/bank_angle_up
+    command-off: laminar/B738/autopilot/bank_angle_dn
+  - index: 5
+    name: lnav
+    type: single
+    icon: lnav
+    dataref: laminar/B738/autopilot/lnav_status
+    command: laminar/B738/autopilot/lnav_press
+  - index: 8
+    name: n1
+    type: single
+    icon: n1
+    dataref: laminar/B738/autopilot/n1_status
+    command: laminar/B738/autopilot/n1_press
+  - index: 9
+    name: speed mcp
+    type: single
+    icon: speed
+    dataref: laminar/B738/autopilot/speed_status1
+    command: laminar/B738/autopilot/speed_press
+  - index: 2
+    name: spd intv
+    type: single
+    icon: blue-button
+    label: SPD INTV
+    command: laminar/B738/autopilot/spd_interv
+  - index: 10
+    name: lvl chg
+    type: single
+    icon: lvlchg
+    dataref: laminar/B738/autopilot/lvl_chg_status
+    command: laminar/B738/autopilot/lvl_chg_press
+  - index: 11
+    name: alt intv
+    type: single
+    icon: blue-button
+    label: ALT INTV
+    command: laminar/B738/autopilot/alt_interv
+  - index: 12
+    name: hdg sel
+    type: single
+    icon: hdgsel
+    dataref: laminar/B738/autopilot/hdg_sel_status
+    command: laminar/B738/autopilot/hdg_sel_press
+  - index: 13
+    name: vor loc
+    type: single
+    icon: vorloc
+    dataref: laminar/B738/autopilot/vorloc_status
+    command: laminar/B738/autopilot/vorloc_press
+  - index: 16
+    name: capt fd
+    type: single
+    label: F/D ON
+    dataref: laminar/B738/autopilot/flight_director_pos
+    command: laminar/B738/autopilot/flight_director_toggle
+    file-names:
+      - red2
+      - green0
+  - index: 20
+    name: f/o fd
+    type: single
+    label: F/D ON
+    dataref: laminar/B738/autopilot/flight_director_fo_pos
+    command: laminar/B738/autopilot/flight_director_fo_toggle
+    file-names:
+      - red2
+      - green0
+  - index: 21
+    name: app
+    type: single
+    icon: app
+    dataref: laminar/B738/autopilot/app_status
+    command: laminar/B738/autopilot/app_press
+  - index: 22
+    name: althld
+    type: single
+    icon: althld
+    dataref: laminar/B738/autopilot/alt_hld_status
+    command: laminar/B738/autopilot/alt_hld_press
+  - index: 23
+    name: vs
+    type: single
+    icon: vs
+    dataref: laminar/B738/autopilot/vs_status
+    command: laminar/B738/autopilot/vs_press
+  - index: 6
+    name: cmd a
+    type: single
+    icon: cmd
+    dataref: laminar/B738/autopilot/cmd_a_status
+    command: laminar/B738/autopilot/cmd_a_press
+  - index: 7
+    name: cmd b
+    type: single
+    icon: cmd
+    dataref: laminar/B738/autopilot/cmd_b_status
+    command: laminar/B738/autopilot/cmd_b_press
+  - index: 14
+    name: cws a
+    type: single
+    icon: cws
+    dataref: laminar/B738/autopilot/cws_a_status
+    command: laminar/B738/autopilot/cws_a_press
+  - index: 15
+    name: cws b
+    type: single
+    icon: cws
+    dataref: laminar/B738/autopilot/cws_b_press
+    command: laminar/B738/autopilot/cws_b_press

@@ -3,7 +3,7 @@ xp-ip: 127.0.0.1
 xp-port: 49000
 server-ip: 127.0.0.1
 server-port: 49008
-total-directories: 3 # important!!!
+default-font: ms33558.ttf
 stream-decks:
   - serial: CL41I1A00651
     keys: 32

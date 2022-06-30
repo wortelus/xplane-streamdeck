@@ -1,6 +1,6 @@
 actions:
   # capt six pack start
-  - index: 0
+  - index: 2
     name: flt cont
     type: single
     icon: fltcont
@@ -8,7 +8,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 1
+  - index: 3
     name: elec
     type: single
     icon: elec
@@ -16,7 +16,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 8
+  - index: 10
     name: irs
     type: single
     icon: irs
@@ -24,7 +24,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 9
+  - index: 11
     name: apu
     type: single
     icon: apu
@@ -32,7 +32,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 16
+  - index: 18
     name: fuel
     type: single
     icon: fuel
@@ -40,7 +40,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 17
+  - index: 19
     name: ovht det
     type: single
     icon: ovhtdet
@@ -49,7 +49,7 @@ actions:
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
     # capt six pack end
-  - index: 2
+  - index: 0
     name: fire warning
     type: single
     icon: firewarn
@@ -57,7 +57,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_fire_warn_start
     command-release: FlyWithLua/streamdeck_handler/capt_fire_warn_end
-  - index: 3
+  - index: 1
     name: master caution
     type: single
     icon: mastercaution
@@ -115,3 +115,8 @@ actions:
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
     # f/o six pack end
+  - index: 8
+    name: mcpctr
+    type: dir
+    icon: dir
+    label: MCP & CTR
