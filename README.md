@@ -62,6 +62,12 @@ you're going to reference the directories by their name in key configs with keys
 
 I still strongly recommend checking the examples and work your way from there, they are based on 737 Zibo.
 
+### What is planned / WIP?
+- Dynamic dataref display types
+- More types of labels
+- Gauges
+
+
 ## Dependencies
 - NumPy
 - PyYAML
