@@ -98,7 +98,7 @@ def deck_show_static(deck):
         if dir_button is None:
             update_key_image(deck, index, images_all["none.png"])
             continue
-        if dir_button.dataref is not None or dir_button.cmd_type != "dir":
+        if dir_button.dataref is not None:
             continue
         if not dir_button.icon:
             print("Warning: button {} with index of {} is trying to display static, "
@@ -186,12 +186,14 @@ def main():
     key_count = panel["keys"]
     dir_count = preprocessing.count_presets(keys_dir)
 
+    preprocessing.load_default_font("ms33558.ttf")
+
     global presets_all
     presets_all = preprocessing.load_all_presets(keys_dir, key_count)
     global datarefs_all
     datarefs_all = preprocessing.load_datarefs(presets_all)
     global images_all
-    images_all = preprocessing.load_images_datarefs_all(current_deck, "ms33558.ttf", presets_all)
+    images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
 
     global current_preset
     current_preset = presets_all["actions"]  # key index and preset index is the same, contains entire Button objects

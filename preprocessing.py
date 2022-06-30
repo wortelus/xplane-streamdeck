@@ -16,9 +16,17 @@ ACTION_CFG = "actions.yaml"
 ACTION_CFG_NAME = "actions"
 ASSETS_DIR = "icons"
 
+DEFAULT_FONT_SIZE = 10
+
+
 #
 # preset loading
 #
+
+
+def load_default_font(path):
+    global DEFAULT_FONT
+    DEFAULT_FONT = ImageFont.truetype(path, DEFAULT_FONT_SIZE)
 
 
 def get_filename_button_static_png(icon_name):
@@ -30,21 +38,23 @@ def get_filename_button_dataref_png(icon_name, state):
 
 
 class Button(object):
-    def __init__(self, index, name, icon, cmd_type, dataref=None, dataref_multiplier=None,
+    def __init__(self, index, name, icon, cmd_type, label=None, dataref=None, dataref_multiplier=None,
                  dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
-                 cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None, cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None):
+                 cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
+                 cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None):
         # Constants
         self.index = index
         self.name = name
         self.icon = icon
         self.cmd_type = cmd_type
+        self.label = label
         self.dataref = dataref
         if dataref_multiplier is None:
             self.dataref_multiplier = 1.0
         else:
             self.dataref_multiplier = float(dataref_multiplier)
 
-        self.switch_direction = 1   # up / cmd_on / cmd_on_mul
+        self.switch_direction = 1  # up / cmd_on / cmd_on_mul
         if dataref_states is None:
             # if it dataref is None, then it is single-image key
             if dataref is not None:
@@ -116,6 +126,7 @@ def load_preset(target_dir, yaml_keyset, deck_key_count):
             name,
             key.get("icon"),
             cmd_type,
+            key.get("label"),
             key.get("dataref"),
             key.get("dataref-multiplier"),
             key.get("dataref-states"),
@@ -158,6 +169,7 @@ def load_all_presets(target_dir, deck_key_count):
 
     return presets_all
 
+
 #
 #
 # X-Plane datarefs
@@ -190,6 +202,7 @@ def load_datarefs(presets_all):
 
     return datarefs_all
 
+
 #
 #
 # Streamdeck images
@@ -198,7 +211,7 @@ def load_datarefs(presets_all):
 
 
 # taken from https://python-elgato-streamdeck.readthedocs.io/en/stable/examples/basic.html
-def render_key_image(deck, icon_filename, font_filename, label_text):
+def render_key_image(deck, icon_filename, label_text):
     # Resize the source image asset to best-fit the dimensions of a single key,
     # leaving a margin at the bottom so that we can draw the key title
     # afterwards.
@@ -208,32 +221,37 @@ def render_key_image(deck, icon_filename, font_filename, label_text):
     # Load a custom TrueType font and use it to overlay the key index, draw key
     # label onto the image a few pixels from the bottom of the key.
     draw = ImageDraw.Draw(image)
-    if label_text != "":
-        font = ImageFont.truetype(font_filename, 14)
-        draw.text((image.width / 2, image.height - 5), text=label_text, font=font, anchor="ms", fill="white")
+    global DEFAULT_FONT
+    if label_text:
+        draw.text((image.width / 2, image.height - 8), text=label_text, font=DEFAULT_FONT, anchor="ms", fill="white")
 
     return PILHelper.to_native_format(deck, image)
 
 
-def load_images_datarefs(deck, font_filename, presets_dir):
+def load_images_datarefs(deck, presets_dir):
     set_images = {}
     for _, button in enumerate(presets_dir):
         if button is None:
             continue
 
-        for _, state_name in enumerate(button.file_names):
+        for i, state_name in enumerate(button.file_names):
             if state_name not in set_images:
-                state_image = render_key_image(deck, state_name, font_filename, "")
+                state_image = render_key_image(deck, state_name, button.label)
+
+                # change state name for storing, allowing same icons with different labels
+                if button.label:
+                    state_name = button.label + state_name
+                    button.file_names[i] = state_name
+
                 set_images[state_name] = state_image
 
     return set_images
 
 
-def load_images_datarefs_all(deck, font_filename, presets_all):
-    set_images_all = {"none.png": render_key_image(deck, get_filename_button_static_png("none"), font_filename, "")}
+def load_images_datarefs_all(deck, presets_all):
+    set_images_all = {"none.png": render_key_image(deck, get_filename_button_static_png("none"), None)}
     for _, dataref_dir in presets_all.items():
-        images_single_dir = load_images_datarefs(deck, font_filename, dataref_dir)
+        images_single_dir = load_images_datarefs(deck, dataref_dir)
         set_images_all.update(images_single_dir)
 
     return set_images_all
-
