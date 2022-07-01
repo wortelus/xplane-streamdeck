@@ -122,10 +122,11 @@ actions:
     label: MCP & CTR
   - index: 26
     name: flaps
-    type: single
+    type: dir
     dataref: sim/flightmodel/misc/blown_flap_engage_rat
     dataref-multiplier: 100
     gauge:
+      name: flaps
       needle-center:
         x: 64
         y: 64

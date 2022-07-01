@@ -109,7 +109,7 @@ class Button(object):
             self.gauge["needle"] = get_filename_button_static_png(gauge["needle"])
             # get own filenames, which really doesn't exist on disk and are created dynamically only for the runtime
             # so we pregenerate them artificial names for the use in main global images dict
-            self.file_names = dynamic.create_gauge_filenames(gauge, name, self.dataref_states)
+            self.file_names = dynamic.create_gauge_filenames(gauge, self.gauge["name"], self.dataref_states)
         elif self.dataref_states is not None:
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
