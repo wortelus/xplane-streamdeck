@@ -11,6 +11,11 @@ try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
+try:
+    import dynamic
+except ImportError:
+    print("You don't seem to have dynamic.py near its main.py and preprocessing.py. correct your installation")
+    exit(1)
 
 ACTION_CFG = "actions.yaml"
 ACTION_CFG_NAME = "actions"
@@ -41,7 +46,8 @@ class Button(object):
     def __init__(self, index, name, icon, cmd_type, label=None, dataref=None, dataref_multiplier=None,
                  dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
                  cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
-                 cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None):
+                 cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None,
+                 gauge=None):
         # Constants
         self.index = index
         self.name = name
@@ -87,10 +93,23 @@ class Button(object):
         # Runtime Variables
         self.current = dataref_default
 
+        self.gauge = None
         if file_names is not None:
             self.file_names = np.empty(len(file_names), dtype=object)
             for i, fn in enumerate(file_names):
                 self.file_names[i] = get_filename_button_static_png(fn)
+        elif gauge:
+            # overwrite default dataref_states
+            self.dataref_states = dynamic.get_dataref_states(gauge)
+            # special case - gauge with needles :)
+            # here comes the dynamic.py into play
+            self.gauge = gauge
+            # preload full path for later image processing in dynamic.py
+            self.gauge["background"] = get_filename_button_static_png(gauge["background"])
+            self.gauge["needle"] = get_filename_button_static_png(gauge["needle"])
+            # get own filenames, which really doesn't exist on disk and are created dynamically only for the runtime
+            # so we pregenerate them artificial names for the use in main global images dict
+            self.file_names = dynamic.create_gauge_filenames(gauge, name, self.dataref_states)
         elif self.dataref_states is not None:
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
@@ -141,6 +160,7 @@ def load_preset(target_dir, yaml_keyset, deck_key_count):
             key.get("command-off"),
             key.get("commands-on"),
             key.get("commands-off"),
+            key.get("gauge"),
         )
         if cmd_type == "dir":
             other_keysets = np.append(other_keysets, name)
@@ -232,6 +252,11 @@ def load_images_datarefs(deck, presets_dir):
     set_images = {}
     for _, button in enumerate(presets_dir):
         if button is None:
+            continue
+
+        # special case - gauge
+        if button.gauge:
+            set_images.update(dynamic.load_gauge_images(button.gauge, deck, button.file_names))
             continue
 
         for i, state_name in enumerate(button.file_names):
