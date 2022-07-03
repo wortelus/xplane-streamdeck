@@ -1,6 +1,6 @@
 actions:
   - index: 24
-    name: actions
+    name: return
     type: dir
     icon: dir
     label: Main Deck
@@ -144,3 +144,38 @@ actions:
     icon: cws
     dataref: laminar/B738/autopilot/cws_b_press
     command: laminar/B738/autopilot/cws_b_press
+  - index: 28
+    name: crs capt dn
+    type: single
+    icon: blue-left
+    label: CAPT CRS DN
+    command: FlyWithLua/streamdeck_handler/capt_course_dn_start
+    command-release: FlyWithLua/streamdeck_handler/capt_course_dn_end
+  - index: 29
+    name: crs capt up
+    type: single
+    icon: orange-right
+    label: CAPT CRS UP
+    command: FlyWithLua/streamdeck_handler/capt_course_up_start
+    command-release: FlyWithLua/streamdeck_handler/capt_course_up_end
+  - index: 30
+    name: crs fo dn
+    type: single
+    icon: blue-left
+    label: F/O CRS DN
+    command: FlyWithLua/streamdeck_handler/fo_course_dn_start
+    command-release: FlyWithLua/streamdeck_handler/fo_course_dn_end
+  - index: 31
+    name: crs fo up
+    type: single
+    icon: orange-right
+    label: F/O CRS UP
+    command: FlyWithLua/streamdeck_handler/fo_course_up_start
+    command-release: FlyWithLua/streamdeck_handler/fo_course_up_end
+  - index: 26
+    name: ap disengage
+    type: single
+    icon: red-button
+    label: AP DISENGAGE
+    command: laminar/B738/autopilot/disconnect_toggle
+    command-release: laminar/B738/autopilot/disconnect_toggle

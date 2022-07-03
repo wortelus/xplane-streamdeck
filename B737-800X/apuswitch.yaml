@@ -1,0 +1,25 @@
+actions:
+  - index: 8
+    name: apu switch up
+    type: single
+    icon: blue-up
+    command: laminar/B738/spring_toggle_switch/APU_start_pos_up
+  - index: 16
+    name: return
+    type: dir
+    dataref: laminar/B738/spring_toggle_switch/APU_start_pos
+    label: APU
+    file-names:
+      - red0
+      - green1
+      - blue2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 24
+    name: apu switch down
+    type: single
+    icon: blue-down
+    command: FlyWithLua/streamdeck_handler/apu_switch_dn_start
+    command-release: FlyWithLua/streamdeck_handler/apu_switch_dn_end

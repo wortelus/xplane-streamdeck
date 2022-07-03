@@ -1,0 +1,255 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+  - index: 25
+    name: left retractable ldg light
+    type: dual
+    icon: ldg
+    label: RET LEFT
+    dataref: laminar/B738/switch/land_lights_ret_left_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/switch/land_lights_ret_left_dn
+    command-off: laminar/B738/switch/land_lights_ret_left_up
+  - index: 26
+    name: right retractable ldg light
+    type: dual
+    icon: ldg
+    dataref: laminar/B738/switch/land_lights_ret_right_pos
+    label: RET RIGHT
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/switch/land_lights_ret_right_dn
+    command-off: laminar/B738/switch/land_lights_ret_right_up
+  - index: 27
+    name: left ldg light
+    type: single
+    file-names:
+      - ldg.0.0
+      - ldg.2.0
+    label: FIXED LEFT
+    dataref: laminar/B738/switch/land_lights_left_pos
+    command: FlyWithLua/streamdeck_handler/fixed_left_ldg_lights
+  - index: 28
+    name: right ldg light
+    type: single
+    file-names:
+      - ldg.0.0
+      - ldg.2.0
+    label: FIXED RIGHT
+    dataref: laminar/B738/switch/land_lights_right_pos
+    command: FlyWithLua/streamdeck_handler/fixed_right_ldg_lights
+  - index: 29
+    name: rwy turnoff left
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: TURNOFF LFT
+    dataref: laminar/B738/toggle_switch/rwy_light_left
+    command: FlyWithLua/streamdeck_handler/left_turnoff_lights
+  - index: 30
+    name: rwy turnoff right
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: TURNOFF RGT
+    dataref: laminar/B738/toggle_switch/rwy_light_right
+    command: FlyWithLua/streamdeck_handler/right_turnoff_lights
+  - index: 31
+    name: taxi light
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: TAXI LIGHTS
+    dataref: laminar/B738/toggle_switch/taxi_light_brightness_pos
+    dataref-states:
+      - 0.0
+      - 2.0
+    command: laminar/B738/toggle_switch/taxi_light_brigh_toggle
+  - index: 23
+    name: wheel well
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: WHEEL WELL
+    dataref: sim/cockpit2/switches/generic_lights_switch[5]
+    command: laminar/B738/switch/wheel_light_toggle
+  - index: 22
+    name: wing lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: WING LIGHTS
+    dataref: sim/cockpit2/switches/generic_lights_switch[0]
+    command: laminar/B738/switch/wing_light_toggle
+  - index: 21
+    name: anti collision lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: BEACON LIGHTS
+    dataref: sim/cockpit/electrical/beacon_lights_on
+    command: sim/lights/beacon_lights_toggle
+  - index: 21
+    name: anti collision lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: BEACON LIGHTS
+    dataref: sim/cockpit/electrical/beacon_lights_on
+    command: sim/lights/beacon_lights_toggle
+  - index: 20
+    name: position lights
+    type: dual
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - green2
+      - red1
+      - blue0
+    label: STRB / STDY
+    dataref: laminar/B738/toggle_switch/position_light_pos
+    command-on: laminar/B738/toggle_switch/position_light_up
+    command-off: laminar/B738/toggle_switch/position_light_down
+  - index: 19
+    name: logo lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: LOGO LIGHTS
+    dataref: laminar/B738/toggle_switch/logo_light
+    command: laminar/B738/switch/logo_light_toggle
+  - index: 13
+    name: eng2
+    type: dir
+    dataref: laminar/B738/engine/starter2_pos
+    icon: engstarter
+    dataref-default: 1.0
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+  - index: 11
+    name: eng1
+    type: dir
+    dataref: laminar/B738/engine/starter1_pos
+    icon: engstarter
+    dataref-default: 1.0
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/eng1_start_right
+    command-off: laminar/B738/knob/eng1_start_left
+  - index: 16
+    name: apuswitch
+    type: dir
+    dataref: laminar/B738/spring_toggle_switch/APU_start_pos
+    label: APU
+    file-names:
+      - red0
+      - green1
+      - blue2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 8
+    name: apu egt
+    type: single
+    dataref: laminar/B738/electrical/apu_temp
+    gauge:
+      name: apuegt
+      needle-center:
+        x: 64
+        y: 64
+      background: apuegtbckg
+      needle: apuegtneedle
+      range-degrees: 200
+      min: 0.0
+      max: 100.0
+      step: 1.0
+  - index: 17
+    name: left wiper
+    type: dual
+    dataref: laminar/B738/switches/left_wiper_pos
+    icon: wipers
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/left_wiper_up
+    command-off: laminar/B738/knob/left_wiper_dn
+  - index: 18
+    name: right wiper
+    type: dual
+    dataref: laminar/B738/switches/right_wiper_pos
+    icon: wipers
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/right_wiper_up
+    command-off: laminar/B738/knob/right_wiper_dn
+  - index: 9
+    name: attend
+    type: single
+    icon: white-button
+    label: ATTEND
+    command: FlyWithLua/streamdeck_handler/attend_start
+    command-release: FlyWithLua/streamdeck_handler/attend_end
+  - index: 10
+    name: grd call
+    type: single
+    icon: white-button
+    label: GRD CALL
+    command: FlyWithLua/streamdeck_handler/grd_call_start
+    command-release: FlyWithLua/streamdeck_handler/grd_call_end
+  - index: 18
+    name: right wiper
+    type: dual
+    dataref: laminar/B738/switches/right_wiper_pos
+    icon: wipers
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/right_wiper_up
+    command-off: laminar/B738/knob/right_wiper_dn
+  - index: 12
+    name: eng start source
+    type: dual
+    dataref: laminar/B738/toggle_switch/eng_start_source
+    icon: wipers
+    label: L BOTH R
+    file-names:
+      - bluea
+      - yellowb
+      - bluec
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    command-on: laminar/B738/toggle_switch/eng_start_source_right
+    command-off: laminar/B738/toggle_switch/eng_start_source_left

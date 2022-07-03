@@ -1,0 +1,23 @@
+actions:
+  - index: 23
+    name: return
+    type: dir
+    icon: autobrake
+    dataref: laminar/B738/autobrake/autobrake_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+  - index: 31
+    name: autobrake dn
+    type: single
+    icon: blue-down
+    command: laminar/B738/knob/autobrake_dn
+  - index: 15
+    name: autobrake dn
+    type: single
+    icon: blue-up
+    command: laminar/B738/knob/autobrake_up

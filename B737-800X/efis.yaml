@@ -1,0 +1,242 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 25
+    name: wxr
+    type: single
+    icon: white-button
+    label: WXR
+    command:
+  - index: 26
+    name: sta
+    type: single
+    icon: white-button
+    label: STA
+    command:
+  - index: 27
+    name: wpt
+    type: single
+    icon: white-button
+    label: WPT
+    command:
+  - index: 28
+    name: arpt
+    type: single
+    icon: white-button
+    label: ARPT
+    command:
+  - index: 29
+    name: data
+    type: single
+    icon: white-button
+    label: DATA
+    command:
+  - index: 30
+    name: pos
+    type: single
+    icon: white-button
+    label: POS
+    command:
+  - index: 31
+    name: terr
+    type: single
+    icon: white-button
+    label: TERR
+    command:
+  # left part of the EFIS
+  - index: 0
+    name: mins radio
+    type: single
+    icon: blue-left
+    label: RADIO
+    command: laminar/B738/EFIS_control/cpt/minimums_up
+  - index: 1
+    name: mins
+    type: single
+    icon: mins
+    dataref: laminar/B738/EFIS_control/cpt/minimums
+  - index: 2
+    name: mins baro
+    type: single
+    icon: blue-right
+    label: BARO
+    command: laminar/B738/EFIS_control/cpt/minimums_dn
+  - index: 8
+    name: mins down
+    type: single
+    icon: blue-left
+    label: MINS DOWN
+    command: FlyWithLua/streamdeck_handler/mins_dn_start
+    command-release: FlyWithLua/streamdeck_handler/mins_dn_end
+  - index: 9
+    name: mins rst
+    type: single
+    label: RST
+    dataref: laminar/B738/EFIS_control/pfd/baro_min_cpt_show
+    dataref-states:
+      - 0
+      - -1.0
+    file-names:
+      - yellow-button
+      - green-button
+    command: laminar/B738/EFIS_control/capt/push_button/rst_press
+  - index: 10
+    name: mins up
+    type: single
+    icon: blue-right
+    label: MINS UP
+    command: FlyWithLua/streamdeck_handler/mins_up_start
+    command-release: FlyWithLua/streamdeck_handler/mins_up_end
+  - index: 16
+    name: map mode down
+    type: single
+    icon: blue-left
+    label: MODE DOWN
+    command: laminar/B738/EFIS_control/capt/map_mode_dn
+  - index: 17
+    name: map mode
+    type: single
+    icon: mapmode
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    dataref: laminar/B738/EFIS_control/capt/map_mode_pos
+  - index: 18
+    name: map mode up
+    type: single
+    icon: blue-right
+    label: MODE UP
+    command: laminar/B738/EFIS_control/capt/map_mode_up
+  - index: 19
+    name: ctr map mode
+    type: single
+    icon: yellow-button
+    label: CTR
+    command: laminar/B738/EFIS_control/capt/push_button/ctr_press
+  # right part of the EFIS
+  - index: 5
+    name: baro in
+    type: single
+    icon: blue-left
+    label: IN
+    command: laminar/B738/EFIS_control/capt/baro_in_hpa_dn
+  - index: 6
+    name: baro
+    type: single
+    icon: baro
+    dataref: laminar/B738/EFIS_control/capt/baro_in_hpa
+  - index: 7
+    name: baro hpa
+    type: single
+    icon: blue-right
+    label: HPA
+    command: laminar/B738/EFIS_control/capt/baro_in_hpa_up
+  - index: 13
+    name: baro down
+    type: single
+    icon: blue-left
+    label: BARO DOWN
+    command: FlyWithLua/streamdeck_handler/baro_dn_start
+    command-release: FlyWithLua/streamdeck_handler/baro_dn_end
+  - index: 14
+    name: baro std
+    type: single
+    icon: yellow-button
+    label: STD
+    dataref: laminar/B738/EFIS/baro_set_std_pilot
+    file-names:
+      - yellow-button
+      - green-button
+    command: laminar/B738/EFIS_control/capt/push_button/std_press
+  - index: 15
+    name: baro up
+    type: single
+    icon: blue-right
+    label: BARO UP
+    command: FlyWithLua/streamdeck_handler/baro_up_start
+    command-release: FlyWithLua/streamdeck_handler/baro_up_end
+  - index: 21
+    name: map range down
+    type: single
+    icon: blue-left
+    label: RANGE DOWN
+    command: laminar/B738/EFIS_control/capt/map_range_dn
+  - index: 22
+    name: map range
+    type: single
+    icon: maprange
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+      - 7.0
+    dataref: laminar/B738/EFIS/capt/map_range
+  - index: 23
+    name: map range up
+    type: single
+    icon: blue-right
+    label: RANGE UP
+    command: laminar/B738/EFIS_control/capt/map_range_up
+  - index: 20
+    name: tfc map range
+    type: single
+    icon: yellow-button
+    label: TFC
+    command: laminar/B738/EFIS_control/capt/push_button/tfc_press
+  - index: 11
+    name: radio sel 1
+    type: dual
+    file-names:
+      - green2
+      - red1
+      - green0
+    dataref: laminar/B738/EFIS_control/capt/vor1_off_pos
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    label: VOR/ADF 1
+    command-on: laminar/B738/EFIS_control/capt/vor1_off_up
+    command-off: laminar/B738/EFIS_control/capt/vor1_off_dn
+  - index: 12
+    name: radio sel 2
+    type: dual
+    file-names:
+      - green2
+      - red1
+      - green0
+    dataref: laminar/B738/EFIS_control/capt/vor2_off_pos
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    label: VOR/ADF 2
+    command-on: laminar/B738/EFIS_control/capt/vor2_off_up
+    command-off: laminar/B738/EFIS_control/capt/vor2_off_dn
+  - index: 3
+    name: fpv
+    type: single
+    label: FPV
+    dataref: laminar/B738/PFD/capt/fpv_on
+    file-names:
+      - yellow-button
+      - green-button
+    command: laminar/B738/EFIS_control/capt/push_button/fpv_press
+  - index: 4
+    name: mtrs
+    type: single
+    label: MTRS
+    dataref: laminar/B738/PFD/capt/alt_mode_is_meters
+    file-names:
+      - yellow-button
+      - green-button
+    command: laminar/B738/EFIS_control/capt/push_button/mtrs_press

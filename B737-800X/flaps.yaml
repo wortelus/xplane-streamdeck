@@ -1,6 +1,6 @@
 actions:
-  - index: 26
-    name: actions
+  - index: 27
+    name: return
     type: dir
     dataref: sim/flightmodel/misc/blown_flap_engage_rat
     dataref-multiplier: 100
@@ -15,67 +15,67 @@ actions:
       min: 0.0
       max: 100
       step: 1
-  - index: 17
+  - index: 18
     name: move flaps up
     type: single
     icon: red-button
     label: Move Up
     command: FlyWithLua/B738/Cmd_MP_Flaps_Up
-  - index: 18
+  - index: 19
     name: flaps up
     type: single
     icon: orange-button
     label: Flaps Up
-    command: laminar/B738/fms/set_flap_up
-  - index: 19
+    command: laminar/B738/push_button/flaps_0
+  - index: 20
     name: flaps 1
     type: single
     icon: orange-button
     label: Flaps 1
-    command: laminar/B738/push_button/flaps_0
-  - index: 20
+    command: laminar/B738/push_button/flaps_1
+  - index: 21
     name: flaps 5
     type: single
     icon: orange-button
     label: Flaps 5
     command: laminar/B738/push_button/flaps_5
-  - index: 21
+  - index: 22
     name: flaps 15
     type: single
     icon: orange-button
     label: Flaps 15
     command: laminar/B738/push_button/flaps_15
-  - index: 22
+  - index: 23
     name: flaps 30
     type: single
     icon: orange-button
     label: Flaps 30
     command: laminar/B738/push_button/flaps_30
-  - index: 25
+  - index: 26
     name: move flaps down
     type: single
     icon: blue-button
     label: Move Down
     command: FlyWithLua/B738/Cmd_MP_Flaps_Dn
-  - index: 27
+  - index: 28
     name: flaps 2
     type: single
     icon: orange-button
     label: Flaps 2
     command: laminar/B738/push_button/flaps_2
-  - index: 28
+  - index: 29
     name: flaps 10
     type: single
     icon: orange-button
     label: Flaps 10
     command: laminar/B738/push_button/flaps_10
-  - index: 29
+  - index: 30
     name: flaps 25
     type: single
     icon: orange-button
     label: Flaps 25
     command: laminar/B738/push_button/flaps_25
-  - index: 30
+  - index: 31
     name: flaps 40
     type: single
     icon: orange-button
