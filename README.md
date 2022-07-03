@@ -23,8 +23,8 @@ control via single button...***automatically***
 - Sync with X-Plane's dataref to visually depict the actual state
 - Multiple dataref states with each custom key image
 - Custom Labels
-- Gauges !!!
-- Multi-Deck support (WIP)
+- ***Gauges !!!***
+- ***350+ custom made icons*** 
 
 All of these features can be configurated in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
@@ -66,6 +66,7 @@ I still strongly recommend checking the examples and work your way from there, t
 ### What is planned / WIP?
 - Dynamic dataref display types
 - More types of labels
+- Multi deck support
 
 
 ## Dependencies

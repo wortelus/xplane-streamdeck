@@ -129,6 +129,7 @@ def load_preset(target_dir, yaml_keyset, deck_key_count):
             preset_cfg = safe_load(stream)
         except yaml.YAMLError as err:
             print("cannot load {}, ensure you have proper syntax config {}".format(yaml_keyset, err))
+            exit(1)
 
     keys = preset_cfg["actions"]
     # key_count = len(keys)
@@ -180,7 +181,7 @@ def load_all_presets(target_dir, deck_key_count):
     # execute while there are keysets to be read and loaded into presets
     while keysets.size > 0:
         for _, key_set in enumerate(keysets):
-            if key_set not in presets_all:
+            if key_set not in presets_all and key_set != "return":
                 preset, other_keysets = load_preset(target_dir, add_yaml_suffix(key_set), deck_key_count)
                 presets_all[key_set] = preset
                 keysets = np.unique(np.concatenate((keysets, other_keysets), 0))

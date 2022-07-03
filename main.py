@@ -61,7 +61,15 @@ def key_change_callback(deck, key_index, state):
             # update direction
             key.switch_direction = next_direction
         elif key.cmd_type == "dir":
-            change_dir(deck, key.name)
+            global current_preset_name
+            global directory_stack
+            if key.name == "return":
+                current_preset_name = directory_stack.pop()
+                change_dir(deck, current_preset_name)
+            else:
+                directory_stack.append(current_preset_name)
+                current_preset_name = key.name
+                change_dir(deck, key.name)
     else:
         # button release (commonly used for momentary switches as the fire test on pedestal of 737)
         key = current_preset[key_index]
@@ -186,7 +194,7 @@ def main():
     key_count = panel["keys"]
     dir_count = preprocessing.count_presets(keys_dir)
 
-    preprocessing.load_default_font("ms33558.ttf")
+    preprocessing.load_default_font(global_cfg["default-font"])
 
     global presets_all
     presets_all = preprocessing.load_all_presets(keys_dir, key_count)
@@ -195,8 +203,13 @@ def main():
     global images_all
     images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
 
+    global directory_stack
+    directory_stack = []
+
     global current_preset
     current_preset = presets_all["actions"]  # key index and preset index is the same, contains entire Button objects
+    global current_preset_name
+    current_preset_name = "actions"
     global current_datarefs
     current_datarefs = datarefs_all["actions"]  # used for updating, contains only the showable buttons
     global fetch_datarefs
