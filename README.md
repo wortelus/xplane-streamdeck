@@ -24,7 +24,7 @@ control via single button...***automatically***
 - Multiple dataref states with each custom key image
 - Custom Labels
 - ***Gauges !!!***
-- ***350+ custom made icons*** 
+- ***400+ custom made icons*** 
 
 All of these features can be configurated in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
