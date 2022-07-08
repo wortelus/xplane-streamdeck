@@ -1,0 +1,165 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+    # left pumps
+  - index: 17
+    name: low press left aft
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_l1
+    icon: lowpressure
+  - index: 25
+    name: fuel pump left aft
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_lft1
+    file-names:
+      - red0
+      - green2
+    label: LEFT AFT
+    command: FlyWithLua/streamdeck_handler/fp1_toggle
+  - index: 18
+    name: low press left fwd
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_l2
+    icon: lowpressure
+  - index: 26
+    name: fuel pump left fwd
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_lft2
+    label: LEFT FWD
+    file-names:
+      - red0
+      - green2
+    command: FlyWithLua/streamdeck_handler/fp2_toggle
+    # right pumps
+  - index: 22
+    name: low press right fwd
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_r2
+    icon: lowpressure
+  - index: 30
+    name: fuel pump right fwd
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_rgt2
+    file-names:
+      - red0
+      - green2
+    label: RIGHT FWD
+    command: FlyWithLua/streamdeck_handler/fp4_toggle
+  - index: 23
+    name: low press right aft
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_r1
+    icon: lowpressure
+  - index: 31
+    name: fuel pump right aft
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_rgt1
+    label: RIGHT AFT
+    file-names:
+      - red0
+      - green2
+    command: FlyWithLua/streamdeck_handler/fp3_toggle
+    # ctr pumps
+  - index: 11
+    name: low press ctr left
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_c1
+    icon: lowpressure
+  - index: 19
+    name: fuel pump ctr left
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_ctr1
+    file-names:
+      - red0
+      - green2
+    label: CTR LEFT
+    command: FlyWithLua/streamdeck_handler/fp5_toggle
+  - index: 13
+    name: low press ctr right
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_c2
+    icon: lowpressure
+  - index: 21
+    name: fuel pump ctr right
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_ctr2
+    label: CTR RIGHT
+    file-names:
+      - red0
+      - green2
+    command: FlyWithLua/streamdeck_handler/fp6_toggle
+    # crossfeed
+  - index: 4
+    name: crossfeed valve open
+    type: none
+    dataref: laminar/B738/annunciator/crossfeed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+    icon: valveopen
+  - index: 12
+    name: crossfeed valve
+    type: dual
+    dataref: laminar/B738/knobs/cross_feed
+    icon: crossfeed
+    command-on: laminar/B738/toggle_switch/crossfeed_valve_on
+    command-off: laminar/B738/toggle_switch/crossfeed_valve_off
+  # filter bypass
+  - index: 3
+    name: filter bypass 1
+    type: none
+    icon: filterbypass
+    dataref: laminar/B738/annunciator/bypass_filter_1
+    dataref-multiplier: 1.5
+  - index: 5
+    name: filter bypass 5
+    type: none
+    icon: filterbypass
+    dataref: laminar/B738/annunciator/bypass_filter_2
+    dataref-multiplier: 1.5
+  # other valves
+  - index: 1
+    name: eng valve closed 1
+    type: none
+    icon: engvalveclosed
+    dataref: laminar/B738/annunciator/eng1_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+  - index: 9
+    name: spar valve closed 1
+    type: none
+    icon: sparvalveclosed
+    dataref: laminar/B738/annunciator/spar1_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+  - index: 7
+    name: eng valve closed 2
+    type: none
+    icon: engvalveclosed
+    dataref: laminar/B738/annunciator/eng2_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+  - index: 15
+    name: spar valve closed 2
+    type: none
+    icon: sparvalveclosed
+    dataref: laminar/B738/annunciator/spar2_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2

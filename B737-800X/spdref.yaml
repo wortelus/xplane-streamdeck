@@ -1,0 +1,34 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: spdref
+    dataref: laminar/B738/toggle_switch/spd_ref
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+  - index: 13
+    name: spd ref sel dn
+    type: single
+    icon: blue-left
+    command: laminar/B738/toggle_switch/spd_ref_left
+  - index: 15
+    name: spd ref sel up
+    type: single
+    icon: blue-right
+    command: laminar/B738/toggle_switch/spd_ref_right
+  - index: 21
+    name: spd ref adjust dn
+    type: single
+    icon: blue-left
+    command: laminar/B738/toggle_switch/spd_ref_adjust_left
+  - index: 23
+    name: spd ref adjust up
+    type: single
+    icon: blue-right
+    command: laminar/B738/toggle_switch/spd_ref_adjust_right

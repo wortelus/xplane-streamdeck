@@ -142,7 +142,7 @@ actions:
     name: cws b
     type: single
     icon: cws
-    dataref: laminar/B738/autopilot/cws_b_press
+    dataref: laminar/B738/autopilot/cws_b_status
     command: laminar/B738/autopilot/cws_b_press
   - index: 28
     name: crs capt dn

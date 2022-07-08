@@ -1,0 +1,127 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+    # ann irs
+  - index: 0
+    name: left dc align
+    type: none
+    icon: align
+    dataref: laminar/B738/annunciator/irs_align_left
+    dataref-multiplier: 1.5
+  - index: 1
+    name: left irs on dc
+    type: none
+    icon: ondc
+    dataref: laminar/B738/annunciator/irs_on_dc_left
+    dataref-multiplier: 1.5
+  - index: 8
+    name: left irs fault
+    type: none
+    icon: fault
+    dataref: laminar/B738/annunciator/irs_align_fail_left
+    dataref-multiplier: 1.5
+  - index: 9
+    name: left irs dc fail
+    type: none
+    icon: dcfail
+    dataref: laminar/B738/annunciator/irs_dc_fail_left
+    dataref-multiplier: 1.5
+  - index: 3
+    name: right dc align
+    type: none
+    icon: align
+    dataref: laminar/B738/annunciator/irs_align_right
+    dataref-multiplier: 1.5
+  - index: 4
+    name: right irs on dc
+    type: none
+    icon: ondc
+    dataref: laminar/B738/annunciator/irs_on_dc_right
+    dataref-multiplier: 1.5
+  - index: 11
+    name: right irs fault
+    type: none
+    icon: fault
+    dataref: laminar/B738/annunciator/irs_align_fail_right
+    dataref-multiplier: 1.5
+  - index: 12
+    name: right irs dc fail
+    type: none
+    icon: dcfail
+    dataref: laminar/B738/annunciator/irs_dc_fail_right
+    dataref-multiplier: 1.5
+    # irs mode
+  - index: 17
+    name: lirsmode
+    type: dir
+    icon: irsmode
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    dataref: laminar/B738/toggle_switch/irs_left
+  - index: 19
+    name: rirsmode
+    type: dir
+    icon: irsmode
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    dataref: laminar/B738/toggle_switch/irs_right
+  - index: 29
+    name: flt recorder off
+    type: none
+    icon: offann
+    dataref: laminar/B738/annunciator/fdr_off
+    dataref-multiplier: 1.5
+  - index: 30
+    name: flt recorder cover
+    type: single
+    file-names:
+      - red-down
+      - blue-down
+    dataref: laminar/B738/switches/fdr_cover_pos
+    command: laminar/B738/toggle_switch/fdr_cover
+  - index: 31
+    name: flt recorder switch
+    type: single
+    file-names:
+      - blueb
+      - reda
+    dataref: laminar/B738/switches/fdr_pos
+    command: laminar/B738/toggle_switch/fdr
+    # test buttons
+  - index: 6
+    name: mach warning 1
+    type: single
+    icon: orange-button
+    command: FlyWithLua/streamdeck_handler/mach1_test_start
+    command-release: FlyWithLua/streamdeck_handler/mach1_test_end
+    label: MACH WARN 1
+  - index: 7
+    name: mach warning 2
+    type: single
+    icon: orange-button
+    command: FlyWithLua/streamdeck_handler/mach2_test_start
+    command-release: FlyWithLua/streamdeck_handler/mach2_test_end
+    label: MACH WARN 2
+  - index: 14
+    name: stick shaker 1
+    type: single
+    icon: orange-button
+    command: FlyWithLua/streamdeck_handler/stall1_test_start
+    command-release: FlyWithLua/streamdeck_handler/stall1_test_end
+    label: STALL WARN 1
+  - index: 15
+    name: stick shaker 2
+    type: single
+    icon: orange-button
+    command: FlyWithLua/streamdeck_handler/stall2_test_start
+    command-release: FlyWithLua/streamdeck_handler/stall2_test_end
+    label: STALL WARN 2

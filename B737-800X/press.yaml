@@ -1,0 +1,199 @@
+actions:
+  - index: 24
+    name: return
+    icon: dir
+    type: dir
+    label: MAIN DECK
+  - index: 26
+    name: press mode knob
+    type: dual
+    icon: pressmode
+    dataref: laminar/B738/toggle_switch/air_valve_ctrl
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/toggle_switch/air_valve_ctrl_right
+    command-off: laminar/B738/toggle_switch/air_valve_ctrl_left
+  - index: 18
+    name: airvalveman
+    type: dir
+    icon: blueb
+    label: MAN VALVE
+  - index: 16
+    name: land alt down
+    type: single
+    icon: blue-left
+    label: LAND ALT DN
+    command: FlyWithLua/streamdeck_handler/land_alt_down_start
+    command-release: FlyWithLua/streamdeck_handler/land_alt_down_end
+  - index: 17
+    name: land alt up
+    type: single
+    icon: blue-right
+    label: LAND ALT UP
+    command: FlyWithLua/streamdeck_handler/land_alt_up_start
+    command-release: FlyWithLua/streamdeck_handler/land_alt_up_end
+  - index: 8
+    name: flt alt down
+    type: single
+    icon: blue-left
+    label: FLT ALT DN
+    command: FlyWithLua/streamdeck_handler/flt_alt_down_start
+    command-release: FlyWithLua/streamdeck_handler/flt_alt_down_end
+  - index: 9
+    name: flt alt up
+    type: single
+    icon: blue-right
+    label: FLT ALT UP
+    command: FlyWithLua/streamdeck_handler/flt_alt_up_start
+    command-release: FlyWithLua/streamdeck_handler/flt_alt_up_end
+  - index: 28
+    name: eng 1 bleed
+    type: single
+    file-names:
+      - red0
+      - green2
+    label: BLEED 1
+    dataref: laminar/B738/toggle_switch/bleed_air_1_pos
+    command: laminar/B738/toggle_switch/bleed_air_1
+  - index: 29
+    name: apu bleed
+    type: single
+    file-names:
+      - red0
+      - green2
+    label: BLEED APU
+    dataref: laminar/B738/toggle_switch/bleed_air_apu_pos
+    command: laminar/B738/toggle_switch/bleed_air_apu
+  - index: 31
+    name: eng 2 bleed
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/bleed_air_2_pos
+    command: laminar/B738/toggle_switch/bleed_air_2
+    label: BLEED 2
+  - index: 22
+    name: trip reset
+    type: single
+    icon: yellow-button
+    label: TRIP RESET
+    command: FlyWithLua/streamdeck_handler/trip_reset_start
+    command-release: FlyWithLua/streamdeck_handler/trip_reset_end
+  - index: 12
+    name: pack left
+    type: dual
+    file-names:
+      - red0
+      - blue1
+      - orange2
+    dataref: laminar/B738/air/l_pack_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/toggle_switch/l_pack_dn
+    command-off: laminar/B738/toggle_switch/l_pack_up
+    label: L PACK
+  - index: 15
+    name: pack right
+    type: dual
+    file-names:
+      - red0
+      - blue1
+      - orange2
+    dataref: laminar/B738/air/r_pack_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/toggle_switch/r_pack_dn
+    command-off: laminar/B738/toggle_switch/r_pack_up
+    label: R PACK
+  - index: 13
+    name: isolation valve
+    type: dual
+    file-names:
+      - red0
+      - blue1
+      - green2
+    dataref: laminar/B738/air/isolation_valve_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/toggle_switch/iso_valve_dn
+    command-off: laminar/B738/toggle_switch/iso_valve_up
+    label: ISO VALVE
+  - index: 4
+    name: recirc fan 2
+    type: single
+    file-names:
+      - red0
+      - blue1
+    dataref: laminar/B738/air/l_recirc_fan_pos
+    command: laminar/B738/toggle_switch/l_recirc_fan
+    label: RECIRC FAN
+  - index: 7
+    name: recirc fan 1
+    type: single
+    file-names:
+      - red0
+      - blue1
+    dataref: laminar/B738/air/r_recirc_fan_pos
+    command: laminar/B738/toggle_switch/r_recirc_fan
+    label: RECIRC FAN
+  - index: 5
+    name: ram door full open 1
+    type: none
+    icon: ramdoorfullopen
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref: laminar/B738/annunciator/ram_door_open1
+    dataref-multiplier: 2.1
+  - index: 6
+    name: ram door full open 2
+    type: none
+    icon: ramdoorfullopen
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref: laminar/B738/annunciator/ram_door_open2
+    dataref-multiplier: 2.1
+  - index: 30
+    name: dualbleed
+    type: none
+    icon: dualbleed
+    dataref: laminar/B738/annunciator/dual_bleed
+  - index: 0
+    name: auto fail
+    type: none
+    icon: autofail
+    dataref: laminar/B738/annunciator/autofail
+  - index: 1
+    name: off sched desc
+    type: none
+    icon: offscheddescent
+    dataref: laminar/B738/annunciator/off_sched_descent
+  - index: 2
+    name: altnpress
+    type: none
+    icon: altn
+    dataref: laminar/B738/annunciator/altn_press
+  - index: 3
+    name: manualpress
+    type: none
+    icon: manual
+    dataref: laminar/B738/annunciator/manual_press
+  - index: 19
+    name: alt horn cutout
+    type: single
+    icon: red-button
+    command: FlyWithLua/streamdeck_handler/alt_horn_start
+    command-release: FlyWithLua/streamdeck_handler/alt_horn_end
+    label: ALT HORN

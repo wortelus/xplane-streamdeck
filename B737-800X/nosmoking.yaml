@@ -1,0 +1,26 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    dataref: laminar/B738/toggle_switch/no_smoking_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    file-names:
+      - red0
+      - yellow1
+      - green2
+    label: NO SMOKING
+  - index: 6
+    name: return
+    type: single
+    icon: orange-up
+    label: UP
+    command: laminar/B738/toggle_switch/no_smoking_up
+  - index: 22
+    name: return
+    type: single
+    icon: green-down
+    label: DOWN
+    command: laminar/B738/toggle_switch/no_smoking_dn

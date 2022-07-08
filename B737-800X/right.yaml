@@ -1,0 +1,147 @@
+actions:
+  - index: 30
+    name: transponder
+    type: dir
+    icon: xpdr
+    dataref: laminar/B738/knob/transponder_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+  - index: 31
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 7
+    name: aftovhd
+    type: dir
+    icon: dir
+    label: AFT OVHD
+  - index: 23
+    name: cockpit dome
+    type: dual
+    file-names:
+      - blue2
+      - red1
+      - yellow0
+    dataref: laminar/B738/toggle_switch/cockpit_dome_pos
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    command-on: laminar/B738/toggle_switch/cockpit_dome_up
+    command-off: laminar/B738/toggle_switch/cockpit_dome_dn
+    label: DOME LIGHT
+  - index: 0
+    name: slow zoom in
+    type: single
+    icon: blue-button
+    command: FlyWithLua/streamdeck_handler/forward_start
+    command-release: FlyWithLua/streamdeck_handler/forward_end
+  - index: 2
+    name: fast zoom in
+    type: single
+    icon: blue-button
+    command: FlyWithLua/streamdeck_handler/fforward_start
+    command-release: FlyWithLua/streamdeck_handler/fforward_end
+  - index: 1
+    name: up view
+    type: single
+    icon: green-up
+    command: FlyWithLua/streamdeck_handler/up_start
+    command-release: FlyWithLua/streamdeck_handler/up_end
+  - index: 10
+    name: right view
+    type: single
+    icon: green-right
+    command: FlyWithLua/streamdeck_handler/right_start
+    command-release: FlyWithLua/streamdeck_handler/right_end
+  - index: 17
+    name: down view
+    type: single
+    icon: green-down
+    command: FlyWithLua/streamdeck_handler/down_start
+    command-release: FlyWithLua/streamdeck_handler/down_end
+  - index: 8
+    name: left view
+    type: single
+    icon: green-left
+    command: FlyWithLua/streamdeck_handler/left_start
+    command-release: FlyWithLua/streamdeck_handler/left_end
+  - index: 16
+    name: backward
+    type: single
+    icon: orange-button
+    command: FlyWithLua/streamdeck_handler/backward_start
+    command-release: FlyWithLua/streamdeck_handler/backward_end
+  - index: 18
+    name: backward fast
+    type: single
+    icon: orange-button
+    command: FlyWithLua/streamdeck_handler/fbackward_start
+    command-release: FlyWithLua/streamdeck_handler/fbackward_end
+  - index: 21
+    name: doors
+    type: dir
+    icon: dir
+    label: DOORS
+  - index: 24
+    name: white bright pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_white_bright
+    label: WHITE BRT
+  - index: 25
+    name: white medium pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_white_medium
+    label: WHITE MED
+  - index: 26
+    name: pax landing pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_to_landing
+    label: TO LAND
+  - index: 27
+    name: pax cruise pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_cruise
+    label: CRUISE
+  - index: 28
+    name: dim pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_night_sleep
+    label: DIM SLEEP
+  - index: 19
+    name: white bright entry
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/entry_white_bright
+    label: BRT ENTRY
+  - index: 20
+    name: white medium entry
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/entry_white_medium
+    label: MED ENTRY
+  - index: 29
+    name: park brake
+    type: single
+    file-names:
+      - red-button
+      - green-button
+    dataref: laminar/B738/parking_brake_pos
+    command: sim/flight_controls/brakes_toggle_max
+    label: PARK BRAKE
+  - index: 22
+    name: tab
+    type: dir
+    icon: dir
+    label: AVITAB

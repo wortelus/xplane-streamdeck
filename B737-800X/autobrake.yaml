@@ -1,5 +1,5 @@
 actions:
-  - index: 23
+  - index: 15
     name: return
     type: dir
     icon: autobrake
@@ -11,12 +11,12 @@ actions:
       - 3.0
       - 4.0
       - 5.0
-  - index: 31
+  - index: 23
     name: autobrake dn
     type: single
     icon: blue-down
     command: laminar/B738/knob/autobrake_dn
-  - index: 15
+  - index: 7
     name: autobrake dn
     type: single
     icon: blue-up

@@ -1,0 +1,76 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+    # flt ctl a
+  - index: 2
+    name: flt ctl a cover
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/switches/flt_ctr_A_cover_pos
+    command: laminar/B738/toggle_switch/flt_ctr_A_cover
+    label: COVER
+  - index: 10
+    name: flt ctl a up
+    type: single
+    icon: orange-up
+    command: laminar/B738/toggle_switch/flt_ctr_A_up
+    label: A UP
+  - index: 18
+    name: flt ctl a
+    type: none
+    file-names:
+      - orange0
+      - red1
+      - green2
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    dataref: laminar/B738/switches/flt_ctr_A_pos
+    label: FLT CTL A
+  - index: 26
+    name: flt ctl a down
+    type: single
+    icon: orange-down
+    command: laminar/B738/toggle_switch/flt_ctr_A_dn
+    label: A DOWN
+    # flt ctl b
+  - index: 4
+    name: flt ctl b cover
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/switches/flt_ctr_B_cover_pos
+    command: laminar/B738/toggle_switch/flt_ctr_B_cover
+    label: COVER
+  - index: 12
+    name: flt ctl b up
+    type: single
+    icon: orange-up
+    command: laminar/B738/toggle_switch/flt_ctr_B_up
+    label: B UP
+  - index: 20
+    name: flt ctl b
+    type: none
+    file-names:
+      - orange0
+      - red1
+      - green2
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    dataref: laminar/B738/switches/flt_ctr_B_pos
+    label: CLT CTL B
+  - index: 28
+    name: flt ctl b down
+    type: single
+    icon: orange-down
+    command: laminar/B738/toggle_switch/flt_ctr_B_dn
+    label: B DOWN

@@ -3,6 +3,7 @@ actions:
     name: return
     type: dir
     icon: dir
+    label: MAIN DECK
   - index: 25
     name: left retractable ldg light
     type: dual
@@ -253,3 +254,70 @@ actions:
       - 1.0
     command-on: laminar/B738/toggle_switch/eng_start_source_right
     command-off: laminar/B738/toggle_switch/eng_start_source_left
+  - index: 5
+    name: arm emer exit lights ann
+    type: single
+    icon: notarmed
+    dataref: laminar/B738/annunciator/emer_exit
+    dataref-multiplier: 1.5
+  - index: 6
+    name: arm emer exit lights
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/button_switch/cover_position[9]
+    command: laminar/B738/button_switch_cover09
+    label: EMER EXIT LT
+  - index: 7
+    name: arm emer exit lights
+    type: single
+    icon: yellow-up
+    command: laminar/B738/toggle_switch/emer_exit_lights_up
+    label: DISARM
+  - index: 14
+    name: nosmoking
+    type: dir
+    dataref: laminar/B738/toggle_switch/no_smoking_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    file-names:
+      - red0
+      - yellow1
+      - green2
+    label: NO SMOKING
+  - index: 15
+    name: seatbelts
+    type: dir
+    dataref: laminar/B738/toggle_switch/seatbelt_sign_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    file-names:
+      - red0
+      - yellow1
+      - green2
+    label: SEATBELTS
+  - index: 0
+    name: apu maint
+    type: none
+    icon: maint.0.0
+  - index: 1
+    name: apu low oil pressure
+    type: none
+    icon: lowoilpressure
+    dataref: laminar/B738/annunciator/apu_low_oil
+    dataref-multiplier: 1.5
+  - index: 2
+    name: apu fault
+    type: none
+    icon: fault
+    dataref: laminar/B738/annunciator/apu_fault
+    dataref-multiplier: 1.5
+  - index: 3
+    name: apu overspeed
+    type: none
+    icon: overspeed.0.0

@@ -1,0 +1,36 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 18
+    name: temp sel knob
+    type: dual
+    file-names:
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+    label: AIR TEMP
+    dataref: laminar/B738/toggle_switch/air_temp_source
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+    command-on: laminar/B738/toggle_switch/air_temp_source_right
+    command-off: laminar/B738/toggle_switch/air_temp_source_left
+  - index: 26
+    name: trim air
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/air/trim_air_pos
+    command: laminar/B738/toggle_switch/trim_air
+    label: TRIM AIR

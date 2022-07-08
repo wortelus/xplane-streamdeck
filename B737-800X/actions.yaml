@@ -1,54 +1,4 @@
 actions:
-  # capt six pack start
-  - index: 2
-    name: flt cont
-    type: single
-    icon: fltcont
-    dataref: laminar/B738/annunciator/six_pack_flt_cont
-    dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 3
-    name: elec
-    type: single
-    icon: elec
-    dataref: laminar/B738/annunciator/six_pack_elec
-    dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 10
-    name: irs
-    type: single
-    icon: irs
-    dataref: laminar/B738/annunciator/six_pack_irs
-    dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 11
-    name: apu
-    type: single
-    icon: apu
-    dataref: laminar/B738/annunciator/six_pack_apu
-    dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 18
-    name: fuel
-    type: single
-    icon: fuel
-    dataref: laminar/B738/annunciator/six_pack_fuel
-    dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 19
-    name: ovht det
-    type: single
-    icon: ovhtdet
-    dataref: laminar/B738/annunciator/six_pack_fire
-    dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-    # capt six pack end
   - index: 0
     name: fire warning
     type: single
@@ -65,73 +15,174 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_master_caution_start
     command-release: FlyWithLua/streamdeck_handler/capt_master_caution_end
-  # f/o six pack start
+  - index: 2
+    name: below gs p-inhibit
+    type: single
+    icon: belowgs
+    dataref: laminar/B738/annunciator/below_gs
+    dataref-multiplier: 1.5
+    command: laminar/B738/alert/below_gs_pilot
+  - index: 3
+    name: takeoff config
+    type: single
+    icon: takeoffconfig
+    dataref: laminar/B738/annunciator/takeoff_config
+    dataref-multiplier: 1.5
   - index: 4
-    name: anti ice
+    name: cabin altitude
     type: single
-    icon: antiice
-    dataref: laminar/B738/annunciator/six_pack_ice
+    icon: cabinaltitude
+    dataref: laminar/B738/annunciator/cabin_alt
     dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 5
-    name: engine
+    name: speedbrake armed
     type: single
-    icon: eng
-    dataref: laminar/B738/annunciator/six_pack_eng
+    icon: speedbrakearmed
+    dataref: laminar/B738/annunciator/speedbrake_armed
     dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 12
-    name: hydraulics
+  - index: 6
+    name: speedbrake do not arm
     type: single
-    icon: hyd
-    dataref: laminar/B738/annunciator/six_pack_hyd
+    icon: speedbrakedonotarm
+    dataref: laminar/B738/annunciator/speedbrake_extend
     dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 13
-    name: overhead
+  - index: 7
+    name: stab out of trim
     type: single
-    icon: overhead
-    dataref: laminar/B738/annunciator/six_pack_overhead
+    icon: staboutoftrim
+    dataref: laminar/B738/annunciator/stab_out_of_trim
     dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 20
-    name: doors
+  - index: 27
+    name: flaps
+    type: dir
+    dataref: sim/flightmodel/misc/blown_flap_engage_rat
+    dataref-multiplier: 100
+    gauge:
+      name: flaps
+      needle-center:
+        x: 64
+        y: 64
+      background: flapsbckg
+      needle: flapsneedle
+      range-degrees: 270
+      min: 0.0
+      max: 100
+      step: 1
+  - index: 28
+    name: le flaps transit
     type: single
-    icon: doors
-    dataref: laminar/B738/annunciator/six_pack_doors
+    icon: leflapstransit
+    dataref: laminar/B738/annunciator/slats_transit
     dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 21
-    name: air conditioning
+  - index: 29
+    name: le flaps ext
     type: single
-    icon: aircond
-    dataref: laminar/B738/annunciator/six_pack_air_cond
+    icon: leflapsext
+    dataref: laminar/B738/annunciator/slats_extend
     dataref-multiplier: 1.5
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-    # f/o six pack end
-  - index: 26
-    name: second
+  - index: 24
+    name: left
     type: dir
     icon: dir
-    label: SECOND DECK
-  - index: 27
-    name: six pack
+    label: LEFT
+  - index: 31
+    name: right
+    type: dir
+    icon: dir
+    label: RIGHT
+  - index: 10
+    name: view 1
     type: single
-    icon: orange-up
-    label: SIX PACK
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 28
-    name: six pack
+    icon: eye
+    label: CTR VIEW 1
+    command: sim/view/quick_look_0
+  - index: 11
+    name: view 2
     type: single
-    icon: orange-up
-    label: SIX PACK
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-
+    icon: eye
+    label: CTR VIEW 2
+    command: sim/view/quick_look_1
+  - index: 18
+    name: view 3
+    type: single
+    icon: eye
+    label: MCP & MFD
+    command: sim/view/quick_look_2
+  - index: 19
+    name: view 4
+    type: single
+    icon: eye
+    label: ENG & MCP
+    command: sim/view/quick_look_3
+  - index: 25
+    name: view 5
+    type: single
+    icon: eye
+    label: OVERHEAD
+    command: sim/view/quick_look_4
+  - index: 26
+    name: view 6
+    type: single
+    icon: eye
+    label: PEDESTAL
+    command: sim/view/quick_look_5
+  - index: 9
+    name: mcp
+    type: dir
+    icon: dir
+    label: MCP
+  - index: 8
+    name: efis
+    type: dir
+    icon: dir
+    label: EFIS
+  - index: 16
+    name: ctr
+    type: dir
+    icon: dir
+    label: CTR
+  - index: 30
+    name: lowerovhd
+    type: dir
+    icon: dir
+    label: LOWER OVHD
+  - index: 20
+    name: fuel
+    type: dir
+    icon: dir
+    label: FUEL
+  - index: 21
+    name: gen
+    type: dir
+    icon: dir
+    label: GEN
+  - index: 13
+    name: elec
+    type: dir
+    icon: dir
+    label: ELEC
+  - index: 22
+    name: hydai
+    type: dir
+    icon: dir
+    label: HYD A/I
+  - index: 23
+    name: press
+    type: dir
+    icon: dir
+    label: PRESS
+  - index: 14
+    name: winheat
+    type: dir
+    icon: dir
+    label: WIN HEAT
+  - index: 15
+    name: temp
+    type: dir
+    icon: dir
+    label: AIR COND
+  - index: 12
+    name: fltctlnav
+    type: dir
+    icon: dir
+    label: FLT CTL

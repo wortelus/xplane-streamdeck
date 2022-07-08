@@ -1,0 +1,26 @@
+actions:
+  - index: 15
+    name: return
+    type: dir
+    dataref: laminar/B738/toggle_switch/seatbelt_sign_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    file-names:
+      - red0
+      - yellow1
+      - green2
+    label: SEATBELTS
+  - index: 7
+    name: return
+    type: single
+    icon: orange-up
+    label: UP
+    command: laminar/B738/toggle_switch/seatbelt_sign_up
+  - index: 23
+    name: return
+    type: single
+    icon: green-down
+    label: DOWN
+    command: laminar/B738/toggle_switch/seatbelt_sign_dn

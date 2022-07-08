@@ -3,4 +3,157 @@ actions:
     name: return
     type: dir
     icon: dir
-    label: RETURN
+    label: MAIN DECK
+  - index: 14
+    name: spdref
+    type: dir
+    icon: spdref
+    dataref: laminar/B738/toggle_switch/spd_ref
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+  - index: 13
+    name: n1set
+    type: dir
+    icon: n1set
+    dataref: laminar/B738/toggle_switch/n1_set_source
+    dataref-states:
+      - -2.0
+      - -1.0
+      - 0.0
+      - 1.0
+  - index: 4
+    name: fuel flow reset
+    type: single
+    icon: red-up
+    label: FF RESET
+    command: FlyWithLua/streamdeck_handler/ff_up_start
+    command-release: FlyWithLua/streamdeck_handler/ff_up_end
+  - index: 12
+    name: fuel flow used
+    type: single
+    icon: orange-down
+    label: FF USED
+    command: FlyWithLua/streamdeck_handler/ff_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ff_dn_end
+  - index: 15
+    name: autobrake
+    type: dir
+    icon: autobrake
+    dataref: laminar/B738/autobrake/autobrake_pos
+  - index: 7
+    name: autobrake disarm
+    type: single
+    icon: autobrakedisarm
+    dataref: laminar/B738/annunciator/auto_brake_disarm
+    dataref-multiplier: 1.5
+  - index: 23
+    name: anti skid inop
+    type: single
+    icon: antiskidinop
+    dataref: laminar/B738/annunciator/anti_skid_inop
+    dataref-multiplier: 1.5
+  - index: 8
+    name: main panel dus
+    type: dual
+    dataref: laminar/B738/toggle_switch/main_pnl_du_capt
+    file-names:
+      - yellow-button
+      - green-button
+      - yellow-button
+      - yellow-button
+      - yellow-button
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-off: laminar/B738/toggle_switch/main_pnl_du_capt_left
+    command-on: laminar/B738/toggle_switch/main_pnl_du_capt_right
+    label: MAIN DU
+  - index: 9
+    name: lower du
+    type: dual
+    file-names:
+      - yellow-button
+      - green-button
+      - yellow-button
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    label: LOWER DU
+    dataref: laminar/B738/toggle_switch/lower_du_capt
+    command-off: laminar/B738/toggle_switch/lower_du_capt_left
+    command-on: laminar/B738/toggle_switch/lower_du_capt_right
+  - index: 0
+    name: ap light
+    type: single
+    icon: apprst
+    dataref: laminar/B738/annunciator/ap_disconnect1
+    command: FlyWithLua/streamdeck_handler/ap_prst_start
+    command-release: FlyWithLua/streamdeck_handler/ap_prst_end
+  - index: 1
+    name: at light
+    type: single
+    icon: atprst
+    dataref: laminar/B738/annunciator/at_disconnect1
+    command: FlyWithLua/streamdeck_handler/at_prst_start
+    command-release: FlyWithLua/streamdeck_handler/at_prst_end
+  - index: 2
+    name: fmc light
+    type: single
+    icon: fmcprst
+    dataref: laminar/B738/annunciator/at_fms_warn1
+    command: FlyWithLua/streamdeck_handler/fmc_prst_start
+    command-release: FlyWithLua/streamdeck_handler/fmc_prst_end
+  - index: 21
+    name: eng pfd
+    type: single
+    icon: white-button
+    label: ENG
+    command: laminar/B738/LDU_control/push_button/MFD_ENG
+  - index: 22
+    name: sys pfd
+    type: single
+    icon: white-button
+    label: SYS
+    command: laminar/B738/LDU_control/push_button/MFD_SYS
+  - index: 30
+    name: cr pfd
+    type: single
+    icon: white-button
+    label: CR
+    command: laminar/B738/LDU_control/push_button/MFD_CR
+  - index: 19
+    name: align analog
+    type: single
+    icon: yellow-button
+    label: ANALOG PULL
+    command: FlyWithLua/streamdeck_handler/allign_analog_start
+    command-release: FlyWithLua/streamdeck_handler/allign_analog_end
+  - index: 26
+    name: rmi left
+    type: single
+    file-names:
+      - blue0
+      - greenc
+    label: VOR ADF RMI
+    dataref: sim/cockpit/switches/RMI_l_vor_adf_selector
+    command: sim/radios/RMI_L_tog
+  - index: 28
+    name: rmi right
+    type: single
+    icon: yellow-button
+    label: VOR ADF RMI
+    file-names:
+      - blue0
+      - greenc
+    dataref: sim/cockpit/switches/RMI_r_vor_adf_selector
+    command: sim/radios/RMI_R_tog

@@ -3,7 +3,7 @@ actions:
     name: return
     type: dir
     icon: dir
-    label: RETURN
+    label: MAIN DECK
   - index: 25
     name: wxr
     type: single

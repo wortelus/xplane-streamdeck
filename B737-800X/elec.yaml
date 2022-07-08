@@ -1,0 +1,103 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 25
+    name: bat cover
+    type: single
+    file-names:
+      - blue-up
+      - red-down
+    dataref: laminar/B738/button_switch/cover_position[2]
+    command: laminar/B738/button_switch_cover02
+    label: BAT COVER
+  - index: 26
+    name: cab util
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/cab_util_pos
+    command: laminar/B738/autopilot/cab_util_toggle
+    label: CAB UTIL
+  - index: 27
+    name: ife pass
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/ife_pass_seat_pos
+    command: laminar/B738/autopilot/ife_pass_seat_toggle
+    label: IFE PASS
+  - index: 9
+    name: dc power knob
+    type: dual
+    file-names:
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+    dataref: laminar/B738/knob/dc_power
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+    command-on: laminar/B738/knob/dc_power_up
+    command-off: laminar/B738/knob/dc_power_dn
+    label: DC POWER
+  - index: 10
+    name: ac power knob
+    type: dual
+    icon: blue-button
+    file-names:
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+    dataref: laminar/B738/knob/ac_power
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+    command-on: laminar/B738/knob/ac_power_up
+    command-off: laminar/B738/knob/ac_power_dn
+    label: AC POWER
+  - index: 1
+    name: bat discharge
+    type: none
+    icon: batdischarge
+    dataref: laminar/B738/annunciator/bat_discharge
+    dataref-multiplier: 1.5
+  - index: 2
+    name: tr unit
+    type: none
+    icon: trunit
+    dataref: laminar/B738/annunciator/tr_unit
+    dataref-multiplier: 1.5
+  - index: 3
+    name: elec
+    type: none
+    icon: elec
+    dataref: laminar/B738/annunciator/elec
+    dataref-multiplier: 1.5
+  - index: 11
+    name: maint
+    type: none
+    icon: white-button
+    label: MAINT
