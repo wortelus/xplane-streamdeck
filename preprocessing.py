@@ -50,9 +50,22 @@ class Button(object):
                  gauge=None):
         # Constants
         self.index = index
+        if self.index is None:
+            print("ERROR: button with name {} has no set index, quitting...".format(name))
+            quit(1)
+
         self.name = name
+        if self.name is None or self.name == "":
+            print("ERROR: button with index {} has no set name, quitting...".format(index))
+            quit(1)
+
         self.icon = icon
+
         self.cmd_type = cmd_type
+        if cmd_type is None or cmd_type == "":
+            print("WARN: {} has no set type, setting none as default (no press action)".format(name))
+            self.cmd_type = "none"
+
         self.label = label
         self.dataref = dataref
         if dataref_multiplier is None:
@@ -116,6 +129,9 @@ class Button(object):
                 self.file_names[i] = get_filename_button_dataref_png(icon, state)
         else:
             self.file_names = np.empty(1, dtype=object)
+            if icon is None:
+                print("static icon is not present on {} button".format(name))
+                exit(1)
             self.file_names[0] = get_filename_button_static_png(icon)
 
 
@@ -257,6 +273,7 @@ def load_images_datarefs(deck, presets_dir):
 
         # special case - gauge
         if button.gauge:
+            print("wait... generating gauge presets for {}".format(button.gauge["name"]))
             set_images.update(dynamic.load_gauge_images(button.gauge, deck, button.file_names))
             continue
 

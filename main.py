@@ -226,10 +226,11 @@ def main():
             time.sleep(0.05)
             update_fetch_datarefs(current_deck)
     except KeyboardInterrupt:
-        print('X-Plane Manager by wortelus interrupted! closing the deck connection...')
+        print('X-Plane Manager by wortelus interrupted! closing the deck and udp connection...')
         # note: closing only current deck
         current_deck.close()
-        print('deck closed, stopping...')
+        XPUDP.pyXPUDPServer.quit()
+        print('connections closed, stopping...')
 
 
 if __name__ == "__main__":
