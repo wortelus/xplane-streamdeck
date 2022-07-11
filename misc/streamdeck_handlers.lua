@@ -302,3 +302,8 @@ create_command( "FlyWithLua/streamdeck_handler/down_start", "", "command_begin(\
 create_command( "FlyWithLua/streamdeck_handler/down_end", "", "command_end(\"sim/general/down\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/left_start", "", "command_begin(\"sim/general/left\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/left_end", "", "command_end(\"sim/general/left\")", "", "" )
+
+create_command( "FlyWithLua/streamdeck_handler/exting_left_start", "", "command_begin(\"laminar/B738/toggle_switch/exting_test_lft\")", "", "" )
+create_command( "FlyWithLua/streamdeck_handler/exting_left_end", "", "command_end(\"laminar/B738/toggle_switch/exting_test_lft\")", "", "" )
+create_command( "FlyWithLua/streamdeck_handler/exting_right_start", "", "command_begin(\"laminar/B738/toggle_switch/exting_test_rgt\")", "", "" )
+create_command( "FlyWithLua/streamdeck_handler/exting_right_end", "", "command_end(\"laminar/B738/toggle_switch/exting_test_rgt\")", "", "" )
