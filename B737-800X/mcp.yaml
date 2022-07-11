@@ -144,34 +144,34 @@ actions:
     icon: cws
     dataref: laminar/B738/autopilot/cws_b_status
     command: laminar/B738/autopilot/cws_b_press
-  - index: 28
-    name: crs capt dn
-    type: single
-    icon: blue-left
-    label: CAPT CRS DN
-    command: FlyWithLua/streamdeck_handler/capt_course_dn_start
-    command-release: FlyWithLua/streamdeck_handler/capt_course_dn_end
   - index: 29
-    name: crs capt up
+    name: mcp speed up
     type: single
-    icon: orange-right
-    label: CAPT CRS UP
-    command: FlyWithLua/streamdeck_handler/capt_course_up_start
-    command-release: FlyWithLua/streamdeck_handler/capt_course_up_end
-  - index: 30
-    name: crs fo dn
+    icon: blue-right
+    command: FlyWithLua/streamdeck_handler/ap_speed_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_speed_up_end
+    label: SPEED UP
+  - index: 28
+    name: mcp speed dn
     type: single
     icon: blue-left
-    label: F/O CRS DN
-    command: FlyWithLua/streamdeck_handler/fo_course_dn_start
-    command-release: FlyWithLua/streamdeck_handler/fo_course_dn_end
-  - index: 31
-    name: crs fo up
+    command: FlyWithLua/streamdeck_handler/ap_speed_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_speed_dn_end
+    label: SPEED UP
+  - index: 30
+    name: mcp heading dn
     type: single
-    icon: orange-right
-    label: F/O CRS UP
-    command: FlyWithLua/streamdeck_handler/fo_course_up_start
-    command-release: FlyWithLua/streamdeck_handler/fo_course_up_end
+    icon: blue-left
+    command: FlyWithLua/streamdeck_handler/ap_heading_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_heading_dn_end
+    label: HDG UP
+  - index: 31
+    name: mcp heading up
+    type: single
+    icon: blue-right
+    command: FlyWithLua/streamdeck_handler/ap_heading_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_heading_up_end
+    label: HDG UP
   - index: 26
     name: ap disengage
     type: single
@@ -179,3 +179,8 @@ actions:
     label: AP DISENGAGE
     command: laminar/B738/autopilot/disconnect_toggle
     command-release: laminar/B738/autopilot/disconnect_toggle
+  - index: 25
+    name: mcpctl
+    type: dir
+    icon: dir
+    label: MCP CTL

@@ -1,0 +1,90 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 0
+    name: mcp speed up
+    type: single
+    icon: blue-up
+    command: FlyWithLua/streamdeck_handler/ap_speed_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_speed_up_end
+    label: SPEED UP
+  - index: 8
+    name: mcp speed dn
+    type: single
+    icon: blue-down
+    command: FlyWithLua/streamdeck_handler/ap_speed_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_speed_dn_end
+    label: SPEED UP
+  - index: 2
+    name: mcp heading up
+    type: single
+    icon: blue-up
+    command: FlyWithLua/streamdeck_handler/ap_heading_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_heading_up_end
+    label: HDG UP
+  - index: 10
+    name: mcp heading dn
+    type: single
+    icon: blue-down
+    command: FlyWithLua/streamdeck_handler/ap_heading_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_heading_dn_end
+    label: HDG UP
+  - index: 4
+    name: mcp alt up
+    type: single
+    icon: blue-up
+    command: FlyWithLua/streamdeck_handler/ap_altitude_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_altitude_up_end
+    label: ALT UP
+  - index: 12
+    name: mcp alt dn
+    type: single
+    icon: blue-down
+    command: FlyWithLua/streamdeck_handler/ap_altitude_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_altitude_dn_end
+    label: ALT UP
+  - index: 6
+    name: mcp vs up
+    type: single
+    icon: blue-up
+    command: FlyWithLua/streamdeck_handler/ap_vs_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_vs_up_end
+    label: VS UP
+  - index: 14
+    name: mcp vs dn
+    type: single
+    icon: blue-down
+    command: FlyWithLua/streamdeck_handler/ap_vs_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_vs_dn_end
+    label: VS UP
+  - index: 28
+    name: crs capt dn
+    type: single
+    icon: blue-left
+    label: CAPT CRS DN
+    command: FlyWithLua/streamdeck_handler/capt_course_dn_start
+    command-release: FlyWithLua/streamdeck_handler/capt_course_dn_end
+  - index: 29
+    name: crs capt up
+    type: single
+    icon: orange-right
+    label: CAPT CRS UP
+    command: FlyWithLua/streamdeck_handler/capt_course_up_start
+    command-release: FlyWithLua/streamdeck_handler/capt_course_up_end
+  - index: 30
+    name: crs fo dn
+    type: single
+    icon: blue-left
+    label: F/O CRS DN
+    command: FlyWithLua/streamdeck_handler/fo_course_dn_start
+    command-release: FlyWithLua/streamdeck_handler/fo_course_dn_end
+  - index: 31
+    name: crs fo up
+    type: single
+    icon: orange-right
+    label: F/O CRS UP
+    command: FlyWithLua/streamdeck_handler/fo_course_up_start
+    command-release: FlyWithLua/streamdeck_handler/fo_course_up_end

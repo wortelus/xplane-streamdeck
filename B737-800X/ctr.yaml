@@ -93,26 +93,24 @@ actions:
     command-off: laminar/B738/toggle_switch/lower_du_capt_left
     command-on: laminar/B738/toggle_switch/lower_du_capt_right
   - index: 0
-    name: ap light
+    name: below gs p-inhibit
     type: single
-    icon: apprst
-    dataref: laminar/B738/annunciator/ap_disconnect1
-    command: FlyWithLua/streamdeck_handler/ap_prst_start
-    command-release: FlyWithLua/streamdeck_handler/ap_prst_end
+    icon: belowgs
+    dataref: laminar/B738/annunciator/below_gs
+    dataref-multiplier: 1.5
+    command: laminar/B738/alert/below_gs_pilot
   - index: 1
-    name: at light
+    name: takeoff config
     type: single
-    icon: atprst
-    dataref: laminar/B738/annunciator/at_disconnect1
-    command: FlyWithLua/streamdeck_handler/at_prst_start
-    command-release: FlyWithLua/streamdeck_handler/at_prst_end
+    icon: takeoffconfig
+    dataref: laminar/B738/annunciator/takeoff_config
+    dataref-multiplier: 1.5
   - index: 2
-    name: fmc light
+    name: cabin altitude
     type: single
-    icon: fmcprst
-    dataref: laminar/B738/annunciator/at_fms_warn1
-    command: FlyWithLua/streamdeck_handler/fmc_prst_start
-    command-release: FlyWithLua/streamdeck_handler/fmc_prst_end
+    icon: cabinaltitude
+    dataref: laminar/B738/annunciator/cabin_alt
+    dataref-multiplier: 1.5
   - index: 21
     name: eng pfd
     type: single
@@ -131,14 +129,14 @@ actions:
     icon: white-button
     label: CR
     command: laminar/B738/LDU_control/push_button/MFD_CR
-  - index: 19
+  - index: 20
     name: align analog
     type: single
     icon: yellow-button
     label: ANALOG PULL
     command: FlyWithLua/streamdeck_handler/allign_analog_start
     command-release: FlyWithLua/streamdeck_handler/allign_analog_end
-  - index: 26
+  - index: 28
     name: rmi left
     type: single
     file-names:
@@ -147,7 +145,7 @@ actions:
     label: VOR ADF RMI
     dataref: sim/cockpit/switches/RMI_l_vor_adf_selector
     command: sim/radios/RMI_L_tog
-  - index: 28
+  - index: 29
     name: rmi right
     type: single
     icon: yellow-button
@@ -157,3 +155,39 @@ actions:
       - greenc
     dataref: sim/cockpit/switches/RMI_r_vor_adf_selector
     command: sim/radios/RMI_R_tog
+  - index: 10
+    name: chrono capt start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_cycle_capt
+    label: CHRONO CAPT
+  - index: 11
+    name: chrono fo start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_cycle_fo
+    label: CHRONO FO
+  - index: 18
+    name: et mode capt start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_capt_et_mode
+    label: ET CAPT
+  - index: 19
+    name: et mode fo start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_fo_et_mode
+    label: ET FO
+  - index: 26
+    name: et mode capt reset
+    type: single
+    icon: red-button
+    command: laminar/B738/push_button/et_reset_capt
+    label: ET CAPT RST
+  - index: 27
+    name: et mode fo reset
+    type: single
+    icon: red-button
+    command: laminar/B738/push_button/et_reset_fo
+    label: ET FO RST

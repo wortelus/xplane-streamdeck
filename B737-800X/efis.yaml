@@ -9,43 +9,43 @@ actions:
     type: single
     icon: white-button
     label: WXR
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/wxr_press
   - index: 26
     name: sta
     type: single
     icon: white-button
     label: STA
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/sta_press
   - index: 27
     name: wpt
     type: single
     icon: white-button
     label: WPT
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/wpt_press
   - index: 28
     name: arpt
     type: single
     icon: white-button
     label: ARPT
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/arpt_press
   - index: 29
     name: data
     type: single
     icon: white-button
     label: DATA
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/data_press
   - index: 30
     name: pos
     type: single
     icon: white-button
     label: POS
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/pos_press
   - index: 31
     name: terr
     type: single
     icon: white-button
     label: TERR
-    command:
+    command: laminar/B738/EFIS_control/capt/push_button/terr_press
   # left part of the EFIS
   - index: 0
     name: mins radio

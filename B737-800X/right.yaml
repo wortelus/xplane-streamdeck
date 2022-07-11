@@ -135,8 +135,8 @@ actions:
     name: park brake
     type: single
     file-names:
+      - white-button
       - red-button
-      - green-button
     dataref: laminar/B738/parking_brake_pos
     command: sim/flight_controls/brakes_toggle_max
     label: PARK BRAKE
@@ -145,3 +145,56 @@ actions:
     type: dir
     icon: dir
     label: AVITAB
+  - index: 15
+    name: fire
+    type: dir
+    icon: dir
+    label: FIRE
+  - index: 3
+    name: view 6
+    type: single
+    icon: eye
+    label: VIEW 6
+    command: sim/view/quick_look_6
+  - index: 11
+    name: view 7
+    type: single
+    icon: eye
+    label: VIEW 7
+    command: sim/view/quick_look_7
+  - index: 4
+    name: view 8
+    type: single
+    icon: eye
+    label: VIEW 8
+    command: sim/view/quick_look_8
+  - index: 12
+    name: view 9
+    type: single
+    icon: eye
+    label: VIEW 9
+    command: sim/view/quick_look_9
+  - index: 5
+    name: view 10
+    type: single
+    icon: eye
+    label: AVITAB
+    command: sim/view/quick_look_10
+  - index: 13
+    name: view 11
+    type: single
+    icon: eye
+    label: FO SEAT
+    command: sim/view/quick_look_11
+  - index: 6
+    name: view 12
+    type: single
+    icon: eye
+    label: LOWER OVHD
+    command: sim/view/quick_look_12
+  - index: 14
+    name: view 13
+    type: single
+    icon: eye
+    label: FMC
+    command: sim/view/quick_look_13
