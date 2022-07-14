@@ -35,6 +35,8 @@ and simple format similar to JSON, but more human-readable and harder to cause a
 
 ![main screen](misc/lwrovhd.jpg)
 
+*More example images in `misc/`*
+
 #### Notes
 A lot of buttons in the flight deck are momentary switches and buttons, which are expected to be held in position.
 For that purpose, I have built a small LUA file with custom commands in `misc/streamdeck_handlers.lua`.
@@ -81,6 +83,12 @@ I still strongly recommend checking the examples and work your way from there, t
 - streamdeck - Windows requires additional DLL's installed in its root Python executable directory
 - Pillow
 - pyxpudpserver
+
+## Known Issues
+There is currently a bug in **pyxpudpserver** that causes the dataref updating of buttons to
+freeze (giving you a message *"dictionary changed size during iteration"*.
+
+The proposed solution is to use locking instead of simple if condition in its main lib file.
 
 ## License
 BSD 2-Clause License
