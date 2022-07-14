@@ -1,4 +1,6 @@
 # X-Plane Stream Deck Manager
+![main screen](misc/main.jpg)
+
 This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Python 3.10 for X-Plane 11.51.
 
 This software includes rich set of features for robust control of the simulator cockpit.
@@ -18,16 +20,20 @@ works best together with other simulator peripherals (e.g. radio, A/P panel etc.
 - Momentary switches
 - Push/Release actions
 - Supporting multi-position switches (e.g. ENGINE START / IGNITION on 737) 
-control via single button...***automatically***
+control via single button
 - On-Off actions
 - Sync with X-Plane's dataref to visually depict the actual state
 - Multiple dataref states with each custom key image
 - Custom Labels
-- ***Gauges !!!***
+- ***Gauges***
 - ***400+ custom made icons*** 
 
 All of these features can be configurated in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
+
+**Refer to the `B737-800X/README.md` for a guide on how to create/edit buttons.**
+
+![main screen](misc/lwrovhd.jpg)
 
 #### Notes
 A lot of buttons in the flight deck are momentary switches and buttons, which are expected to be held in position.

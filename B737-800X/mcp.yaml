@@ -157,14 +157,14 @@ actions:
     icon: blue-left
     command: FlyWithLua/streamdeck_handler/ap_speed_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_speed_dn_end
-    label: SPEED UP
+    label: SPEED DN
   - index: 30
     name: mcp heading dn
     type: single
     icon: blue-left
     command: FlyWithLua/streamdeck_handler/ap_heading_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_heading_dn_end
-    label: HDG UP
+    label: HDG DN
   - index: 31
     name: mcp heading up
     type: single
