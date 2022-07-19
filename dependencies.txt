@@ -1,0 +1,5 @@
+numpy
+pillow
+pyxpudpserver
+streamdeck
+pyyaml
