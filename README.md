@@ -64,6 +64,9 @@ from the official documentation source
 number** and number of keys according to your model. 
 - Execute the xplane-streamdeck script to find the serial number out
 - Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
+7. **Add the `streamdeck_handlers.lua` to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
+- Ensure you have **FlyWithLua** installed
+
 ## Usage
 Instructions for **Windows**
 
