@@ -145,6 +145,8 @@ def change_dir(current_deck, name):
 
 
 def main():
+    print("Starting xplane-streamdeck by wortelus. This software is licensed under BSD 2-Clause License.")
+    print("Copyright (c) 2022, Daniel Slavík All rights reserved.")
     deck_count = 0
     decks = DeviceManager().enumerate()
     deck_count = len(decks)
