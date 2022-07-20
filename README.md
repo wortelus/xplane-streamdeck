@@ -71,7 +71,8 @@ while having the Stream Deck plugged in already
 
 **Refer to the `B737-800X/README.md` for a guide on how to create/edit buttons.**
 
-![main screen](misc/lwrovhd.jpg)
+![lower overhead](misc/lwrovhd.jpg)
+![mcp](misc/mcp.jpg)
 
 *More example images in `misc/`*
 
