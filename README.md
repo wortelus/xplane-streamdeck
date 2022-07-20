@@ -59,6 +59,11 @@ Instructions for **Windows**
 [guide](https://python-elgato-streamdeck.readthedocs.io/en/stable/pages/backend_libusb_hidapi.html)
 from the official documentation source
 
+6. **Update `config.yaml` for your preferences and enable UDP server in X-Plane settings**
+- Mainly update the **serial number** of your Stream Deck with your **serial 
+number** and number of keys according to your model. 
+- Execute the xplane-streamdeck script to find the serial number out
+- Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
 ## Usage
 Instructions for **Windows**
 
