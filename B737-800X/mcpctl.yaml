@@ -4,34 +4,70 @@ actions:
     type: dir
     icon: dir
     label: RETURN
-  - index: 0
+  - index: 2
     name: mcp speed up
     type: single
     icon: blue-up
     command: FlyWithLua/streamdeck_handler/ap_speed_up_start
     command-release: FlyWithLua/streamdeck_handler/ap_speed_up_end
     label: SPEED UP
-  - index: 8
+  - index: 10
+    name: mcp speed display
+    type: none
+    dataref: laminar/B738/autopilot/mcp_speed_dial_kts
+    display:
+      name: 0-359nonpoint
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: 3
+      min: 0
+      max: 359
+      step: 1
+      color: white
+      keep-decimal: False
+      background: none
+  - index: 18
     name: mcp speed dn
     type: single
     icon: blue-down
     command: FlyWithLua/streamdeck_handler/ap_speed_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_speed_dn_end
-    label: SPEED UP
-  - index: 2
+    label: SPEED DN
+  - index: 3
     name: mcp heading up
     type: single
     icon: blue-up
     command: FlyWithLua/streamdeck_handler/ap_heading_up_start
     command-release: FlyWithLua/streamdeck_handler/ap_heading_up_end
     label: HDG UP
-  - index: 10
+  - index: 11
+    name: mcp heading display
+    type: none
+    dataref: laminar/B738/autopilot/mcp_hdg_dial
+    display:
+      name: 0-359nonpoint
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: 3
+      min: 0
+      max: 359
+      step: 1
+      color: white
+      keep-decimal: False
+      background: none
+  - index: 19
     name: mcp heading dn
     type: single
     icon: blue-down
     command: FlyWithLua/streamdeck_handler/ap_heading_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_heading_dn_end
-    label: HDG UP
+    label: HDG DN
   - index: 4
     name: mcp alt up
     type: single
@@ -40,51 +76,123 @@ actions:
     command-release: FlyWithLua/streamdeck_handler/ap_altitude_up_end
     label: ALT UP
   - index: 12
+    name: mcp altitude display
+    type: none
+    dataref: laminar/B738/autopilot/mcp_alt_dial
+    display:
+      name: 0-50000nonpoint
+      text-center:
+        x: center
+        y: 58 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 24
+      zero-pad: False
+      min: 0
+      max: 50000
+      step: 100
+      color: white
+      keep-decimal: False
+      background: none
+  - index: 20
     name: mcp alt dn
     type: single
     icon: blue-down
     command: FlyWithLua/streamdeck_handler/ap_altitude_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_altitude_dn_end
-    label: ALT UP
-  - index: 6
+    label: ALT DN
+  - index: 5
     name: mcp vs up
     type: single
     icon: blue-up
     command: FlyWithLua/streamdeck_handler/ap_vs_up_start
     command-release: FlyWithLua/streamdeck_handler/ap_vs_up_end
     label: VS UP
-  - index: 14
+  - index: 13
+    name: mcp vs display
+    type: none
+    dataref: sim/cockpit/autopilot/vertical_velocity
+    display:
+      name: -8000-6000nonpoint
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: False
+      min: -8000
+      max: 6000
+      step: 50
+      color: white
+      keep-decimal: False
+      background: none
+  - index: 21
     name: mcp vs dn
     type: single
     icon: blue-down
     command: FlyWithLua/streamdeck_handler/ap_vs_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_vs_dn_end
-    label: VS UP
-  - index: 28
-    name: crs capt dn
-    type: single
-    icon: blue-left
-    label: CAPT CRS DN
-    command: FlyWithLua/streamdeck_handler/capt_course_dn_start
-    command-release: FlyWithLua/streamdeck_handler/capt_course_dn_end
-  - index: 29
+    label: VS DN
+  - index: 0
     name: crs capt up
     type: single
-    icon: orange-right
+    icon: green-up
     label: CAPT CRS UP
     command: FlyWithLua/streamdeck_handler/capt_course_up_start
     command-release: FlyWithLua/streamdeck_handler/capt_course_up_end
-  - index: 30
-    name: crs fo dn
+  - index: 8
+    name: mcp course capt display
+    type: none
+    dataref: laminar/B738/autopilot/course_pilot
+    display:
+      name: 0-359nonpoint
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: 3
+      min: 0
+      max: 359
+      step: 1
+      color: white
+      keep-decimal: False
+      background: none
+  - index: 16
+    name: crs capt dn
     type: single
-    icon: blue-left
-    label: F/O CRS DN
-    command: FlyWithLua/streamdeck_handler/fo_course_dn_start
-    command-release: FlyWithLua/streamdeck_handler/fo_course_dn_end
-  - index: 31
+    icon: green-down
+    label: CAPT CRS DN
+    command: FlyWithLua/streamdeck_handler/capt_course_dn_start
+    command-release: FlyWithLua/streamdeck_handler/capt_course_dn_end
+  - index: 7
     name: crs fo up
     type: single
-    icon: orange-right
+    icon: green-up
     label: F/O CRS UP
     command: FlyWithLua/streamdeck_handler/fo_course_up_start
     command-release: FlyWithLua/streamdeck_handler/fo_course_up_end
+  - index: 15
+    name: mcp course fo display
+    type: none
+    dataref: laminar/B738/autopilot/course_copilot
+    display:
+      name: 0-359nonpoint
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: 3
+      min: 0
+      max: 359
+      step: 1
+      color: white
+      keep-decimal: False
+      background: none
+  - index: 23
+    name: crs fo dn
+    type: single
+    icon: green-down
+    label: F/O CRS DN
+    command: FlyWithLua/streamdeck_handler/fo_course_dn_start
+    command-release: FlyWithLua/streamdeck_handler/fo_course_dn_end
