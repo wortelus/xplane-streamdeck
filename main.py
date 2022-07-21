@@ -1,6 +1,8 @@
 import math
+import pickle
 import threading
 import time
+from os.path import exists
 
 import numpy as np
 import yaml
@@ -203,12 +205,48 @@ def main():
               "Have you installed it correctly?")
         print(e)
 
+    cache_path = None
+    caching_enabled = False
+    load_cached_img = False
+    if "cache-path" in global_cfg:
+        cache_path = global_cfg["cache-path"]
+        # check cache_path if is not False or None -> implicating it is enabled in config
+        # and check if it exists
+        # then we will load the cache file, thus skipping the loader load_images_datarefs_all
+        if cache_path:
+            caching_enabled = True
+            if exists(global_cfg["cache-path"]):
+                load_cached_img = True
+
     global presets_all
-    presets_all = preprocessing.load_all_presets(keys_dir, key_count)
+    presets_all = preprocessing.load_all_presets(keys_dir, key_count, preload_labels=load_cached_img)
     global datarefs_all
     datarefs_all = preprocessing.load_datarefs(presets_all)
     global images_all
-    images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
+
+    if not caching_enabled:
+        print("note: caching is disabled, loading will be noticeably slower")
+        print("you can enable it by setting the field 'cache-path' in config.yaml")
+        images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
+    elif load_cached_img:
+        # images are stored as cache, open and load
+        print("cache file {} is present, skipping pre-generation.".format(cache_path))
+        print("note: if you changed configuration or icon set, you should delete the {} cache file".format(cache_path))
+        print("loading cache...")
+        with open(cache_path, 'rb') as f:
+            # load and convert it to runtime format
+            images_save_format = pickle.load(f)
+            images_all = preprocessing.convert_to_runtime_format(images_save_format)
+    else:
+        # caching is enabled, but cache file not found
+        print("cache file {} not found, starting the pre-generation.".format(cache_path))
+        images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
+        # save images to cache-path
+        print("saving the pregen to {}".format(cache_path))
+        with open(cache_path, 'wb') as f:
+            # convert to save format and save it
+            images_save_format = preprocessing.convert_to_save_format(images_all)
+            pickle.dump(images_save_format, f)
 
     global directory_stack
     directory_stack = []
@@ -227,6 +265,8 @@ def main():
     # show deck and set fetch_datarefs
     deck_show(current_deck, current_datarefs)
     deck_show_static(current_deck)
+
+    print("xplane-streamdeck ready...")
 
     try:
         while True:

@@ -155,7 +155,7 @@ def count_presets(target_dir):
     return len(glob.glob1(target_dir, "*.yaml"))
 
 
-def load_preset(target_dir, yaml_keyset, deck_key_count):
+def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
     with open(os.path.join(target_dir, yaml_keyset)) as stream:
         try:
             preset_cfg = safe_load(stream)
@@ -196,6 +196,19 @@ def load_preset(target_dir, yaml_keyset, deck_key_count):
             key.get("gauge"),
             key.get("display"),
         )
+
+        # restoring images from cache file (preload_labels flag)
+        # this applies to buttons with 'label' parameter set
+        # If set to True, we must 'correct' image file_names here, because the
+        # image post-loader load_images_datarefs_all is not called during current session
+        if preload_labels:
+            btn = preset[index]
+            for i, state_name in enumerate(btn.file_names):
+                # change state name for storing, allowing same icons with different labels
+                if btn.label:
+                    state_name = btn.label + state_name
+                    preset[index].file_names[i] = state_name
+
         if cmd_type == "dir":
             other_keysets = np.append(other_keysets, name)
 
@@ -206,16 +219,18 @@ def add_yaml_suffix(filename):
     return filename + ".yaml"
 
 
-def load_all_presets(target_dir, deck_key_count):
+def load_all_presets(target_dir, deck_key_count, preload_labels=False):
     presets_all = {}
     # read root
-    preset, keysets = load_preset(target_dir, ACTION_CFG, deck_key_count)
+    preset, keysets = load_preset(target_dir, ACTION_CFG, deck_key_count,
+                                  preload_labels=preload_labels)
     presets_all[ACTION_CFG_NAME] = preset
     # execute while there are keysets to be read and loaded into presets
     while keysets.size > 0:
         for _, key_set in enumerate(keysets):
             if key_set not in presets_all and key_set != "return":
-                preset, other_keysets = load_preset(target_dir, add_yaml_suffix(key_set), deck_key_count)
+                preset, other_keysets = load_preset(target_dir, add_yaml_suffix(key_set), deck_key_count,
+                                                    preload_labels=preload_labels)
                 presets_all[key_set] = preset
                 keysets = np.unique(np.concatenate((keysets, other_keysets), 0))
 
@@ -311,7 +326,9 @@ def load_images_datarefs(deck, presets_dir):
             if state_name not in set_images:
                 state_image = render_key_image(deck, state_name, button.label)
 
-                # change state name for storing, allowing same icons with different labels
+                # change file_names in preset according to images_all, allowing same icons with different labels
+                # notice how this is executed in the post-processing stage
+                # i.e. after the presets have long been generated
                 if button.label:
                     state_name = button.label + state_name
                     button.file_names[i] = state_name
@@ -328,3 +345,25 @@ def load_images_datarefs_all(deck, presets_all):
         set_images_all.update(images_single_dir)
 
     return set_images_all
+
+#
+# pickle helpers
+#
+
+# pickle is unable to handler 'memoryview' objects, we must convert them to bytearray and vice versa
+
+
+def convert_to_save_format(images_all):
+    images_bytearray = {}
+    for key, img in images_all.items():
+        images_bytearray[key] = img.tobytes()
+
+    return images_bytearray
+
+
+def convert_to_runtime_format(images_save_format):
+    images_all = {}
+    for key, img in images_save_format.items():
+        images_all[key] = memoryview(img)
+
+    return images_all
