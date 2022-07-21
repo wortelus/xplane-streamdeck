@@ -46,8 +46,9 @@ Instructions for **Windows**
 - both are options during installation, otherwise you might have to include absolute path to Python to launch the script
 
 2. **Clone this repository by:**
-- `git clone https://github.com/wortelus/xplane-streamdeck.git`
+- clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
 - or download source code by **Download ZIP** and extract the files
+- or download latest stable release under the **Releases** section
 3. **Add your font in the same directory as the `main.py`**
 - **MS33558** recommended, the name the script will try to open is written in **config.yaml**
 4. **Install the dependencies by**
