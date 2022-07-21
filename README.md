@@ -23,8 +23,9 @@ works best together with other simulator peripherals (e.g. radio, A/P panel etc.
 - Push / Release actions
 - Supporting multi-position switches or knobs control via single button (cycling positions)
 - Custom labels
-- ***Gauges***
-- ***400+ custom made icons*** for the 737 NG
+- **Displays**
+- **Gauges**
+- **400+ custom made icons** for the 737 NG
 
 All of these features can be configurated in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
@@ -117,7 +118,7 @@ you're going to reference the directories by their name in key configs with keys
 
 **Refer to the `B737-800X/README.md` for a guide on how to create/edit buttons.**
 ### What is planned / WIP?
-- Dynamic dataref display types
+- Caching of preloaded graphics
 - More types of labels
 - Multi deck support
 
@@ -127,7 +128,7 @@ freeze (giving you a message *"dictionary changed size during iteration"*.
 
 The proposed solution is to use locking instead of simple if condition in its main lib file.
 
-You can apply it yourself until this gets resolved.
+You can apply this yourself until this gets resolved.
 
 ## License
 BSD 2-Clause License

@@ -23,6 +23,8 @@ ASSETS_DIR = "icons"
 
 DEFAULT_FONT_SIZE = 10
 
+IMAGES_ALREADY_GENERATED = {}
+
 
 #
 # preset loading
@@ -47,7 +49,7 @@ class Button(object):
                  dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
                  cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
                  cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None,
-                 gauge=None):
+                 gauge=None, display=None):
         # Constants
         self.index = index
         if self.index is None:
@@ -107,6 +109,7 @@ class Button(object):
         self.current = dataref_default
 
         self.gauge = None
+        self.display = None
         if file_names is not None:
             self.file_names = np.empty(len(file_names), dtype=object)
             for i, fn in enumerate(file_names):
@@ -122,7 +125,20 @@ class Button(object):
             self.gauge["needle"] = get_filename_button_static_png(gauge["needle"])
             # get own filenames, which really doesn't exist on disk and are created dynamically only for the runtime
             # so we pregenerate them artificial names for the use in main global images dict
-            self.file_names = dynamic.create_gauge_filenames(gauge, self.gauge["name"], self.dataref_states)
+            self.file_names = dynamic.create_dynamic_filenames(self.gauge["name"], self.dataref_states)
+        elif display:
+            # overwrite default dataref_states
+            self.dataref_states = dynamic.get_dataref_states(display)
+            # special case - display of number values
+            # here comes the dynamic.py into play
+            self.display = display
+
+            if "color" not in display:
+                # set default color
+                self.display["color"] = "white"
+
+            self.display["background"] = get_filename_button_static_png(display["background"])
+            self.file_names = dynamic.create_dynamic_filenames(self.display["name"], self.dataref_states)
         elif self.dataref_states is not None:
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
@@ -178,6 +194,7 @@ def load_preset(target_dir, yaml_keyset, deck_key_count):
             key.get("commands-on"),
             key.get("commands-off"),
             key.get("gauge"),
+            key.get("display"),
         )
         if cmd_type == "dir":
             other_keysets = np.append(other_keysets, name)
@@ -273,8 +290,21 @@ def load_images_datarefs(deck, presets_dir):
 
         # special case - gauge
         if button.gauge:
+            if button.gauge["name"] in IMAGES_ALREADY_GENERATED:
+                print("wait... presets for gauge {} already generated, skipping...".format(button.gauge["name"]))
+                continue
             print("wait... generating gauge presets for {}".format(button.gauge["name"]))
             set_images.update(dynamic.load_gauge_images(button.gauge, deck, button.file_names))
+            IMAGES_ALREADY_GENERATED[button.gauge["name"]] = "True"
+            continue
+        if button.display:
+            if button.display["name"] in IMAGES_ALREADY_GENERATED:
+                print("wait... presets for display {} already generated, skipping...".format(button.display["name"]))
+                continue
+            print("wait... generating display presets for {}".format(button.display["name"]))
+            set_images.update(dynamic.load_display_images(button.display, deck,
+                                                          button.file_names, button.dataref_states))
+            IMAGES_ALREADY_GENERATED[button.display["name"]] = "True"
             continue
 
         for i, state_name in enumerate(button.file_names):

@@ -1,5 +1,5 @@
 import numpy as np
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.ImageHelpers import PILHelper
 
 
@@ -12,14 +12,18 @@ def get_dataref_states(gauge):
     return fn_range
 
 
-def create_gauge_filenames(gauge, name, fn_range):
+def create_dynamic_filenames(name, fn_range):
     file_names = np.empty(len(fn_range), dtype=object)
     for index, x in enumerate(fn_range):
         # no suffix needed, its not stored on hdd, only referenced in global images dict
-        file_names[index] = name + "." + str(x)
+        file_names[index] = str(name) + "." + str(x)
 
     return file_names
 
+
+#
+# gauges
+#
 
 def load_gauge_images(gauge, deck, file_names):
     center_needle = (float(gauge["needle-center"]["x"]), float(gauge["needle-center"]["y"]))
@@ -43,3 +47,50 @@ def load_gauge_images(gauge, deck, file_names):
 
     return set_images
 
+
+#
+# displays
+#
+
+
+def load_display_images(display, deck, file_names, dataref_states):
+    set_images = {}
+
+    # if user preconfigured 'x' or 'y' position of text as center, we must set it here ->
+    if display["text-center"]["x"] == "center":
+        display["text-center"]["x"] = deck.key_image_format()["size"][0] / 2
+    if display["text-center"]["y"] == "center":
+        display["text-center"]["y"] = deck.key_image_format()["size"][1] / 2
+
+    # paths should be preprocessed from the Button __init__ constructor
+    # thus no need to apply get_filename_button_static_png
+    background = Image.open(display["background"])
+    # todo how not to load font every single time ?
+    current_font = ImageFont.truetype(display["font-path"], display["font-size"])
+
+    if len(dataref_states) != len(file_names):
+        print("display of name {} has not the same len of dataref_states and file_names. this should not happen,"
+              "submit a issue on wortelus/xplane-streamdeck GitHub repository, please".format(display["name"]))
+
+    for i, fn in enumerate(file_names):
+        final_img = background.copy()
+        final_final_img = PILHelper.create_scaled_image(deck, final_img, margins=[0, 0, 0, 0])
+
+        if display["keep-decimal"]:
+            if display["zero-pad"]:
+                display_text = str(dataref_states[i]).zfill(display["zero-pad"])
+            else:
+                display_text = str(dataref_states[i])
+        else:
+            if display["zero-pad"]:
+                display_text = str(int(dataref_states[i])).zfill(display["zero-pad"])
+            else:
+                display_text = str(int(dataref_states[i]))
+
+        draw = ImageDraw.Draw(final_final_img)
+        draw.text(
+            (display["text-center"]["x"], display["text-center"]["y"]),
+            text=display_text, font=current_font, anchor="ms", fill=display["color"])
+        set_images[fn] = PILHelper.to_native_format(deck, final_final_img)
+
+    return set_images
