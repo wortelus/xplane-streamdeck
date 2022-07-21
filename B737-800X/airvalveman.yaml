@@ -1,5 +1,5 @@
 actions:
-  - index: 18
+  - index: 11
     name: return
     type: dir
     file-names:
@@ -12,13 +12,13 @@ actions:
       - 1.0
     dataref: laminar/B738/toggle_switch/air_valve_manual
     label: MAN VALVE
-  - index: 17
+  - index: 10
     name: air valve manual left
     type: single
     icon: blue-left
     command: FlyWithLua/streamdeck_handler/air_valve_left_start
     command-release: FlyWithLua/streamdeck_handler/air_valve_left_end
-  - index: 19
+  - index: 12
     name: air valve manual right
     type: single
     icon: blue-right

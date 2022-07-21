@@ -196,7 +196,12 @@ def main():
     key_count = panel["keys"]
     dir_count = preprocessing.count_presets(keys_dir)
 
-    preprocessing.load_default_font(global_cfg["default-font"])
+    try:
+        preprocessing.load_default_font(global_cfg["default-font"])
+    except OSError as e:
+        print("there was an error during loading font specified under the config.yaml. "
+              "Have you installed it correctly?")
+        print(e)
 
     global presets_all
     presets_all = preprocessing.load_all_presets(keys_dir, key_count)
