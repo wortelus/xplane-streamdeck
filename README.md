@@ -76,6 +76,11 @@ Instructions for **Windows**
 running `python .\main.py` under the *xplane-streamdeck* directory, 
 while having the Stream Deck plugged in already
 
+The program supports image caching, which saves several seconds of image preloading during launch
+- To enable it, set `cache-path` field in `config.yaml`
+- NOTE: If you are tweaking your image set or configuration, it is recommended disable this feature 
+to always see the up-to-date configuration state and avoid runtime errors
+
 ### Additional Info
 
 **Refer to the `B737-800X/README.md` for a guide on how to create/edit buttons.**
@@ -118,7 +123,6 @@ you're going to reference the directories by their name in key configs with keys
 
 **Refer to the `B737-800X/README.md` for a guide on how to create/edit buttons.**
 ### What is planned / WIP?
-- Caching of preloaded graphics
 - More types of labels
 - Multi deck support
 
