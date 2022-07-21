@@ -2,7 +2,7 @@
 Here are my tips I created in case you want a quick guide on how to set up or modify a keyset.
 If you run into problems, there is a chance that you will find a hint here.
 
-**I strongly reccomend learning by the pre-created ZIBO configuration** 
+**I strongly recommend learning by the pre-created ZIBO configuration** 
 
 Use DataRefTool or similar to find names of the commands and datarefs.
 
@@ -17,6 +17,8 @@ Or rotary switch is began rotating by `begin` phase, and the rotation ends with 
 - actions.yaml is the root, your main screen will be here
 - each .yaml preset cfg starts with `actions:` at the first line, 
 followed by a set of keys
+- xyz.yaml, ABC.yaml, 123.yaml... *.yaml resembles the keysets (directories)
+- keyset can be left unreferenced, it will be simply ignored and NOT loaded into memory
 - the order of attributes doesn't matter
 - you must define: `index` - 0-31 on Stream Deck XL
 - `name` - you can name your button however you want, it should in
@@ -55,6 +57,20 @@ So I use `dataref-multiplier` of 1.5.
 - **dir** can have its icons as dataref too!
 - the order of buttons doesn't matter, last item in .yaml can have index of 0
 - you can set labels, which will be displayed under the icon (this is where the unique naming of button comes important)
+
+#### Lua Handler Explained
+A lot of buttons in the flight deck are momentary switches and buttons, which are expected to be held in position.
+For that purpose, I have built a small LUA file with custom commands in `misc/streamdeck_handlers.lua`.
+The momentary switches work on a way that the `command_begin` executes the `begin` part of the command, 
+which switches it into the desired position, and `command_end` which returns the switch/button back into its 
+stable position (also known as the `end` part of the command`. 
+
+So, the bad news is that you have to create two commands for your each `begin` and `end` action everytime.
+
+The X-Plane UDP protocol is limited in this way, the UDP protocol is able to execute only all 3 parts of the
+command (yes, 3.. begin, continue, end), so I recommend solving it this way. You will map those two commands 
+from the LUA handler in the`command` and `command-release` YAML configuration. 
+Look for examples in `actions.yaml`, where it is used on fire warning or master caution of the 737 etc.
 
 ## YAML tips
 - the horizontal spacing matters a lot
