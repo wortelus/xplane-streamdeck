@@ -8,6 +8,8 @@ This software includes rich set of features for robust control of the simulator 
 Developed with the idea taking away mouse controlling of most of the cockpit, 
 works best together with other simulator peripherals (e.g. radio, A/P panel etc.)
 
+**Note that configuration was done for 737 NG by Zibo only for now.**
+
 **Currently supporting**:
 - Stream Deck Mini
 - Stream Deck MK1 (MK2 should work too)
@@ -51,9 +53,15 @@ Instructions for **Windows**
 - or download latest stable release under the **Releases** section
 3. **Add your font in the same directory as the `main.py`**
 - **MS33558** recommended, the name the script will try to open is written in **config.yaml**
+- You can download it from the internet, this repository doesn't redistribute it.
+- If you want to use downloaded font, put it under the `xplane-streamdeck` directory
+- The script searches first the working directory of the program, then `C:/Windows/Fonts`
+- So you can use `consola.ttf` or anything if you want, it is preinstalled on Windows
 4. **Install the dependencies by**
 
-`python -m pip install -r dependencies.txt`
+`.../xplane-streamdeck> python -m pip install -r dependencies.txt`
+
+using cmd or PowerShell
 
 5. **Install LibUSB HIDAPI**
 
@@ -74,18 +82,19 @@ Instructions for **Windows**
 
 **Execute the script by running the `main.py` with Python 3 by:**
 
-running `python .\main.py` under the *xplane-streamdeck* directory, 
+running `.../xplane-streamdeck> python .\main.py` under the *xplane-streamdeck* directory, 
 while having the Stream Deck plugged in already
 
 The program supports image caching, which saves several seconds of image preloading during launch
 - To enable it, set `cache-path` field in `config.yaml`
+- To disable, just remove the field or leave it blank
 - NOTE: If you are tweaking your image set or configuration, it is recommended disable this feature 
-to always see the up-to-date configuration state and avoid runtime errors
+to always see the up-to-date configuration state (or simply remove it, but the cache will be recreated)
 
-### Additional Info
-
-![lower overhead](misc/lwrovhd.jpg)
-![mcp](misc/mcp.jpg)
+## Additional Info
+|        Lower Overhead 737 NG        |  MCP Collins 737 NG  |
+|:-----------------------------------:|:--------------------:|
+| ![lower overhead](misc/lwrovhd.jpg) | ![mcp](misc/mcp.jpg) |
 
 *More example images in `misc/`*
 
@@ -103,15 +112,23 @@ to always see the up-to-date configuration state and avoid runtime errors
 
 ### What is planned / WIP?
 - More types of labels
+- Own X-Plane UDP handler
 - Multi deck support
 
 ### Known Issues
-There is currently a bug in **pyxpudpserver** that causes the dataref updating of buttons to
+There is currently a bug in **pyxpudpserver** that sometimes causes the dataref updating of buttons to
 freeze (giving you a message *"dictionary changed size during iteration"*.
 
 The proposed solution is to use locking instead of simple if condition in its main lib file.
 
 You can apply this yourself until this gets resolved.
+
+### Acknowledgments
+*IBMPlexMono-Bold.ttf* - Licensed under SIL Open Font License (OFL) 
+
+IBM Plex™ is an international typeface family designed by Mike Abbink, IBM BX&D, in collaboration with Bold Monday, 
+an independent Dutch type foundry. Plex was designed to capture IBM’s spirit and history, and to illustrate the 
+unique relationship between mankind and machine—a principal theme for IBM since the turn of the century.
 
 ## License
 BSD 2-Clause License
