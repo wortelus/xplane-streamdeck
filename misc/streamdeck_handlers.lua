@@ -266,8 +266,8 @@ create_command( "FlyWithLua/streamdeck_handler/ap_altitude_up_end", "", "command
 create_command( "FlyWithLua/streamdeck_handler/ap_altitude_dn_start", "", "command_begin(\"laminar/B738/autopilot/altitude_dn\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/ap_altitude_dn_end", "", "command_end(\"laminar/B738/autopilot/altitude_dn\")", "", "" )
 
-create_command( "FlyWithLua/streamdeck_handler/ap_vs_dn_start", "", "command_begin(\"sim/autopilot/vertical_speed_up\")", "", "" )
-create_command( "FlyWithLua/streamdeck_handler/ap_vs_dn_end", "", "command_end(\"sim/autopilot/vertical_speed_up\")", "", "" )
+create_command( "FlyWithLua/streamdeck_handler/ap_vs_up_start", "", "command_begin(\"sim/autopilot/vertical_speed_up\")", "", "" )
+create_command( "FlyWithLua/streamdeck_handler/ap_vs_up_end", "", "command_end(\"sim/autopilot/vertical_speed_up\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/ap_vs_dn_start", "", "command_begin(\"sim/autopilot/vertical_speed_down\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/ap_vs_dn_end", "", "command_end(\"sim/autopilot/vertical_speed_down\")", "", "" )
 
