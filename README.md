@@ -118,11 +118,21 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 
 ### Known Issues
 There is currently a bug in **pyxpudpserver** that sometimes causes the dataref updating of buttons to
-freeze (giving you a message *"dictionary changed size during iteration"*.
+freeze (giving you a message:
+`
+RuntimeError: dictionary changed size during iteration
+`
 
 The proposed solution is to use locking instead of simple if condition in its main lib file.
 
-You can apply this yourself until this gets resolved.
+You can swap the `pyxpudpserver/XPlaneUDPServer.py` file from 
+[forked version of pyxpudpserver](https://github.com/wortelus/pyXPUDPServer) after you install the dependencies
+to apply the proposed unofficial solution. You can find its location in `xplane-streamdec/venv` (if using venv) or
+in global `Python\Python310\Lib\site-packages\pyxpudpserver` found by executing following Python command:
+```
+>>> import os
+>>> print(os.path)
+```
 
 ### Acknowledgments
 *IBMPlexMono-Bold.ttf* - Licensed under SIL Open Font License (OFL) 
