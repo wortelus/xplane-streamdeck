@@ -51,12 +51,13 @@ Instructions for **Windows**
 - clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
 - or download source code by **Download ZIP** and extract the files
 - or download latest stable release under the **Releases** section
-3. **Add your font in the same directory as the `main.py`**
-- **MS33558** recommended, the name the script will try to open is written in **config.yaml**
+3. *(Optional step)* - **Add your custom font in the same directory as the `main.py`**
+- current one set is OFL font **IBMPlexMono**
+- the name the script will try to open is written in **config.yaml**
+- The script searches first the working directory of the program, then `C:/Windows/Fonts`
+- **MS33558** optional
 - You can download it from the internet, this repository doesn't redistribute it.
 - If you want to use downloaded font, put it under the `xplane-streamdeck` directory
-- The script searches first the working directory of the program, then `C:/Windows/Fonts`
-- So you can use `consola.ttf` or anything if you want, it is preinstalled on Windows
 4. **Install the dependencies by**
 
 `.../xplane-streamdeck> python -m pip install -r dependencies.txt`
