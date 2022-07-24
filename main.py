@@ -168,11 +168,14 @@ def main():
         serial = deck.get_serial_number()
         if serial == global_cfg["stream-decks"][0]["serial"]:
             current_deck = deck
-            print("\tDeck #{} setting as default for current session", index)
+            if "brightness" in global_cfg:
+                deck.set_brightness(global_cfg["brightness"])
+            print("\tDeck {} setting as default for current session".format(serial))
+            break
 
-        print("\tDeck #{} with key count {}".format(index, deck.key_count()))
-        print("\twith serial {}".format(serial))
-        # todo not all stream decks should be opened ?
+        print("Deck #{} with key count {}".format(index, deck.key_count()))
+        print("with serial {}".format(serial))
+        deck.close()
 
     if not current_deck:
         print("Deck for current session NOT FOUND, verify the serial in config.yaml and index specified")
@@ -196,10 +199,9 @@ def main():
     panel = global_cfg["stream-decks"][0]
     keys_dir = panel["directory"]
     key_count = panel["keys"]
-    dir_count = preprocessing.count_presets(keys_dir)
 
     try:
-        preprocessing.load_default_font(global_cfg["default-font"])
+        preprocessing.load_default_font(global_cfg["default-font"], global_cfg["default-font-size"])
     except OSError as e:
         print("there was an error during loading font specified under the config.yaml. "
               "Have you installed it correctly?")

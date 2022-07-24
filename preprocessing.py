@@ -2,7 +2,6 @@ import os.path
 
 import numpy as np
 import yaml
-import glob
 from yaml import safe_load
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.ImageHelpers import PILHelper
@@ -21,6 +20,7 @@ ACTION_CFG = "actions.yaml"
 ACTION_CFG_NAME = "actions"
 ASSETS_DIR = "icons"
 
+DEFAULT_FONT = None
 DEFAULT_FONT_SIZE = 10
 
 IMAGES_ALREADY_GENERATED = {}
@@ -31,9 +31,11 @@ IMAGES_ALREADY_GENERATED = {}
 #
 
 
-def load_default_font(path):
+def load_default_font(path, size):
+    global DEFAULT_FONT_SIZE
+    DEFAULT_FONT_SIZE = size
     global DEFAULT_FONT
-    DEFAULT_FONT = ImageFont.truetype(path, DEFAULT_FONT_SIZE)
+    DEFAULT_FONT = ImageFont.truetype(path, size)
 
 
 def get_filename_button_static_png(icon_name):
@@ -49,7 +51,7 @@ class Button(object):
                  dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
                  cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
                  cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None,
-                 gauge=None, display=None):
+                 gauge=None, display=None, special_label=None):
         # Constants
         self.index = index
         if self.index is None:
@@ -110,6 +112,7 @@ class Button(object):
 
         self.gauge = None
         self.display = None
+        self.special_label = None
         if file_names is not None:
             self.file_names = np.empty(len(file_names), dtype=object)
             for i, fn in enumerate(file_names):
@@ -139,6 +142,9 @@ class Button(object):
 
             self.display["background"] = get_filename_button_static_png(display["background"])
             self.file_names = dynamic.create_dynamic_filenames(self.display["name"], self.dataref_states)
+        elif special_label:
+            # todo
+            pass
         elif self.dataref_states is not None:
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
@@ -149,10 +155,6 @@ class Button(object):
                 print("static icon is not present on {} button".format(name))
                 exit(1)
             self.file_names[0] = get_filename_button_static_png(icon)
-
-
-def count_presets(target_dir):
-    return len(glob.glob1(target_dir, "*.yaml"))
 
 
 def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
@@ -195,6 +197,7 @@ def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
             key.get("commands-off"),
             key.get("gauge"),
             key.get("display"),
+            key.get("special-label"),
         )
 
         # restoring images from cache file (preload_labels flag)

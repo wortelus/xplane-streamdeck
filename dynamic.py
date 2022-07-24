@@ -21,6 +21,15 @@ def create_dynamic_filenames(name, fn_range):
     return file_names
 
 
+def get_text_pos(deck, special):
+    if special["text-center"]["x"] == "center":
+        special["text-center"]["x"] = deck.key_image_format()["size"][0] / 2
+    if special["text-center"]["y"] == "center":
+        special["text-center"]["y"] = deck.key_image_format()["size"][1] / 2
+
+    return special["text-center"]
+
+
 #
 # gauges
 #
@@ -57,10 +66,7 @@ def load_display_images(display, deck, file_names, dataref_states):
     set_images = {}
 
     # if user preconfigured 'x' or 'y' position of text as center, we must set it here ->
-    if display["text-center"]["x"] == "center":
-        display["text-center"]["x"] = deck.key_image_format()["size"][0] / 2
-    if display["text-center"]["y"] == "center":
-        display["text-center"]["y"] = deck.key_image_format()["size"][1] / 2
+    get_text_pos(deck, display)
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
@@ -94,3 +100,29 @@ def load_display_images(display, deck, file_names, dataref_states):
         set_images[fn] = PILHelper.to_native_format(deck, final_final_img)
 
     return set_images
+
+
+#
+# special labels
+#
+
+
+def load_special_label(special_label, deck):
+    # if user preconfigured 'x' or 'y' position of text as center, we must set it here ->
+    get_text_pos(deck, special_label)
+
+    # paths should be preprocessed from the Button __init__ constructor
+    # thus no need to apply get_filename_button_static_png
+    background = Image.open(special_label["background"])
+    # todo how not to load font every single time ?
+    current_font = ImageFont.truetype(special_label["font-path"], special_label["font-size"])
+
+    final_img = background.copy()
+    final_final_img = PILHelper.create_scaled_image(deck, final_img, margins=[0, 0, 0, 0])
+
+    draw = ImageDraw.Draw(final_final_img)
+    draw.text(
+        (special_label["text-center"]["x"], special_label["text-center"]["y"]),
+        text=special_label["label"], font=current_font, anchor="ms", fill=special_label["color"],
+        direction=special_label["direction"], align=special_label["align"])
+    return PILHelper.to_native_format(deck, final_final_img)
