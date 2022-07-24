@@ -1,16 +1,19 @@
-aircraft: B738X
+# X-Plane server UDP settings
 xp-ip: 127.0.0.1
 xp-port: 49000
 server-ip: 127.0.0.1
 server-port: 49008
+# font used for labels (displays use different one)
 default-font: IBMPlexMono-Bold.ttf
 default-font-size: 13
+# set False if you want lower case labels
+always-upper-case: True
 # comment out following line to disable image caching
 # the images will have to load for several seconds every time, but it is suitable for tweaking
 cache-path: ./img-cache.pkl
 brightness: 75
 # the first one is taken as active for the session
 stream-decks:
-  - serial: CL41I1A00651
-    keys: 32
+  - serial: CL41I1A00651 # ! CHANGE THIS VALUE !
+    keys: 32 # ! VERIFY THIS VALUE !
     directory: B737-800X

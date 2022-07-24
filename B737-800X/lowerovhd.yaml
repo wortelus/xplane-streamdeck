@@ -70,7 +70,7 @@ actions:
     file-names:
       - red0
       - blue2
-    label: TAXI LIGHTS
+    label: TAXI LT
     dataref: laminar/B738/toggle_switch/taxi_light_brightness_pos
     dataref-states:
       - 0.0
@@ -91,7 +91,7 @@ actions:
     file-names:
       - red0
       - blue2
-    label: WING LIGHTS
+    label: WING LT
     dataref: sim/cockpit2/switches/generic_lights_switch[0]
     command: laminar/B738/switch/wing_light_toggle
   - index: 21
@@ -109,7 +109,7 @@ actions:
     file-names:
       - red0
       - blue2
-    label: BEACON LIGHTS
+    label: BEACON LT
     dataref: sim/cockpit/electrical/beacon_lights_on
     command: sim/lights/beacon_lights_toggle
   - index: 20
@@ -133,7 +133,7 @@ actions:
     file-names:
       - red0
       - blue2
-    label: LOGO LIGHTS
+    label: LOGO LT
     dataref: laminar/B738/toggle_switch/logo_light
     command: laminar/B738/switch/logo_light_toggle
   - index: 13

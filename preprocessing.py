@@ -70,7 +70,11 @@ class Button(object):
             print("WARN: {} has no set type, setting none as default (no press action)".format(name))
             self.cmd_type = "none"
 
+        # verify string type
+        if label:
+            label = str(label)
         self.label = label
+
         self.dataref = dataref
         if dataref_multiplier is None:
             self.dataref_multiplier = 1.0
@@ -283,7 +287,7 @@ def load_datarefs(presets_all):
 
 
 # taken from https://python-elgato-streamdeck.readthedocs.io/en/stable/examples/basic.html
-def render_key_image(deck, icon_filename, label_text):
+def render_key_image(deck, icon_filename, label_text, only_uppercase=False):
     # Resize the source image asset to best-fit the dimensions of a single key,
     # leaving a margin at the bottom so that we can draw the key title
     # afterwards.
@@ -295,12 +299,16 @@ def render_key_image(deck, icon_filename, label_text):
     draw = ImageDraw.Draw(image)
     global DEFAULT_FONT
     if label_text:
+        if only_uppercase and not label_text.isupper():
+            print("WARN: label {} is not upper case only, "
+                  "converting to upper (to disable this check out 'config.yaml'".format(label_text))
+            label_text = label_text.upper()
         draw.text((image.width / 2, image.height - 8), text=label_text, font=DEFAULT_FONT, anchor="ms", fill="white")
 
     return PILHelper.to_native_format(deck, image)
 
 
-def load_images_datarefs(deck, presets_dir):
+def load_images_datarefs(deck, presets_dir, only_uppercase):
     set_images = {}
     for _, button in enumerate(presets_dir):
         if button is None:
@@ -327,7 +335,7 @@ def load_images_datarefs(deck, presets_dir):
 
         for i, state_name in enumerate(button.file_names):
             if state_name not in set_images:
-                state_image = render_key_image(deck, state_name, button.label)
+                state_image = render_key_image(deck, state_name, button.label, only_uppercase)
 
                 # change file_names in preset according to images_all, allowing same icons with different labels
                 # notice how this is executed in the post-processing stage
@@ -341,10 +349,10 @@ def load_images_datarefs(deck, presets_dir):
     return set_images
 
 
-def load_images_datarefs_all(deck, presets_all):
-    set_images_all = {"none.png": render_key_image(deck, get_filename_button_static_png("none"), None)}
+def load_images_datarefs_all(deck, presets_all, only_uppercase):
+    set_images_all = {"none.png": render_key_image(deck, get_filename_button_static_png("none"), None, only_uppercase)}
     for _, dataref_dir in presets_all.items():
-        images_single_dir = load_images_datarefs(deck, dataref_dir)
+        images_single_dir = load_images_datarefs(deck, dataref_dir, only_uppercase)
         set_images_all.update(images_single_dir)
 
     return set_images_all

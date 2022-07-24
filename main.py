@@ -1,6 +1,5 @@
 import math
 import pickle
-import threading
 import time
 from os.path import exists
 
@@ -182,7 +181,6 @@ def main():
         exit(1)
 
     # loading info and check for connected SD count == config.yaml SD count
-    print("config loaded for: {}".format(global_cfg["aircraft"]))
     print("configuration for {} decks, {} connected".format(len(global_cfg["stream-decks"]), deck_count))
     if len(global_cfg["stream-decks"]) != deck_count:
         print("WARN: configuration is for {} decks, but {} connected"
@@ -229,7 +227,8 @@ def main():
     if not caching_enabled:
         print("note: caching is disabled, loading will be noticeably slower")
         print("you can enable it by setting the field 'cache-path' in config.yaml")
-        images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
+        images_all = preprocessing.load_images_datarefs_all(
+            current_deck, presets_all, global_cfg["always-upper-case"])
     elif load_cached_img:
         # images are stored as cache, open and load
         print("cache file {} is present, skipping pre-generation.".format(cache_path))
@@ -242,7 +241,8 @@ def main():
     else:
         # caching is enabled, but cache file not found
         print("cache file {} not found, starting the pre-generation.".format(cache_path))
-        images_all = preprocessing.load_images_datarefs_all(current_deck, presets_all)
+        images_all = preprocessing.load_images_datarefs_all(
+            current_deck, presets_all, global_cfg["always-upper-case"])
         # save images to cache-path
         print("saving the pregen to {}".format(cache_path))
         with open(cache_path, 'wb') as f:
