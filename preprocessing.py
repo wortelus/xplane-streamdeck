@@ -162,7 +162,8 @@ class Button(object):
             pass
         elif self.dataref_states is not None:
             if icon is None:
-                logging.error("#{} {} is trying to set dataref_states without the 'icon' parameter, quitting...")
+                logging.error("#{} {} is trying to set dataref_states without the 'icon' parameter, quitting..."
+                              .format(index, name))
                 sys.exit(1)
 
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
@@ -170,7 +171,8 @@ class Button(object):
                 self.file_names[i] = get_filename_button_dataref_png(icon, state)
         else:
             if icon is None:
-                logging.error("#{} {} is trying to set static icon without the 'icon' parameter, quitting...")
+                logging.error("#{} {} is trying to set static icon without the 'icon' parameter, quitting..."
+                              .format(index, name))
                 sys.exit(1)
 
             self.file_names = np.empty(1, dtype=object)
