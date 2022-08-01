@@ -1,4 +1,6 @@
+import logging
 import os.path
+import sys
 
 import numpy as np
 import yaml
@@ -10,11 +12,17 @@ try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
+
 try:
     import dynamic
 except ImportError:
     print("You don't seem to have dynamic.py near its main.py and preprocessing.py. correct your installation")
-    exit(1)
+    sys.exit(1)
+try:
+    import sanity
+except ImportError:
+    print("You don't seem to have sanity.py near its main.py and preprocessing.py. correct your installation")
+    sys.exit(1)
 
 ACTION_CFG = "actions.yaml"
 ACTION_CFG_NAME = "actions"
@@ -53,27 +61,17 @@ class Button(object):
                  cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None,
                  gauge=None, display=None, special_label=None):
         # Constants
+
+        sanity.vital_check(index, name)
+
         self.index = index
-        if self.index is None:
-            print("ERROR: button with name {} has no set index, quitting...".format(name))
-            quit(1)
-
         self.name = name
-        if self.name is None or self.name == "":
-            print("ERROR: button with index {} has no set name, quitting...".format(index))
-            quit(1)
-
         self.icon = icon
 
-        self.cmd_type = cmd_type
-        if cmd_type is None or cmd_type == "":
-            print("WARN: {} has no set type, setting none as default (no press action)".format(name))
-            self.cmd_type = "none"
+        self.cmd_type = sanity.cmd_check(index, name, cmd_type)
 
         # verify string type
-        if label:
-            label = str(label)
-        self.label = label
+        self.label = sanity.label_check(index, name, label)
 
         self.dataref = dataref
         if dataref_multiplier is None:
@@ -101,6 +99,10 @@ class Button(object):
         else:
             self.auto_switch = auto_switch
 
+        # generate warnings for weird commands
+        sanity.cmd2_check(index, name, cmd_type, cmd, cmd_mul, cmd_release, cmd_release_mul,
+                 cmd_on, cmd_off, cmd_on_mul, cmd_off_mul)
+
         self.cmd = cmd
         self.cmd_mul = cmd_mul
         self.cmd_release = cmd_release
@@ -118,10 +120,16 @@ class Button(object):
         self.display = None
         self.special_label = None
         if file_names is not None:
+            # sanity check file_names corresponding to dataref_states
+            sanity.file_names_check(index, name, file_names, self.dataref_states)
+
             self.file_names = np.empty(len(file_names), dtype=object)
             for i, fn in enumerate(file_names):
                 self.file_names[i] = get_filename_button_static_png(fn)
         elif gauge:
+            # sanity check for gauge (if it contains everything)
+            sanity.gauge_check(index, name, gauge)
+
             # overwrite default dataref_states
             self.dataref_states = dynamic.get_dataref_states(gauge)
             # special case - gauge with needles :)
@@ -134,6 +142,9 @@ class Button(object):
             # so we pregenerate them artificial names for the use in main global images dict
             self.file_names = dynamic.create_dynamic_filenames(self.gauge["name"], self.dataref_states)
         elif display:
+            # sanity check for display (if it contains everything)
+            sanity.display_check(index, name, display)
+
             # overwrite default dataref_states
             self.dataref_states = dynamic.get_dataref_states(display)
             # special case - display of number values
@@ -150,14 +161,19 @@ class Button(object):
             # todo
             pass
         elif self.dataref_states is not None:
+            if icon is None:
+                logging.error("#{} {} is trying to set dataref_states without the 'icon' parameter, quitting...")
+                sys.exit(1)
+
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
                 self.file_names[i] = get_filename_button_dataref_png(icon, state)
         else:
-            self.file_names = np.empty(1, dtype=object)
             if icon is None:
-                print("static icon is not present on {} button".format(name))
-                exit(1)
+                logging.error("#{} {} is trying to set static icon without the 'icon' parameter, quitting...")
+                sys.exit(1)
+
+            self.file_names = np.empty(1, dtype=object)
             self.file_names[0] = get_filename_button_static_png(icon)
 
 
@@ -167,7 +183,7 @@ def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
             preset_cfg = safe_load(stream)
         except yaml.YAMLError as err:
             print("cannot load {}, ensure you have proper syntax config {}".format(yaml_keyset, err))
-            exit(1)
+            sys.exit(1)
 
     keys = preset_cfg["actions"]
     # key_count = len(keys)
@@ -178,6 +194,12 @@ def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
     for _, key in enumerate(keys):
         index = key.get("index")
         name = key.get("name")
+        # try to convert to int because it is used as array index
+        try:
+            index = int(index)
+        except ValueError:
+            logging.error("button with name {} has index non-convertable to integer, quitting...".format(name))
+            sys.exit(1)
         cmd_type = key.get("type")
         preset[index] = Button(
             index,

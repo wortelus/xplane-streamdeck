@@ -1,5 +1,6 @@
 import math
 import pickle
+import sys
 import time
 from os.path import exists
 
@@ -8,6 +9,7 @@ import yaml
 from StreamDeck.DeviceManager import DeviceManager
 from yaml import load
 import pyxpudpserver as XPUDP
+import logging
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -17,7 +19,9 @@ try:
     import preprocessing
 except ImportError:
     print("You don't seem to have preprocessing.py near its main.py. correct your installation")
-    exit(1)
+    sys.exit(1)
+
+logging.basicConfig(encoding='utf-8')
 
 
 # 0 is to move down, 1 to move up
@@ -178,7 +182,7 @@ def main():
 
     if not current_deck:
         print("Deck for current session NOT FOUND, verify the serial in config.yaml and index specified")
-        exit(1)
+        sys.exit(1)
 
     # loading info and check for connected SD count == config.yaml SD count
     print("configuration for {} decks, {} connected".format(len(global_cfg["stream-decks"]), deck_count))
@@ -195,7 +199,7 @@ def main():
 
     # for now the software works only for one panel
     panel = global_cfg["stream-decks"][0]
-    keys_dir = panel["directory"]
+    keys_dir = str(panel["directory"])
     key_count = panel["keys"]
 
     try:
