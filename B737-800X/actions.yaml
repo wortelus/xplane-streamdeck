@@ -38,19 +38,19 @@ actions:
     command-release: FlyWithLua/streamdeck_handler/fmc_prst_end
   - index: 5
     name: speedbrake armed
-    type: single
+    type: none
     icon: speedbrakearmed
     dataref: laminar/B738/annunciator/speedbrake_armed
     dataref-multiplier: 1.5
   - index: 6
     name: speedbrake do not arm
-    type: single
+    type: none
     icon: speedbrakedonotarm
     dataref: laminar/B738/annunciator/speedbrake_extend
     dataref-multiplier: 1.5
   - index: 7
     name: stab out of trim
-    type: single
+    type: none
     icon: staboutoftrim
     dataref: laminar/B738/annunciator/stab_out_of_trim
     dataref-multiplier: 1.5
@@ -72,13 +72,13 @@ actions:
       step: 1
   - index: 28
     name: le flaps transit
-    type: single
+    type: none
     icon: leflapstransit
     dataref: laminar/B738/annunciator/slats_transit
     dataref-multiplier: 1.5
   - index: 29
     name: le flaps ext
-    type: single
+    type: none
     icon: leflapsext
     dataref: laminar/B738/annunciator/slats_extend
     dataref-multiplier: 1.5
@@ -133,6 +133,11 @@ actions:
     type: dir
     icon: dir
     label: MCP
+  - index: 17
+    name: mcpctl
+    type: dir
+    icon: dir
+    label: MCP CTL
   - index: 8
     name: efis
     type: dir
