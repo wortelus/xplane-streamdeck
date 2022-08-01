@@ -175,7 +175,7 @@ actions:
       - 2.0
   - index: 8
     name: apu egt
-    type: single
+    type: none
     dataref: laminar/B738/electrical/apu_temp
     gauge:
       name: apuegt
@@ -256,7 +256,7 @@ actions:
     command-off: laminar/B738/toggle_switch/eng_start_source_left
   - index: 5
     name: arm emer exit lights ann
-    type: single
+    type: none
     icon: notarmed
     dataref: laminar/B738/annunciator/emer_exit
     dataref-multiplier: 1.5

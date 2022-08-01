@@ -65,7 +65,7 @@ actions:
 #      align: center
   - index: 1
     name: mins
-    type: single
+    type: none
     icon: mins
     dataref: laminar/B738/EFIS_control/cpt/minimums
   - index: 2
@@ -108,7 +108,7 @@ actions:
     command: laminar/B738/EFIS_control/capt/map_mode_dn
   - index: 17
     name: map mode
-    type: single
+    type: none
     icon: mapmode
     dataref-states:
       - 0.0
@@ -137,7 +137,7 @@ actions:
     command: laminar/B738/EFIS_control/capt/baro_in_hpa_dn
   - index: 6
     name: baro
-    type: single
+    type: none
     icon: baro
     dataref: laminar/B738/EFIS_control/capt/baro_in_hpa
   - index: 7
@@ -178,7 +178,7 @@ actions:
     command: laminar/B738/EFIS_control/capt/map_range_dn
   - index: 22
     name: map range
-    type: single
+    type: none
     icon: maprange
     dataref-states:
       - 0.0
