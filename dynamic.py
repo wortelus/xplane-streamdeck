@@ -3,11 +3,23 @@ from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.ImageHelpers import PILHelper
 
 
-def get_dataref_states(gauge):
-    min_val = float(gauge["min"])
-    max_val = float(gauge["max"] + 1)
-    step = float(gauge["step"])
+def get_dataref_states(element, button_self):
+    step = float(element["step"])
 
+    decimal_divider = 1
+    if step < 1.0:
+        # count number of decimal places, do not use float, use input straight from configuration
+        decimal_divider = 10 ** len(str(element["step"]).split(".")[1])
+        element["min"] *= decimal_divider
+        element["max"] *= decimal_divider
+        # pretty hacky here, we must assume that the button_self is in fact a button object
+        button_self.dataref_multiplier *= decimal_divider
+        step = 1.0
+
+    element["decimal-divider"] = decimal_divider
+
+    min_val = float(element["min"])
+    max_val = float(element["max"] + 1)
     fn_range = np.arange(min_val, max_val, step).tolist()
     return fn_range
 
@@ -84,9 +96,10 @@ def load_display_images(display, deck, file_names, dataref_states):
 
         if display["keep-decimal"]:
             if display["zero-pad"]:
-                display_text = str(dataref_states[i]).zfill(display["zero-pad"])
+                display_text = str(dataref_states[i] / display["decimal-divider"])\
+                    .zfill(display["zero-pad"])
             else:
-                display_text = str(dataref_states[i])
+                display_text = str(dataref_states[i] / display["decimal-divider"])
         else:
             if display["zero-pad"]:
                 display_text = str(int(dataref_states[i])).zfill(display["zero-pad"])

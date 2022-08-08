@@ -131,7 +131,7 @@ class Button(object):
             sanity.gauge_check(index, name, gauge)
 
             # overwrite default dataref_states
-            self.dataref_states = dynamic.get_dataref_states(gauge)
+            self.dataref_states = dynamic.get_dataref_states(gauge, self)
             # special case - gauge with needles :)
             # here comes the dynamic.py into play
             self.gauge = gauge
@@ -146,7 +146,7 @@ class Button(object):
             sanity.display_check(index, name, display)
 
             # overwrite default dataref_states
-            self.dataref_states = dynamic.get_dataref_states(display)
+            self.dataref_states = dynamic.get_dataref_states(display, self)
             # special case - display of number values
             # here comes the dynamic.py into play
             self.display = display
