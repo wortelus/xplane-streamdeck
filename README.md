@@ -86,11 +86,14 @@ Instructions for **Windows**
 running `.../xplane-streamdeck> python .\main.py` under the *xplane-streamdeck* directory, 
 while having the Stream Deck plugged in already
 
+Run the script anytime after the aircraft loads in the simulator, the script can be restarted anytime without harm.
+
 The program supports image caching, which saves several seconds of image preloading during launch
 - To enable it, set `cache-path` field in `config.yaml`
 - To disable, just remove the field or leave it blank
 - NOTE: If you are tweaking your image set or configuration, it is recommended disable this feature 
-to always see the up-to-date configuration state (or simply remove it, but the cache will be recreated)
+to always see the up-to-date configuration state (or simply remove it, but the cache will be recreated).
+- **Old cache with new icon set, configuration, font etc. can often cause funky behavior or crashes.**
 
 ## Additional Info
 |        Lower Overhead 737 NG        |  MCP Collins 737 NG  |
