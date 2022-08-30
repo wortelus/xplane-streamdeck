@@ -1,3 +1,7 @@
+if not (PLANE_ICAO == "B736" or PLANE_ICAO == "B737" or PLANE_ICAO == "B738" or PLANE_ICAO == "B739" or PLANE_ICAO == "B38M") then
+	return
+end
+	
 create_command( "FlyWithLua/streamdeck_handler/fire_test_right_start", "fire test zibo right start handler", "command_begin(\"laminar/B738/toggle_switch/fire_test_rgt\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/fire_test_right_end", "fire test zibo right end handler", "command_end(\"laminar/B738/toggle_switch/fire_test_rgt\")", "", "" )
 create_command( "FlyWithLua/streamdeck_handler/fire_test_left_start", "fire test zibo left start handler", "command_begin(\"laminar/B738/toggle_switch/fire_test_lft\")", "", "" )

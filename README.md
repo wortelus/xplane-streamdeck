@@ -8,12 +8,11 @@ This software includes rich set of features for robust control of the simulator 
 Developed with the idea taking away mouse controlling of most of the cockpit, 
 works best together with other simulator peripherals (e.g. radio, A/P panel etc.)
 
-**Note that configuration was done for 737 NG by Zibo only for now.**
+**Supported planes:**
+- Boeing 737 NG by **Zibo**
+- Cessna 172 by Laminar Research
 
-**Currently supporting**:
-- Stream Deck Mini
-- Stream Deck MK1 (MK2 should work too)
-- Stream Deck XL (tested)
+Working across all Stream Deck versions, but ready to use configurations are made for the XL version.
 
 ### Features:
 - Sync with X-Plane's dataref to visually depict the actual state
@@ -75,11 +74,14 @@ from the official documentation source
 number** and number of keys according to your model. 
 - Execute the xplane-streamdeck script to find the serial number out
 - Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
-7. **Add the `streamdeck_handlers.lua` to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
+7. **Add the streamdeck handlers to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
 - Ensure you have **FlyWithLua** installed
+- Copy the streamdeck_handler_*[plane code]*.lua files from the `misc/` directory
 
 ## Usage
 Instructions for **Windows**
+
+Choose desired plane type configuration in `config.yaml`
 
 **Execute the script by running the `main.py` with Python 3 by:**
 
@@ -115,9 +117,8 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 **Refer to the `B737-800X/README.md` for a guide on how to create/edit buttons.**
 
 ### What is planned / WIP?
-- More types of labels
+- Backward compatible GUI Drag 'n Drop utility for managing the plane presets
 - Own X-Plane UDP handler
-- Multi deck support
 
 ### Known Issues
 - There is currently a bug in **pyxpudpserver** that sometimes causes the dataref updating of buttons to
@@ -149,6 +150,10 @@ StreamDeck.Transport.Transport.TransportError: Failed to write out report (-1)
 IBM Plex™ is an international typeface family designed by Mike Abbink, IBM BX&D, in collaboration with Bold Monday, 
 an independent Dutch type foundry. Plex was designed to capture IBM’s spirit and history, and to illustrate the 
 unique relationship between mankind and machine—a principal theme for IBM since the turn of the century.
+
+### Contributors
+I would like to thank the following members of the flight sim community for participating in this open source project.
+ - **esmiol** from *x-plane.org* forums - for creating the Cessna 172 configuration and graphics
 
 ## License
 BSD 2-Clause License

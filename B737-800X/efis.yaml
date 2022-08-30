@@ -50,19 +50,27 @@ actions:
   - index: 0
     name: mins radio
     type: single
-    icon: blue-left
-    label: RADIO
+    icon: none
     command: laminar/B738/EFIS_control/cpt/minimums_up
-#    special-label:
-#      label: RADIO
-#      text-center:
-#        x: center
-#        y: 60 # center doesn't work as it should, due to font's height
-#      font-path: consola.ttf
-#      font-size: 32
-#      background: none
-#      direction: ltr
-#      align: center
+    special-labels:
+      - label: MINS
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: white
+        direction: ltr
+        align: center
+      - label: RADIO
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
   - index: 1
     name: mins
     type: none
@@ -71,9 +79,27 @@ actions:
   - index: 2
     name: mins baro
     type: single
-    icon: blue-right
-    label: BARO
+    icon: none
     command: laminar/B738/EFIS_control/cpt/minimums_dn
+    special-labels:
+      - label: MINS
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: white
+        direction: ltr
+        align: center
+      - label: BARO
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
   - index: 8
     name: mins down
     type: single
@@ -125,16 +151,43 @@ actions:
   - index: 19
     name: ctr map mode
     type: single
-    icon: yellow-button
-    label: CTR
+    icon: none
     command: laminar/B738/EFIS_control/capt/push_button/ctr_press
+    special-labels:
+      - label: CTR
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
   # right part of the EFIS
   - index: 5
     name: baro in
     type: single
-    icon: blue-left
-    label: IN
+    icon: none
     command: laminar/B738/EFIS_control/capt/baro_in_hpa_dn
+    special-labels:
+      - label: BARO
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: white
+        direction: ltr
+        align: center
+      - label: IN
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
   - index: 6
     name: baro
     type: none
@@ -143,9 +196,27 @@ actions:
   - index: 7
     name: baro hpa
     type: single
-    icon: blue-right
-    label: HPA
+    icon: none
     command: laminar/B738/EFIS_control/capt/baro_in_hpa_up
+    special-labels:
+      - label: BARO
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: white
+        direction: ltr
+        align: center
+      - label: HPA
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
   - index: 13
     name: baro down
     type: single
@@ -199,9 +270,18 @@ actions:
   - index: 20
     name: tfc map range
     type: single
-    icon: yellow-button
-    label: TFC
+    icon: none
     command: laminar/B738/EFIS_control/capt/push_button/tfc_press
+    special-labels:
+      - label: TFC
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
   - index: 11
     name: radio sel 1
     type: dual
@@ -235,18 +315,40 @@ actions:
   - index: 3
     name: fpv
     type: single
-    label: FPV
-    dataref: laminar/B738/PFD/capt/fpv_on
-    file-names:
-      - yellow-button
-      - green-button
+    icon: none
+    # label: FPV
+    # dataref: laminar/B738/PFD/capt/fpv_on
+#    file-names:
+#      - yellow-button
+#      - green-button
+    special-labels:
+      - label: FPV
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
     command: laminar/B738/EFIS_control/capt/push_button/fpv_press
   - index: 4
     name: mtrs
     type: single
-    label: MTRS
-    dataref: laminar/B738/PFD/capt/alt_mode_is_meters
-    file-names:
-      - yellow-button
-      - green-button
+    icon: none
+#    label: MTRS
+#    dataref: laminar/B738/PFD/capt/alt_mode_is_meters
+#    file-names:
+#      - yellow-button
+#      - green-button
+    special-labels:
+      - label: MTRS
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
     command: laminar/B738/EFIS_control/capt/push_button/mtrs_press

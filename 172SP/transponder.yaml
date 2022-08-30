@@ -1,0 +1,195 @@
+actions:
+  - index: 0
+    name: ident 
+    type: single
+    icon: tp.ident
+    command-release: sim/radios/transponder_ident
+  - index: 1
+    name: stby
+    type: single
+    icon: tp.stby
+    command-release: sim/transponder/transponder_standby
+  - index: 2
+    name: alt
+    type: single
+    icon: tp.alt
+    command-release: sim/transponder/transponder_alt
+  - index: 3
+    name: on
+    type: single
+    icon: tp.on
+    command-release: sim/transponder/transponder_on
+  - index: 4
+    name: off
+    type: single
+    icon: tp.off
+    command-release: sim/transponder/transponder_off
+  - index: 7
+    name: tp_test
+    type: single
+    icon: tp.test
+    command-release: sim/transponder/transponder_test    
+  - index: 8
+    name: tpmode
+    type: none
+    file-names:
+       - tp.i.off
+       - tp.i.stby
+       - tp.i.on
+       - tp.i.alt
+       - tp.i.test
+    dataref-states:
+       - 0.0
+       - 1.0
+       - 2.0
+       - 3.0
+       - 4.0
+    dataref: sim/cockpit/radios/transponder_mode #0=off, 1=stby, 2=on, 3= alt, 4=test
+  - index: 9
+    name: tp_ident
+    type: none
+    file-names:
+       - none
+       - tp.i.ident
+    dataref-states:
+       - 0.0
+       - 1.0
+    dataref: sim/cockpit/radios/transponder_id
+  - index: 10
+    name: tp_radar
+    type: none
+    file-names:
+       - none
+       - tp.i.radar
+    dataref-states:
+       - 0.0
+       - 1.0
+    dataref: sim/cockpit/radios/transponder_light
+
+######################  SQUAWK START
+
+  - index: 11
+    name: squawk1000
+    type: none
+    dataref: FlyWithLua/streamdeck_handler/squawk1000
+    display:
+      name: squwak1000
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 64
+      zero-pad: 1
+      min: 0
+      max: 9
+      step: 1
+      color: yellow
+      keep-decimal: False
+      background: none
+  - index: 12
+    name: squawk100
+    type: none
+    dataref: FlyWithLua/streamdeck_handler/squawk100
+    display:
+      name: squwak100
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 64
+      zero-pad: 1
+      min: 0
+      max: 9
+      step: 1
+      color: yellow
+      keep-decimal: False
+      background: none
+  - index: 13
+    name: squawk10
+    type: none
+    dataref: FlyWithLua/streamdeck_handler/squawk10
+    display:
+      name: squwak10
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 64
+      zero-pad: 1
+      min: 0
+      max: 9
+      step: 1
+      color: yellow
+      keep-decimal: False
+      background: none
+  - index: 14
+    name: squawk1
+    type: none
+    dataref: FlyWithLua/streamdeck_handler/squawk1
+    display:
+      name: squwak1
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 64
+      zero-pad: 1
+      min: 0
+      max: 9
+      step: 1
+      color: yellow
+      keep-decimal: False
+      background: none
+      
+######################  SQUAWK End
+
+  - index: 15
+    name: tp.clear
+    type: single
+    icon: tp.clear
+    command-release: sim/transponder/transponder_CLR      
+  - index: 16
+    name: tp.0
+    type: single
+    icon: tp.0
+    command-release: sim/transponder/transponder_digit_0
+  - index: 17
+    name: tp.1
+    type: single
+    icon: tp.1
+    command-release: sim/transponder/transponder_digit_1
+  - index: 18
+    name: tp.2
+    type: single
+    icon: tp.2
+    command-release: sim/transponder/transponder_digit_2
+  - index: 19
+    name: tp.3
+    type: single
+    icon: tp.3
+    command-release: sim/transponder/transponder_digit_3
+  - index: 20
+    name: tp.4
+    type: single
+    icon: tp.4
+    command-release: sim/transponder/transponder_digit_4
+  - index: 21
+    name: tp.5
+    type: single
+    icon: tp.5
+    command-release: sim/transponder/transponder_digit_5
+  - index: 22
+    name: tp.6
+    type: single
+    icon: tp.6
+    command-release: sim/transponder/transponder_digit_6
+  - index: 23
+    name: tp.7
+    type: single
+    icon: tp.7
+    command-release: sim/transponder/transponder_digit_7
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK

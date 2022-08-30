@@ -232,7 +232,7 @@ def main():
         print("note: caching is disabled, loading will be noticeably slower")
         print("you can enable it by setting the field 'cache-path' in config.yaml")
         images_all = preprocessing.load_images_datarefs_all(
-            current_deck, presets_all, global_cfg["always-upper-case"])
+            current_deck, keys_dir, presets_all, global_cfg["always-upper-case"])
     elif load_cached_img:
         # images are stored as cache, open and load
         print("cache file {} is present, skipping pre-generation.".format(cache_path))

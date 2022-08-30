@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.ImageHelpers import PILHelper
+import imgio
 
 
 def get_dataref_states(element, button_self):
@@ -42,11 +43,15 @@ def get_text_pos(deck, special):
     return special["text-center"]
 
 
+def load_truetype_font(element):
+    return ImageFont.truetype(element["font-path"], element["font-size"])
+
+
 #
 # gauges
 #
 
-def load_gauge_images(gauge, deck, file_names):
+def load_gauge_images(gauge, deck, plane_conf_dir, file_names):
     center_needle = (float(gauge["needle-center"]["x"]), float(gauge["needle-center"]["y"]))
     total_range = float(gauge["max"] + 1) - float(gauge["min"])
     needle_multiplier = -float(gauge["range-degrees"]) / total_range
@@ -55,8 +60,8 @@ def load_gauge_images(gauge, deck, file_names):
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
-    needle = Image.open(gauge["needle"])
-    background = Image.open(gauge["background"])
+    needle = imgio.open_icon_asset(plane_conf_dir, (gauge["needle"]))
+    background = imgio.open_icon_asset(plane_conf_dir, (gauge["background"]))
 
     for i, fn in enumerate(file_names):
         final_img = background.copy()
@@ -74,7 +79,7 @@ def load_gauge_images(gauge, deck, file_names):
 #
 
 
-def load_display_images(display, deck, file_names, dataref_states):
+def load_display_images(display, deck, plane_conf_dir, file_names, dataref_states, special_labels):
     set_images = {}
 
     # if user preconfigured 'x' or 'y' position of text as center, we must set it here ->
@@ -82,10 +87,14 @@ def load_display_images(display, deck, file_names, dataref_states):
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
-    background = Image.open(display["background"])
+    background = imgio.open_icon_asset(plane_conf_dir, display["background"])
     # todo how not to load font every single time ?
     current_font = ImageFont.truetype(display["font-path"], display["font-size"])
-
+    sl_fonts = None
+    if special_labels:
+        sl_fonts = np.empty(len(special_labels), dtype=object)
+        for i, spec_label in enumerate(special_labels):
+            sl_fonts[i] = load_truetype_font(spec_label)
     if len(dataref_states) != len(file_names):
         print("display of name {} has not the same len of dataref_states and file_names. this should not happen,"
               "submit a issue on wortelus/xplane-streamdeck GitHub repository, please".format(display["name"]))
@@ -96,7 +105,7 @@ def load_display_images(display, deck, file_names, dataref_states):
 
         if display["keep-decimal"]:
             if display["zero-pad"]:
-                display_text = str(dataref_states[i] / display["decimal-divider"])\
+                display_text = str(dataref_states[i] / display["decimal-divider"]) \
                     .zfill(display["zero-pad"])
             else:
                 display_text = str(dataref_states[i] / display["decimal-divider"])
@@ -110,6 +119,12 @@ def load_display_images(display, deck, file_names, dataref_states):
         draw.text(
             (display["text-center"]["x"], display["text-center"]["y"]),
             text=display_text, font=current_font, anchor="ms", fill=display["color"])
+
+        # special labels
+        if special_labels:
+            for j, spec_label in enumerate(special_labels):
+                draw = load_special_label(spec_label, deck, draw, sl_fonts[j])
+
         set_images[fn] = PILHelper.to_native_format(deck, final_final_img)
 
     return set_images
@@ -119,23 +134,30 @@ def load_display_images(display, deck, file_names, dataref_states):
 # special labels
 #
 
+def create_special_label_signature(special_labels):
+    output = "SpecialLabel/"
+    for i, spec_label in enumerate(special_labels):
+        output += str(spec_label["text-center"]["x"]) + \
+                  str(spec_label["text-center"]["y"]) + \
+                  str(spec_label["label"]) + \
+                  str(spec_label["font-path"]) + \
+                  str(spec_label["font-size"]) + \
+                  str(spec_label["color"]) + \
+                  str(spec_label["direction"]) + \
+                  str(spec_label["align"])
+    return output
 
-def load_special_label(special_label, deck):
+
+def load_special_label(special_label, deck, draw, font=None):
     # if user preconfigured 'x' or 'y' position of text as center, we must set it here ->
     get_text_pos(deck, special_label)
 
-    # paths should be preprocessed from the Button __init__ constructor
-    # thus no need to apply get_filename_button_static_png
-    background = Image.open(special_label["background"])
-    # todo how not to load font every single time ?
-    current_font = ImageFont.truetype(special_label["font-path"], special_label["font-size"])
+    if not font:
+        font = ImageFont.truetype(special_label["font-path"], special_label["font-size"])
 
-    final_img = background.copy()
-    final_final_img = PILHelper.create_scaled_image(deck, final_img, margins=[0, 0, 0, 0])
-
-    draw = ImageDraw.Draw(final_final_img)
     draw.text(
         (special_label["text-center"]["x"], special_label["text-center"]["y"]),
-        text=special_label["label"], font=current_font, anchor="ms", fill=special_label["color"],
-        direction=special_label["direction"], align=special_label["align"])
-    return PILHelper.to_native_format(deck, final_final_img)
+        text=special_label["label"], font=font, anchor="ms", fill=special_label["color"],
+        # direction=special_label["direction"], ----- libraqm required
+        align=special_label["align"])
+    return draw

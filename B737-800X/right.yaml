@@ -135,8 +135,8 @@ actions:
     name: park brake
     type: single
     file-names:
-      - white-button
-      - red-button
+      - whiteann
+      - redann
     dataref: laminar/B738/parking_brake_pos
     command: sim/flight_controls/brakes_toggle_max
     label: PARK BRAKE
