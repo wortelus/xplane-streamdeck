@@ -1,0 +1,846 @@
+actions:
+  - index: 3
+    name: frame rate
+    type: single
+    dataref-multiplier: 1
+    dataref: FlyWithLua/streamdeck_handler/frame_rate # value = 0-100 Calculated in streamdeck_handelers.lua
+    display:
+      name: Framerate
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: 0
+      max: 100
+      step: 1
+      color: red
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: FRAME
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: RATE
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command-release: sim/operation/toggle_data_output_cockpit # off/on
+
+##########################################   TRIMS Start
+
+  - index: 11
+    name: trim_pitch_dn 
+    type: single
+    icon: none
+    special-labels:
+      - label: ELEVATOR
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: DOWN
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command: FlyWithLua/streamdeck_handler/172_trim_pitch_down_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_pitch_down_end
+  - index: 19
+    name: trim_pitch_takeoff
+    type: single
+    dataref-multiplier: 1000
+    dataref: sim/cockpit2/controls/elevator_trim # value = 0.0700 for takeoff trim
+    display:
+      name: Elevator Trim
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: -1000
+      max: 1000
+      step: 1
+      color: magenta
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: PITCH
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: TRIM
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command: FlyWithLua/streamdeck_handler/172_trim_pitch_takeoff_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_pitch_takeoff_end
+  - index: 27
+    name: trim_pitch_up 
+    type: single
+    icon: none
+    command: FlyWithLua/streamdeck_handler/172_trim_pitch_up_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_pitch_up_end
+    special-labels:
+      - label: ELEVATOR
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: UP
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 16
+    name: trim_a_left 
+    type: single
+    icon: left
+    command: FlyWithLua/streamdeck_handler/172_trim_ail_left_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_ail_left_end
+    special-labels:
+      - label: AILERON
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: LEFT
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 17
+    name: trim_a_center
+    type: single
+    dataref-multiplier: 1000
+    dataref: sim/cockpit2/controls/aileron_trim
+    display:
+      name: Aileron Trim
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: -1000
+      max: 1000
+      step: 1
+      color: magenta
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: AILERON
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: TRIM
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command: FlyWithLua/streamdeck_handler/172_trim_ail_center_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_ail_center_end
+  - index: 18
+    name: trim_a_right 
+    type: single
+    icon: right
+    command: FlyWithLua/streamdeck_handler/172_trim_ail_right_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_ail_right_end
+    special-labels:
+      - label: AILERON
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: RIGHT
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 24
+    name: trim_r_left 
+    type: single
+    icon: left
+    command: FlyWithLua/streamdeck_handler/172_trim_rud_left_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_rud_left_end
+    special-labels:
+      - label: RUDDER
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: LEFT
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 25
+    name: trim_r_center
+    type: single
+    dataref-multiplier: 1000
+    dataref: sim/cockpit2/controls/rudder_trim
+    display:
+      name: Rudder Trim
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: -1000
+      max: 1000
+      step: 1
+      color: magenta
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: RUDDER
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: TRIM
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command: FlyWithLua/streamdeck_handler/172_trim_rud_center_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_rud_center_end
+  - index: 26
+    name: trim_r_right 
+    type: single
+    icon: right
+    command: FlyWithLua/streamdeck_handler/172_trim_rud_right_start
+    command-release: FlyWithLua/streamdeck_handler/172_trim_rud_right_end
+    special-labels:
+      - label: RUDDER
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: RIGHT
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+
+############################################################  TRIMS End    
+
+############################################################  G5 Keys
+
+  - index: 5
+    name: G5 AI CCW 
+    type: single
+    icon: left
+    command: FlyWithLua/streamdeck_handler/172_ai_KnobL_start
+    command-release: FlyWithLua/streamdeck_handler/172_ai_KnobL_end
+    special-labels:
+      - label: AI
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: CCW
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 6
+    name: G5 AI knob push
+    type: single
+    dataref-multiplier: 100
+    dataref: sim/cockpit2/gauges/actuators/barometer_setting_in_hg_stby
+    display:
+      name: G5 AI Display
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 24
+      zero-pad: 4
+      min: 0
+      max: 3500
+      step: 1
+      color: blue
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: BARO
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command: FlyWithLua/streamdeck_handler/172_ai_KnobPush_start
+    command-release: FlyWithLua/streamdeck_handler/172_ai_KnobPush_end
+  - index: 7
+    name: G5 AI CW 
+    type: single
+    icon: right
+    command: FlyWithLua/streamdeck_handler/172_ai_KnobR_start
+    command-release: FlyWithLua/streamdeck_handler/172_ai_KnobR_end
+    special-labels:
+      - label: AI
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: CCW
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 13
+    name: G5 HSI CCW 
+    type: single
+    icon: left
+    command: FlyWithLua/streamdeck_handler/172_hsi_KnobL_start
+    command-release: FlyWithLua/streamdeck_handler/172_hsi_KnobL_end
+    special-labels:
+      - label: HSI
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: CCW
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 14
+    name: G5 HSI knob push
+    type: single
+    # sim/cockpit/autopilot/heading_mag BLUE heading displayed on G5
+    dataref: sim/cockpit2/autopilot/heading_dial_deg_mag_pilot
+    display:
+      name: G5 HSI Display
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: 0
+      max: 360
+      step: 1
+      color: blue
+      keep-decimal: False
+      background: none
+    command: FlyWithLua/streamdeck_handler/172_hsi_KnobPush_start
+    command-release: FlyWithLua/streamdeck_handler/172_hsi_KnobPush_end
+    special-labels:
+      - label: HSI
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: HDG
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 15
+    name: G5 HSI CW 
+    type: single
+    icon: right
+    command: FlyWithLua/streamdeck_handler/172_hsi_KnobR_start
+    command-release: FlyWithLua/streamdeck_handler/172_hsi_KnobR_end
+    special-labels:
+      - label: HSI
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: CW
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+ 
+# setup ALT here
+# lua buttons are set
+# need three icons too 
+  - index: 21
+    name: ALT CCW 
+    type: single
+    icon: left
+    command-release: sim/instruments/barometer_down
+    special-labels:
+      - label: ALTIMETER
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: CCW
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 22
+    name: ALT push
+    type: single
+    dataref-multiplier: 100
+    dataref: sim/cockpit/misc/barometer_setting
+    display:
+      name: ALT Baro
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf 
+      font-size: 28
+      zero-pad: 4
+      min: 2800
+      max: 3100
+      step: 1
+      color: blue
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: ALTIMETER
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: BARO
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    command: FlyWithLua/streamdeck_handler/172_alt_barometer_push_start
+    command-release: FlyWithLua/streamdeck_handler/172_alt_barometer_push_end
+  - index: 23
+    name: ALT CW 
+    type: single
+    icon: right
+    command-release: sim/instruments/barometer_up
+    special-labels:
+      - label: ALTIMETER
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: CW
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+    
+############################################################  G5 Keys End
+
+############################################################ CDI's
+  - index: 0
+    name: NAV1 OBS CCW 
+    type: single
+    icon: none
+    command: FlyWithLua/streamdeck_handler/172_nav1_cdi_up_start
+    command-release: FlyWithLua/streamdeck_handler/172_nav1_cdi_up_end
+    special-labels:
+      - label: NAV1
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: OBS
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: CCW
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 1
+    name: NAV1 OBS Display
+    type: none
+    dataref: sim/cockpit/radios/nav1_obs_degm
+    display:
+      name: NAV1 OBS
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: 0
+      max: 360
+      step: 1
+      color: green
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: NAV1
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: OBS
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 2
+    name: NAN1 OBS CW 
+    type: single
+    icon: none
+    command: FlyWithLua/streamdeck_handler/172_nav1_cdi_down_start
+    command-release: FlyWithLua/streamdeck_handler/172_nav1_cdi_down_end
+    special-labels:
+      - label: NAV1
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: OBS
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: CW
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 8
+    name: NAV2 OBS CCW 
+    type: single
+    icon: none
+    command: FlyWithLua/streamdeck_handler/172_nav2_cdi_up_start
+    command-release: FlyWithLua/streamdeck_handler/172_nav2_cdi_up_end
+    special-labels:
+      - label: NAV2
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: OBS
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: CCW
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 9
+    name: NAV2 OBS Display
+    type: none
+    dataref: sim/cockpit/radios/nav2_obs_degm
+    display:
+      name: NAV2 OBS
+      text-center:
+        x: center
+        y: 60
+      font-path: IBMPlexMono-Bold.ttf
+      font-size: 28
+      zero-pad: 3
+      min: 0
+      max: 360
+      step: 1
+      color: green
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: NAV2
+        text-center:
+          x: center
+          y: 20
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+      - label: OBS
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 16
+        color: white
+        direction: ltr
+        align: center
+  - index: 10
+    name: NAN2 OBS CW 
+    type: single
+    icon: none
+    command: FlyWithLua/streamdeck_handler/172_nav2_cdi_down_start
+    command-release: FlyWithLua/streamdeck_handler/172_nav2_cdi_down_end
+    special-labels:
+      - label: NAV2
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: OBS
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+      - label: CW
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+
+############################################################  Flaps Keys Start
+  - index: 31 
+    name: move flaps up
+    type: single
+    icon: white-up
+    label: FLAPS
+    command: sim/flight_controls/flaps_up  # 10 deg per push  
+    
+  - index: 30  # Flap Gauge
+    name: flap_gauge
+    type: none # Just an indicator
+    dataref: sim/cockpit2/controls/flap_handle_deploy_ratio # 0=up .33=10 .66=20 1=30
+    dataref-multiplier: 100
+    gauge:
+      name: Flaps
+      needle-center:
+        x: 64
+        y: 64
+      background: flaps.flapsbckg
+      needle: flapsneedle
+      range-degrees: 240
+      min: 0.0
+      max: 100
+      step: 1
+  - index: 29
+    name: move flaps down
+    type: single
+    icon: white-down
+    label: FLAPS
+    command: sim/flight_controls/flaps_down
+
+############################################################  G5 Keys  Flaps Keys END
+
+  - index: 20
+    name: audio 
+    type: dir
+    icon: dir    
+    label: AUDIO PANEL
+  - index: 28
+    name: transponder
+    type: dir
+    icon: dir
+    label: TRANSPONDER
+  - index: 4
+    name: PARKBRAKE 
+    type: single
+    icon: PARK.BRAKE
+    dataref: sim/flightmodel/controls/parkbrake
+    command-release: sim/flight_controls/brakes_toggle_max
+    

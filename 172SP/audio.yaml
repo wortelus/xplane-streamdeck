@@ -1,0 +1,101 @@
+actions:
+  - index: 24
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 0
+    name: MKRMUTE 
+    type: single
+    icon: ap.mkr_mute
+    dataref: sim/cockpit2/radios/actuators/audio_marker_enabled
+    command-release: sim/annunciator/marker_beacon_mute_or_off
+  - index: 1
+    name: com1 
+    type: single
+    icon: ap.com1
+    dataref: sim/cockpit2/radios/actuators/audio_selection_com1
+    command-release: sim/audio_panel/monitor_audio_com1
+  - index: 2
+    name: com2 
+    type: single
+    icon: ap.com2
+    dataref: sim/cockpit2/radios/actuators/audio_selection_com2
+    command-release: sim/audio_panel/monitor_audio_com2
+  - index: 3
+    name: dme
+    type: single
+    icon: ap.dme
+    dataref: sim/cockpit2/radios/actuators/audio_dme_enabled
+    command-release: sim/audio_panel/monitor_audio_dme
+  - index: 4
+    name: nav1
+    type: single
+    icon: ap.nav1
+    dataref: sim/cockpit2/radios/actuators/audio_selection_nav1
+    command-release: sim/audio_panel/monitor_audio_nav1
+  - index: 5
+    name: nav2
+    type: single
+    icon: ap.nav2
+    dataref: sim/cockpit2/radios/actuators/audio_selection_nav2
+    command-release: sim/audio_panel/monitor_audio_nav2
+  - index: 6
+    name: adf1
+    type: single
+    icon: ap.adf1
+    dataref: sim/cockpit2/radios/actuators/audio_selection_adf1
+    command-release: sim/audio_panel/monitor_audio_adf1
+  - index: 7
+    name: adf2
+    type: single
+    icon: ap.adf2
+    dataref: sim/cockpit2/radios/actuators/audio_selection_adf2
+    command-release: sim/audio_panel/monitor_audio_adf2
+  - index: 8
+    name: sens
+    type: single
+    icon: ap.sens
+    dataref: sim/cockpit2/radios/actuators/marker_sens
+    command-release: sim/annunciator/marker_beacon_sens_toggle
+
+ #########################################################################################
+
+  - index: 9
+    name: com1mic
+    type: single
+    icon: ap.com1mic
+    dataref-states:
+      - 6.0
+      - 7.0
+    dataref: sim/cockpit2/radios/actuators/audio_com_selection # 6= com1mic 7=com2mic 6
+    command-release: sim/audio_panel/transmit_audio_com1
+  - index: 10
+    name: com2mic
+    type: single
+    icon: ap.com2mic
+    dataref-states:
+      - 6.0
+      - 7.0
+    dataref: sim/cockpit2/radios/actuators/audio_com_selection # 6= com1mic 7=com2mic
+    command-release: sim/audio_panel/transmit_audio_com2
+
+###########################################################################################
+  -
+  - index: 16
+    name: mb_outer
+    type: none
+    icon: ap.omb
+    dataref: sim/cockpit/misc/over_outer_marker
+  - index: 17
+    name: mb_middle
+    type: none
+    icon: ap.mmb
+    dataref: sim/cockpit/misc/over_middle_marker
+  - index: 18
+    name: mb_inner
+    type: none
+    icon: ap.imb
+    dataref: sim/cockpit/misc/over_inner_marker
+
+
