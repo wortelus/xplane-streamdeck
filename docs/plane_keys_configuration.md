@@ -8,9 +8,23 @@ If you run into problems, there is a chance that you will find a hint here.
 
 Use DataRefTool or similar to find names of the commands and datarefs.
 
-*Do not forget* - each command consists of `begin`, `continue` and `end` phase.
+- Ch/ch/CH button - used for filtering datarefs (Ch - no filtering, ch - all changes, CH - big changes only)
+- D+C/Dat/Comm - Shows datarefs, commands, or both
+
+*In X-Plane* - each command consists of `begin`, `continue` and `end` phase.
+
+### (command) VS (command + command-release)
+
+In most cases, buttons require only to be commanded once
+
+They require single push (command), BUT some buttons require to be pressed continuously as the button is held.
 
 Use the DataRefTool tool to find out if it needs to be commanded once, or commanded continuously.
+
+1. select the desired command
+2. click details
+3. **command once** executed all parts at once 
+4. **command press** executes the `begin` at the press, and `end` at the release
 
 Note that some buttons even not supposed to be momentary can also need those 2 handlers.
 
@@ -113,7 +127,7 @@ display:
   text-center:
     x: 'center' or number (0-96) NOTE: center doesnt have to centered, font's have height that offsets it
     y: 'center' or number (0-96) NOTE: center doesnt have to centered, font's have height that offsets it
-  font-path: I recommend consola.ttf as the MS33558 doesn't support '-' before negative numbers
+  font-path: I recommend IBMPlexMono-Bold.ttf as the MS33558 doesn't support '-' before negative numbers
   font-size: ....
   zero-pad: how much should the dataref number be zero padded? number of characters total
   min: minimum number for which the display will be generated
