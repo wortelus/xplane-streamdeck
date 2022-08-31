@@ -10,7 +10,7 @@ default-font-size: 13
 always-upper-case: True
 # comment out following line to disable image caching
 # the images will have to load for several seconds every time, but it is suitable for tweaking
-cache-path: ./img-cache.pkl
+cache-path: ./ # current folder
 brightness: 75
 # the first one is taken as active for the session
 stream-decks:

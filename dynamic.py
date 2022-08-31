@@ -25,11 +25,17 @@ def get_dataref_states(element, button_self):
     return fn_range
 
 
-def create_dynamic_filenames(name, fn_range):
+def create_dynamic_filenames(name, fn_range, label, special_labels):
+    name = str(name)
+    if label:
+        name = label + name
+    if special_labels:
+        name = create_special_label_signature(special_labels) + name
+
     file_names = np.empty(len(fn_range), dtype=object)
     for index, x in enumerate(fn_range):
-        # no suffix needed, its not stored on hdd, only referenced in global images dict
-        file_names[index] = str(name) + "." + str(x)
+        # no suffix needed, it's not stored on hdd, only referenced in global images dict
+        file_names[index] = name + "." + str(x)
 
     return file_names
 

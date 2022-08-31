@@ -2,7 +2,7 @@ import math
 import pickle
 import sys
 import time
-from os.path import exists
+from os.path import exists, join
 
 import numpy as np
 import yaml
@@ -213,17 +213,17 @@ def main():
     caching_enabled = False
     load_cached_img = False
     if "cache-path" in global_cfg:
-        cache_path = global_cfg["cache-path"]
+        cache_path = join(global_cfg["cache-path"], keys_dir + ".pkl")
         # check cache_path if is not False or None -> implicating it is enabled in config
         # and check if it exists
         # then we will load the cache file, thus skipping the loader load_images_datarefs_all
         if cache_path:
             caching_enabled = True
-            if exists(global_cfg["cache-path"]):
+            if exists(cache_path):
                 load_cached_img = True
 
     global presets_all
-    presets_all = preprocessing.load_all_presets(keys_dir, key_count, preload_labels=load_cached_img)
+    presets_all = preprocessing.load_all_presets(current_deck, keys_dir, key_count, preload_labels=load_cached_img)
     global datarefs_all
     datarefs_all = preprocessing.load_datarefs(presets_all)
     global images_all
@@ -246,7 +246,7 @@ def main():
         # caching is enabled, but cache file not found
         print("cache file {} not found, starting the pre-generation.".format(cache_path))
         images_all = preprocessing.load_images_datarefs_all(
-            current_deck, presets_all, global_cfg["always-upper-case"])
+            current_deck, keys_dir, presets_all, global_cfg["always-upper-case"])
         # save images to cache-path
         print("saving the pregen to {}".format(cache_path))
         with open(cache_path, 'wb') as f:

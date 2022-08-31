@@ -105,7 +105,7 @@ class Button(object):
 
         # generate warnings for weird commands
         sanity.cmd2_check(index, name, cmd_type, cmd, cmd_mul, cmd_release, cmd_release_mul,
-                 cmd_on, cmd_off, cmd_on_mul, cmd_off_mul)
+                          cmd_on, cmd_off, cmd_on_mul, cmd_off_mul)
 
         self.cmd = cmd
         self.cmd_mul = cmd_mul
@@ -146,7 +146,8 @@ class Button(object):
             self.gauge["needle"] = get_filename_button_static_png(gauge["needle"])
             # get own filenames, which really doesn't exist on disk and are created dynamically only for the runtime
             # so we pregenerate them artificial names for the use in main global images dict
-            self.file_names = dynamic.create_dynamic_filenames(self.gauge["name"], self.dataref_states)
+            self.file_names = dynamic.create_dynamic_filenames(self.gauge["name"], self.dataref_states,
+                                                               self.label, self.special_labels)
         elif display:
             # sanity check for display (if it contains everything)
             sanity.display_check(index, name, display)
@@ -162,7 +163,8 @@ class Button(object):
                 self.display["color"] = "white"
 
             self.display["background"] = get_filename_button_static_png(display["background"])
-            self.file_names = dynamic.create_dynamic_filenames(self.display["name"], self.dataref_states)
+            self.file_names = dynamic.create_dynamic_filenames(self.display["name"], self.dataref_states,
+                                                               self.label, self.special_labels)
         elif self.dataref_states is not None:
             if icon is None:
                 logging.error("#{} {} is trying to set dataref_states without the 'icon' parameter, quitting..."
@@ -182,7 +184,7 @@ class Button(object):
             self.file_names[0] = get_filename_button_static_png(icon)
 
 
-def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
+def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=False):
     with open(join(target_dir, yaml_keyset)) as stream:
         try:
             preset_cfg = safe_load(stream)
@@ -237,11 +239,20 @@ def load_preset(target_dir, yaml_keyset, deck_key_count, preload_labels=False):
         # image post-loader load_images_datarefs_all is not called during current session
         if preload_labels:
             btn = preset[index]
-            for i, state_name in enumerate(btn.file_names):
-                # change state name for storing, allowing same icons with different labels
-                if btn.label:
-                    state_name = btn.label + state_name
-                    preset[index].file_names[i] = state_name
+            # dynamic elements (displays and gauges) were automatically handled by create_dynamic_filenames
+            # in the Button constructor
+            if not btn.display and not btn.gauge:
+                for i, state_name in enumerate(btn.file_names):
+                    # change state name for storing, allowing same icons with different labels
+                    if btn.label:
+                        state_name = btn.label + state_name
+                        preset[index].file_names[i] = state_name
+                    if btn.special_labels:
+                        for j, spec_label in enumerate(btn.special_labels):
+                            dynamic.get_text_pos(deck, spec_label)
+                        prefix_state_name = dynamic.create_special_label_signature(btn.special_labels)
+                        state_name = prefix_state_name + preset[index].file_names[i]
+                        preset[index].file_names[i] = state_name
 
         if cmd_type == "dir":
             other_keysets = np.append(other_keysets, name)
@@ -253,17 +264,17 @@ def add_yaml_suffix(filename):
     return filename + ".yaml"
 
 
-def load_all_presets(target_dir, deck_key_count, preload_labels=False):
+def load_all_presets(deck, target_dir, deck_key_count, preload_labels=False):
     presets_all = {}
     # read root
-    preset, keysets = load_preset(target_dir, ACTION_CFG, deck_key_count,
+    preset, keysets = load_preset(deck, target_dir, ACTION_CFG, deck_key_count,
                                   preload_labels=preload_labels)
     presets_all[ACTION_CFG_NAME] = preset
     # execute while there are keysets to be read and loaded into presets
     while keysets.size > 0:
         for _, key_set in enumerate(keysets):
             if key_set not in presets_all and key_set != "return":
-                preset, other_keysets = load_preset(target_dir, add_yaml_suffix(key_set), deck_key_count,
+                preset, other_keysets = load_preset(deck, target_dir, add_yaml_suffix(key_set), deck_key_count,
                                                     preload_labels=preload_labels)
                 presets_all[key_set] = preset
                 keysets = np.unique(np.concatenate((keysets, other_keysets), 0))
@@ -332,7 +343,6 @@ def render_key_image(deck, plane_conf_dir, icon_filename, label_text, special_la
         for i, spec_label in enumerate(special_labels):
             draw = dynamic.load_special_label(spec_label, deck, draw)
 
-
     global DEFAULT_FONT
     if label_text:
         if only_uppercase and not label_text.isupper():
@@ -380,6 +390,7 @@ def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
                 # change file_names in preset according to images_all, allowing same icons with different labels
                 # notice how this is executed in the post-processing stage
                 # i.e. after the presets have long been generated
+                # note: this does not apply to dynamic elements (displays, gauges)
                 if button.label:
                     state_name = button.label + state_name
                     button.file_names[i] = state_name
@@ -401,6 +412,7 @@ def load_images_datarefs_all(deck, plane_conf_dir, presets_all, only_uppercase):
         set_images_all.update(images_single_dir)
 
     return set_images_all
+
 
 #
 # pickle helpers
