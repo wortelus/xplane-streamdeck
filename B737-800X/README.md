@@ -58,7 +58,7 @@ of *0.0*, *1.0*, *2.0* (if the `name` of the button is `apuswitch`)
 - storing a dataref image as `apuswitch.0.5.png` if the dataref for middle position is `0.5` doesn't make sense.
 Use `dataref-multiplier` of `2` and store it as `apuswitch.1.0.png` (rounding down!!!)
 - for example: annunciators (that are **on**) in ZIBO 737 start around 0.75, then proceed to rise to 1.0
-... the files are though named as *0.0* and *1.0*, and i want to 0.75 display as on (1.0)! 
+... the files are though named as *0.0* and *1.0*, and I want to 0.75 display as on (1.0)! 
 So I use `dataref-multiplier` of 1.5. 
 - 0.75 * 1.5 = 1,125 -> (floored) -> **1.0**
 - 1.00 * 1.5 = 1.5 -> (floored) -> **1.0**

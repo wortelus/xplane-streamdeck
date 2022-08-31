@@ -6,13 +6,14 @@ This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Py
 This software includes rich set of features for robust control of the simulator cockpit.
 
 Developed with the idea taking away mouse controlling of most of the cockpit, 
-works best together with other simulator peripherals (e.g. radio, A/P panel etc.)
+works the best together with other simulator peripherals (e.g. radio, A/P panel etc.)
 
 **Supported planes:**
 - Boeing 737 NG by **Zibo**
 - Cessna 172 by Laminar Research
 
 Working across all Stream Deck versions, but ready to use configurations are made for the XL version.
+You can configure it for any kind of plane, though.
 
 ### Features:
 - Sync with X-Plane's dataref to visually depict the actual state
@@ -26,9 +27,9 @@ Working across all Stream Deck versions, but ready to use configurations are mad
 - Custom labels
 - **Displays**
 - **Gauges**
-- **400+ custom made icons** for the 737 NG
+- **400+ custom-made icons** for the 737 NG
 
-All of these features can be configurated in simple YAML configs. YAML is very easy to use
+All of these features can be configured in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
 
 ### Dependencies
@@ -49,7 +50,7 @@ Instructions for **Windows**
 2. **Clone this repository by:**
 - clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
 - or download source code by **Download ZIP** and extract the files
-- or download latest stable release under the **Releases** section
+- or download the latest stable release under the **Releases** section
 3. *(Optional step)* - **Add your custom font in the same directory as the `main.py`**
 - current one set is OFL font **IBMPlexMono**
 - the name the script will try to open is written in **config.yaml**
