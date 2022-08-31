@@ -1,7 +1,7 @@
 .idea
 __pycache__/
 venv
-/ms33558.ttf
+/fonts/ms33558.ttf
 img-cache.pkl
 172SP.pkl
 B737-800X.pkl

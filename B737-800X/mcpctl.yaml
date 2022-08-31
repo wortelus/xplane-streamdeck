@@ -20,7 +20,7 @@ actions:
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
-      font-path: consola.ttf
+      font-path: IBMPlexMono-Bold.ttf
       font-size: 32
       zero-pad: 3
       min: 0
@@ -52,7 +52,7 @@ actions:
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
-      font-path: consola.ttf
+      font-path: IBMPlexMono-Bold.ttf
       font-size: 32
       zero-pad: 3
       min: 0
@@ -84,7 +84,7 @@ actions:
       text-center:
         x: center
         y: 58 # center doesn't work as it should, due to font's height
-      font-path: consola.ttf
+      font-path: IBMPlexMono-Bold.ttf
       font-size: 24
       zero-pad: False
       min: 0
@@ -116,7 +116,7 @@ actions:
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
-      font-path: consola.ttf
+      font-path: IBMPlexMono-Bold.ttf
       font-size: 32
       zero-pad: False
       min: -8000
@@ -148,7 +148,7 @@ actions:
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
-      font-path: consola.ttf
+      font-path: IBMPlexMono-Bold.ttf
       font-size: 32
       zero-pad: 3
       min: 0
@@ -180,7 +180,7 @@ actions:
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
-      font-path: consola.ttf
+      font-path: IBMPlexMono-Bold.ttf
       font-size: 32
       zero-pad: 3
       min: 0
