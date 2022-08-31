@@ -81,7 +81,7 @@ actions:
     command-release: sim/audio_panel/transmit_audio_com2
 
 ###########################################################################################
-  -
+
   - index: 16
     name: mb_outer
     type: none
