@@ -4,7 +4,12 @@ from os.path import join
 import PIL
 from PIL import Image
 
-ASSETS_DIR = "icons"
+ASSETS_DIR = "./icons"
+FONTS_DIR = "./fonts"
+
+
+def get_font_path(font_name):
+    return join(FONTS_DIR, font_name)
 
 
 # Hierarchical handler for opening icon assets first in the plane specific asset directory

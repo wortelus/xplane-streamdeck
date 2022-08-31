@@ -1,7 +1,7 @@
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.ImageHelpers import PILHelper
-import imgio
+import assetio
 
 
 def get_dataref_states(element, button_self):
@@ -50,7 +50,8 @@ def get_text_pos(deck, special):
 
 
 def load_truetype_font(element):
-    return ImageFont.truetype(element["font-path"], element["font-size"])
+    font_path = assetio.get_font_path(element["font-path"])
+    return ImageFont.truetype(font_path, element["font-size"])
 
 
 #
@@ -66,8 +67,8 @@ def load_gauge_images(gauge, deck, plane_conf_dir, file_names):
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
-    needle = imgio.open_icon_asset(plane_conf_dir, (gauge["needle"]))
-    background = imgio.open_icon_asset(plane_conf_dir, (gauge["background"]))
+    needle = assetio.open_icon_asset(plane_conf_dir, (gauge["needle"]))
+    background = assetio.open_icon_asset(plane_conf_dir, (gauge["background"]))
 
     for i, fn in enumerate(file_names):
         final_img = background.copy()
@@ -93,9 +94,9 @@ def load_display_images(display, deck, plane_conf_dir, file_names, dataref_state
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
-    background = imgio.open_icon_asset(plane_conf_dir, display["background"])
+    background = assetio.open_icon_asset(plane_conf_dir, display["background"])
     # todo how not to load font every single time ?
-    current_font = ImageFont.truetype(display["font-path"], display["font-size"])
+    current_font = load_truetype_font(display)
     sl_fonts = None
     if special_labels:
         sl_fonts = np.empty(len(special_labels), dtype=object)
@@ -159,7 +160,7 @@ def load_special_label(special_label, deck, draw, font=None):
     get_text_pos(deck, special_label)
 
     if not font:
-        font = ImageFont.truetype(special_label["font-path"], special_label["font-size"])
+        font = load_truetype_font(special_label)
 
     draw.text(
         (special_label["text-center"]["x"], special_label["text-center"]["y"]),

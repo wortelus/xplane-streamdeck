@@ -24,9 +24,9 @@ except ImportError:
     print("You don't seem to have sanity.py near its main.py and preprocessing.py. correct your installation")
     sys.exit(1)
 try:
-    import imgio
+    import assetio
 except ImportError:
-    print("You don't seem to have imgio.py near its main.py and preprocessing.py. correct your installation")
+    print("You don't seem to have assetio.py near its main.py and preprocessing.py. correct your installation")
     sys.exit(1)
 
 ACTION_CFG = "actions.yaml"
@@ -44,6 +44,8 @@ IMAGES_ALREADY_GENERATED = {}
 
 
 def load_default_font(path, size):
+    path = assetio.get_font_path(path)
+
     global DEFAULT_FONT_SIZE
     DEFAULT_FONT_SIZE = size
     global DEFAULT_FONT
@@ -329,7 +331,7 @@ def render_key_image(deck, plane_conf_dir, icon_filename, label_text, special_la
     # Ask forgiveness, not permission
     # This way we use nested approach to check first the plane specific icon set directory,
     # and next the icons/ directory for the asset
-    icon = imgio.open_icon_asset(plane_conf_dir, icon_filename)
+    icon = assetio.open_icon_asset(plane_conf_dir, icon_filename)
 
     # Resize the source image asset to best-fit the dimensions of a single key,
     # leaving a margin at the bottom so that we can draw the key title
