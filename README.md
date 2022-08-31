@@ -115,7 +115,7 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 - You can change the update rate in the `main.py`
 
 ### Key Creation and Configuration
-**Refer to the `docs/plane-keys_configuration.md` for a guide on how to create/edit buttons.**
+**Refer to the `docs/plane_keys_configuration.md` for a guide on how to create/edit buttons.**
 
 ### What is planned / WIP?
 - Backward compatible GUI Drag 'n Drop utility for managing the plane presets
