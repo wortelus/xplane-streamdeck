@@ -164,7 +164,7 @@ def load_special_label(special_label, deck, draw, font=None):
 
     draw.text(
         (special_label["text-center"]["x"], special_label["text-center"]["y"]),
-        text=special_label["label"], font=font, anchor="ms", fill=special_label["color"],
+        text=str(special_label["label"]), font=font, anchor="ms", fill=special_label["color"],
         # direction=special_label["direction"], ----- libraqm required
         align=special_label["align"])
     return draw

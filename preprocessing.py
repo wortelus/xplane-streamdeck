@@ -206,7 +206,7 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
         # try to convert to int because it is used as array index
         try:
             index = int(index)
-        except ValueError:
+        except (ValueError, TypeError):
             logging.error("button with name {} has index non-convertable to integer, quitting...".format(name))
             sys.exit(1)
         cmd_type = key.get("type")
