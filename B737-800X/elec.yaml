@@ -7,9 +7,7 @@ actions:
   - index: 29
     name: bat cover
     type: single
-    file-names:
-      - blue-up
-      - red-down
+    icon: black-cover
     dataref: laminar/B738/button_switch/cover_position[2]
     command: laminar/B738/button_switch_cover02
     label: BAT COVER
@@ -34,14 +32,7 @@ actions:
   - index: 25
     name: dc power knob
     type: dual
-    file-names:
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
+    icon: dcsel
     dataref: laminar/B738/knob/dc_power
     dataref-states:
       - 0.0
@@ -53,19 +44,10 @@ actions:
       - 6.0
     command-on: laminar/B738/knob/dc_power_up
     command-off: laminar/B738/knob/dc_power_dn
-    label: DC POWER
   - index: 27
     name: ac power knob
     type: dual
-    icon: blue-button
-    file-names:
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
-      - blue-button
+    icon: acsel
     dataref: laminar/B738/knob/ac_power
     dataref-states:
       - 0.0
@@ -77,7 +59,6 @@ actions:
       - 6.0
     command-on: laminar/B738/knob/ac_power_up
     command-off: laminar/B738/knob/ac_power_dn
-    label: AC POWER
   - index: 1
     name: bat discharge
     type: none
@@ -96,7 +77,7 @@ actions:
     icon: elec
     dataref: laminar/B738/annunciator/elec
     dataref-multiplier: 1.5
-  - index: 20
+  - index: 4
     name: maint
     type: none
     icon: white-button
@@ -194,3 +175,119 @@ actions:
       color: lime
       keep-decimal: False
       background: none
+# electric panel labels
+  - index: 8
+    name: elec dc amps label
+    type: none
+    icon: none
+    special-labels:
+      - label: DC
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: DodgerBlue
+        direction: ltr
+        align: center
+      - label: AMPS
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 16
+    name: elec dc volts label
+    type: none
+    icon: none
+    special-labels:
+      - label: DC
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: DodgerBlue
+        direction: ltr
+        align: center
+      - label: VOLTS
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 10
+    name: elec ac amps label
+    type: none
+    icon: none
+    special-labels:
+      - label: AC
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: orange
+        direction: ltr
+        align: center
+      - label: AMPS
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 12
+    name: elec ac freq label
+    type: none
+    icon: none
+    special-labels:
+      - label: AC
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: orange
+        direction: ltr
+        align: center
+      - label: FREQ
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
+  - index: 20
+    name: elec ac volts label
+    type: none
+    icon: none
+    special-labels:
+      - label: AC
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: orange
+        direction: ltr
+        align: center
+      - label: VOLTS
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 24
+        color: white
+        direction: ltr
+        align: center
