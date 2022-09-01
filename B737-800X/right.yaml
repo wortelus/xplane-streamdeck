@@ -400,36 +400,3 @@ actions:
     icon: eye
     label: FMC
     command: sim/view/quick_look_13
-  - index: 9
-    name: credits
-    type: none
-    icon: none
-    special-labels:
-      - label: with love
-        text-center:
-          x: center
-          y: 30
-        font-path: IBMPlexMono-Bold.ttf
-        font-size: 16
-        color: white
-        direction: ltr
-        align: center
-      - label: by
-        text-center:
-          x: center
-          y: 55
-        font-path: IBMPlexMono-Bold.ttf
-        font-size: 16
-        color: white
-        direction: ltr
-        align: center
-      - label: wortelus
-        text-center:
-          x: center
-          y: 80
-        font-path: IBMPlexMono-Bold.ttf
-        font-size: 16
-        color: white
-        direction: ltr
-        align: center
-
