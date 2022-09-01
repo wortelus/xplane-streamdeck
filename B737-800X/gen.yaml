@@ -129,7 +129,7 @@ actions:
   - index: 9
     name: cover transfer bus
     type: single
-    icon: black-cover
+    icon: black-cover-rotated
     dataref: laminar/B738/button_switch/cover_position[6]
     command: laminar/B738/button_switch_cover06
     label: TR BUS

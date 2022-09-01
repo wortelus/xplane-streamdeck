@@ -80,12 +80,18 @@ actions:
     icon: offann
     dataref: laminar/B738/annunciator/fdr_off
     dataref-multiplier: 1.5
+  - index: 22
+    name: flt recorder label
+    icon: none
+    type: none
+    label: TEST NORMAL
   - index: 30
     name: flt recorder cover
     type: single
-    icon: black-cover
+    icon: black-cover-rotated
     dataref: laminar/B738/switches/fdr_cover_pos
     command: laminar/B738/toggle_switch/fdr_cover
+    label: FLT REC
   - index: 31
     name: flt recorder switch
     type: single

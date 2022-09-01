@@ -1,24 +1,24 @@
 actions:
-  - index: 24
+  - index: 30
     name: return
     type: dir
     icon: dir
     label: RETURN
     # flt ctl a
-  - index: 2
+  - index: 5
     name: flt ctl a cover
     type: single
     icon: black-cover
     dataref: laminar/B738/switches/flt_ctr_A_cover_pos
     command: laminar/B738/toggle_switch/flt_ctr_A_cover
     label: FLT CTL A
-  - index: 10
+  - index: 13
     name: flt ctl a up
     type: single
     icon: orange-up
     command: laminar/B738/toggle_switch/flt_ctr_A_up
     label: A UP
-  - index: 18
+  - index: 21
     name: flt ctl a
     type: none
     file-names:
@@ -31,27 +31,27 @@ actions:
       - 1.0
     dataref: laminar/B738/switches/flt_ctr_A_pos
     label: FLT CTL A
-  - index: 26
+  - index: 29
     name: flt ctl a down
     type: single
-    icon: orange-down
+    icon: blue-down
     command: laminar/B738/toggle_switch/flt_ctr_A_dn
     label: A DOWN
     # flt ctl b
-  - index: 4
+  - index: 7
     name: flt ctl b cover
     type: single
     icon: black-cover
     dataref: laminar/B738/switches/flt_ctr_B_cover_pos
     command: laminar/B738/toggle_switch/flt_ctr_B_cover
     label: FLT CTL B
-  - index: 12
+  - index: 15
     name: flt ctl b up
     type: single
     icon: orange-up
     command: laminar/B738/toggle_switch/flt_ctr_B_up
     label: B UP
-  - index: 20
+  - index: 23
     name: flt ctl b
     type: none
     file-names:
@@ -64,9 +64,62 @@ actions:
       - 1.0
     dataref: laminar/B738/switches/flt_ctr_B_pos
     label: CLT CTL B
-  - index: 28
+  - index: 31
     name: flt ctl b down
     type: single
-    icon: orange-down
+    icon: blue-down
     command: laminar/B738/toggle_switch/flt_ctr_B_dn
     label: B DOWN
+  # labels
+  - index: 14
+    name: flt ctl stby rud label
+    icon: none
+    type: none
+    special-labels:
+      - label: STBY
+        text-center:
+          x: center
+          y: 30
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 22
+        color: orange
+        direction: ltr
+        align: center
+      - label: RUD
+        text-center:
+          x: center
+          y: 80
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 22
+        color: orange
+        direction: ltr
+        align: center
+  - index: 22
+    name: flt ctl off label
+    icon: none
+    type: none
+    special-labels:
+      - label: A OFF B
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 22
+        color: red
+        direction: ltr
+        align: center
+  - index: 30
+    name: return
+    icon: none
+    type: dir
+    special-labels:
+      - label: A ON B
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 22
+        color: DodgerBlue
+        direction: ltr
+        align: center
+    label: return
