@@ -116,7 +116,7 @@ actions:
     dataref: laminar/B738/annunciator/ground_power_avail
     dataref-multiplier: 1.5
     # transfer bus
-  - index: 9
+  - index: 17
     name: transfer bus
     type: dual
     file-names:
@@ -126,10 +126,33 @@ actions:
     command-on: sim/electrical/cross_tie_on
     command-off: sim/electrical/cross_tie_off
     label: OFF AUTO
-  - index: 1
+  - index: 9
     name: cover transfer bus
     type: single
     icon: black-cover
     dataref: laminar/B738/button_switch/cover_position[6]
     command: laminar/B738/button_switch_cover06
-    label: TR BUS COVER
+    label: TR BUS
+  - index: 1
+    name: transfer bus label
+    icon: none
+    type: none
+    special-labels:
+      - label: TRANSFER
+        text-center:
+          x: center
+          y: 40
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 18
+        color: white
+        direction: ltr
+        align: center
+      - label: BUS
+        text-center:
+          x: center
+          y: 70
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 22
+        color: white
+        direction: ltr
+        align: center

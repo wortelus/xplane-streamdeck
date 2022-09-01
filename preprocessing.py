@@ -408,7 +408,9 @@ def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
 
 def load_images_datarefs_all(deck, plane_conf_dir, presets_all, only_uppercase):
     set_images_all = {"none.png": render_key_image(deck, plane_conf_dir, get_filename_button_static_png("none"), None,
-                                                   None, only_uppercase=only_uppercase)}
+                                                   None, only_uppercase=only_uppercase),
+                      "unknown.png": render_key_image(deck, plane_conf_dir, get_filename_button_static_png("unknown"),
+                                                      None, None, only_uppercase=only_uppercase)}
     for _, dataref_dir in presets_all.items():
         images_single_dir = load_images_datarefs(deck, plane_conf_dir, dataref_dir, only_uppercase)
         set_images_all.update(images_single_dir)

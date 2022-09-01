@@ -11,7 +11,7 @@ actions:
     icon: black-cover
     dataref: laminar/B738/switches/flt_ctr_A_cover_pos
     command: laminar/B738/toggle_switch/flt_ctr_A_cover
-    label: COVER
+    label: FLT CTL A
   - index: 10
     name: flt ctl a up
     type: single
@@ -44,7 +44,7 @@ actions:
     icon: black-cover
     dataref: laminar/B738/switches/flt_ctr_B_cover_pos
     command: laminar/B738/toggle_switch/flt_ctr_B_cover
-    label: COVER
+    label: FLT CTL B
   - index: 12
     name: flt ctl b up
     type: single

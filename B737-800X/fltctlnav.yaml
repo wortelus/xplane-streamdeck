@@ -140,7 +140,7 @@ actions:
     icon: red-cover
     dataref: laminar/B738/switches/alt_flaps_cover_pos
     command: laminar/B738/toggle_switch/alt_flaps_cover
-    label: COVER
+    label: ALT FLAPS
   - index: 21
     name: alt flaps arm
     type: single

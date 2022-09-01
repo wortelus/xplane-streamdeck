@@ -10,7 +10,7 @@ actions:
     icon: black-cover
     dataref: laminar/B738/button_switch/cover_position[2]
     command: laminar/B738/button_switch_cover02
-    label: BAT COVER
+    label: BATTERY
   - index: 30
     name: cab util
     type: single

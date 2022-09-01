@@ -103,7 +103,13 @@ def deck_show(deck, datarefs):
         if floor_cur_val in dref["dataref-states"]:
             dref_index = dref["dataref-states"].index(floor_cur_val)
             image_name = dref["file-names"][dref_index]
-            update_key_image(deck, sd_index, images_all[image_name])
+            try:
+                update_key_image(deck, sd_index, images_all[image_name])
+            except KeyError as e:
+                print("unknown key at {} with name {}, image not found is: {}. Have you changed the configuration?"
+                      " If so, delete the cache file to be recreated with new one."
+                      .format(sd_index, dref["name"], str(e)))
+                update_key_image(deck, sd_index, images_all["unknown.png"])
 
 
 def deck_show_static(deck):
@@ -120,7 +126,13 @@ def deck_show_static(deck):
             continue
 
         image_name = dir_button.file_names[0]
-        update_key_image(deck, dir_button.index, images_all[image_name])
+        try:
+            update_key_image(deck, dir_button.index, images_all[image_name])
+        except KeyError as e:
+            print("unknown key at {} with name {}, image not found is: {}. Have you changed the configuration?"
+                  " If so, delete the cache file to be recreated with new one."
+                  .format(index, dir_button.name, str(e)))
+            update_key_image(deck, dir_button.index, images_all["unknown.png"])
 
 
 def update_fetch_datarefs(current_deck):
