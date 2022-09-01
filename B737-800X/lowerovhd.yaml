@@ -263,9 +263,7 @@ actions:
   - index: 6
     name: arm emer exit lights
     type: single
-    file-names:
-      - blue-down
-      - red-down
+    icon: black-cover
     dataref: laminar/B738/button_switch/cover_position[9]
     command: laminar/B738/button_switch_cover09
     label: EMER EXIT LT

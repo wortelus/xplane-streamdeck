@@ -83,9 +83,7 @@ actions:
   - index: 30
     name: flt recorder cover
     type: single
-    file-names:
-      - red-down
-      - blue-down
+    icon: black-cover
     dataref: laminar/B738/switches/fdr_cover_pos
     command: laminar/B738/toggle_switch/fdr_cover
   - index: 31

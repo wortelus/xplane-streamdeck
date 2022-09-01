@@ -100,9 +100,7 @@ actions:
   - index: 11
     name: spoiler a cover
     type: single
-    file-names:
-      - blue-down
-      - red-down
+    icon: black-cover
     dataref: laminar/B738/switches/spoiler_A_cover_pos
     command: laminar/B738/toggle_switch/spoiler_A_cover
     label: SPLR A CVR
@@ -118,9 +116,7 @@ actions:
   - index: 12
     name: spoiler b
     type: single
-    file-names:
-      - blue-down
-      - red-down
+    icon: black-cover
     dataref: laminar/B738/switches/spoiler_B_cover_pos
     command: laminar/B738/toggle_switch/spoiler_B_cover
     label: SPLR B CVR
@@ -141,9 +137,7 @@ actions:
   - index: 13
     name: alt flaps arm cover
     type: single
-    file-names:
-      - blue-down
-      - red-down
+    icon: red-cover
     dataref: laminar/B738/switches/alt_flaps_cover_pos
     command: laminar/B738/toggle_switch/alt_flaps_cover
     label: COVER

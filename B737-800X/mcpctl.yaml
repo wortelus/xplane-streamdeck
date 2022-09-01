@@ -36,6 +36,20 @@ actions:
     command: FlyWithLua/streamdeck_handler/ap_speed_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_speed_dn_end
     label: SPEED DN
+  - index: 26
+    name: mcp speed label
+    type: none
+    icon: none
+    special-labels:
+      - label: SPD
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
   - index: 3
     name: mcp heading up
     type: single
@@ -68,6 +82,20 @@ actions:
     command: FlyWithLua/streamdeck_handler/ap_heading_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_heading_dn_end
     label: HDG DN
+  - index: 27
+    name: mcp heading label
+    type: none
+    icon: none
+    special-labels:
+      - label: HDG
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
   - index: 4
     name: mcp alt up
     type: single
@@ -100,6 +128,20 @@ actions:
     command: FlyWithLua/streamdeck_handler/ap_altitude_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_altitude_dn_end
     label: ALT DN
+  - index: 28
+    name: mcp speed label
+    type: none
+    icon: none
+    special-labels:
+      - label: ALT
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
   - index: 5
     name: mcp vs up
     type: single
@@ -132,6 +174,20 @@ actions:
     command: FlyWithLua/streamdeck_handler/ap_vs_dn_start
     command-release: FlyWithLua/streamdeck_handler/ap_vs_dn_end
     label: VS DN
+  - index: 29
+    name: mcp vs label
+    type: none
+    icon: none
+    special-labels:
+      - label: V/S
+        text-center:
+          x: center
+          y: 55
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 32
+        color: white
+        direction: ltr
+        align: center
   - index: 0
     name: crs capt up
     type: single

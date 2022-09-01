@@ -1,8 +1,8 @@
 actions:
-  - index: 8
+  - index: 9
     name: apu switch up
     type: single
-    icon: blue-up
+    icon: orange-up
     command: laminar/B738/spring_toggle_switch/APU_start_pos_up
   - index: 16
     name: return
@@ -17,6 +17,41 @@ actions:
       - 0.0
       - 1.0
       - 2.0
+  - index: 8
+    name: apu egt
+    type: none
+    dataref: laminar/B738/electrical/apu_temp
+    gauge:
+      name: apuegt
+      needle-center:
+        x: 64
+        y: 64
+      background: apuegtbckg
+      needle: apuegtneedle
+      range-degrees: 200
+      min: 0.0
+      max: 100.0
+      step: 1.0
+  - index: 0
+    name: apu maint
+    type: none
+    icon: maint.0.0
+  - index: 1
+    name: apu low oil pressure
+    type: none
+    icon: lowoilpressure
+    dataref: laminar/B738/annunciator/apu_low_oil
+    dataref-multiplier: 1.5
+  - index: 2
+    name: apu fault
+    type: none
+    icon: fault
+    dataref: laminar/B738/annunciator/apu_fault
+    dataref-multiplier: 1.5
+  - index: 3
+    name: apu overspeed
+    type: none
+    icon: overspeed.0.0
   - index: 24
     name: apu switch down
     type: single
