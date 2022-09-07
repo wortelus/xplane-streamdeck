@@ -1,7 +1,9 @@
 # X-Plane Stream Deck Manager
 ![main screen](misc/main.jpg)
 
-This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Python 3.10 for X-Plane 11.51.
+This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Python 3.10 for X-Plane 11.
+
+**X-Plane 12 Ready**
 
 This software includes rich set of features for robust control of the simulator cockpit.
 
@@ -24,10 +26,10 @@ You can configure it for any kind of plane, though.
 - Momentary switches
 - Push / Release actions
 - Supporting multi-position switches or knobs control via single button (cycling positions)
-- Custom labels
+- Custom, configurable labels
 - **Displays**
 - **Gauges**
-- **400+ custom-made icons** for the 737 NG
+- **500+ custom-made icons** for the 737 NG, Cessna 172 and more
 
 All of these features can be configured in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
