@@ -385,23 +385,23 @@ def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
             continue
 
         for i, state_name in enumerate(button.file_names):
-            if state_name not in set_images:
+            # change file_names in preset according to images_all, allowing same icons with different labels
+            # notice how this is executed in the post-processing stage
+            # i.e. after the presets have long been generated
+            # note: this does not apply to dynamic elements (displays, gauges)
+            memory_img_name = state_name
+            if button.label:
+                memory_img_name = button.label + memory_img_name
+                button.file_names[i] = memory_img_name
+            if button.special_labels:
+                prefix_state_name = dynamic.create_special_label_signature(button.special_labels)
+                memory_img_name = prefix_state_name + button.file_names[i]
+                button.file_names[i] = memory_img_name
+
+            if memory_img_name not in set_images:
                 state_image = render_key_image(deck, plane_conf_dir, state_name,
                                                button.label, button.special_labels, only_uppercase)
-
-                # change file_names in preset according to images_all, allowing same icons with different labels
-                # notice how this is executed in the post-processing stage
-                # i.e. after the presets have long been generated
-                # note: this does not apply to dynamic elements (displays, gauges)
-                if button.label:
-                    state_name = button.label + state_name
-                    button.file_names[i] = state_name
-                if button.special_labels:
-                    prefix_state_name = dynamic.create_special_label_signature(button.special_labels)
-                    state_name = prefix_state_name + button.file_names[i]
-                    button.file_names[i] = state_name
-
-                set_images[state_name] = state_image
+                set_images[memory_img_name] = state_image
 
     return set_images
 
