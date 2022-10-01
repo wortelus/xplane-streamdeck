@@ -261,8 +261,6 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
                     # change state name for storing, allowing same icons with different labels
                     memory_img_name = get_img_memory_name(state_name, btn.label, btn.special_labels,
                                                           preload_pos=True, deck=deck)
-                    if "T/O LAND" in memory_img_name:
-                        print(memory_img_name)
                     preset[index].file_names[i] = memory_img_name
 
         if cmd_type == "dir":
