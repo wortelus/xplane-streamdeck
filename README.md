@@ -148,12 +148,8 @@ StreamDeck.Transport.Transport.TransportError: Failed to write out report (-1)
 ```
 
 ### Acknowledgments
-*IBMPlexMono-Bold.ttf* - Licensed under SIL Open Font License (OFL) 
-
-IBM Plex™ is an international typeface family designed by Mike Abbink, IBM BX&D, in collaboration with Bold Monday, 
-an independent Dutch type foundry. Plex was designed to capture IBM’s spirit and history, and to illustrate the 
-unique relationship between mankind and machine—a principal theme for IBM since the turn of the century.
-
+*IBMPlexMono* &
+*DSEG* - Licensed under the SIL Open Font License 1.1.
 ### Contributors
 I would like to thank the following members of the flight sim community for participating in this open source project.
  - **esmiol** from *x-plane.org* forums - for creating the Cessna 172 configuration and graphics
