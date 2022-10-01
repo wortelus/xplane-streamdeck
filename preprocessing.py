@@ -186,6 +186,19 @@ class Button(object):
             self.file_names[0] = get_filename_button_static_png(icon)
 
 
+def get_img_memory_name(file_name, label, special_labels, preload_pos=False, deck=None):
+    memory_img_name = file_name
+    if label:
+        memory_img_name = label + memory_img_name
+    if special_labels:
+        if preload_pos:
+            for j, spec_label in enumerate(special_labels):
+                dynamic.get_text_pos(deck, special_labels[j])
+        prefix_state_name = dynamic.create_special_label_signature(special_labels)
+        memory_img_name = prefix_state_name + memory_img_name
+    return memory_img_name
+
+
 def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=False):
     with open(join(target_dir, yaml_keyset)) as stream:
         try:
@@ -246,15 +259,11 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
             if not btn.display and not btn.gauge:
                 for i, state_name in enumerate(btn.file_names):
                     # change state name for storing, allowing same icons with different labels
-                    if btn.label:
-                        state_name = btn.label + state_name
-                        preset[index].file_names[i] = state_name
-                    if btn.special_labels:
-                        for j, spec_label in enumerate(btn.special_labels):
-                            dynamic.get_text_pos(deck, spec_label)
-                        prefix_state_name = dynamic.create_special_label_signature(btn.special_labels)
-                        state_name = prefix_state_name + preset[index].file_names[i]
-                        preset[index].file_names[i] = state_name
+                    memory_img_name = get_img_memory_name(state_name, btn.label, btn.special_labels,
+                                                          preload_pos=True, deck=deck)
+                    if "T/O LAND" in memory_img_name:
+                        print(memory_img_name)
+                    preset[index].file_names[i] = memory_img_name
 
         if cmd_type == "dir":
             other_keysets = np.append(other_keysets, name)
@@ -389,14 +398,10 @@ def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
             # notice how this is executed in the post-processing stage
             # i.e. after the presets have long been generated
             # note: this does not apply to dynamic elements (displays, gauges)
-            memory_img_name = state_name
-            if button.label:
-                memory_img_name = button.label + memory_img_name
-                button.file_names[i] = memory_img_name
-            if button.special_labels:
-                prefix_state_name = dynamic.create_special_label_signature(button.special_labels)
-                memory_img_name = prefix_state_name + button.file_names[i]
-                button.file_names[i] = memory_img_name
+
+            memory_img_name = get_img_memory_name(state_name, button.label, button.special_labels,
+                                                  preload_pos=True, deck=deck)
+            button.file_names[i] = memory_img_name
 
             if memory_img_name not in set_images:
                 state_image = render_key_image(deck, plane_conf_dir, state_name,

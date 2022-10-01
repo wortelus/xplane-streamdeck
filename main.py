@@ -6,7 +6,7 @@ from os.path import exists, join
 
 import numpy as np
 import yaml
-from StreamDeck.DeviceManager import DeviceManager
+from StreamDeck.DeviceManager import DeviceManager, ProbeError
 from yaml import load
 import pyxpudpserver as XPUDP
 import logging
@@ -165,7 +165,13 @@ def main():
     print("Starting xplane-streamdeck by wortelus. This software is licensed under BSD 2-Clause License.")
     print("Copyright (c) 2022, Daniel Slavík All rights reserved.")
     deck_count = 0
-    decks = DeviceManager().enumerate()
+    try:
+        decks = DeviceManager().enumerate()
+    except ProbeError as e:
+        print("StreamDeck probe error, have you installed the LibUSB HIDAPI according to the README.md?")
+        print(e)
+        sys.exit(1)
+
     deck_count = len(decks)
     print("found {} Stream Deck(s).".format(deck_count))
 
