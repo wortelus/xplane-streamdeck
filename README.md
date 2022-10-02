@@ -1,9 +1,7 @@
 # X-Plane Stream Deck Manager
 ![main screen](misc/main.jpg)
 
-This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Python 3.10 for X-Plane 11.
-
-**X-Plane 12 Ready**
+This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Python 3.10 for X-Plane 11 & **X-Plane 12**.
 
 This software includes rich set of features for robust control of the simulator cockpit.
 
@@ -18,7 +16,7 @@ Working across all Stream Deck versions, but ready to use configurations are mad
 You can configure it for any kind of plane, though.
 
 ### Features:
-- Sync with X-Plane's dataref to visually depict the actual state
+- Fast & high performance sync with X-Plane's dataref to visually depict the actual state
 - Multiple dataref states with each custom key image
 - Directories
 - Toggle actions (single command)

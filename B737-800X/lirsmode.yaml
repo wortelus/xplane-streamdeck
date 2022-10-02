@@ -1,4 +1,28 @@
 actions:
+  - index: 0
+    name: left dc align
+    type: none
+    icon: align
+    dataref: laminar/B738/annunciator/irs_align_left
+    dataref-multiplier: 1.5
+  - index: 1
+    name: left irs on dc
+    type: none
+    icon: ondc
+    dataref: laminar/B738/annunciator/irs_on_dc_left
+    dataref-multiplier: 1.5
+  - index: 8
+    name: left irs fault
+    type: none
+    icon: fault
+    dataref: laminar/B738/annunciator/irs_align_fail_left
+    dataref-multiplier: 1.5
+  - index: 9
+    name: left irs dc fail
+    type: none
+    icon: dcfail
+    dataref: laminar/B738/annunciator/irs_dc_fail_left
+    dataref-multiplier: 1.5
   - index: 17
     name: return
     type: dir
