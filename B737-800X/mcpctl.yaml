@@ -159,7 +159,7 @@ actions:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
       font-path: DSEG14Classic-Regular.ttf
-      font-size: 32
+      font-size: 24
       zero-pad: False
       min: -8000
       max: 6000

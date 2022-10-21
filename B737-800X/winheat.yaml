@@ -53,17 +53,17 @@ actions:
       - green2
     command: laminar/B738/toggle_switch/window_heat_r_side
     label: R SIDE
-  - index: 27
+  - index: 10
     name: ovht test up
     type: single
-    icon: blue-up
+    icon: white-up
     command: FlyWithLua/streamdeck_handler/win_ovht_test_up_start
     command-release: FlyWithLua/streamdeck_handler/win_ovht_test_up_end
     label: OVHT TEST
-  - index: 25
+  - index: 26
     name: ovht test dn
     type: single
-    icon: blue-down
+    icon: white-down
     command: FlyWithLua/streamdeck_handler/win_ovht_test_dn_start
     command-release: FlyWithLua/streamdeck_handler/win_ovht_test_dn_end
     label: PWR TEST
