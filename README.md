@@ -102,7 +102,7 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 |        Lower Overhead 737 NG        |   MCP Collins 737 NG   |
 |:-----------------------------------:|:----------------------:|
 | ![lower overhead](misc/lwrovhd.jpg) |  ![mcp](misc/mcp.jpg)  |
-|   **Electrical Overhead 7373 NG**   |   **Miscellaneous**    |
+|   **Electrical Overhead 737 NG**    |   **Miscellaneous**    |
 |  ![lower overhead](misc/elec.jpg)   | ![mcp](misc/right.jpg) |
 
 *More example images in `misc/`*
