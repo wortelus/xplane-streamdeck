@@ -1,7 +1,7 @@
 # X-Plane Stream Deck Manager
 ![main screen](misc/main.jpg)
 
-This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed on Python 3.10 for X-Plane 11 & **X-Plane 12**.
+This is a manager for X-Plane <-> Elgato Stream Deck connection. Developed in Python 3.10 for X-Plane 11 & **X-Plane 12**.
 
 This software includes rich set of features for robust control of the simulator cockpit.
 
@@ -51,13 +51,13 @@ Instructions for **Windows**
 - clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
 - or download source code by **Download ZIP** and extract the files
 - or download the latest stable release under the **Releases** section
-3. *(Optional step)* - **Add your custom font in the same directory as the `main.py`**
+3. *(Optional step)* - **Add your custom font in the fonts directory**
 - current one set is OFL font **IBMPlexMono**
 - the name the script will try to open is written in **config.yaml**
-- The script searches first the working directory of the program, then `C:/Windows/Fonts`
+- Custom labels and displays have their own definitions in plane configurations
+- The script searches first the `fonts/` directory of the program, then `C:/Windows/Fonts`
 - **MS33558** optional
 - You can download it from the internet, this repository doesn't redistribute it.
-- If you want to use downloaded font, put it under the `xplane-streamdeck` directory
 4. **Install the dependencies by**
 
 `.../xplane-streamdeck> python -m pip install -r dependencies.txt`
@@ -99,9 +99,11 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 - **Old cache with new icon set, configuration, font etc. can often cause funky behavior or crashes.**
 
 ## Additional Info
-|        Lower Overhead 737 NG        |  MCP Collins 737 NG  |
-|:-----------------------------------:|:--------------------:|
-| ![lower overhead](misc/lwrovhd.jpg) | ![mcp](misc/mcp.jpg) |
+|        Lower Overhead 737 NG        |   MCP Collins 737 NG   |
+|:-----------------------------------:|:----------------------:|
+| ![lower overhead](misc/lwrovhd.jpg) |  ![mcp](misc/mcp.jpg)  |
+|   **Electrical Overhead 7373 NG**   |   **Miscellaneous**    |
+|  ![lower overhead](misc/elec.jpg)   | ![mcp](misc/right.jpg) |
 
 *More example images in `misc/`*
 
