@@ -24,6 +24,19 @@ except ImportError:
 logging.basicConfig(encoding='utf-8')
 
 
+class XPUDPHandler(logging.StreamHandler):
+    def __init__(self):
+        super().__init__(stream=sys.stderr)
+        self.OSError = False
+        self.Error = False
+
+    def emit(self, record):
+        if record.levelno >= 40 and record.exc_info[0] is OSError:
+            self.OSError = True
+        elif record.levelno >= 40:
+            self.Error = True
+
+
 # 0 is to move down, 1 to move up
 def move_up_down_button(key, key_index, direction):
     if fetch_datarefs[key_index] >= key.dataref_max:
@@ -210,9 +223,21 @@ def main():
         deck_count = min(deck_count, len(global_cfg["stream-decks"]))
 
     # starting the X-Plane UDP client
+    xpudp_logger = logging.getLogger("UDPserver")
+    xpudp_handler = XPUDPHandler()
+    xpudp_logger.addHandler(xpudp_handler)
     XPUDP.pyXPUDPServer.initialiseUDP((global_cfg["server-ip"], global_cfg["server-port"]),
                                       (global_cfg["xp-ip"], global_cfg["xp-port"]),
                                       "X-Plane Stream Deck Manager")
+
+    if xpudp_handler.Error:
+        print("The X-Plane UDP connection could not be initialized, refer to README.md for potential causes.")
+        sys.exit(1)
+    elif xpudp_handler.OSError:
+        print("The X-Plane UDP connection could not be initialized due to operating system error, this is probably"
+              " caused by misconfiguration of port numbers or the xplane-streamdeck is launched twice.")
+        sys.exit(1)
+
     XPUDP.pyXPUDPServer.start()
 
     # for now the software works only for one panel

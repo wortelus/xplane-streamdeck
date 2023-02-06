@@ -216,12 +216,19 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
     for _, key in enumerate(keys):
         index = key.get("index")
         name = key.get("name")
+
         # try to convert to int because it is used as array index
         try:
             index = int(index)
         except (ValueError, TypeError):
             logging.error("button with name {} has index non-convertable to integer, quitting...".format(name))
             sys.exit(1)
+
+        if index >= deck_key_count:
+            logging.error("button with name {} has index which is too large for {} key device. "
+                          "The configuration will still launch, but the layout will be broken."
+                          .format(name, deck_key_count))
+            continue
         cmd_type = key.get("type")
         preset[index] = Button(
             index,
