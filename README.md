@@ -138,6 +138,11 @@ RuntimeError: dictionary changed size during iteration
 StreamDeck.Transport.Transport.TransportError: Failed to write out report (-1) 
 ```
 
+- If you break the config socket (IP address / port) settings or launch the xplane-streamdeck twice, you will get
+this message.
+```
+The X-Plane UDP connection could not be initialized due to operating system error, this is probably caused by misconfiguration of port numbers or the xplane-streamdeck is launched twice.
+```
 ### Acknowledgments
 *IBMPlexMono* &
 *DSEG* - Licensed under the SIL Open Font License 1.1.

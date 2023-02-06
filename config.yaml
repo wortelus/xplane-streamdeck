@@ -1,17 +1,31 @@
-# X-Plane server UDP settings
+# xplane-streamdeck global config
+# here you will find most of the configurations you can change, which
+# are not dependent on the preset you are running on
+
+# Brightness of the Stream Deck keys
+brightness: 75
+
+# X-Plane server UDP settings, change necessary if you are running X-Plane on a remote machine
 xp-ip: 127.0.0.1
 xp-port: 49000
+
+# Local server, do not change unless you are running more instances of such services
+# due to the fact that every socket must use only max 1 port
 server-ip: 127.0.0.1
 server-port: 49008
+
 # font used for labels (displays use different one)
 default-font: IBMPlexMono-Bold.ttf
 default-font-size: 13
+
 # set False if you want lower case labels
 always-upper-case: True
+
 # comment out following line to disable image caching
 # the images will have to load for several seconds every time, but it is suitable for tweaking
+
 cache-path: ./ # current folder
-brightness: 75
+
 # the first one is taken as active for the session
 stream-decks:
   - serial: CL41I1A00651 # ! CHANGE THIS VALUE !
