@@ -2,8 +2,6 @@
 # here you will find most of the configurations you can change, which
 # are not dependent on the preset you are running on
 
-# Brightness of the Stream Deck keys
-brightness: 75
 
 # Update rate of the datarefs per second
 update-rate: 20
@@ -25,5 +23,5 @@ cache-path: ./ # current folder
 # the first one is taken as active for the session
 stream-decks:
   - serial: secret.yaml # ! VERIFY THE SERIAL KEY IN THIS FILE !
-    keys: 32 # ! VERIFY THIS VALUE !
+    brightness: 75 # Brightness of the Stream Deck (0-100)
     active-preset: B737-800X
