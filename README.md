@@ -8,7 +8,7 @@ This software includes rich set of features for robust control of the simulator 
 Developed with the idea taking away mouse controlling of most of the cockpit, 
 works the best together with other simulator peripherals (e.g. radio, A/P panel etc.)
 
-**Supported simulator software:**
+**Supported simulator platforms:**
 - X-Plane 11
 - X-Plane 12
 
@@ -41,7 +41,7 @@ The configurations marked with green mark are bundled and ready to use with *xpl
 - Custom, configurable labels
 - **Displays**
 - **Gauges**
-- **500+ custom-made icons** for the 737 NG, Cessna 172 and more
+- **500+ custom-made icons** for the 737 NG, A320, Cessna 172 and more
 
 All of these features can be configured in simple YAML configs. YAML is very easy to use
 and simple format similar to JSON, but more human-readable and harder to cause a syntax error in.
@@ -62,15 +62,15 @@ Instructions for **Windows**
 - both are options during installation, otherwise you might have to include absolute path to Python to launch the script
 
 2. **Clone this repository by:**
-- clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
+- download the latest stable release under the **Releases** section
+- or clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
 - or download source code by **Download ZIP** and extract the files
-- or download the latest stable release under the **Releases** section
 3. *(Optional step)* - **Add your custom font in the fonts directory**
 - current one set is OFL font **IBMPlexMono**
 - the name the script will try to open is written in **config.yaml**
 - Custom labels and displays have their own definitions in plane configurations
 - The script searches first the `fonts/` directory of the program, then `C:/Windows/Fonts`
-- **MS33558** optional
+- **MS33558** optional (B737 alike)
 - You can download it from the internet, this repository doesn't redistribute it.
 4. **Install the dependencies / requirements by**
 
@@ -90,9 +90,11 @@ and the other one in the plane's preset directory *(local)*
 - Mainly update the **serial number** of your Stream Deck in the `secret.yaml`
 - Execute the `find_serial.py` script to find the serial number out
 - Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
+- The IP addresses / ports (sockets) should work in default settings if you are not running 
+multiple UDP communications at the same time
 7. **Add the streamdeck handlers to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
 - Ensure you have **FlyWithLua** installed
-- Copy the streamdeck_handler_*[plane code]*.lua files from the `misc/` directory
+- Copy the streamdeck_handler_*[plane code]*.lua files from the `misc/` directory into the `FlyWithLua\Scripts`
 
 ## Usage
 Instructions for **Windows**

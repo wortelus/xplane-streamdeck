@@ -102,7 +102,7 @@ class RunningConfig(object):
             sys.exit(1)
 
     def load_caching_options(self):
-        if "caching-enabled" in self.local_cfg:
+        if self.local_cfg["caching-enabled"]:
             self.cache_path = join(self.active_config_path,
                                    assetio.get_keyset_cache_name(self.key_count, self.local_cfg["force-config"]))
             # check cache_path if is not False or None -> implicating it is enabled in config
