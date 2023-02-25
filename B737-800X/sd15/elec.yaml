@@ -1,0 +1,206 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 0
+    name: bat cover
+    type: single
+    file-names:
+      - blue-up
+      - red-down
+    dataref: laminar/B738/button_switch/cover_position[2]
+    command: laminar/B738/button_switch_cover02
+    label: BAT COVER
+  - index: 4
+    name: cab util
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/cab_util_pos
+    command: laminar/B738/autopilot/cab_util_toggle
+    label: CAB UTIL
+  - index: 9
+    name: ife pass
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/ife_pass_seat_pos
+    command: laminar/B738/autopilot/ife_pass_seat_toggle
+    label: IFE PASS
+  - index: 10
+    name: dc power knob
+    type: dual
+    file-names:
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+    dataref: laminar/B738/knob/dc_power
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+    command-on: laminar/B738/knob/dc_power_up
+    command-off: laminar/B738/knob/dc_power_dn
+    label: DC POWER
+  - index: 5
+    name: ac power knob
+    type: dual
+    icon: blue-button
+    file-names:
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+      - blue-button
+    dataref: laminar/B738/knob/ac_power
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+    command-on: laminar/B738/knob/ac_power_up
+    command-off: laminar/B738/knob/ac_power_dn
+    label: AC POWER
+  - index: 1
+    name: bat discharge
+    type: none
+    icon: batdischarge
+    dataref: laminar/B738/annunciator/bat_discharge
+    dataref-multiplier: 1.5
+  - index: 2
+    name: tr unit
+    type: none
+    icon: trunit
+    dataref: laminar/B738/annunciator/tr_unit
+    dataref-multiplier: 1.5
+  - index: 3
+    name: elec
+    type: none
+    icon: elec
+    dataref: laminar/B738/annunciator/elec
+    dataref-multiplier: 1.5
+  - index: 13
+    name: maint
+    type: none
+    icon: white-button
+    label: MAINT
+    # displays
+    # dc
+  - index: 12
+    name: dc amps display
+    type: none
+    dataref: laminar/B738/dc_amp_value
+    display:
+      name: -100.500.elec
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: False
+      min: -100
+      max: 500
+      step: 1
+      color: lime
+      keep-decimal: False
+      background: none
+    special-labels:
+      - label: DC AMPS
+        text-center:
+          x: center
+          y: 120
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 10
+        color: white
+        direction: ltr
+        align: center
+  - index: 11
+    name: dc volts display
+    type: none
+    dataref: laminar/B738/dc_volt_value
+    display:
+      name: -100.500.elec
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: False
+      min: -100
+      max: 500
+      step: 1
+      color: lime
+      keep-decimal: False
+      background: none
+  # ac
+  - index: 7
+    name: ac amps display
+    type: none
+    dataref: laminar/B738/ac_amp_value
+    display:
+      name: -100.500.elec
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: False
+      min: -100
+      max: 500
+      step: 1
+      color: lime
+      keep-decimal: False
+      background: none
+  - index: 6
+    name: ac volts display
+    type: none
+    dataref: laminar/B738/ac_volt_value
+    display:
+      name: -100.500.elec
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: False
+      min: -100
+      max: 500
+      step: 1
+      color: lime
+      keep-decimal: False
+      background: none
+  - index: 8
+    name: ac freq display
+    type: none
+    dataref: laminar/B738/ac_freq_value
+    display:
+      name: -100.500.elec
+      text-center:
+        x: center
+        y: 60 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 32
+      zero-pad: False
+      min: -100
+      max: 500
+      step: 1
+      color: lime
+      keep-decimal: False
+      background: none

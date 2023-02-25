@@ -1,0 +1,139 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  # gen switches
+  - index: 13
+    name: gen 2
+    type: single
+    file-names:
+      - blue0
+      - yellow2
+    dataref: laminar/B738/electrical/gen2_pos
+    label: GEN 2
+    command: FlyWithLua/streamdeck_handler/gen2_dn_start
+    command-release: FlyWithLua/streamdeck_handler/gen2_dn_end
+  - index: 12
+    name: gen 2 apu
+    type: single
+    file-names:
+      - blue0
+      - yellow2
+    dataref: laminar/B738/electrical/apu_gen2_pos
+    label: APU GEN
+    command: FlyWithLua/streamdeck_handler/apu_gen2_dn_start
+    command-release: FlyWithLua/streamdeck_handler/apu_gen2_dn_end
+  - index: 11
+    name: gen 1 apu
+    type: single
+    file-names:
+      - blue0
+      - yellow2
+    dataref: laminar/B738/electrical/apu_gen1_pos
+    label: APU GEN
+    command: FlyWithLua/streamdeck_handler/apu_gen1_dn_start
+    command-release: FlyWithLua/streamdeck_handler/apu_gen1_dn_end
+  - index: 10
+    name: gen 1
+    type: single
+    file-names:
+      - blue0
+      - yellow2
+    dataref: laminar/B738/electrical/gen1_pos
+    label: GEN 1
+    command: FlyWithLua/streamdeck_handler/gen1_dn_start
+    command-release: FlyWithLua/streamdeck_handler/gen1_dn_end
+    # ann
+  - index: 8
+    name: gen 2 off bus
+    type: none
+    file-names:
+      - genoffbus.0.0
+      - genoffbus.2.0
+    dataref: laminar/B738/annunciator/gen_off_bus2
+    dataref-multiplier: 1.5
+  - index: 3
+    name: gen 2 source off
+    type: none
+    icon: sourceoff
+    dataref: laminar/B738/annunciator/source_off2
+    dataref-multiplier: 1.5
+  - index: 4
+    name: gen 2 transfer bus off
+    type: none
+    label: GEN 2
+    icon: transferbusoff
+    dataref: laminar/B738/annunciator/trans_bus_off2
+    dataref-multiplier: 1.5
+    # ann 2
+  - index: 5
+    name: gen 1 off bus
+    type: none
+    file-names:
+      - genoffbus.0.0
+      - genoffbus.2.0
+    dataref: laminar/B738/annunciator/gen_off_bus1
+    dataref-multiplier: 1.5
+  - index: 0
+    name: gen 1 source off
+    type: none
+    icon: sourceoff
+    dataref: laminar/B738/annunciator/source_off1
+    dataref-multiplier: 1.5
+  - index: 1
+    name: gen 1 transfer bus off
+    type: none
+    label: GEN 1
+    icon: transferbusoff
+    dataref: laminar/B738/annunciator/trans_bus_off1
+    dataref-multiplier: 1.5
+    # other ann
+  - index: 6
+    name: apu gen off bus
+    type: none
+    icon: apugenoffbus
+    file-names:
+      - apugenoffbus.0.0
+      - apugenoffbus.2.0
+    dataref: laminar/B738/annunciator/apu_gen_off_bus
+    dataref-multiplier: 1.5
+  - index: 9
+    name: gpu bus
+    type: single
+    file-names:
+      - blue0
+      - yellow2
+    dataref: laminar/B738/electrical/gpu_pos
+    label: GRD PWR
+    command: FlyWithLua/streamdeck_handler/gpu_dn_start
+    command-release: FlyWithLua/streamdeck_handler/gpu_dn_end
+#  - index: 13
+#    name: gnd power available
+#    type: none
+#    file-names:
+#      - gndpoweravailable.0.0
+#      - gndpoweravailable.2.0
+#    dataref: laminar/B738/annunciator/ground_power_avail
+#    dataref-multiplier: 1.5
+    # transfer bus
+  - index: 2
+    name: transfer bus
+    type: dual
+    file-names:
+      - redb
+      - greenc
+    dataref: sim/cockpit2/electrical/cross_tie # not affected by cover laminar/B738/electric/dc_cross_tie
+    command-on: sim/electrical/cross_tie_on
+    command-off: sim/electrical/cross_tie_off
+    label: OFF AUTO
+  - index: 7
+    name: cover transfer bus
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/button_switch/cover_position[6]
+    command: laminar/B738/button_switch_cover06
+    label: TR BUS COVER

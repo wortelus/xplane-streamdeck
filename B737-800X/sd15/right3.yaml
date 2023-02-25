@@ -1,0 +1,61 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 9
+    name: press
+    type: dir
+    icon: dir
+    label: PRESS
+  - index: 8
+    name: pitots
+    type: dir
+    icon: dir
+    label: PITOTS  
+  - index: 3
+    name: winheat
+    type: dir
+    icon: dir
+    label: WIN HEAT
+  - index: 4
+    name: temp
+    type: dir
+    icon: dir
+    label: AIR COND
+  - index: 0
+    name: fltctlnav
+    type: dir
+    icon: dir
+    label: FLT CTL
+  - index: 5
+    name: fltctlnav2
+    type: dir
+    icon: dir
+    label: NAV/DISP
+  - index: 10
+    name: fuel
+    type: dir
+    icon: dir
+    label: FUEL
+  - index: 11
+    name: gen
+    type: dir
+    icon: dir
+    label: GEN
+  - index: 1
+    name: elec
+    type: dir
+    icon: dir
+    label: ELEC
+  - index: 13
+    name: hydai
+    type: dir
+    icon: dir
+    label: HYD A/I
+  - index: 7
+    name: lowerovhd2
+    type: dir
+    icon: dir
+    label: CENTR OVHD

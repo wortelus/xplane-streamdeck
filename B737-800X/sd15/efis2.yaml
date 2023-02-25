@@ -1,0 +1,48 @@
+actions:
+  - index: 13
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 5
+    name: wxr
+    type: single
+    icon: white-button
+    label: WXR
+    command: laminar/B738/EFIS_control/capt/push_button/wxr_press
+  - index: 6
+    name: sta
+    type: single
+    icon: white-button
+    label: STA
+    command: laminar/B738/EFIS_control/capt/push_button/sta_press
+  - index: 7
+    name: wpt
+    type: single
+    icon: white-button
+    label: WPT
+    command: laminar/B738/EFIS_control/capt/push_button/wpt_press
+  - index: 8
+    name: arpt
+    type: single
+    icon: white-button
+    label: ARPT
+    command: laminar/B738/EFIS_control/capt/push_button/arpt_press
+  - index: 9
+    name: data
+    type: single
+    icon: white-button
+    label: DATA
+    command: laminar/B738/EFIS_control/capt/push_button/data_press
+  - index: 10
+    name: pos
+    type: single
+    icon: white-button
+    label: POS
+    command: laminar/B738/EFIS_control/capt/push_button/pos_press
+  - index: 11
+    name: terr
+    type: single
+    icon: white-button
+    label: TERR
+    command: laminar/B738/EFIS_control/capt/push_button/terr_press

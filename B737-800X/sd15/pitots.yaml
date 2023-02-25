@@ -1,0 +1,80 @@
+actions:
+      # ann pitots
+  - index: 13
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 2
+    name: ovht test switch
+    type: none
+    file-names:
+      - orange0
+      - blue1
+      - green2
+    dataref: laminar/B738/toggle_switch/window_ovht_test
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    label: OVHT TEST
+  - index: 0
+    name: capt pitot
+    type: none
+    icon: captpitot
+    dataref: laminar/B738/annunciator/capt_pitot_off
+  - index: 5
+    name: l elev pitot
+    type: none
+    icon: lelevpitot
+    dataref: laminar/B738/annunciator/capt_aoa_off
+  - index: 10
+    name: l alpha pitot
+    type: none
+    icon: lalphapitot
+    dataref: laminar/B738/annunciator/capt_aoa_off
+  - index: 1
+    name: temp probe
+    type: none
+    icon: tempprobe
+    dataref: laminar/B738/annunciator/capt_aoa_off
+  - index: 4
+    name: fo pitot
+    type: none
+    icon: fopitot
+    dataref: laminar/B738/annunciator/fo_pitot_off
+  - index: 9
+    name: r elev pitot
+    type: none
+    icon: relevpitot
+    dataref: laminar/B738/annunciator/fo_aoa_off
+  - index: 14
+    name: r alpha pitot
+    type: none
+    icon: ralphapitot
+    dataref: laminar/B738/annunciator/fo_aoa_off
+  - index: 3
+    name: aux probe
+    type: none
+    icon: auxprobe
+    dataref: laminar/B738/annunciator/fo_aoa_off
+    # pitots
+  - index: 6
+    name: a probe
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/capt_probes_pos
+    command: laminar/B738/toggle_switch/capt_probes_pos
+    label: A PROBES
+  - index: 8
+    name: b probe
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/fo_probes_pos
+    command: laminar/B738/toggle_switch/fo_probes_pos
+    label: B PROBES
+

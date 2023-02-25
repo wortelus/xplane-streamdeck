@@ -1,0 +1,110 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 5
+    name: feel diff press
+    type: none
+    icon: feeldiffpress
+    dataref: laminar/B738/annunciator/feel_diff_press
+  - index: 6
+    name: speed trim fail
+    type: none
+    icon: speedtrimfail.0.0
+  - index: 7
+    name: mach trim fail
+    type: none
+    icon: machtrimfail.0.0
+  - index: 8
+    name:  auto slat fail
+    type: none
+    icon: autoslatfail
+    dataref: laminar/B738/annunciator/auto_slat_fail
+  - index: 10
+    name: spoiler a cover
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/switches/spoiler_A_cover_pos
+    command: laminar/B738/toggle_switch/spoiler_A_cover
+    label: SPLR A CVR
+  - index: 11
+    name: spoiler a
+    type: single
+    file-names:
+      - green1
+      - red0
+    dataref: laminar/B738/switches/spoiler_A_pos
+    command: laminar/B738/toggle_switch/spoiler_A
+    label: SPLR A OFF
+  - index: 12
+    name: spoiler b
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/switches/spoiler_B_cover_pos
+    command: laminar/B738/toggle_switch/spoiler_B_cover
+    label: SPLR B CVR
+  - index: 13
+    name: spoiler b
+    type: single
+    file-names:
+      - green1
+      - red0
+    dataref: laminar/B738/switches/spoiler_B_pos
+    command: laminar/B738/toggle_switch/spoiler_B
+    label: SPLR B OFF
+  - index: 0
+    name: alt flaps arm cover
+    type: single
+    file-names:
+      - blue-down
+      - red-down
+    dataref: laminar/B738/switches/alt_flaps_cover_pos
+    command: laminar/B738/toggle_switch/alt_flaps_cover
+    label: COVER
+  - index: 1
+    name: alt flaps arm
+    type: single
+    file-names:
+      - green0
+      - red1
+    dataref: laminar/B738/switches/alt_flaps_pos
+    command: laminar/B738/toggle_switch/alt_flaps
+    label: ALT FLAPS ARM
+  - index: 2
+    name: alt flaps up
+    type: single
+    icon: red-up
+    command: laminar/B738/toggle_switch/alt_flaps_ctrl_up
+    label: ALT FLAPS UP
+  - index: 3
+    name: alt flaps
+    type: none
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - red0
+      - green1
+      - red2
+    dataref: laminar/B738/toggle_switch/alt_flaps_ctrl
+    label: ALT FLAPS
+  - index: 4
+    name: alt flaps down
+    type: single
+    icon: red-down
+    command: FlyWithLua/streamdeck_handler/alt_flaps_dn_start
+    command-release: FlyWithLua/streamdeck_handler/alt_flaps_dn_end
+    label: ALT FLAPS DN
+  - index: 9
+    name: stbyhyd
+    type: dir
+    icon: dir
+    label: STBY HYD
+  

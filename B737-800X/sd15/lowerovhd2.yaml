@@ -1,0 +1,90 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 2
+    name: arm emer exit lights ann
+    type: single
+    icon: notarmed
+    dataref: laminar/B738/annunciator/emer_exit
+    dataref-multiplier: 1.5
+  - index: 0
+    name: arm emer exit lights
+    type: single
+    icon: black-cover
+    dataref: laminar/B738/button_switch/cover_position[9]
+    command: laminar/B738/button_switch_cover09
+    label: EM EX LT
+  - index: 1
+    name: arm emer exit lights
+    type: single
+    icon: yellow-up
+    command: laminar/B738/toggle_switch/emer_exit_lights_up
+    label: DISARM
+  - index: 5
+    name: return
+    type: single
+    dataref: laminar/B738/toggle_switch/no_smoking_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    file-names:
+      - red0
+      - yellow1
+      - green2
+    label: NO SMOKING
+  - index: 6
+    name: return
+    type: single
+    icon: orange-up
+    label: UP
+    command: laminar/B738/toggle_switch/no_smoking_up
+  - index: 7
+    name: return
+    type: single
+    icon: green-down
+    label: DOWN
+    command: laminar/B738/toggle_switch/no_smoking_dn
+  - index: 10
+    name: return
+    type: single
+    dataref: laminar/B738/toggle_switch/seatbelt_sign_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    file-names:
+      - red0
+      - yellow1
+      - green2
+    label: SEATBELTS
+  - index: 11
+    name: return
+    type: single
+    icon: orange-up
+    label: UP
+    command: laminar/B738/toggle_switch/seatbelt_sign_up
+  - index: 12
+    name: return
+    type: single
+    icon: green-down
+    label: DOWN
+    command: laminar/B738/toggle_switch/seatbelt_sign_dn
+  - index: 8
+    name: attend
+    type: single
+    icon: white-button
+    label: ATTEND
+    command: FlyWithLua/streamdeck_handler/attend_start
+    command-release: FlyWithLua/streamdeck_handler/attend_end
+  - index: 9
+    name: grd call
+    type: single
+    icon: white-button
+    label: GRD CALL
+    command: FlyWithLua/streamdeck_handler/grd_call_start
+    command-release: FlyWithLua/streamdeck_handler/grd_call_end
+ 

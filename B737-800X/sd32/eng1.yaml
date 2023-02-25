@@ -1,0 +1,24 @@
+actions:
+  - index: 10
+    name: eng 1 starter left
+    type: single
+    icon: blue-left
+    command: laminar/B738/knob/eng1_start_left
+    label: ENG 1
+  - index: 11
+    name: return
+    type: dir
+    dataref: laminar/B738/engine/starter1_pos
+    icon: engstarter
+    dataref-default: 1.0
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+  - index: 12
+    name: eng 1 starter right
+    type: single
+    icon: blue-right
+    command: laminar/B738/knob/eng1_start_right
+    label: ENG 1

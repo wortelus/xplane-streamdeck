@@ -1,0 +1,63 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: yellow-button
+    label: RETURN
+  - index: 0
+    name: cockpit dome
+    type: dual
+    file-names:
+      - blue2
+      - red1
+      - yellow0
+    dataref: laminar/B738/toggle_switch/cockpit_dome_pos
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    command-on: laminar/B738/toggle_switch/cockpit_dome_up
+    command-off: laminar/B738/toggle_switch/cockpit_dome_dn
+    label: DOME LIGHT
+  - index: 2
+    name: white bright pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_white_bright
+    label: WHITE BRT
+  - index: 3
+    name: white medium pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_white_medium
+    label: WHITE MED
+  - index: 4
+    name: pax landing pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_to_landing
+    label: TO LAND
+  - index: 1
+    name: pax cruise pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_cruise
+    label: CRUISE
+  - index: 10
+    name: dim pax
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/pax_night_sleep
+    label: DIM SLEEP
+  - index: 11
+    name: white bright entry
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/entry_white_bright
+    label: BRT ENTRY
+  - index: 12
+    name: white medium entry
+    type: single
+    icon: yellow-button
+    command: laminar/B738/cabin/entry_white_medium
+    label: MED ENTRY

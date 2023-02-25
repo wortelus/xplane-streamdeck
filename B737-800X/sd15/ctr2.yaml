@@ -1,0 +1,86 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: CTR 1
+  - index: 0
+    name: eng pfd
+    type: single
+    icon: white-button
+    label: ENG
+    command: laminar/B738/LDU_control/push_button/MFD_ENG
+  - index: 1
+    name: sys pfd
+    type: single
+    icon: white-button
+    label: SYS
+    command: laminar/B738/LDU_control/push_button/MFD_SYS
+  - index: 2
+    name: cr pfd
+    type: single
+    icon: white-button
+    label: CR
+    command: laminar/B738/LDU_control/push_button/MFD_CR
+  - index: 3
+    name: align analog
+    type: single
+    icon: yellow-button
+    label: ANALOG PULL
+    command: FlyWithLua/streamdeck_handler/allign_analog_start
+    command-release: FlyWithLua/streamdeck_handler/allign_analog_end
+  - index: 5
+    name: rmi left
+    type: single
+    file-names:
+      - blue0
+      - greenc
+    label: VOR ADF RMI
+    dataref: sim/cockpit/switches/RMI_l_vor_adf_selector
+    command: sim/radios/RMI_L_tog
+  - index: 6
+    name: rmi right
+    type: single
+    icon: yellow-button
+    label: VOR ADF RMI
+    file-names:
+      - blue0
+      - greenc
+    dataref: sim/cockpit/switches/RMI_r_vor_adf_selector
+    command: sim/radios/RMI_R_tog
+  - index: 8
+    name: chrono capt start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_cycle_capt
+    label: CHRONO CAPT
+  - index: 9
+    name: chrono fo start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_cycle_fo
+    label: CHRONO FO
+  - index: 10
+    name: et mode capt start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_capt_et_mode
+    label: ET CAPT
+  - index: 11
+    name: et mode fo start stop
+    type: single
+    icon: yellow-button
+    command: laminar/B738/push_button/chrono_fo_et_mode
+    label: ET FO
+  - index: 12
+    name: et mode capt reset
+    type: single
+    icon: red-button
+    command: laminar/B738/push_button/et_reset_capt
+    label: ET CAPT RST
+  - index: 13
+    name: et mode fo reset
+    type: single
+    icon: red-button
+    command: laminar/B738/push_button/et_reset_fo
+    label: ET FO RST

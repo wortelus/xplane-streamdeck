@@ -1,0 +1,130 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 0
+    name: left retractable ldg light
+    type: dual
+    icon: ldg
+    label: RET LEFT
+    dataref: laminar/B738/switch/land_lights_ret_left_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/switch/land_lights_ret_left_dn
+    command-off: laminar/B738/switch/land_lights_ret_left_up
+  - index: 1
+    name: right retractable ldg light
+    type: dual
+    icon: ldg
+    dataref: laminar/B738/switch/land_lights_ret_right_pos
+    label: RET RIGHT
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/switch/land_lights_ret_right_dn
+    command-off: laminar/B738/switch/land_lights_ret_right_up
+  - index: 5
+    name: left ldg light
+    type: single
+    file-names:
+      - ldg.0.0
+      - ldg.2.0
+    label: FIX LEFT
+    dataref: laminar/B738/switch/land_lights_left_pos
+    command: FlyWithLua/streamdeck_handler/fixed_left_ldg_lights
+  - index: 6
+    name: right ldg light
+    type: single
+    file-names:
+      - ldg.0.0
+      - ldg.2.0
+    label: FIX RIGHT
+    dataref: laminar/B738/switch/land_lights_right_pos
+    command: FlyWithLua/streamdeck_handler/fixed_right_ldg_lights
+  - index: 10
+    name: rwy turnoff left
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: TURN LFT
+    dataref: laminar/B738/toggle_switch/rwy_light_left
+    command: FlyWithLua/streamdeck_handler/left_turnoff_lights
+  - index: 11
+    name: rwy turnoff right
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: TURN RGT
+    dataref: laminar/B738/toggle_switch/rwy_light_right
+    command: FlyWithLua/streamdeck_handler/right_turnoff_lights
+  - index: 12
+    name: taxi light
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: TAXI LT
+    dataref: laminar/B738/toggle_switch/taxi_light_brightness_pos
+    dataref-states:
+      - 0.0
+      - 2.0
+    command: laminar/B738/toggle_switch/taxi_light_brigh_toggle
+  - index: 9
+    name: wheel well
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: WHEEL WELL
+    dataref: sim/cockpit2/switches/generic_lights_switch[5]
+    command: laminar/B738/switch/wheel_light_toggle
+  - index: 8
+    name: wing lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: WING LT
+    dataref: sim/cockpit2/switches/generic_lights_switch[0]
+    command: laminar/B738/switch/wing_light_toggle
+  - index: 4
+    name: anti collision lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: BEACON LT
+    dataref: sim/cockpit/electrical/beacon_lights_on
+    command: sim/lights/beacon_lights_toggle
+  - index: 3
+    name: position lights
+    type: dual
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - green2
+      - red1
+      - blue0
+    label: STRB / STDY
+    dataref: laminar/B738/toggle_switch/position_light_pos
+    command-on: laminar/B738/toggle_switch/position_light_up
+    command-off: laminar/B738/toggle_switch/position_light_down
+  - index: 2
+    name: logo lights
+    type: single
+    file-names:
+      - red0
+      - blue2
+    label: LOGO LT
+    dataref: laminar/B738/toggle_switch/logo_light
+    command: laminar/B738/switch/logo_light_toggle
+ 

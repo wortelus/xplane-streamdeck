@@ -1,0 +1,113 @@
+actions:
+  - index: 14
+    name: return
+    icon: dir
+    type: dir
+    label: RETURN
+  - index: 13
+    name: press mode knob
+    type: dual
+    icon: pressmode
+    dataref: laminar/B738/toggle_switch/air_valve_ctrl
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    command-on: laminar/B738/toggle_switch/air_valve_ctrl_right
+    command-off: laminar/B738/toggle_switch/air_valve_ctrl_left
+  - index: 8
+    name: airvalveman
+    type: dir
+    icon: blueb
+    label: MAN VALVE
+  - index: 10
+    name: land alt down
+    type: single
+    icon: blue-left
+    label: LAND ALT DN
+    command: FlyWithLua/streamdeck_handler/land_alt_down_start
+    command-release: FlyWithLua/streamdeck_handler/land_alt_down_end
+  - index: 11
+    name: land alt display
+    type: none
+    dataref: laminar/B738/pressurization/knobs/landing_alt
+    display:
+      name: -1000.50000.nonpoint.press
+      text-center:
+        x: center
+        y: 58 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 24
+      zero-pad: False
+      min: -1000
+      max: 50000
+      step: 50
+      color: orange
+      keep-decimal: False
+      background: none
+  - index: 12
+    name: land alt up
+    type: single
+    icon: blue-right
+    label: LAND ALT UP
+    command: FlyWithLua/streamdeck_handler/land_alt_up_start
+    command-release: FlyWithLua/streamdeck_handler/land_alt_up_end
+  - index: 5
+    name: flt alt down
+    type: single
+    icon: blue-left
+    label: FLT ALT DN
+    command: FlyWithLua/streamdeck_handler/flt_alt_down_start
+    command-release: FlyWithLua/streamdeck_handler/flt_alt_down_end
+  - index: 6
+    name: flt alt display
+    type: none
+    dataref: sim/cockpit2/pressurization/actuators/max_allowable_altitude_ft
+    display:
+      name: -1000.50000.nonpoint.press
+      text-center:
+        x: center
+        y: 58 # center doesn't work as it should, due to font's height
+      font-path: consola.ttf
+      font-size: 24
+      zero-pad: False
+      min: -1000
+      max: 50000
+      step: 50
+      color: orange
+      keep-decimal: False
+      background: none
+  - index: 7
+    name: flt alt up
+    type: single
+    icon: blue-right
+    label: FLT ALT UP
+    command: FlyWithLua/streamdeck_handler/flt_alt_up_start
+    command-release: FlyWithLua/streamdeck_handler/flt_alt_up_end
+  - index: 0
+    name: auto fail
+    type: none
+    icon: autofail
+    dataref: laminar/B738/annunciator/autofail
+  - index: 1
+    name: off sched desc
+    type: none
+    icon: offscheddescent
+    dataref: laminar/B738/annunciator/off_sched_descent
+  - index: 2
+    name: altnpress
+    type: none
+    icon: altn
+    dataref: laminar/B738/annunciator/altn_press
+  - index: 3
+    name: manualpress
+    type: none
+    icon: manual
+    dataref: laminar/B738/annunciator/manual_press
+  - index: 4
+    name: alt horn cutout
+    type: single
+    icon: red-button
+    command: FlyWithLua/streamdeck_handler/alt_horn_start
+    command-release: FlyWithLua/streamdeck_handler/alt_horn_end
+    label: ALT HORN

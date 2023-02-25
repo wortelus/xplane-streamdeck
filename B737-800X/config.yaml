@@ -1,0 +1,18 @@
+# font used for labels (displays use different one)
+default-font: IBMPlexMono-Bold.ttf
+default-font-size: 13
+
+# set False if you want lower case labels
+only-uppercase: True
+
+# use caching of the graphics
+# this creates a file in the plane's preset directory
+# and is loaded every time after start
+# of the xplane-streamdeck, saving precious CPU power and time.
+# Leaving this enabled is recommended, unless you are actively debugging or reconfiguring the configuration/graphics.
+# Note that if you change some settings regarding the plane sets, you should delete the .pkl file to be reloaded
+# caching-enabled: False
+
+# this flag is used for overriding loaded configurations that the software detects automatically
+# force-config: sd15
+force-config: False

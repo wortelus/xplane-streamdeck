@@ -1,0 +1,85 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: Main Deck
+  - index: 13
+    name: mcp2
+    type: dir
+    icon: dir
+    label: MCP2
+  - index: 0
+    name: at arm
+    type: single
+    icon: atarm
+    dataref: laminar/B738/autopilot/autothrottle_status1
+    command: FlyWithLua/streamdeck_handler/at_arm_start
+    command-release: FlyWithLua/streamdeck_handler/at_arm_end
+  - index: 1
+    name: c/o
+    type: single
+    icon: blue-button
+    label: C/O
+    command: laminar/B738/autopilot/change_over_press
+  - index: 6
+    name: n1
+    type: single
+    icon: n1
+    dataref: laminar/B738/autopilot/n1_status
+    command: laminar/B738/autopilot/n1_press
+  - index: 7
+    name: speed mcp
+    type: single
+    icon: speed
+    dataref: laminar/B738/autopilot/speed_status1
+    command: laminar/B738/autopilot/speed_press
+  - index: 2
+    name: spd intv
+    type: single
+    icon: blue-button
+    label: SPD INTV
+    command: laminar/B738/autopilot/spd_interv
+  - index: 8
+    name: lvl chg
+    type: single
+    icon: lvlchg
+    dataref: laminar/B738/autopilot/lvl_chg_status
+    command: laminar/B738/autopilot/lvl_chg_press
+  - index: 5
+    name: capt fd
+    type: single
+    label: F/D ON
+    dataref: laminar/B738/autopilot/flight_director_pos
+    command: laminar/B738/autopilot/flight_director_toggle
+    file-names:
+      - red2
+      - green0
+  - index: 12
+    name: mcp speed up
+    type: single
+    icon: blue-right
+    command: FlyWithLua/streamdeck_handler/ap_speed_up_start
+    command-release: FlyWithLua/streamdeck_handler/ap_speed_up_end
+    label: SPEED UP
+  - index: 11
+    name: mcp speed dn
+    type: single
+    icon: blue-left
+    command: FlyWithLua/streamdeck_handler/ap_speed_dn_start
+    command-release: FlyWithLua/streamdeck_handler/ap_speed_dn_end
+    label: SPEED DN
+  - index: 4
+    name: mcpctl
+    type: dir
+    icon: dir
+    label: MCP CTL
+  - index: 9
+    name: f/o fd
+    type: single
+    label: F/D ON
+    dataref: laminar/B738/autopilot/flight_director_fo_pos
+    command: laminar/B738/autopilot/flight_director_fo_toggle
+    file-names:
+      - red2
+      - green0

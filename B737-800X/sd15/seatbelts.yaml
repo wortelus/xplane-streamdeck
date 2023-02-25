@@ -1,0 +1,7 @@
+actions:
+  - index: 7
+    name: return
+    type: single
+    icon: orange-up
+    label: UP
+    command: laminar/B738/toggle_switch/seatbelt_sign_up

@@ -1,0 +1,73 @@
+actions:
+  - index: 0
+    name: transponder
+    type: dir
+    icon: xpdr
+    dataref: laminar/B738/knob/transponder_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 1
+    name: right2
+    type: dir
+    icon: yellow-button
+    label: CAB LIGHT
+  - index: 2
+    name: aftovhd
+    type: dir
+    icon: dir
+    label: AFT OVHD
+  - index: 13
+    name: doors
+    type: dir
+    icon: dir-doors
+    label: DOORS
+  - index: 11
+    name: park brake
+    type: single
+    file-names:
+      - whiteann
+      - redann
+    dataref: laminar/B738/parking_brake_pos
+    command: sim/flight_controls/brakes_toggle_max
+    label: PARK BRAKE
+  - index: 10
+    name: tab
+    type: dir
+    icon: dir-avitab
+    label: AVITAB
+  - index: 9
+    name: fire
+    type: dir
+    icon: dir-fire
+    label: FIRE
+  - index: 12
+    name: ctr
+    type: dir
+    icon: dir
+    label: CTR
+  - index: 5
+    name: lowerovhd
+    type: dir
+    icon: dir
+    label: OVHD LIGHT
+  - index: 6
+    name: lowerovhd1
+    type: dir
+    icon: dir
+    label: APU/START
+  - index: 7
+    name: right3
+    type: dir
+    icon: dir
+    label: OVERHEAD
+ 

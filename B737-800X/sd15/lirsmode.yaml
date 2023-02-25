@@ -1,0 +1,21 @@
+actions:
+  - index: 11
+    name: return
+    type: dir
+    icon: irsmode
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    dataref: laminar/B738/toggle_switch/irs_left
+  - index: 12
+    name: left irs mode right
+    type: single
+    icon: blue-right
+    command: laminar/B738/toggle_switch/irs_L_right
+  - index: 10
+    name: left irs mode left
+    type: single
+    icon: blue-left
+    command: laminar/B738/toggle_switch/irs_L_left

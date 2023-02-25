@@ -1,0 +1,85 @@
+actions:
+  - index: 0
+    name: return
+    type: dir
+    dataref: sim/flightmodel/misc/blown_flap_engage_rat
+    dataref-multiplier: 100
+    gauge:
+      name: flaps
+      needle-center:
+        x: 64
+        y: 64
+      background: flapsbckg
+      needle: flapsneedle
+      range-degrees: 270
+      min: 0.0
+      max: 100
+      step: 1
+  - index: 1
+    name: move flaps up
+    type: single
+    icon: red-button
+    label: MOVE UP
+    command: FlyWithLua/B738/Cmd_MP_Flaps_Up
+  - index: 3
+    name: flaps up
+    type: single
+    icon: orange-button
+    label: UP
+    command: laminar/B738/push_button/flaps_0
+  - index: 5
+    name: flaps 1
+    type: single
+    icon: orange-button
+    label: 1
+    command: laminar/B738/push_button/flaps_1
+  - index: 7
+    name: flaps 5
+    type: single
+    icon: orange-button
+    label: 5
+    command: laminar/B738/push_button/flaps_5
+  - index: 9
+    name: flaps 15
+    type: single
+    icon: orange-button
+    label: 15
+    command: laminar/B738/push_button/flaps_15
+  - index: 11
+    name: flaps 30
+    type: single
+    icon: orange-button
+    label: 30
+    command: laminar/B738/push_button/flaps_30
+  - index: 2
+    name: move flaps down
+    type: single
+    icon: blue-button
+    label: MOVE DOWN
+    command: FlyWithLua/B738/Cmd_MP_Flaps_Dn
+  - index: 6
+    name: flaps 2
+    type: single
+    icon: orange-button
+    label: 2
+    command: laminar/B738/push_button/flaps_2
+  - index: 8
+    name: flaps 10
+    type: single
+    icon: orange-button
+    label: 10
+    command: laminar/B738/push_button/flaps_10
+  - index: 10
+    name: flaps 25
+    type: single
+    icon: orange-button
+    label: 25
+    command: laminar/B738/push_button/flaps_25
+  - index: 12
+    name: flaps 40
+    type: single
+    icon: orange-button
+    label: 40
+    command: laminar/B738/push_button/flaps_40
+
+

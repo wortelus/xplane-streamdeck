@@ -1,0 +1,122 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 1
+    name: eng2
+    type: dir
+    dataref: laminar/B738/engine/starter2_pos
+    icon: engstarter
+    dataref-default: 1.0
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+  - index: 0
+    name: eng1
+    type: dir
+    dataref: laminar/B738/engine/starter1_pos
+    icon: engstarter
+    dataref-default: 1.0
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/eng1_start_right
+    command-off: laminar/B738/knob/eng1_start_left
+  - index: 2
+    name: apuswitch
+    type: dir
+    dataref: laminar/B738/spring_toggle_switch/APU_start_pos
+    label: APU
+    file-names:
+      - red0
+      - green1
+      - blue2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 9
+    name: apu egt
+    type: single
+    dataref: laminar/B738/electrical/apu_temp
+    gauge:
+      name: apuegt
+      needle-center:
+        x: 64
+        y: 64
+      background: apuegtbckg
+      needle: apuegtneedle
+      range-degrees: 200
+      min: 0.0
+      max: 100.0
+      step: 1.0
+  - index: 10
+    name: left wiper
+    type: dual
+    dataref: laminar/B738/switches/left_wiper_pos
+    icon: wipers
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/left_wiper_up
+    command-off: laminar/B738/knob/left_wiper_dn
+  - index: 11
+    name: right wiper
+    type: dual
+    dataref: laminar/B738/switches/right_wiper_pos
+    icon: wipers
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    command-on: laminar/B738/knob/right_wiper_up
+    command-off: laminar/B738/knob/right_wiper_dn
+  - index: 5
+    name: eng start source
+    type: dual
+    dataref: laminar/B738/toggle_switch/eng_start_source
+    icon: wipers
+    label: L BOTH R
+    file-names:
+      - bluea
+      - yellowb
+      - bluec
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    command-on: laminar/B738/toggle_switch/eng_start_source_right
+    command-off: laminar/B738/toggle_switch/eng_start_source_left
+  - index: 3
+    name: apu low oil pressure
+    type: none
+    icon: lowoilpressure
+    label: APU
+    dataref: laminar/B738/annunciator/apu_low_oil
+    dataref-multiplier: 1.5
+  - index: 4
+    name: apu fault
+    type: none
+    icon: fault
+    label: APU
+    dataref: laminar/B738/annunciator/apu_fault
+    dataref-multiplier: 1.5
+  - index: 8
+    name: apu overspeed
+    type: none
+    icon: overspeed.0.0
+    label: APU
+  - index: 7
+    name: apu maint
+    type: none
+    icon: maint.0.0
+    label: APU

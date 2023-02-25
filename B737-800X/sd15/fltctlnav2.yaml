@@ -1,0 +1,95 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 0
+    name: vhf nav src
+    type: dual
+    dataref: laminar/B738/toggle_switch/vhf_nav_source
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - yellowa
+      - blueb
+      - yellowc
+    command-on: laminar/B738/toggle_switch/vhf_nav_source_rgt
+    command-off: laminar/B738/toggle_switch/vhf_nav_source_lft
+    label: VHF NAV
+  - index: 2
+    name: irs src
+    type: dual
+    dataref: laminar/B738/toggle_switch/irs_source
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - yellowa
+      - blueb
+      - yellowc
+    command-on: laminar/B738/toggle_switch/irs_source_right
+    command-off: laminar/B738/toggle_switch/irs_source_left
+    label: IRS ON
+  - index: 7
+    name: fmc src
+    type: dual
+    dataref: laminar/B738/toggle_switch/fmc_source
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - yellowa
+      - blueb
+      - yellowc
+    command-on: laminar/B738/toggle_switch/fmc_source_right
+    command-off: laminar/B738/toggle_switch/fmc_source_left
+    label: FMC ON
+  - index: 10
+    name: display source
+    type: dual
+    dataref: laminar/B738/toggle_switch/dspl_ctrl_pnl
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - yellowa
+      - blueb
+      - yellowc
+    command-on: laminar/B738/toggle_switch/dspl_ctrl_pnl_right
+    command-off: laminar/B738/toggle_switch/dspl_ctrl_pnl_left
+    label: CTL PANEL
+  - index: 12
+    name: display source
+    type: dual
+    dataref: laminar/B738/toggle_switch/dspl_source
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - yellowa
+      - blueb
+      - yellowc
+    command-on: laminar/B738/toggle_switch/dspl_source_right
+    command-off: laminar/B738/toggle_switch/dspl_source_left
+    label: DISP SRC
+  - index: 9
+    name: yaw damper
+    type: single
+    dataref: laminar/B738/toggle_switch/yaw_dumper_pos
+    file-names:
+      - red0
+      - green2
+    command: laminar/B738/toggle_switch/yaw_dumper
+    label: YAW DAMPER
+  - index: 4
+    name: yaw damper ann
+    type: none
+    icon: yawdamper
+    dataref: laminar/B738/annunciator/yaw_damp
