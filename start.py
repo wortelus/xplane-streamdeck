@@ -16,7 +16,8 @@ root.addHandler(handler)
 def main():
     logger.info("Starting xplane-streamdeck by wortelus. This software is licensed under BSD 2-Clause License.")
     logger.info("Copyright (c) 2022, Daniel Slavík All rights reserved.")
-    ctl = control.load()
+    conf = control.load()
+    ctl = control.DeckControl(conf)
     control.run(ctl)
 
 

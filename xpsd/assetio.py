@@ -1,22 +1,11 @@
 import logging as logger
 import sys
-from os.path import join, exists
+from os.path import join
 
 import PIL
 from PIL import Image, ImageFont
 from yaml import YAMLError, load, Loader
-
-ROOT_PATH = ""
-
-LOCAL_CONFIG_ALIAS = "config.yaml"
-GLOBAL_CONFIG_ALIAS = "config.yaml"
-ASSETS_ALIAS = "icons"
-FONTS_ALIAS = "fonts"
-
-ASSETS_DIR = join(ROOT_PATH, ASSETS_ALIAS)
-FONTS_DIR = join(ROOT_PATH, FONTS_ALIAS)
-LOCAL_CONFIG_DIR = join(ROOT_PATH, LOCAL_CONFIG_ALIAS)
-GLOBAL_CONFIG_DIR = join(ROOT_PATH, GLOBAL_CONFIG_ALIAS)
+from xpsd.const import ROOT_PATH, ASSETS_DIR, FONTS_DIR, GLOBAL_CONFIG_DIR, LOCAL_CONFIG_ALIAS
 
 
 def load_global_cfg():
@@ -37,7 +26,7 @@ def load_local_cfg(active_config_path):
         except YAMLError as err:
             logger.error("cannot load local config.yaml, ensure you have proper syntax config {}".format(err))
         except Exception as err:
-            logger.error("unknown error while loading local config from {}".format(active_keyset_path))
+            logger.error("unknown error while loading local config from {}".format(active_config_path))
             logger.error(err)
 
 

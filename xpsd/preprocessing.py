@@ -5,7 +5,7 @@ import sys
 import numpy as np
 import yaml
 from yaml import safe_load
-from PIL import ImageDraw, ImageFont
+from PIL import ImageDraw
 from StreamDeck.ImageHelpers import PILHelper
 import logging as logger
 
@@ -20,8 +20,7 @@ from xpsd import dynamic
 from xpsd import sanity
 from xpsd import assetio
 
-ACTION_CFG = "actions.yaml"
-ACTION_CFG_ALIAS = "actions"
+from xpsd.const import ACTION_CFG, ACTION_CFG_ALIAS
 
 IMAGES_ALREADY_GENERATED = {}
 

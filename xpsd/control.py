@@ -212,6 +212,7 @@ class PressDomain(object):
         self.view.deck_show(current_deck, self.view.current_datarefs)
 
 
+# we have to catch an error during loading, we use this error logger handler for this purpose
 class XPUDPHandler(logger.StreamHandler):
     def __init__(self):
         super().__init__(stream=sys.stderr)
@@ -259,8 +260,7 @@ def load_images(conf, presets_all):
 def load():
     global_cfg = load_global_cfg()
     conf = RunningConfig(global_cfg)
-
-    return DeckControl(conf)
+    return conf
 
 
 def run(ctl: DeckControl):
@@ -269,11 +269,12 @@ def run(ctl: DeckControl):
     logger.info("xplane-streamdeck ready...")
 
     # show deck and set fetch_datarefs
+    ctl.update()
 
     try:
         while True:
             time.sleep(0.05)
-            ctl.update()
+            ctl.press.view.update_fetch_datarefs(ctl.configuration.active_deck)
     except KeyboardInterrupt:
         logger.info('X-Plane Manager by wortelus interrupted! closing the deck and udp connection...')
         # note: closing only current deck
