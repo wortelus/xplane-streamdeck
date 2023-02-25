@@ -8,12 +8,26 @@ This software includes rich set of features for robust control of the simulator 
 Developed with the idea taking away mouse controlling of most of the cockpit, 
 works the best together with other simulator peripherals (e.g. radio, A/P panel etc.)
 
-**Supported planes:**
-- Boeing 737 NG by **Zibo**
-- Cessna 172 by Laminar Research
+**Supported simulator software:**
+- X-Plane 11
+- X-Plane 12
 
-Working across all Stream Deck versions, but ready to use configurations are made for the XL version.
-You can configure it for any kind of plane, though.
+**Supported planes:**
+
+| Aircraft       | 15 keys | 32 keys |
+|----------------|---------|---------|
+| Cessna 172SP   | ❌       | ✅✅      |
+| Zibo 737-800   | ✅       | ✅✅      |
+| JARDesign A320 | ✅       | ❌       |
+
+✅✅ - Stable configuration, expecting minor fixes only
+
+✅ - Working configuration, further work expected
+
+Configurations are made by **community efforts** or **people like you**, who would like to provide handful
+useful buttons for the flight sim community.
+
+The configurations marked with green mark are bundled and ready to use with *xplane-streamdeck*.
 
 ### Features:
 - Fast & high performance sync with X-Plane's dataref to visually depict the actual state
@@ -58,9 +72,9 @@ Instructions for **Windows**
 - The script searches first the `fonts/` directory of the program, then `C:/Windows/Fonts`
 - **MS33558** optional
 - You can download it from the internet, this repository doesn't redistribute it.
-4. **Install the dependencies by**
+4. **Install the dependencies / requirements by**
 
-`.../xplane-streamdeck> python -m pip install -r dependencies.txt`
+`.../xplane-streamdeck> python -m pip install -r requirements.txt`
 
 using cmd or PowerShell
 
@@ -73,9 +87,8 @@ from the official documentation source
 6. **Update `config.yaml` for your preferences**
 - There are two `config.yaml` files - one near the start.py *(global)* 
 and the other one in the plane's preset directory *(local)*
-- Mainly update the **serial number** in the `secret.yaml` of your Stream Deck with your **serial 
-number** and number of keys according to your model.
-- Execute the xplane-streamdeck script to find the serial number out
+- Mainly update the **serial number** of your Stream Deck in the `secret.yaml`
+- Execute the `find_serial.py` script to find the serial number out
 - Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
 7. **Add the streamdeck handlers to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
 - Ensure you have **FlyWithLua** installed
@@ -86,15 +99,15 @@ Instructions for **Windows**
 
 Choose desired plane type configuration in `config.yaml`
 
-**Execute the script by running the `main.py` with Python 3 by:**
+**Execute the script by running the `start.py` with Python 3 by:**
 
-running `.../xplane-streamdeck> python .\main.py` under the *xplane-streamdeck* directory, 
+running `.../xplane-streamdeck> python .\start.py` under the *xplane-streamdeck* directory, 
 while having the Stream Deck plugged in already
 
 Run the script anytime after the aircraft loads in the simulator, the script can be restarted anytime without harm.
 
 The program supports image caching, which saves several seconds of image preloading during launch
-- To enable it, set `cache-path` field in `config.yaml`
+- To enable it, set `caching-enabled` field to *True* in local `config.yaml`, for example in `172SP/config.yaml`
 - To disable, just remove the field or leave it blank
 - NOTE: If you are tweaking your image set or configuration, it is recommended disable this feature 
 to always see the up-to-date configuration state (or simply remove it, but the cache will be recreated).
@@ -151,7 +164,7 @@ The X-Plane UDP connection could not be initialized due to operating system erro
 ### Contributors
 I would like to thank the following members of the flight sim community for participating in this open source project.
  - **esmiol** from *x-plane.org* forums - for creating the Cessna 172 configuration and graphics
-
+ - **jpx13009** from *x-plane.org* forums - for creating the JARDesign A320 configuration and graphics
 ## License
 BSD 2-Clause License
 
