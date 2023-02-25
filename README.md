@@ -166,7 +166,8 @@ The X-Plane UDP connection could not be initialized due to operating system erro
 ### Contributors
 I would like to thank the following members of the flight sim community for participating in this open source project.
  - **esmiol** from *x-plane.org* forums - for creating the Cessna 172 configuration and graphics
- - **jpx13009** from *x-plane.org* forums - for creating the JARDesign A320 configuration and graphics
+ - **jpx13009** from *x-plane.org* forums - for creating the JARDesign A320 configuration and graphics 
+along with restructuring the Zibo 737-800 plane preset into the 15 key Stream Deck variant
 ## License
 BSD 2-Clause License
 
