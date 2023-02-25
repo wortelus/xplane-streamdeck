@@ -1,0 +1,6 @@
+# font used for labels (displays use different one)
+default-font: IBMPlexMono-Bold.ttf
+default-font-size: 13
+
+# set False if you want lower case labels
+always-upper-case: True

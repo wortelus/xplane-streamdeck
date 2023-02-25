@@ -4,4 +4,4 @@ venv
 /fonts/ms33558.ttf
 img-cache.pkl
 172SP.pkl
-B737-800X.pkl
+*.pkl

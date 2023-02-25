@@ -1,0 +1,99 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 10
+    name: l side win switch
+    type: single
+    dataref: laminar/B738/ice/window_heat_l_side_pos
+    file-names:
+      - red0
+      - green2
+    command: laminar/B738/toggle_switch/window_heat_l_side
+    label: L SIDE
+  - index: 11
+    name: l fwd win switch
+    type: single
+    dataref: laminar/B738/ice/window_heat_l_fwd_pos
+    file-names:
+      - red0
+      - green2
+    command: laminar/B738/toggle_switch/window_heat_l_fwd
+    label: L FWD
+  - index: 12
+    name: r fwd win switch
+    type: single
+    dataref: laminar/B738/ice/window_heat_r_fwd_pos
+    file-names:
+      - red0
+      - green2
+    command: laminar/B738/toggle_switch/window_heat_r_fwd
+    label: R FWD
+  - index: 13
+    name: r side win switch
+    type: single
+    dataref: laminar/B738/ice/window_heat_r_side_pos
+    file-names:
+      - red0
+      - green2
+    command: laminar/B738/toggle_switch/window_heat_r_side
+    label: R SIDE
+  - index: 4
+    name: ovht test up
+    type: single
+    icon: blue-up
+    command: FlyWithLua/streamdeck_handler/win_ovht_test_up_start
+    command-release: FlyWithLua/streamdeck_handler/win_ovht_test_up_end
+    label: OVHT TEST
+  - index: 9
+    name: ovht test dn
+    type: single
+    icon: blue-down
+    command: FlyWithLua/streamdeck_handler/win_ovht_test_dn_start
+    command-release: FlyWithLua/streamdeck_handler/win_ovht_test_dn_end
+    label: PWR TEST
+    # win heat ann
+  - index: 5
+    name: on left side win heat
+    type: none
+    icon: greenon
+    dataref: laminar/B738/annunciator/window_heat_l_side
+  - index: 6
+    name: on left fwd win heat
+    type: none
+    icon: greenon
+    dataref: laminar/B738/annunciator/window_heat_l_fwd
+  - index: 7
+    name: on right fwd win heat
+    type: none
+    icon: greenon
+    dataref: laminar/B738/annunciator/window_heat_r_fwd
+  - index: 8
+    name: on right side win heat
+    type: none
+    icon: greenon
+    dataref: laminar/B738/annunciator/window_heat_r_side
+    # ovht ann
+  - index: 0
+    name: ovht left side win heat
+    type: none
+    icon: overheat
+    dataref: laminar/B738/annunciator/window_heat_ovht_ls
+  - index: 1
+    name: ovht left fwd win heat
+    type: none
+    icon: overheat
+    dataref: laminar/B738/annunciator/window_heat_ovht_lf
+  - index: 2
+    name: ovht right fwd win heat
+    type: none
+    icon: overheat
+    dataref: laminar/B738/annunciator/window_heat_ovht_rf
+  - index: 3
+    name: ovht right side win heat
+    type: none
+    icon: overheat
+    dataref: laminar/B738/annunciator/window_heat_ovht_rs
+ 

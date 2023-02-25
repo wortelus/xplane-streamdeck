@@ -1,0 +1,45 @@
+actions:
+  - index: 11
+    name: return
+    type: dir
+    icon: n1set
+    dataref: laminar/B738/toggle_switch/n1_set_source
+    dataref-states:
+      - -2.0
+      - -1.0
+      - 0.0
+      - 1.0
+  - index: 12
+    name: n1 set source left
+    type: single
+    icon: blue-left
+    command: laminar/B738/toggle_switch/n1_set_source_left
+  - index: 14
+    name: n1 set source right
+    type: single
+    icon: blue-right
+    command: laminar/B738/toggle_switch/n1_set_source_right
+  - index: 7
+    name: n1 adjust left 0.1
+    type: single
+    icon: blue-left
+    label: N1 DN 10
+    command: FlyWithLua/streamdeck_handler/n1_dn_1
+  - index: 9
+    name: n1 adjust right 0.1
+    type: single
+    icon: blue-right
+    label: N1 UP 10
+    command: FlyWithLua/streamdeck_handler/n1_up_1
+  - index: 2
+    name: n1 adjust left 1
+    type: single
+    icon: blue-left
+    label: N1 DN 01
+    command: FlyWithLua/streamdeck_handler/n1_dn
+  - index: 4
+    name: n1 adjust right 1
+    type: single
+    icon: blue-right
+    label: N1 UP 01
+    command: FlyWithLua/streamdeck_handler/n1_up

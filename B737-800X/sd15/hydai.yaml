@@ -1,0 +1,78 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 9
+    name: hydai2
+    type: dir
+    icon: dir
+    label: DEICING
+  - index: 0
+    name: eng hyd 1
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/hydro_pumps1_pos
+    command: laminar/B738/toggle_switch/hydro_pumps1
+    label: ENG HYD 1
+  - index: 1
+    name: elec hyd 1
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/electric_hydro_pumps1_pos
+    command: laminar/B738/toggle_switch/electric_hydro_pumps1
+    label: ELEC HYD 1
+  - index: 3
+    name: eng hyd 2
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/hydro_pumps2_pos
+    command: laminar/B738/toggle_switch/hydro_pumps2
+    label: ENG HYD 2
+  - index: 2
+    name: elec hyd 2
+    type: single
+    file-names:
+      - red0
+      - green2
+    dataref: laminar/B738/toggle_switch/electric_hydro_pumps2_pos
+    command: laminar/B738/toggle_switch/electric_hydro_pumps2
+    label: ELEC HYD 2
+  - index: 6
+    name: low pressure a elec
+    type: none
+    icon: lowpressure
+    dataref: laminar/B738/annunciator/hyd_el_press_a
+  - index: 5
+    name: low pressure a eng
+    type: none
+    icon: lowpressure
+    dataref: laminar/B738/annunciator/hyd_press_a
+  - index: 7
+    name: low pressure b elec
+    type: none
+    icon: lowpressure
+    dataref: laminar/B738/annunciator/hyd_el_press_b
+  - index: 8
+    name: low pressure b eng
+    type: none
+    icon: lowpressure
+    dataref: laminar/B738/annunciator/hyd_press_b
+  - index: 11
+    name: elec a overheat
+    type: none
+    icon: overheat
+    dataref: laminar/B738/annunciator/el_hyd_ovht_1
+  - index: 13
+    name: elec b overheat
+    type: none
+    icon: overheat
+    dataref: laminar/B738/annunciator/el_hyd_ovht_2
+  

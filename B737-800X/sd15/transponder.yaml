@@ -1,0 +1,30 @@
+actions:
+  - index: 13
+    name: return
+    type: dir
+    icon: xpdr
+    dataref: laminar/B738/knob/transponder_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+  - index: 12
+    name: transponder dn
+    type: single
+    icon: blue-left
+    command: laminar/B738/knob/transponder_mode_dn
+  - index: 14
+    name: transponder up
+    type: single
+    icon: blue-right
+    command: laminar/B738/knob/transponder_mode_up
+  - index: 11
+    name: transponder ident
+    type: single
+    icon: red-button
+    label: IDENT
+    command: FlyWithLua/streamdeck_handler/ident_start
+    command-release: FlyWithLua/streamdeck_handler/ident_end

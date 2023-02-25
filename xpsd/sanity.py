@@ -1,12 +1,8 @@
 import logging
 import sys
 
-VITAL_FIELDS = ["index", "name"]
-CMD_TYPES = ["none", "dir", "single", "dual"]
-
-GAUGE_FIELDS = ["name", "background", "needle", "min", "max", "step", "needle-center", "range-degrees"]
-DISPLAY_FIELDS = ["name", "text-center", "font-path", "font-size", "zero-pad",
-                  "min", "max", "step", "keep-decimal", "background"]
+# from xpsd.const import VITAL_FIELDS
+from xpsd.const import CMD_TYPES, GAUGE_FIELDS, DISPLAY_FIELDS
 
 
 # returns nothing

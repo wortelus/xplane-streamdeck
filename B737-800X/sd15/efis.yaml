@@ -1,0 +1,108 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 13
+    name: efis2
+    type: dir
+    icon: dir
+    label: EFIS 2 
+  - index: 12
+    name: efis3
+    type: dir
+    icon: dir
+    label: BAROS 
+  - index: 0
+    name: map mode down
+    type: single
+    icon: blue-left
+    label: MODE DOWN
+    command: laminar/B738/EFIS_control/capt/map_mode_dn
+  - index: 1
+    name: map mode
+    type: single
+    icon: mapmode
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+    dataref: laminar/B738/EFIS_control/capt/map_mode_pos
+  - index: 2
+    name: map mode up
+    type: single
+    icon: blue-right
+    label: MODE UP
+    command: laminar/B738/EFIS_control/capt/map_mode_up
+  - index: 3
+    name: ctr map mode
+    type: single
+    icon: yellow-button
+    label: CTR
+    command: laminar/B738/EFIS_control/capt/push_button/ctr_press
+ 
+  - index: 5
+    name: map range down
+    type: single
+    icon: blue-left
+    label: RANGE DOWN
+    command: laminar/B738/EFIS_control/capt/map_range_dn
+  - index: 6
+    name: map range
+    type: single
+    icon: maprange
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+      - 4.0
+      - 5.0
+      - 6.0
+      - 7.0
+    dataref: laminar/B738/EFIS/capt/map_range
+  - index: 7
+    name: map range up
+    type: single
+    icon: blue-right
+    label: RANGE UP
+    command: laminar/B738/EFIS_control/capt/map_range_up
+  - index: 8
+    name: tfc map range
+    type: single
+    icon: yellow-button
+    label: TFC
+    command: laminar/B738/EFIS_control/capt/push_button/tfc_press
+  - index: 4
+    name: radio sel 1
+    type: dual
+    file-names:
+      - green2
+      - red1
+      - green0
+    dataref: laminar/B738/EFIS_control/capt/vor1_off_pos
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    label: VOR/ADF 1
+    command-on: laminar/B738/EFIS_control/capt/vor1_off_up
+    command-off: laminar/B738/EFIS_control/capt/vor1_off_dn
+  - index: 9
+    name: radio sel 2
+    type: dual
+    file-names:
+      - green2
+      - red1
+      - green0
+    dataref: laminar/B738/EFIS_control/capt/vor2_off_pos
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    label: VOR/ADF 2
+    command-on: laminar/B738/EFIS_control/capt/vor2_off_up
+    command-off: laminar/B738/EFIS_control/capt/vor2_off_dn
+ 

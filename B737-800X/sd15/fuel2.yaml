@@ -1,0 +1,78 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+   # crossfeed
+  - index: 7
+    name: crossfeed valve open
+    type: none
+    dataref: laminar/B738/annunciator/crossfeed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+    icon: valveopen
+  - index: 12
+    name: crossfeed valve
+    type: dual
+    dataref: laminar/B738/knobs/cross_feed
+    icon: crossfeed
+    command-on: laminar/B738/toggle_switch/crossfeed_valve_on
+    command-off: laminar/B738/toggle_switch/crossfeed_valve_off
+  # filter bypass
+  - index: 5
+    name: filter bypass 1
+    type: none
+    icon: filterbypass
+    dataref: laminar/B738/annunciator/bypass_filter_1
+    dataref-multiplier: 1.5
+  - index: 9
+    name: filter bypass 5
+    type: none
+    icon: filterbypass
+    dataref: laminar/B738/annunciator/bypass_filter_2
+    dataref-multiplier: 1.5
+  # other valves
+  - index: 0
+    name: eng valve closed 1
+    type: none
+    icon: engvalveclosed
+    dataref: laminar/B738/annunciator/eng1_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+  - index: 1
+    name: spar valve closed 1
+    type: none
+    icon: sparvalveclosed
+    dataref: laminar/B738/annunciator/spar1_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+  - index: 4
+    name: eng valve closed 2
+    type: none
+    icon: engvalveclosed
+    dataref: laminar/B738/annunciator/eng2_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2
+  - index: 3
+    name: spar valve closed 2
+    type: none
+    icon: sparvalveclosed
+    dataref: laminar/B738/annunciator/spar2_valve_closed
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+    dataref-multiplier: 2

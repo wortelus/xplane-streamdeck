@@ -1,7 +1,8 @@
 import numpy as np
 from PIL import Image, ImageDraw, ImageFont
 from StreamDeck.ImageHelpers import PILHelper
-import assetio
+from xpsd import assetio
+import logging as logger
 
 
 def get_dataref_states(element, button_self):
@@ -58,7 +59,7 @@ def load_truetype_font(element):
 # gauges
 #
 
-def load_gauge_images(gauge, deck, plane_conf_dir, file_names):
+def load_gauge_images(gauge, deck, active_config_path, file_names):
     center_needle = (float(gauge["needle-center"]["x"]), float(gauge["needle-center"]["y"]))
     total_range = float(gauge["max"] + 1) - float(gauge["min"])
     needle_multiplier = -float(gauge["range-degrees"]) / total_range
@@ -67,8 +68,8 @@ def load_gauge_images(gauge, deck, plane_conf_dir, file_names):
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
-    needle = assetio.open_icon_asset(plane_conf_dir, (gauge["needle"]))
-    background = assetio.open_icon_asset(plane_conf_dir, (gauge["background"]))
+    needle = assetio.open_icon_asset(active_config_path, (gauge["needle"]))
+    background = assetio.open_icon_asset(active_config_path, (gauge["background"]))
 
     for i, fn in enumerate(file_names):
         final_img = background.copy()
@@ -86,7 +87,7 @@ def load_gauge_images(gauge, deck, plane_conf_dir, file_names):
 #
 
 
-def load_display_images(display, deck, plane_conf_dir, file_names, dataref_states, special_labels):
+def load_display_images(display, deck, active_config_path, file_names, dataref_states, special_labels):
     set_images = {}
 
     # if user preconfigured 'x' or 'y' position of text as center, we must set it here ->
@@ -94,7 +95,7 @@ def load_display_images(display, deck, plane_conf_dir, file_names, dataref_state
 
     # paths should be preprocessed from the Button __init__ constructor
     # thus no need to apply get_filename_button_static_png
-    background = assetio.open_icon_asset(plane_conf_dir, display["background"])
+    background = assetio.open_icon_asset(active_config_path, display["background"])
     # todo how not to load font every single time ?
     current_font = load_truetype_font(display)
     sl_fonts = None
@@ -103,8 +104,8 @@ def load_display_images(display, deck, plane_conf_dir, file_names, dataref_state
         for i, spec_label in enumerate(special_labels):
             sl_fonts[i] = load_truetype_font(spec_label)
     if len(dataref_states) != len(file_names):
-        print("display of name {} has not the same len of dataref_states and file_names. this should not happen,"
-              "submit a issue on wortelus/xplane-streamdeck GitHub repository, please".format(display["name"]))
+        logger.error("display of name {} has not the same len of dataref_states and file_names. this should not happen,"
+                     "submit a issue on wortelus/xplane-streamdeck GitHub repository, please".format(display["name"]))
 
     for i, fn in enumerate(file_names):
         final_img = background.copy()

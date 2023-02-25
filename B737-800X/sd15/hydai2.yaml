@@ -1,0 +1,84 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  # anti ice
+  - index: 10
+    name: wing anti ice
+    type: single
+    file-names:
+      - red0
+      - blue2
+    dataref: laminar/B738/ice/wing_heat_pos
+    command: laminar/B738/toggle_switch/wing_heat
+    label: WING HEAT
+  - index: 12
+    name: eng 1 cowl anti ice
+    type: single
+    file-names:
+      - red0
+      - blue2
+    dataref: laminar/B738/ice/eng1_heat_pos
+    command: laminar/B738/toggle_switch/eng1_heat
+    label: ENG1 COWL
+  - index: 13
+    name: eng 2 cowl anti ice
+    type: single
+    file-names:
+      - red0
+      - blue2
+    dataref: laminar/B738/ice/eng2_heat_pos
+    command: laminar/B738/toggle_switch/eng2_heat
+    label: ENG2 COWL
+  - index: 5
+    name: l antiice valve open
+    type: none
+    icon: lvalveopen
+    dataref: laminar/B738/annunciator/wing_ice_on_L
+    dataref-multiplier: 2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 6
+    name: r antiice valve open
+    type: none
+    icon: rvalveopen
+    dataref: laminar/B738/annunciator/wing_ice_on_R
+    dataref-multiplier: 2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 7
+    name: l cowl valve open
+    type: none
+    icon: cowlvalveopen
+    dataref: laminar/B738/annunciator/cowl_ice_on_0
+    dataref-multiplier: 2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 8
+    name: r cowl valve open
+    type: none
+    icon: cowlvalveopen
+    dataref: laminar/B738/annunciator/cowl_ice_on_1
+    dataref-multiplier: 2
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+  - index: 2
+    name: ann orange anti ice 1
+    type: none
+    icon: cowlantiice
+    dataref: laminar/B738/annunciator/cowl_ice_0
+  - index: 3
+    name: ann orange anti ice 2
+    type: none
+    icon: cowlantiice
+    dataref: laminar/B738/annunciator/cowl_ice_1

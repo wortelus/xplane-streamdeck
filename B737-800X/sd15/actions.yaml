@@ -1,0 +1,111 @@
+actions:
+  - index: 0
+    name: fire warning
+    type: single
+    icon: firewarn
+    dataref: laminar/B738/annunciator/fire_bell_annun
+    dataref-multiplier: 1.5
+    command: FlyWithLua/streamdeck_handler/capt_fire_warn_start
+    command-release: FlyWithLua/streamdeck_handler/capt_fire_warn_end
+  - index: 1
+    name: master caution
+    type: single
+    icon: mastercaution
+    dataref: laminar/B738/annunciator/master_caution_light
+    dataref-multiplier: 1.5
+    command: FlyWithLua/streamdeck_handler/capt_master_caution_start
+    command-release: FlyWithLua/streamdeck_handler/capt_master_caution_end
+  - index: 2
+    name: ap light
+    type: single
+    icon: apprst
+    dataref: laminar/B738/annunciator/ap_disconnect1
+    command: FlyWithLua/streamdeck_handler/ap_prst_start
+    command-release: FlyWithLua/streamdeck_handler/ap_prst_end
+  - index: 3
+    name: at light
+    type: single
+    icon: atprst
+    dataref: laminar/B738/annunciator/at_disconnect1
+    command: FlyWithLua/streamdeck_handler/at_prst_start
+    command-release: FlyWithLua/streamdeck_handler/at_prst_end
+  - index: 4
+    name: fmc light
+    type: single
+    icon: fmcprst
+    dataref: laminar/B738/annunciator/at_fms_disconnect1
+    command: FlyWithLua/streamdeck_handler/fmc_prst_start
+    command-release: FlyWithLua/streamdeck_handler/fmc_prst_end
+  - index: 5
+    name: speedbrake armed
+    type: single
+    icon: speedbrakearmed
+    dataref: laminar/B738/annunciator/speedbrake_armed
+    dataref-multiplier: 1.5
+  - index: 6
+    name: speedbrake do not arm
+    type: single
+    icon: speedbrakedonotarm
+    dataref: laminar/B738/annunciator/speedbrake_extend
+    dataref-multiplier: 1.5
+  - index: 7
+    name: stab out of trim
+    type: single
+    icon: staboutoftrim
+    dataref: laminar/B738/annunciator/stab_out_of_trim
+    dataref-multiplier: 1.5
+  - index: 11
+    name: flaps
+    type: dir
+    dataref: sim/flightmodel/misc/blown_flap_engage_rat
+    dataref-multiplier: 100
+    gauge:
+      name: flaps
+      needle-center:
+        x: 64
+        y: 64
+      background: flapsbckg
+      needle: flapsneedle
+      range-degrees: 270
+      min: 0.0
+      max: 100
+      step: 1
+  - index: 12
+    name: le flaps transit
+    type: single
+    icon: leflapstransit
+    dataref: laminar/B738/annunciator/slats_transit
+    dataref-multiplier: 1.5
+  - index: 13
+    name: le flaps ext
+    type: single
+    icon: leflapsext
+    dataref: laminar/B738/annunciator/slats_extend
+    dataref-multiplier: 1.5
+  - index: 10
+    name: left
+    type: dir
+    icon: dir
+    label: LEFT
+  - index: 14
+    name: right
+    type: dir
+    icon: dir
+    label: RIGHT
+  - index: 9
+    name: mcp
+    type: dir
+    icon: dir
+    label: MCP
+  - index: 8
+    name: efis
+    type: dir
+    icon: mapmode
+    dataref: laminar/B738/EFIS_control/capt/map_mode_pos
+    dataref-states:
+      - 0.0
+      - 1.0
+      - 2.0
+      - 3.0
+
+  

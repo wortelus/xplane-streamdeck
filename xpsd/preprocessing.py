@@ -5,35 +5,22 @@ import sys
 import numpy as np
 import yaml
 from yaml import safe_load
-from PIL import ImageDraw, ImageFont
+from PIL import ImageDraw
 from StreamDeck.ImageHelpers import PILHelper
+import logging as logger
+
+from xpsd.configuration import RunningConfig
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
 except ImportError:
     from yaml import Loader, Dumper
 
-try:
-    import dynamic
-except ImportError:
-    print("You don't seem to have dynamic.py near its main.py and preprocessing.py. correct your installation")
-    sys.exit(1)
-try:
-    import sanity
-except ImportError:
-    print("You don't seem to have sanity.py near its main.py and preprocessing.py. correct your installation")
-    sys.exit(1)
-try:
-    import assetio
-except ImportError:
-    print("You don't seem to have assetio.py near its main.py and preprocessing.py. correct your installation")
-    sys.exit(1)
+from xpsd import dynamic
+from xpsd import sanity
+from xpsd import assetio
 
-ACTION_CFG = "actions.yaml"
-ACTION_CFG_NAME = "actions"
-
-DEFAULT_FONT = None
-DEFAULT_FONT_SIZE = 10
+from xpsd.const import ACTION_CFG, ACTION_CFG_ALIAS
 
 IMAGES_ALREADY_GENERATED = {}
 
@@ -41,23 +28,6 @@ IMAGES_ALREADY_GENERATED = {}
 #
 # preset loading
 #
-
-
-def load_default_font(path, size):
-    path = assetio.get_font_path(path)
-
-    global DEFAULT_FONT_SIZE
-    DEFAULT_FONT_SIZE = size
-    global DEFAULT_FONT
-    DEFAULT_FONT = ImageFont.truetype(path, size)
-
-
-def get_filename_button_static_png(icon_name):
-    return join(icon_name + ".png")
-
-
-def get_filename_button_dataref_png(icon_name, state):
-    return join(icon_name + "." + str(state) + ".png")
 
 
 class Button(object):
@@ -133,7 +103,7 @@ class Button(object):
 
             self.file_names = np.empty(len(file_names), dtype=object)
             for i, fn in enumerate(file_names):
-                self.file_names[i] = get_filename_button_static_png(fn)
+                self.file_names[i] = assetio.get_filename_button_static_png(fn)
         elif gauge:
             # sanity check for gauge (if it contains everything)
             sanity.gauge_check(index, name, gauge)
@@ -144,8 +114,8 @@ class Button(object):
             # here comes the dynamic.py into play
             self.gauge = gauge
             # preload full path for later image processing in dynamic.py
-            self.gauge["background"] = get_filename_button_static_png(gauge["background"])
-            self.gauge["needle"] = get_filename_button_static_png(gauge["needle"])
+            self.gauge["background"] = assetio.get_filename_button_static_png(gauge["background"])
+            self.gauge["needle"] = assetio.get_filename_button_static_png(gauge["needle"])
             # get own filenames, which really doesn't exist on disk and are created dynamically only for the runtime
             # so we pregenerate them artificial names for the use in main global images dict
             self.file_names = dynamic.create_dynamic_filenames(self.gauge["name"], self.dataref_states,
@@ -164,7 +134,7 @@ class Button(object):
                 # set default color
                 self.display["color"] = "white"
 
-            self.display["background"] = get_filename_button_static_png(display["background"])
+            self.display["background"] = assetio.get_filename_button_static_png(display["background"])
             self.file_names = dynamic.create_dynamic_filenames(self.display["name"], self.dataref_states,
                                                                self.label, self.special_labels)
         elif self.dataref_states is not None:
@@ -175,7 +145,7 @@ class Button(object):
 
             self.file_names = np.empty(len(self.dataref_states), dtype=object)
             for i, state in enumerate(self.dataref_states):
-                self.file_names[i] = get_filename_button_dataref_png(icon, state)
+                self.file_names[i] = assetio.get_filename_button_dataref_png(icon, state)
         else:
             if icon is None:
                 logging.error("#{} {} is trying to set static icon without the 'icon' parameter, quitting..."
@@ -183,7 +153,7 @@ class Button(object):
                 sys.exit(1)
 
             self.file_names = np.empty(1, dtype=object)
-            self.file_names[0] = get_filename_button_static_png(icon)
+            self.file_names[0] = assetio.get_filename_button_static_png(icon)
 
 
 def get_img_memory_name(file_name, label, special_labels, preload_pos=False, deck=None):
@@ -199,18 +169,18 @@ def get_img_memory_name(file_name, label, special_labels, preload_pos=False, dec
     return memory_img_name
 
 
-def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=False):
-    with open(join(target_dir, yaml_keyset)) as stream:
+def load_preset(conf: RunningConfig, yaml_keyset, preload_labels=False):
+    with open(join(conf.active_keyset_path, yaml_keyset)) as stream:
         try:
             preset_cfg = safe_load(stream)
         except yaml.YAMLError as err:
-            print("cannot load {}, ensure you have proper syntax config {}".format(yaml_keyset, err))
+            logger.error("cannot load {}, ensure you have proper syntax config {}".format(yaml_keyset, err))
             sys.exit(1)
 
     keys = preset_cfg["actions"]
     # key_count = len(keys)
 
-    preset = np.empty(deck_key_count, dtype=object)
+    preset = np.empty(conf.key_count, dtype=object)
     other_keysets = np.empty(shape=0, dtype=str)
 
     for _, key in enumerate(keys):
@@ -224,10 +194,13 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
             logging.error("button with name {} has index non-convertable to integer, quitting...".format(name))
             sys.exit(1)
 
-        if index >= deck_key_count:
-            logging.error("button with name {} has index which is too large for {} key device. "
+        if conf.local_cfg["force-config"] and conf.local_cfg["force-config"] == 'sd15':
+            index = int(int(index / 5) * 8 + int(index % 5))
+
+        if index >= conf.key_count:
+            logging.error("button with name {} has index {} which is too large for {} key device. "
                           "The configuration will still launch, but the layout will be broken."
-                          .format(name, deck_key_count))
+                          .format(name, index, conf.key_count))
             continue
         cmd_type = key.get("type")
         preset[index] = Button(
@@ -267,7 +240,7 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
                 for i, state_name in enumerate(btn.file_names):
                     # change state name for storing, allowing same icons with different labels
                     memory_img_name = get_img_memory_name(state_name, btn.label, btn.special_labels,
-                                                          preload_pos=True, deck=deck)
+                                                          preload_pos=True, deck=conf.active_deck)
                     preset[index].file_names[i] = memory_img_name
 
         if cmd_type == "dir":
@@ -276,21 +249,17 @@ def load_preset(deck, target_dir, yaml_keyset, deck_key_count, preload_labels=Fa
     return preset, other_keysets
 
 
-def add_yaml_suffix(filename):
-    return filename + ".yaml"
-
-
-def load_all_presets(deck, target_dir, deck_key_count, preload_labels=False):
+def load_all_presets(conf: RunningConfig, preload_labels=False):
     presets_all = {}
     # read root
-    preset, keysets = load_preset(deck, target_dir, ACTION_CFG, deck_key_count,
+    preset, keysets = load_preset(conf, ACTION_CFG,
                                   preload_labels=preload_labels)
-    presets_all[ACTION_CFG_NAME] = preset
+    presets_all[ACTION_CFG_ALIAS] = preset
     # execute while there are keysets to be read and loaded into presets
     while keysets.size > 0:
         for _, key_set in enumerate(keysets):
             if key_set not in presets_all and key_set != "return":
-                preset, other_keysets = load_preset(deck, target_dir, add_yaml_suffix(key_set), deck_key_count,
+                preset, other_keysets = load_preset(conf, assetio.add_yaml_suffix(key_set),
                                                     preload_labels=preload_labels)
                 presets_all[key_set] = preset
                 keysets = np.unique(np.concatenate((keysets, other_keysets), 0))
@@ -341,36 +310,38 @@ def load_datarefs(presets_all):
 
 
 # taken from https://python-elgato-streamdeck.readthedocs.io/en/stable/examples/basic.html
-def render_key_image(deck, plane_conf_dir, icon_filename, label_text, special_labels, only_uppercase=False):
+def render_key_image(conf: RunningConfig, icon_filename,
+                     label_text,
+                     special_labels, only_uppercase=False):
     # Ask forgiveness, not permission
     # This way we use nested approach to check first the plane specific icon set directory,
     # and next the icons/ directory for the asset
-    icon = assetio.open_icon_asset(plane_conf_dir, icon_filename)
+    icon = assetio.open_icon_asset(conf.active_config_path, icon_filename)
 
     # Resize the source image asset to best-fit the dimensions of a single key,
     # leaving a margin at the bottom so that we can draw the key title
     # afterwards.
-    image = PILHelper.create_scaled_image(deck, icon, margins=[0, 0, 0, 0])
+    image = PILHelper.create_scaled_image(conf.active_deck, icon, margins=[0, 0, 0, 0])
 
     # Load a custom TrueType font and use it to overlay the key index, draw key
     # label onto the image a few pixels from the bottom of the key.
     draw = ImageDraw.Draw(image)
     if special_labels:
         for i, spec_label in enumerate(special_labels):
-            draw = dynamic.load_special_label(spec_label, deck, draw)
+            draw = dynamic.load_special_label(spec_label, conf.active_deck, draw)
 
-    global DEFAULT_FONT
     if label_text:
         if only_uppercase and not label_text.isupper():
-            print("WARN: label {} is not upper case only, "
-                  "converting to upper (to disable this check out 'config.yaml'".format(label_text))
+            logger.warning("label {} is not upper case only, "
+                           "converting to upper (to disable this check out 'config.yaml'".format(label_text))
             label_text = label_text.upper()
-        draw.text((image.width / 2, image.height - 8), text=label_text, font=DEFAULT_FONT, anchor="ms", fill="white")
+        draw.text((image.width / 2, image.height - 8),
+                  text=label_text, font=conf.default_font, anchor="ms", fill="white")
 
-    return PILHelper.to_native_format(deck, image)
+    return PILHelper.to_native_format(conf.active_deck, image)
 
 
-def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
+def load_images_datarefs(conf: RunningConfig, presets_dir: list[Button], only_uppercase):
     set_images = {}
     for _, button in enumerate(presets_dir):
         if button is None:
@@ -379,20 +350,21 @@ def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
         # special case - gauge
         if button.gauge:
             if button.gauge["name"] in IMAGES_ALREADY_GENERATED:
-                print("wait... presets for gauge {} already generated, skipping...".format(button.gauge["name"]))
+                logger.info("wait... presets for gauge {} already generated, skipping...".format(button.gauge["name"]))
                 continue
-            print("wait... generating gauge presets for {}".format(button.gauge["name"]))
-            set_images.update(dynamic.load_gauge_images(button.gauge, deck, plane_conf_dir,
+            logger.info("wait... generating gauge presets for {}".format(button.gauge["name"]))
+            set_images.update(dynamic.load_gauge_images(button.gauge, conf.active_deck, conf.active_config_path,
                                                         button.file_names))
             IMAGES_ALREADY_GENERATED[button.gauge["name"]] = "True"
             continue
         # special case - display
         if button.display:
             if button.display["name"] in IMAGES_ALREADY_GENERATED:
-                print("wait... presets for display {} already generated, skipping...".format(button.display["name"]))
+                logger.info(
+                    "wait... presets for display {} already generated, skipping...".format(button.display["name"]))
                 continue
-            print("wait... generating display presets for {}".format(button.display["name"]))
-            set_images.update(dynamic.load_display_images(button.display, deck, plane_conf_dir,
+            logger.info("wait... generating display presets for {}".format(button.display["name"]))
+            set_images.update(dynamic.load_display_images(button.display, conf.active_deck, conf.active_config_path,
                                                           button.file_names, button.dataref_states,
                                                           button.special_labels))
             IMAGES_ALREADY_GENERATED[button.display["name"]] = "True"
@@ -405,24 +377,25 @@ def load_images_datarefs(deck, plane_conf_dir, presets_dir, only_uppercase):
             # note: this does not apply to dynamic elements (displays, gauges)
 
             memory_img_name = get_img_memory_name(state_name, button.label, button.special_labels,
-                                                  preload_pos=True, deck=deck)
+                                                  preload_pos=True, deck=conf.active_deck)
             button.file_names[i] = memory_img_name
 
             if memory_img_name not in set_images:
-                state_image = render_key_image(deck, plane_conf_dir, state_name,
+                state_image = render_key_image(conf, state_name,
                                                button.label, button.special_labels, only_uppercase)
                 set_images[memory_img_name] = state_image
 
     return set_images
 
 
-def load_images_datarefs_all(deck, plane_conf_dir, presets_all, only_uppercase):
-    set_images_all = {"none.png": render_key_image(deck, plane_conf_dir, get_filename_button_static_png("none"), None,
-                                                   None, only_uppercase=only_uppercase),
-                      "unknown.png": render_key_image(deck, plane_conf_dir, get_filename_button_static_png("unknown"),
-                                                      None, None, only_uppercase=only_uppercase)}
+def load_images_datarefs_all(conf: RunningConfig, presets_all, only_uppercase):
+    set_images_all = {
+        "none.png": render_key_image(conf, assetio.get_filename_button_static_png("none"), None,
+                                     None, only_uppercase=only_uppercase),
+        "unknown.png": render_key_image(conf, assetio.get_filename_button_static_png("unknown"),
+                                        None, None, only_uppercase=only_uppercase)}
     for _, dataref_dir in presets_all.items():
-        images_single_dir = load_images_datarefs(deck, plane_conf_dir, dataref_dir, only_uppercase)
+        images_single_dir = load_images_datarefs(conf, dataref_dir, only_uppercase)
         set_images_all.update(images_single_dir)
 
     return set_images_all
@@ -432,7 +405,7 @@ def load_images_datarefs_all(deck, plane_conf_dir, presets_all, only_uppercase):
 # pickle helpers
 #
 
-# pickle is unable to handler 'memoryview' objects, we must convert them to bytearray and vice versa
+# pickle is unable to handle 'memoryview' objects, we must convert them to bytearray and vice versa
 
 
 def convert_to_save_format(images_all):

@@ -1,0 +1,99 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 2
+    name: fuel2
+    type: dir
+    icon: dir
+    label: VALVES
+    # left pumps
+  - index: 5
+    name: low press left aft
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_l1
+    icon: lowpressure
+  - index: 0
+    name: fuel pump left aft
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_lft1
+    file-names:
+      - red0
+      - green2
+    label: LEFT AFT
+    command: FlyWithLua/streamdeck_handler/fp1_toggle
+  - index: 6
+    name: low press left fwd
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_l2
+    icon: lowpressure
+  - index: 1
+    name: fuel pump left fwd
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_lft2
+    label: LEFT FWD
+    file-names:
+      - red0
+      - green2
+    command: FlyWithLua/streamdeck_handler/fp2_toggle
+    # right pumps
+  - index: 8
+    name: low press right fwd
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_r2
+    icon: lowpressure
+  - index: 3
+    name: fuel pump right fwd
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_rgt2
+    file-names:
+      - red0
+      - green2
+    label: RIGHT FWD
+    command: FlyWithLua/streamdeck_handler/fp4_toggle
+  - index: 9
+    name: low press right aft
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_r1
+    icon: lowpressure
+  - index: 4
+    name: fuel pump right aft
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_rgt1
+    label: RIGHT AFT
+    file-names:
+      - red0
+      - green2
+    command: FlyWithLua/streamdeck_handler/fp3_toggle
+    # ctr pumps
+  - index: 11
+    name: low press ctr left
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_c1
+    icon: lowpressure
+  - index: 10
+    name: fuel pump ctr left
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_ctr1
+    file-names:
+      - red0
+      - green2
+    label: CTR LEFT
+    command: FlyWithLua/streamdeck_handler/fp5_toggle
+  - index: 13
+    name: low press ctr right
+    type: none
+    dataref: laminar/B738/annunciator/low_fuel_press_c2
+    icon: lowpressure
+  - index: 12
+    name: fuel pump ctr right
+    type: single
+    dataref: laminar/B738/fuel/fuel_tank_pos_ctr2
+    label: CTR RIGHT
+    file-names:
+      - red0
+      - green2
+    command: FlyWithLua/streamdeck_handler/fp6_toggle
+  

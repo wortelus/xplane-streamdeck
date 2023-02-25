@@ -1,0 +1,49 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    label: RETURN
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    file-names:
+      - orangea
+      - blueb
+      - orangec
+    dataref: laminar/B738/toggle_switch/extinguisher_circuit_test
+  - index: 5
+    name: exting left
+    type: single
+    icon: blue-left
+    label: LEFT
+    command: FlyWithLua/streamdeck_handler/exting_left_start
+    command-release: FlyWithLua/streamdeck_handler/exting_left_end
+  - index: 7
+    name: exting right
+    type: single
+    icon: blue-right
+    label: RIGHT
+    command: FlyWithLua/streamdeck_handler/exting_right_start
+    command-release: FlyWithLua/streamdeck_handler/exting_right_end
+  - index: 10
+    name: apu ext circuit
+    type: none
+    icon: extcircuit
+    label: APU
+    dataref: laminar/B738/annunciator/extinguisher_circuit_annun_apu
+    dataref-multiplier: 1.5
+  - index: 12
+    name: left ext circuit
+    type: none
+    icon: extcircuit
+    label: LEFT
+    dataref: laminar/B738/annunciator/extinguisher_circuit_annun_left
+    dataref-multiplier: 1.5
+  - index: 13
+    name: right ext circuit
+    type: none
+    icon: extcircuit
+    label: RIGHT
+    dataref: laminar/B738/annunciator/extinguisher_circuit_annun_right
+    dataref-multiplier: 1.5

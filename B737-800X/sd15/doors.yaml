@@ -1,0 +1,48 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: MAIN DECK
+  - index: 0
+    name: fwd l doors
+    type: single
+    icon: fwdentry
+    dataref: laminar/B738/annunciator/fwd_entry
+    dataref-multiplier: 1.5
+    command: laminar/B738/door/fwd_L_toggle
+  - index: 1
+    name: fwd r doors
+    type: single
+    icon: fwdservice
+    dataref: laminar/B738/annunciator/fwd_service
+    dataref-multiplier: 1.5
+    command: laminar/B738/door/fwd_R_toggle
+  - index: 5
+    name: aft l doors
+    type: single
+    icon: aftentry
+    dataref: laminar/B738/annunciator/aft_entry
+    dataref-multiplier: 1.5
+    command: laminar/B738/door/aft_L_toggle
+  - index: 6
+    name: aft r doors
+    type: single
+    icon: aftservice
+    dataref: laminar/B738/annunciator/aft_service
+    dataref-multiplier: 1.5
+    command: laminar/B738/door/aft_R_toggle
+  - index: 2
+    name: fwd cargo
+    type: single
+    icon: fwdcargo
+    dataref: laminar/B738/annunciator/fwd_cargo
+    dataref-multiplier: 1.5
+    command: laminar/B738/door/fwd_cargo_toggle
+  - index: 7
+    name: aft cargo
+    type: single
+    icon: aftcargo
+    dataref: laminar/B738/annunciator/aft_cargo
+    dataref-multiplier: 1.5
+    command: laminar/B738/door/aft_cargo_toggle

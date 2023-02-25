@@ -1,0 +1,59 @@
+actions:
+  - index: 14
+    name: return
+    type: dir
+    icon: dir
+    label: RETURN
+  - index: 0
+    name: gpu connect
+    type: single
+    icon: greenon
+    dataref: laminar/B738/gpu_available
+    command: laminar/B738/gpu_toggle
+    label: GPU
+  - index: 1
+    name: chocks
+    type: single
+    icon: greenon
+    dataref: laminar/B738/fms/chock_status
+    command: laminar/B738/toggle_switch/chock
+    label: CHOCKS
+  - index: 2
+    name: asu connect
+    type: single
+    file-names:
+      - greenon.1.0
+      - greenon.0.0
+    dataref: laminar/B738/engine/hide_asu
+    command: laminar/B738/asu_toggle
+    label: ASU
+  - index: 5
+    name: welcome msg
+    type: single
+    icon: yellow-button
+    command: laminar/b738/fmodpack/play_welcome_msg
+    label: PLAY WELCOME
+  - index: 6
+    name: cruise msg
+    type: single
+    icon: yellow-button
+    command: laminar/b738/fmodpack/play_cruise_msg
+    label: PLAY LVLOFF
+  - index: 7
+    name: descent msg
+    type: single
+    icon: yellow-button
+    command: laminar/b738/fmodpack/play_descent_msg
+    label: PLAY DSCNT
+  - index: 8
+    name: landing msg
+    type: single
+    icon: yellow-button
+    command: laminar/b738/fmodpack/play_preland_msg
+    label: PLAY LAND
+  - index: 9
+    name: turbulence msg
+    type: single
+    icon: yellow-button
+    command: laminar/b738/fmodpack/play_turbulence_msg
+    label: PLAY TURB

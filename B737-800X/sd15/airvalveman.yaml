@@ -1,0 +1,26 @@
+actions:
+  - index: 8
+    name: return
+    type: dir
+    file-names:
+      - orangea
+      - blueb
+      - orangec
+    dataref-states:
+      - -1.0
+      - 0.0
+      - 1.0
+    dataref: laminar/B738/toggle_switch/air_valve_manual
+    label: MAN VALVE
+  - index: 7
+    name: air valve manual left
+    type: single
+    icon: blue-left
+    command: FlyWithLua/streamdeck_handler/air_valve_left_start
+    command-release: FlyWithLua/streamdeck_handler/air_valve_left_end
+  - index: 9
+    name: air valve manual right
+    type: single
+    icon: blue-right
+    command: FlyWithLua/streamdeck_handler/air_valve_right_start
+    command-release: FlyWithLua/streamdeck_handler/air_valve_right_end
