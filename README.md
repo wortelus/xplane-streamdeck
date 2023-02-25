@@ -99,7 +99,7 @@ multiple UDP communications at the same time
 ## Usage
 Instructions for **Windows**
 
-Choose desired plane type configuration in `config.yaml`
+Choose desired plane type configuration in `config.yaml` by setting the `active-preset` parameter
 
 **Execute the script by running the `start.py` with Python 3 by:**
 
