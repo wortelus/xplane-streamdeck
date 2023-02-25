@@ -5,6 +5,9 @@
 # Brightness of the Stream Deck keys
 brightness: 75
 
+# Update rate of the datarefs per second
+update-rate: 20
+
 # X-Plane server UDP settings, change necessary if you are running X-Plane on a remote machine
 xp-ip: 127.0.0.1
 xp-port: 49000
@@ -14,13 +17,6 @@ xp-port: 49000
 server-ip: 127.0.0.1
 server-port: 49008
 
-# font used for labels (displays use different one)
-default-font: IBMPlexMono-Bold.ttf
-default-font-size: 13
-
-# set False if you want lower case labels
-always-upper-case: True
-
 # comment out following line to disable image caching
 # the images will have to load for several seconds every time, but it is suitable for tweaking
 
@@ -28,6 +24,6 @@ cache-path: ./ # current folder
 
 # the first one is taken as active for the session
 stream-decks:
-  - serial: CL41I1A00651 # ! CHANGE THIS VALUE !
+  - serial: secret.yaml # ! VERIFY THE SERIAL KEY IN THIS FILE !
     keys: 32 # ! VERIFY THIS VALUE !
-    directory: B737-800X
+    active-preset: B737-800X

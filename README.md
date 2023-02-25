@@ -70,9 +70,11 @@ using cmd or PowerShell
 [guide](https://python-elgato-streamdeck.readthedocs.io/en/stable/pages/backend_libusb_hidapi.html)
 from the official documentation source
 
-6. **Update `config.yaml` for your preferences and enable UDP server in X-Plane settings**
-- Mainly update the **serial number** of your Stream Deck with your **serial 
-number** and number of keys according to your model. 
+6. **Update `config.yaml` for your preferences**
+- There are two `config.yaml` files - one near the start.py *(global)* 
+and the other one in the plane's preset directory *(local)*
+- Mainly update the **serial number** in the `secret.yaml` of your Stream Deck with your **serial 
+number** and number of keys according to your model.
 - Execute the xplane-streamdeck script to find the serial number out
 - Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
 7. **Add the streamdeck handlers to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
