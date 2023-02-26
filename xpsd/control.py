@@ -263,7 +263,7 @@ def load():
     return conf
 
 
-def run(ctl: DeckControl):
+def run(ctl: DeckControl, update_rate):
     ctl.start()
     ctl.configuration.active_deck.set_key_callback(ctl.press.key_change_callback)
     logger.info("xplane-streamdeck ready...")
@@ -273,7 +273,7 @@ def run(ctl: DeckControl):
 
     try:
         while True:
-            time.sleep(0.05)
+            time.sleep(update_rate)
             ctl.press.view.update_fetch_datarefs(ctl.configuration.active_deck)
     except KeyboardInterrupt:
         logger.info('X-Plane Manager by wortelus interrupted! closing the deck and udp connection...')

@@ -18,7 +18,7 @@ def main():
     logger.info("Copyright (c) 2022, Daniel Slavík All rights reserved.")
     conf = control.load()
     ctl = control.DeckControl(conf)
-    control.run(ctl)
+    control.run(ctl, conf.update_rate)
 
 
 if __name__ == "__main__":
