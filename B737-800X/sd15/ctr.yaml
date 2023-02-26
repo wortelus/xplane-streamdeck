@@ -7,7 +7,7 @@ actions:
   - index: 13
     name: ctr2
     type: dir
-    icon: dir
+    icon: right
     label: PAGE 2
   - index: 12
     name: spdref

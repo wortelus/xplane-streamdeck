@@ -2,7 +2,7 @@ actions:
   - index: 13
     name: return
     type: dir
-    icon: dir
+    icon: left
     label: RETURN
   - index: 5
     name: wxr

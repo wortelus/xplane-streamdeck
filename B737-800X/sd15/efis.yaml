@@ -7,7 +7,7 @@ actions:
   - index: 13
     name: efis2
     type: dir
-    icon: dir
+    icon: right
     label: EFIS 2 
   - index: 12
     name: efis3

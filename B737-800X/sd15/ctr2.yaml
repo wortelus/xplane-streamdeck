@@ -2,7 +2,7 @@ actions:
   - index: 14
     name: return
     type: dir
-    icon: dir
+    icon: left
     label: CTR 1
   - index: 0
     name: eng pfd

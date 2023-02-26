@@ -120,6 +120,16 @@ actions:
       color: white
       keep-decimal: False
       background: none
+    special-labels:
+      - label: RETURN
+        text-center:
+          x: center
+          y: 90
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 14
+        color: orange
+        direction: ltr
+        align: center
   - index: 14
     name: mcp vs dn
     type: single

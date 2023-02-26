@@ -70,7 +70,7 @@ actions:
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/el_hyd_ovht_1
-  - index: 13
+  - index: 12
     name: elec b overheat
     type: none
     icon: overheat

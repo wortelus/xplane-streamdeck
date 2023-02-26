@@ -1,6 +1,6 @@
 actions:
-  # capt six pack start
-  - index: 2
+  # capt six-pack start
+  - index: 0
     name: flt cont
     type: single
     icon: fltcont
@@ -8,7 +8,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 3
+  - index: 1
     name: elec
     type: single
     icon: elec
@@ -16,7 +16,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 10
+  - index: 5
     name: irs
     type: single
     icon: irs
@@ -24,7 +24,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 11
+  - index: 6
     name: apu
     type: single
     icon: apu
@@ -32,7 +32,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 12
+  - index: 10
     name: fuel
     type: single
     icon: fuel
@@ -40,7 +40,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 13
+  - index: 11
     name: ovht det
     type: single
     icon: ovhtdet
@@ -48,17 +48,9 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-    # capt six pack end
- 
-  - index: 1
-    name: six pack
-    type: single
-    icon: orange-up
-    label: SIX PACK
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  # f/o six pack start
-  - index: 4
+  # capt six-pack end
+  # f/o six-pack start
+  - index: 3
     name: anti ice
     type: single
     icon: antiice
@@ -66,7 +58,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 5
+  - index: 4
     name: engine
     type: single
     icon: eng
@@ -74,7 +66,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 6
+  - index: 8
     name: hydraulics
     type: single
     icon: hyd
@@ -82,7 +74,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 7
+  - index: 9
     name: overhead
     type: single
     icon: overhead
@@ -90,7 +82,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 8
+  - index: 13
     name: doors
     type: single
     icon: doors
@@ -98,7 +90,7 @@ actions:
     dataref-multiplier: 1.5
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
-  - index: 9
+  - index: 14
     name: air conditioning
     type: single
     icon: aircond
@@ -107,16 +99,16 @@ actions:
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
     # f/o six pack end
-  - index: 14
+  - index: 12
     name: return
     type: dir
     icon: dir
     label: MAIN DECK
-  - index: 0
-    name: six pack
+  - index: 2
+    name: master caution
     type: single
-    icon: orange-up
-    label: SIX PACK
-    command: FlyWithLua/streamdeck_handler/capt_six_pack_start
-    command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
- 
+    icon: mastercaution
+    dataref: laminar/B738/annunciator/master_caution_light
+    dataref-multiplier: 1.5
+    command: FlyWithLua/streamdeck_handler/capt_master_caution_start
+    command-release: FlyWithLua/streamdeck_handler/capt_master_caution_end

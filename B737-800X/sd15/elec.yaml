@@ -108,7 +108,7 @@ actions:
     type: none
     dataref: laminar/B738/dc_amp_value
     display:
-      name: -100.500.elec
+      name: -100.500.elec-dc-amps
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
@@ -125,9 +125,9 @@ actions:
       - label: DC AMPS
         text-center:
           x: center
-          y: 120
+          y: 86
         font-path: IBMPlexMono-Bold.ttf
-        font-size: 10
+        font-size: 14
         color: white
         direction: ltr
         align: center
@@ -136,7 +136,7 @@ actions:
     type: none
     dataref: laminar/B738/dc_volt_value
     display:
-      name: -100.500.elec
+      name: -100.500.elec-dc-volts
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
@@ -149,13 +149,23 @@ actions:
       color: lime
       keep-decimal: False
       background: none
+    special-labels:
+      - label: DC VOLTS
+        text-center:
+          x: center
+          y: 86
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 14
+        color: white
+        direction: ltr
+        align: center
   # ac
   - index: 7
     name: ac amps display
     type: none
     dataref: laminar/B738/ac_amp_value
     display:
-      name: -100.500.elec
+      name: -100.500.elec-ac-amps
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
@@ -168,12 +178,22 @@ actions:
       color: lime
       keep-decimal: False
       background: none
+    special-labels:
+      - label: AC AMPS
+        text-center:
+          x: center
+          y: 86
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 14
+        color: white
+        direction: ltr
+        align: center
   - index: 6
     name: ac volts display
     type: none
     dataref: laminar/B738/ac_volt_value
     display:
-      name: -100.500.elec
+      name: -100.500.elec-ac-volts
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
@@ -186,12 +206,22 @@ actions:
       color: lime
       keep-decimal: False
       background: none
+    special-labels:
+      - label: AC VOLTS
+        text-center:
+          x: center
+          y: 86
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 14
+        color: white
+        direction: ltr
+        align: center
   - index: 8
     name: ac freq display
     type: none
     dataref: laminar/B738/ac_freq_value
     display:
-      name: -100.500.elec
+      name: -100.500.elec-ac-freq
       text-center:
         x: center
         y: 60 # center doesn't work as it should, due to font's height
@@ -204,3 +234,13 @@ actions:
       color: lime
       keep-decimal: False
       background: none
+    special-labels:
+      - label: AC FREQ
+        text-center:
+          x: center
+          y: 86
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 14
+        color: white
+        direction: ltr
+        align: center
