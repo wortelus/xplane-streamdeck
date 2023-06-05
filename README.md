@@ -138,7 +138,6 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 
 ### What is planned / WIP?
 - Backward compatible GUI Drag 'n Drop utility for managing the plane presets
-- Own X-Plane UDP handler
 
 ### Known Issues
 - There was a bug in **pyxpudpserver** that sometimes caused the dataref updating of buttons to
