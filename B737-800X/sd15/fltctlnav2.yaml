@@ -93,4 +93,4 @@ actions:
     type: none
     icon: yawdamper
     dataref: laminar/B738/annunciator/yaw_damp
-    dataref-offset: 0.8
+    dataref-offset: 0.95

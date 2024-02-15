@@ -77,10 +77,10 @@ actions:
     type: none
     icon: cowlantiice
     dataref: laminar/B738/annunciator/cowl_ice_0
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 3
     name: ann orange anti ice 2
     type: none
     icon: cowlantiice
     dataref: laminar/B738/annunciator/cowl_ice_1
-    dataref-offset: 0.8
+    dataref-offset: 0.95

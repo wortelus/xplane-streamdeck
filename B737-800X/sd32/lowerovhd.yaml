@@ -259,7 +259,7 @@ actions:
     type: none
     icon: notarmed
     dataref: laminar/B738/annunciator/emer_exit
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 6
     name: arm emer exit lights
     type: single
@@ -308,13 +308,13 @@ actions:
     type: none
     icon: lowoilpressure
     dataref: laminar/B738/annunciator/apu_low_oil
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 2
     name: apu fault
     type: none
     icon: fault
     dataref: laminar/B738/annunciator/apu_fault
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 3
     name: apu overspeed
     type: none

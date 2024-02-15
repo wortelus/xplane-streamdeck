@@ -89,25 +89,25 @@ actions:
     type: none
     icon: autofail
     dataref: laminar/B738/annunciator/autofail
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 1
     name: off sched desc
     type: none
     icon: offscheddescent
     dataref: laminar/B738/annunciator/off_sched_descent
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 2
     name: altnpress
     type: none
     icon: altn
     dataref: laminar/B738/annunciator/altn_press
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 3
     name: manualpress
     type: none
     icon: manual
     dataref: laminar/B738/annunciator/manual_press
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 4
     name: alt horn cutout
     type: single

@@ -9,7 +9,7 @@ actions:
     name: low press left aft
     type: none
     dataref: laminar/B738/annunciator/low_fuel_press_l1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     icon: lowpressure
   - index: 25
     name: fuel pump left aft
@@ -24,7 +24,7 @@ actions:
     name: low press left fwd
     type: none
     dataref: laminar/B738/annunciator/low_fuel_press_l2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     icon: lowpressure
   - index: 26
     name: fuel pump left fwd
@@ -40,7 +40,7 @@ actions:
     name: low press right fwd
     type: none
     dataref: laminar/B738/annunciator/low_fuel_press_r2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     icon: lowpressure
   - index: 30
     name: fuel pump right fwd
@@ -55,7 +55,7 @@ actions:
     name: low press right aft
     type: none
     dataref: laminar/B738/annunciator/low_fuel_press_r1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     icon: lowpressure
   - index: 31
     name: fuel pump right aft
@@ -71,7 +71,7 @@ actions:
     name: low press ctr left
     type: none
     dataref: laminar/B738/annunciator/low_fuel_press_c1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     icon: lowpressure
   - index: 19
     name: fuel pump ctr left
@@ -86,7 +86,7 @@ actions:
     name: low press ctr right
     type: none
     dataref: laminar/B738/annunciator/low_fuel_press_c2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     icon: lowpressure
   - index: 21
     name: fuel pump ctr right
@@ -121,13 +121,13 @@ actions:
     type: none
     icon: filterbypass
     dataref: laminar/B738/annunciator/bypass_filter_1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 5
     name: filter bypass 5
     type: none
     icon: filterbypass
     dataref: laminar/B738/annunciator/bypass_filter_2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   # other valves
   - index: 1
     name: eng valve closed 1

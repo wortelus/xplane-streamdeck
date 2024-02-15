@@ -131,5 +131,5 @@ actions:
     type: none
     icon: dualbleed
     dataref: laminar/B738/annunciator/dual_bleed
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   

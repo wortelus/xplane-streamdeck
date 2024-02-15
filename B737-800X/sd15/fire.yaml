@@ -16,7 +16,7 @@ actions:
     type: none
     icon: eng1overheat
     dataref: laminar/B738/annunciator/engine1_ovht
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 8
     type: single
     name: fire ovht test
@@ -29,31 +29,31 @@ actions:
     type: none
     icon: wheelwell
     dataref: laminar/B738/annunciator/wheel_well_fire
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 4
     name: fire fault inop
     type: none
     icon: fault
     dataref: laminar/B738/annunciator/fire_fault_inop
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 6
     name: apu det inop
     type: none
     icon: apudetinop
     dataref: laminar/B738/annunciator/fire_fault_inop # dataref not found
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 7
     name: apu det inop
     type: none
     icon: apubottledischarge
     dataref: laminar/B738/annunciator/apu_bottle_discharge
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 2
     name: eng 2 overheat
     type: none
     icon: eng2overheat
     dataref: laminar/B738/annunciator/engine2_ovht
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 9
     name: exttest
     type: dir
@@ -65,27 +65,27 @@ actions:
     icon: extcircuit
     label: APU
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_apu
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 11
     name: left ext circuit
     type: none
     icon: extcircuit
     label: LEFT
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_left
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 12
     name: right ext circuit
     type: none
     icon: extcircuit
     label: RIGHT
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_right
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 0
     name: fire warning
     type: single
     icon: firewarn
     dataref: laminar/B738/annunciator/fire_bell_annun
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_fire_warn_start
     command-release: FlyWithLua/streamdeck_handler/capt_fire_warn_end
   - index: 3
@@ -93,6 +93,6 @@ actions:
     type: single
     icon: ovhtdet
     dataref: laminar/B738/annunciator/six_pack_fire
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end

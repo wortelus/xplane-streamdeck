@@ -53,19 +53,19 @@ actions:
       - genoffbus.0.0
       - genoffbus.2.0
     dataref: laminar/B738/annunciator/gen_off_bus2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 15
     name: gen 2 source off
     type: none
     icon: sourceoff
     dataref: laminar/B738/annunciator/source_off2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 7
     name: gen 2 transfer bus off
     type: none
     icon: transferbusoff
     dataref: laminar/B738/annunciator/trans_bus_off2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     # ann 2
   - index: 19
     name: gen 1 off bus
@@ -74,19 +74,19 @@ actions:
       - genoffbus.0.0
       - genoffbus.2.0
     dataref: laminar/B738/annunciator/gen_off_bus1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 11
     name: gen 1 source off
     type: none
     icon: sourceoff
     dataref: laminar/B738/annunciator/source_off1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 3
     name: gen 1 transfer bus off
     type: none
     icon: transferbusoff
     dataref: laminar/B738/annunciator/trans_bus_off1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     # other ann
   - index: 21
     name: apu gen off bus
@@ -96,7 +96,7 @@ actions:
       - apugenoffbus.0.0
       - apugenoffbus.2.0
     dataref: laminar/B738/annunciator/apu_gen_off_bus
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 13
     name: gpu bus
     type: single
@@ -114,7 +114,7 @@ actions:
       - gndpoweravailable.0.0
       - gndpoweravailable.2.0
     dataref: laminar/B738/annunciator/ground_power_avail
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     # transfer bus
   - index: 17
     name: transfer bus

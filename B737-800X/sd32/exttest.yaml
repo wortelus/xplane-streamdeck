@@ -28,16 +28,16 @@ actions:
     type: none
     icon: extcircuit
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_apu
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 13
     name: left ext circuit
     type: none
     icon: extcircuit
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_left
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 15
     name: right ext circuit
     type: none
     icon: extcircuit
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_right
-    dataref-offset: 0.8
+    dataref-offset: 0.95

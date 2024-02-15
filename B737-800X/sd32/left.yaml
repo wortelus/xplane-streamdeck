@@ -5,7 +5,7 @@ actions:
     type: single
     icon: fltcont
     dataref: laminar/B738/annunciator/six_pack_flt_cont
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 3
@@ -13,7 +13,7 @@ actions:
     type: single
     icon: elec
     dataref: laminar/B738/annunciator/six_pack_elec
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 10
@@ -21,7 +21,7 @@ actions:
     type: single
     icon: irs
     dataref: laminar/B738/annunciator/six_pack_irs
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 11
@@ -29,7 +29,7 @@ actions:
     type: single
     icon: apu
     dataref: laminar/B738/annunciator/six_pack_apu
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 18
@@ -37,7 +37,7 @@ actions:
     type: single
     icon: fuel
     dataref: laminar/B738/annunciator/six_pack_fuel
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 19
@@ -45,7 +45,7 @@ actions:
     type: single
     icon: ovhtdet
     dataref: laminar/B738/annunciator/six_pack_fire
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
     # capt six pack end
@@ -54,7 +54,7 @@ actions:
     type: single
     icon: firewarn
     dataref: laminar/B738/annunciator/fire_bell_annun
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_fire_warn_start
     command-release: FlyWithLua/streamdeck_handler/capt_fire_warn_end
   - index: 1
@@ -62,7 +62,7 @@ actions:
     type: single
     icon: mastercaution
     dataref: laminar/B738/annunciator/master_caution_light
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_master_caution_start
     command-release: FlyWithLua/streamdeck_handler/capt_master_caution_end
   # f/o six pack start
@@ -71,7 +71,7 @@ actions:
     type: single
     icon: antiice
     dataref: laminar/B738/annunciator/six_pack_ice
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 6
@@ -79,7 +79,7 @@ actions:
     type: single
     icon: eng
     dataref: laminar/B738/annunciator/six_pack_eng
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 13
@@ -87,7 +87,7 @@ actions:
     type: single
     icon: hyd
     dataref: laminar/B738/annunciator/six_pack_hyd
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 14
@@ -95,7 +95,7 @@ actions:
     type: single
     icon: overhead
     dataref: laminar/B738/annunciator/six_pack_overhead
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 21
@@ -103,7 +103,7 @@ actions:
     type: single
     icon: doors
     dataref: laminar/B738/annunciator/six_pack_doors
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
   - index: 22
@@ -111,7 +111,7 @@ actions:
     type: single
     icon: aircond
     dataref: laminar/B738/annunciator/six_pack_air_cond
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: FlyWithLua/streamdeck_handler/capt_six_pack_start
     command-release: FlyWithLua/streamdeck_handler/capt_six_pack_end
     # f/o six pack end

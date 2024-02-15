@@ -73,99 +73,99 @@ actions:
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_l_side
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 9
     name: on left fwd win heat
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_l_fwd
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 11
     name: on right fwd win heat
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_r_fwd
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 12
     name: on right side win heat
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_r_side
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     # ovht ann
   - index: 0
     name: ovht left side win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_ls
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 1
     name: ovht left fwd win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_lf
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 3
     name: ovht right fwd win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_rf
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 4
     name: ovht right side win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_rs
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     # ann pitots
   - index: 5
     name: capt pitot
     type: none
     icon: captpitot
     dataref: laminar/B738/annunciator/capt_pitot_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 13
     name: l elev pitot
     type: none
     icon: lelevpitot
     dataref: laminar/B738/annunciator/capt_aoa_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 21
     name: l alpha pitot
     type: none
     icon: lalphapitot
     dataref: laminar/B738/annunciator/capt_aoa_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 29
     name: temp probe
     type: none
     icon: tempprobe
     dataref: laminar/B738/annunciator/capt_aoa_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 7
     name: fo pitot
     type: none
     icon: fopitot
     dataref: laminar/B738/annunciator/fo_pitot_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 15
     name: r elev pitot
     type: none
     icon: relevpitot
     dataref: laminar/B738/annunciator/fo_aoa_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 23
     name: r alpha pitot
     type: none
     icon: ralphapitot
     dataref: laminar/B738/annunciator/fo_aoa_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 31
     name: aux probe
     type: none
     icon: auxprobe
     dataref: laminar/B738/annunciator/fo_aoa_off
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     # pitots
   - index: 14
     name: a probe
