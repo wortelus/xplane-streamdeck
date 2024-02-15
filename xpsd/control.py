@@ -79,6 +79,7 @@ class ViewDomain(object):
             sd_index = dref["index"]
             cur_val = xpudp.pyXPUDPServer.getData(dref["dataref"])
             cur_val *= dref["dataref-multiplier"]
+            cur_val += dref["dataref-offset"]
             floor_cur_val = math.floor(cur_val)
             self.fetch_datarefs[sd_index] = floor_cur_val
             if floor_cur_val in dref["dataref-states"]:
@@ -122,6 +123,7 @@ class ViewDomain(object):
             fd = self.fetch_datarefs[sd_index]
             cur_val = xpudp.pyXPUDPServer.getData(dref["dataref"])
             cur_val *= dref["dataref-multiplier"]
+            cur_val += dref["dataref-offset"]
             floor_cur_val = math.floor(cur_val)
             if fd == floor_cur_val:
                 continue

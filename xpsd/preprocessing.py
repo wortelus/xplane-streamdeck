@@ -31,7 +31,8 @@ IMAGES_ALREADY_GENERATED = {}
 
 
 class Button(object):
-    def __init__(self, index, name, icon, cmd_type, label=None, dataref=None, dataref_multiplier=None,
+    def __init__(self, index, name, icon, cmd_type, label=None, dataref=None,
+                 dataref_multiplier=None, dataref_offset=None,
                  dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
                  cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
                  cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None,
@@ -54,6 +55,11 @@ class Button(object):
             self.dataref_multiplier = 1.0
         else:
             self.dataref_multiplier = float(dataref_multiplier)
+
+        if dataref_offset is None:
+            self.dataref_offset = 0.0
+        else:
+            self.dataref_offset = float(dataref_offset)
 
         self.switch_direction = 1  # up / cmd_on / cmd_on_mul
         if dataref_states is None:
@@ -204,28 +210,29 @@ def load_preset(conf: RunningConfig, yaml_keyset, preload_labels=False):
             continue
         cmd_type = key.get("type")
         preset[index] = Button(
-            index,
-            name,
-            key.get("icon"),
-            cmd_type,
-            key.get("label"),
-            key.get("dataref"),
-            key.get("dataref-multiplier"),
-            key.get("dataref-states"),
-            key.get("dataref-default"),
-            key.get("file-names"),
-            key.get("auto-switch"),
-            key.get("command"),
-            key.get("commands"),
-            key.get("command-release"),
-            key.get("commands-release"),
-            key.get("command-on"),
-            key.get("command-off"),
-            key.get("commands-on"),
-            key.get("commands-off"),
-            key.get("gauge"),
-            key.get("display"),
-            key.get("special-labels"),
+            index=index,
+            name=name,
+            icon=key.get("icon"),
+            cmd_type=cmd_type,
+            label=key.get("label"),
+            dataref=key.get("dataref"),
+            dataref_multiplier=key.get("dataref-multiplier"),
+            dataref_offset=key.get("dataref-offset"),
+            dataref_states=key.get("dataref-states"),
+            dataref_default=key.get("dataref-default"),
+            file_names=key.get("file-names"),
+            auto_switch=key.get("auto-switch"),
+            cmd=key.get("command"),
+            cmd_mul=key.get("commands"),
+            cmd_release=key.get("command-release"),
+            cmd_release_mul=key.get("commands-release"),
+            cmd_on=key.get("command-on"),
+            cmd_off=key.get("command-off"),
+            cmd_on_mul=key.get("commands-on"),
+            cmd_off_mul=key.get("commands-off"),
+            gauge=key.get("gauge"),
+            display=key.get("display"),
+            special_labels=key.get("special-labels"),
         )
 
         # restoring images from cache file (preload_labels flag)
@@ -291,6 +298,7 @@ def load_datarefs(presets_all):
                     "icon": button.icon,
                     "dataref": button.dataref,
                     "dataref-multiplier": button.dataref_multiplier,
+                    "dataref-offset": button.dataref_offset,
                     "dataref-states": button.dataref_states,
                     "file-names": button.file_names,
                     "current": button.current,
