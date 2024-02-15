@@ -28,16 +28,16 @@ actions:
     type: none
     icon: extcircuit
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_apu
-    dataref-multiplier: 1.5
+    dataref-multiplier: 2.0
   - index: 13
     name: left ext circuit
     type: none
     icon: extcircuit
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_left
-    dataref-multiplier: 1.5
+    dataref-multiplier: 2.0
   - index: 15
     name: right ext circuit
     type: none
     icon: extcircuit
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_right
-    dataref-multiplier: 1.5
+    dataref-multiplier: 2.0
