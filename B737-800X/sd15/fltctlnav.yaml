@@ -9,19 +9,23 @@ actions:
     type: none
     icon: feeldiffpress
     dataref: laminar/B738/annunciator/feel_diff_press
+    dataref-multiplier: 2.0
   - index: 6
     name: speed trim fail
     type: none
     icon: speedtrimfail.0.0
+    # TODO: Add missing dataref
   - index: 7
     name: mach trim fail
     type: none
     icon: machtrimfail.0.0
+    # TODO: Add missing dataref
   - index: 8
     name:  auto slat fail
     type: none
     icon: autoslatfail
     dataref: laminar/B738/annunciator/auto_slat_fail
+    dataref-multiplier: 2.0
   - index: 10
     name: spoiler a cover
     type: single
