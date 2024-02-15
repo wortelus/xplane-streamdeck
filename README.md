@@ -54,6 +54,14 @@ and simple format similar to JSON, but more human-readable and harder to cause a
 - pyxpudpserver
 
 ## Installation
+**Recommended installation** is by using precompiled **win64-exe** release for Windows.
+
+Instructions for building the executable are in the [build-windows.md](build-windows.md) file.
+
+You can also install the script manually by following the instructions below.
+
+### Windows Installation
+
 Instructions for **Windows**
 
 1. **Download and install Python 3 (3.10 minimum recommended)**
@@ -65,48 +73,47 @@ Instructions for **Windows**
 - download the latest stable release under the **Releases** section
 - or clone by git on your machine by `git clone https://github.com/wortelus/xplane-streamdeck.git`
 - or download source code by **Download ZIP** and extract the files
-3. *(Optional step)* - **Add your custom font in the fonts directory**
-- current one set is OFL font **IBMPlexMono**
-- the name the script will try to open is written in **config.yaml**
-- Custom labels and displays have their own definitions in plane configurations
-- The script searches first the `fonts/` directory of the program, then `C:/Windows/Fonts`
-- **MS33558** optional (B737 alike)
-- You can download it from the internet, this repository doesn't redistribute it.
-4. **Install the dependencies / requirements by**
+3. **Install the dependencies / requirements by**
 
-`.../xplane-streamdeck> python -m pip install -r requirements.txt`
+`python -m pip install -r requirements.txt`
 
 using cmd or PowerShell
 
-5. **Install LibUSB HIDAPI**
+4. **Install LibUSB HIDAPI**
 
 - The *streamdeck* package requires LibUSB HIDAPI, install it by following this 
 [guide](https://python-elgato-streamdeck.readthedocs.io/en/stable/pages/backend_libusb_hidapi.html)
 from the official documentation source
 
-6. **Update `config.yaml` for your preferences**
-- There are two `config.yaml` files - one near the start.py *(global)* 
-and the other one in the plane's preset directory *(local)*
-- Mainly update the **serial number** of your Stream Deck in the `secret.yaml`
-- Execute the `find_serial.py` script to find the serial number out
-- Check the font, IP addresses / ports and X-Plane's UDP server status in case of a problem
-- The IP addresses / ports (sockets) should work in default settings if you are not running 
-multiple UDP communications at the same time
-7. **Add the streamdeck handlers to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
+5. **Add the streamdeck handlers to `X-Plane 11\Resources\plugins\FlyWithLua\Scripts`**
 - Ensure you have **FlyWithLua** installed
 - Copy the streamdeck_handler_*[plane code]*.lua files from the `misc/` directory into the `FlyWithLua\Scripts`
 
 ## Usage
 Instructions for **Windows**
 
+### Win64 Executable
+- Download the latest release from the **Releases** section
+- Extract the files
+- Run the `xplane-streamdeck.exe` file
+- The program will automatically detect the Stream Deck and start the communication with X-Plane
+- For easier access, you can create a shortcut to the executable and place it on your desktop
+
+
+### CLI Usage
 Choose desired plane type configuration in `config.yaml` by setting the `active-preset` parameter
 
 **Execute the script by running the `start.py` with Python 3 by:**
 
-running `.../xplane-streamdeck> python .\start.py` under the *xplane-streamdeck* directory, 
+running `python .\start.py` under the *xplane-streamdeck* directory, 
 while having the Stream Deck plugged in already
 
 Run the script anytime after the aircraft loads in the simulator, the script can be restarted anytime without harm.
+
+
+### Configuration
+If you use multiple Stream Decks, you can specify the device by setting the serial number in the `secret.yaml` file.
+If you use only one Stream Deck, the script will automatically detect it.
 
 The program supports image caching, which saves several seconds of image preloading during launch
 - To enable it, set `caching-enabled` field to *True* in local `config.yaml`, for example in `172SP/config.yaml`
@@ -123,15 +130,6 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 |  ![lower overhead](misc/elec.jpg)   | ![mcp](misc/right.jpg) |
 
 *More example images in `misc/`*
-
-### How it works
-- The streamdeck Python library provides modular access
-- X-Plane has its simple, yet powerful UDP protocol for communication with the external applications 
-- You define your yaml configurations and icons 
-- Only the needed files, icons and configurations are loaded into RAM 
-- The software then efficiently runs in background updating your buttons and responding to state changes of the buttons 
-- Performance hit is expected to be under 0.1%, while **updating 20x per second**
-- You can change the update rate in the `main.py`
 
 ### Key Creation and Configuration
 **Refer to the `docs/plane_keys_configuration.md` for a guide on how to create/edit buttons.**
@@ -160,8 +158,12 @@ this message.
 The X-Plane UDP connection could not be initialized due to operating system error, this is probably caused by misconfiguration of port numbers or the xplane-streamdeck is launched twice.
 ```
 ### Acknowledgments
-*IBMPlexMono* &
-*DSEG* - Licensed under the SIL Open Font License 1.1.
+*IBMPlexMono* & *DSEG* 
+- Licensed under the SIL Open Font License 1.1.
+
+This project uses the following third-party libraries:
+- HIDAPI, licensed under BSD 2-Clause License. See [LICENSE-hidapi-bsd.md](misc/LICENSE-bsd-hidapi.md) for more details.
+
 ### Contributors
 I would like to thank the following members of the flight sim community for participating in this open source project.
  - **esmiol** from *x-plane.org* forums - for creating the Cessna 172 configuration and graphics
