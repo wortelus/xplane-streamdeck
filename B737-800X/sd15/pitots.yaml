@@ -23,49 +23,49 @@ actions:
     type: none
     icon: captpitot
     dataref: laminar/B738/annunciator/capt_pitot_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 5
     name: l elev pitot
     type: none
     icon: lelevpitot
     dataref: laminar/B738/annunciator/capt_aoa_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 10
     name: l alpha pitot
     type: none
     icon: lalphapitot
     dataref: laminar/B738/annunciator/capt_aoa_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 1
     name: temp probe
     type: none
     icon: tempprobe
     dataref: laminar/B738/annunciator/capt_aoa_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 4
     name: fo pitot
     type: none
     icon: fopitot
     dataref: laminar/B738/annunciator/fo_pitot_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 9
     name: r elev pitot
     type: none
     icon: relevpitot
     dataref: laminar/B738/annunciator/fo_aoa_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 14
     name: r alpha pitot
     type: none
     icon: ralphapitot
     dataref: laminar/B738/annunciator/fo_aoa_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 3
     name: aux probe
     type: none
     icon: auxprobe
     dataref: laminar/B738/annunciator/fo_aoa_off
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
     # pitots
   - index: 6
     name: a probe

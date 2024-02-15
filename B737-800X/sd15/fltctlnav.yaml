@@ -9,7 +9,7 @@ actions:
     type: none
     icon: feeldiffpress
     dataref: laminar/B738/annunciator/feel_diff_press
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 6
     name: speed trim fail
     type: none
@@ -25,7 +25,7 @@ actions:
     type: none
     icon: autoslatfail
     dataref: laminar/B738/annunciator/auto_slat_fail
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 10
     name: spoiler a cover
     type: single

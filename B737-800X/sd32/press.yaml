@@ -206,6 +206,7 @@ actions:
     type: none
     icon: dualbleed
     dataref: laminar/B738/annunciator/dual_bleed
+    dataref-offset: 0.8
   - index: 0
     name: auto fail
     type: none

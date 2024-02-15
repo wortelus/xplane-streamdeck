@@ -102,14 +102,14 @@ actions:
     icon: lowoilpressure
     label: APU
     dataref: laminar/B738/annunciator/apu_low_oil
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 4
     name: apu fault
     type: none
     icon: fault
     label: APU
     dataref: laminar/B738/annunciator/apu_fault
-    dataref-multiplier: 2.0
+    dataref-offset: 0.8
   - index: 8
     name: apu overspeed
     type: none
