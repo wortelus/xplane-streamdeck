@@ -51,13 +51,13 @@ actions:
     type: none
     icon: autobrakedisarm
     dataref: laminar/B738/annunciator/auto_brake_disarm
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 23
     name: anti skid inop
     type: none
     icon: antiskidinop
     dataref: laminar/B738/annunciator/anti_skid_inop
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 8
     name: main panel dus
     type: dual
@@ -97,20 +97,20 @@ actions:
     type: single
     icon: belowgs
     dataref: laminar/B738/annunciator/below_gs
-    dataref-offset: 0.8
+    dataref-offset: 0.95
     command: laminar/B738/alert/below_gs_pilot
   - index: 1
     name: takeoff config
     type: none
     icon: takeoffconfig
     dataref: laminar/B738/annunciator/takeoff_config
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 2
     name: cabin altitude
     type: none
     icon: cabinaltitude
     dataref: laminar/B738/annunciator/cabin_alt
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 21
     name: eng pfd
     type: single

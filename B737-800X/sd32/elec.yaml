@@ -64,19 +64,19 @@ actions:
     type: none
     icon: batdischarge
     dataref: laminar/B738/annunciator/bat_discharge
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 2
     name: tr unit
     type: none
     icon: trunit
     dataref: laminar/B738/annunciator/tr_unit
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 3
     name: elec
     type: none
     icon: elec
     dataref: laminar/B738/annunciator/elec
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 4
     name: maint
     type: none

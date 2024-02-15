@@ -28,13 +28,13 @@ actions:
     type: none
     icon: filterbypass
     dataref: laminar/B738/annunciator/bypass_filter_1
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   - index: 9
     name: filter bypass 5
     type: none
     icon: filterbypass
     dataref: laminar/B738/annunciator/bypass_filter_2
-    dataref-offset: 0.8
+    dataref-offset: 0.95
   # other valves
   - index: 0
     name: eng valve closed 1
