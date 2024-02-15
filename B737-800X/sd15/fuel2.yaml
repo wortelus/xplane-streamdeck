@@ -8,7 +8,7 @@ actions:
   - index: 7
     name: crossfeed valve open
     type: none
-    dataref: laminar/B738/annunciator/crossfeed
+    dataref: laminar/B738/annunciator/crossfeed_annun
     dataref-states:
       - 0.0
       - 1.0

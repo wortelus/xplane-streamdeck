@@ -114,8 +114,8 @@ actions:
       - 0.0
       - 1.0
       - 2.0
-    dataref: laminar/B738/annunciator/ram_door_open1
-    dataref-multiplier: 2.1
+    dataref: laminar/B738/annunciator/ram_door_open1_annun
+    dataref-multiplier: 2
   - index: 4
     name: ram door full open 2
     type: none
@@ -124,8 +124,8 @@ actions:
       - 0.0
       - 1.0
       - 2.0
-    dataref: laminar/B738/annunciator/ram_door_open2
-    dataref-multiplier: 2.1
+    dataref: laminar/B738/annunciator/ram_door_open2_annun
+    dataref-multiplier: 2
   - index: 2
     name: dualbleed
     type: none

@@ -36,7 +36,7 @@ actions:
     name: l antiice valve open
     type: none
     icon: lvalveopen
-    dataref: laminar/B738/annunciator/wing_ice_on_L
+    dataref: laminar/B738/annunciator/wing_ice_on_L_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -46,7 +46,7 @@ actions:
     name: r antiice valve open
     type: none
     icon: rvalveopen
-    dataref: laminar/B738/annunciator/wing_ice_on_R
+    dataref: laminar/B738/annunciator/wing_ice_on_R_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -56,7 +56,7 @@ actions:
     name: l cowl valve open
     type: none
     icon: cowlvalveopen
-    dataref: laminar/B738/annunciator/cowl_ice_on_0
+    dataref: laminar/B738/annunciator/cowl_ice_on_0_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -66,7 +66,7 @@ actions:
     name: r cowl valve open
     type: none
     icon: cowlvalveopen
-    dataref: laminar/B738/annunciator/cowl_ice_on_1
+    dataref: laminar/B738/annunciator/cowl_ice_on_1_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
