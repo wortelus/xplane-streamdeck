@@ -60,40 +60,48 @@ actions:
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_l_side
+    dataref-multiplier: 2.0
   - index: 6
     name: on left fwd win heat
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_l_fwd
+    dataref-multiplier: 2.0
   - index: 7
     name: on right fwd win heat
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_r_fwd
+    dataref-multiplier: 2.0
   - index: 8
     name: on right side win heat
     type: none
     icon: greenon
     dataref: laminar/B738/annunciator/window_heat_r_side
+    dataref-multiplier: 2.0
     # ovht ann
   - index: 0
     name: ovht left side win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_ls
+    dataref-multiplier: 2.0
   - index: 1
     name: ovht left fwd win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_lf
+    dataref-multiplier: 2.0
   - index: 2
     name: ovht right fwd win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_rf
+    dataref-multiplier: 2.0
   - index: 3
     name: ovht right side win heat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/window_heat_ovht_rs
+    dataref-multiplier: 2.0
  

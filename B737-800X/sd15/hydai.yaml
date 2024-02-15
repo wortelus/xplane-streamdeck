@@ -50,29 +50,35 @@ actions:
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_el_press_a
+    dataref-multiplier: 2.0
   - index: 5
     name: low pressure a eng
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_press_a
+    dataref-multiplier: 2.0
   - index: 7
     name: low pressure b elec
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_el_press_b
+    dataref-multiplier: 2.0
   - index: 8
     name: low pressure b eng
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_press_b
+    dataref-multiplier: 2.0
   - index: 11
     name: elec a overheat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/el_hyd_ovht_1
+    dataref-multiplier: 2.0
   - index: 12
     name: elec b overheat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/el_hyd_ovht_2
+    dataref-multiplier: 2.0
   
