@@ -189,8 +189,8 @@ actions:
       - 0.0
       - 1.0
       - 2.0
-    dataref: laminar/B738/annunciator/ram_door_open1
-    dataref-multiplier: 2.1
+    dataref: laminar/B738/annunciator/ram_door_open1_annun
+    dataref-multiplier: 2
   - index: 6
     name: ram door full open 2
     type: none
@@ -199,33 +199,38 @@ actions:
       - 0.0
       - 1.0
       - 2.0
-    dataref: laminar/B738/annunciator/ram_door_open2
-    dataref-multiplier: 2.1
+    dataref: laminar/B738/annunciator/ram_door_open2_annun
+    dataref-multiplier: 2
   - index: 30
     name: dualbleed
     type: none
     icon: dualbleed
     dataref: laminar/B738/annunciator/dual_bleed
+    dataref-offset: 0.8
   - index: 0
     name: auto fail
     type: none
     icon: autofail
     dataref: laminar/B738/annunciator/autofail
+    dataref-offset: 0.8
   - index: 1
     name: off sched desc
     type: none
     icon: offscheddescent
     dataref: laminar/B738/annunciator/off_sched_descent
+    dataref-offset: 0.8
   - index: 2
     name: altnpress
     type: none
     icon: altn
     dataref: laminar/B738/annunciator/altn_press
+    dataref-offset: 0.8
   - index: 3
     name: manualpress
     type: none
     icon: manual
     dataref: laminar/B738/annunciator/manual_press
+    dataref-offset: 0.8
   - index: 19
     name: alt horn cutout
     type: single

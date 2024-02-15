@@ -8,7 +8,7 @@ actions:
   - index: 7
     name: crossfeed valve open
     type: none
-    dataref: laminar/B738/annunciator/crossfeed
+    dataref: laminar/B738/annunciator/crossfeed_annun
     dataref-states:
       - 0.0
       - 1.0
@@ -28,13 +28,13 @@ actions:
     type: none
     icon: filterbypass
     dataref: laminar/B738/annunciator/bypass_filter_1
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 9
     name: filter bypass 5
     type: none
     icon: filterbypass
     dataref: laminar/B738/annunciator/bypass_filter_2
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   # other valves
   - index: 0
     name: eng valve closed 1

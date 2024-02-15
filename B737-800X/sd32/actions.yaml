@@ -4,7 +4,7 @@ actions:
     type: single
     icon: firewarn
     dataref: laminar/B738/annunciator/fire_bell_annun
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
     command: FlyWithLua/streamdeck_handler/capt_fire_warn_start
     command-release: FlyWithLua/streamdeck_handler/capt_fire_warn_end
   - index: 1
@@ -12,7 +12,7 @@ actions:
     type: single
     icon: mastercaution
     dataref: laminar/B738/annunciator/master_caution_light
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
     command: FlyWithLua/streamdeck_handler/capt_master_caution_start
     command-release: FlyWithLua/streamdeck_handler/capt_master_caution_end
   - index: 2
@@ -20,6 +20,7 @@ actions:
     type: single
     icon: apprst
     dataref: laminar/B738/annunciator/ap_disconnect1
+    dataref-offset: 0.8
     command: FlyWithLua/streamdeck_handler/ap_prst_start
     command-release: FlyWithLua/streamdeck_handler/ap_prst_end
   - index: 3
@@ -27,6 +28,7 @@ actions:
     type: single
     icon: atprst
     dataref: laminar/B738/annunciator/at_disconnect1
+    dataref-offset: 0.8
     command: FlyWithLua/streamdeck_handler/at_prst_start
     command-release: FlyWithLua/streamdeck_handler/at_prst_end
   - index: 4
@@ -34,6 +36,7 @@ actions:
     type: single
     icon: fmcprst
     dataref: laminar/B738/annunciator/at_fms_disconnect1
+    dataref-offset: 0.8
     command: FlyWithLua/streamdeck_handler/fmc_prst_start
     command-release: FlyWithLua/streamdeck_handler/fmc_prst_end
   - index: 5
@@ -41,19 +44,19 @@ actions:
     type: none
     icon: speedbrakearmed
     dataref: laminar/B738/annunciator/speedbrake_armed
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 6
     name: speedbrake do not arm
     type: none
     icon: speedbrakedonotarm
     dataref: laminar/B738/annunciator/speedbrake_extend
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 7
     name: stab out of trim
     type: none
     icon: staboutoftrim
     dataref: laminar/B738/annunciator/stab_out_of_trim
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 27
     name: flaps
     type: dir
@@ -75,13 +78,13 @@ actions:
     type: none
     icon: leflapstransit
     dataref: laminar/B738/annunciator/slats_transit
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 29
     name: le flaps ext
     type: none
     icon: leflapsext
     dataref: laminar/B738/annunciator/slats_extend
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 24
     name: left
     type: dir

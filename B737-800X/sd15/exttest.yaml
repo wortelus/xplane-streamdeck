@@ -32,18 +32,18 @@ actions:
     icon: extcircuit
     label: APU
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_apu
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 12
     name: left ext circuit
     type: none
     icon: extcircuit
     label: LEFT
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_left
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 13
     name: right ext circuit
     type: none
     icon: extcircuit
     label: RIGHT
     dataref: laminar/B738/annunciator/extinguisher_circuit_annun_right
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8

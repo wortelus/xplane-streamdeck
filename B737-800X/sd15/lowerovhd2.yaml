@@ -9,7 +9,7 @@ actions:
     type: single
     icon: notarmed
     dataref: laminar/B738/annunciator/emer_exit
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 0
     name: arm emer exit lights
     type: single

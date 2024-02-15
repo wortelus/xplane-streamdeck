@@ -45,31 +45,37 @@ actions:
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_el_press_a
+    dataref-offset: 0.8
   - index: 17
     name: low pressure a eng
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_press_a
+    dataref-offset: 0.8
   - index: 19
     name: low pressure b elec
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_el_press_b
+    dataref-offset: 0.8
   - index: 20
     name: low pressure b eng
     type: none
     icon: lowpressure
     dataref: laminar/B738/annunciator/hyd_press_b
+    dataref-offset: 0.8
   - index: 10
     name: elec a overheat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/el_hyd_ovht_1
+    dataref-offset: 0.8
   - index: 11
     name: elec b overheat
     type: none
     icon: overheat
     dataref: laminar/B738/annunciator/el_hyd_ovht_2
+    dataref-offset: 0.8
     # anti ice
   - index: 29
     name: wing anti ice
@@ -102,7 +108,7 @@ actions:
     name: l antiice valve open
     type: none
     icon: lvalveopen
-    dataref: laminar/B738/annunciator/wing_ice_on_L
+    dataref: laminar/B738/annunciator/wing_ice_on_L_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -112,7 +118,7 @@ actions:
     name: r antiice valve open
     type: none
     icon: rvalveopen
-    dataref: laminar/B738/annunciator/wing_ice_on_R
+    dataref: laminar/B738/annunciator/wing_ice_on_R_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -122,7 +128,7 @@ actions:
     name: l cowl valve open
     type: none
     icon: cowlvalveopen
-    dataref: laminar/B738/annunciator/cowl_ice_on_0
+    dataref: laminar/B738/annunciator/cowl_ice_on_0_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -132,7 +138,7 @@ actions:
     name: r cowl valve open
     type: none
     icon: cowlvalveopen
-    dataref: laminar/B738/annunciator/cowl_ice_on_1
+    dataref: laminar/B738/annunciator/cowl_ice_on_1_annun
     dataref-multiplier: 2
     dataref-states:
       - 0.0
@@ -143,8 +149,10 @@ actions:
     type: none
     icon: cowlantiice
     dataref: laminar/B738/annunciator/cowl_ice_0
+    dataref-offset: 0.8
   - index: 14
     name: ann orange anti ice 2
     type: none
     icon: cowlantiice
     dataref: laminar/B738/annunciator/cowl_ice_1
+    dataref-offset: 0.8

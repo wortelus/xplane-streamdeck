@@ -10,49 +10,49 @@ actions:
     type: none
     icon: align
     dataref: laminar/B738/annunciator/irs_align_left
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 1
     name: left irs on dc
     type: none
     icon: ondc
     dataref: laminar/B738/annunciator/irs_on_dc_left
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 8
     name: left irs fault
     type: none
     icon: fault
     dataref: laminar/B738/annunciator/irs_align_fail_left
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 9
     name: left irs dc fail
     type: none
     icon: dcfail
     dataref: laminar/B738/annunciator/irs_dc_fail_left
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 3
     name: right dc align
     type: none
     icon: align
     dataref: laminar/B738/annunciator/irs_align_right
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 4
     name: right irs on dc
     type: none
     icon: ondc
     dataref: laminar/B738/annunciator/irs_on_dc_right
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 11
     name: right irs fault
     type: none
     icon: fault
     dataref: laminar/B738/annunciator/irs_align_fail_right
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 12
     name: right irs dc fail
     type: none
     icon: dcfail
     dataref: laminar/B738/annunciator/irs_dc_fail_right
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
     # irs mode
   - index: 17
     name: lirsmode
@@ -79,7 +79,7 @@ actions:
     type: none
     icon: offann
     dataref: laminar/B738/annunciator/fdr_off
-    dataref-multiplier: 1.5
+    dataref-offset: 0.8
   - index: 22
     name: flt recorder label
     icon: none
