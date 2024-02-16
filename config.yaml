@@ -22,6 +22,6 @@ cache-path: ./ # current folder
 
 # the first one is taken as active for the session
 stream-decks:
-  - serial: secret.yaml # ! VERIFY THE SERIAL KEY IN THIS FILE !
+  - serial: secret.yaml # ! VERIFY THE SERIAL KEY IN THIS FILE IF YOU HAVE MORE THAN ONE STREAM DECK !
     brightness: 75 # Brightness of the Stream Deck (0-100)
     active-preset: B737-800X
