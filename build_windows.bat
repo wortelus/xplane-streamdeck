@@ -18,7 +18,7 @@ pyinstaller --onefile --distpath build\ --workpath build\work\ --specpath build\
 REM Copy the required files to the build directory
 xcopy /E /I icons build\icons\
 xcopy /E /I fonts build\fonts\
-xcopy /E /I misc\LICENSE* build\
+xcopy /E /I misc\LICENSE* build\misc\
 xcopy /E /I misc\*.lua build\misc\
 
 copy config.yaml build\

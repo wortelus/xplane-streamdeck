@@ -56,7 +56,7 @@ and simple format similar to JSON, but more human-readable and harder to cause a
 ## Installation
 **Recommended installation** is by using precompiled **win64-exe** release for Windows.
 
-Instructions for building the executable are in the [build-windows.md](build-windows.md) file.
+Instructions for building the executable are in the [build-windows.md](docs/build_windows.md) file.
 
 You can also install the script manually by following the instructions below.
 
@@ -92,6 +92,8 @@ from the official documentation source
 ## Usage
 Instructions for **Windows**
 
+Choose desired plane type configuration in `config.yaml` by setting the `active-preset` parameter
+
 ### Win64 Executable
 - Download the latest release from the **Releases** section
 - Extract the files
@@ -101,8 +103,6 @@ Instructions for **Windows**
 
 
 ### CLI Usage
-Choose desired plane type configuration in `config.yaml` by setting the `active-preset` parameter
-
 **Execute the script by running the `start.py` with Python 3 by:**
 
 running `python .\start.py` under the *xplane-streamdeck* directory, 
