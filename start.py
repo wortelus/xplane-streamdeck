@@ -31,7 +31,7 @@ def signal_handler(ctl):
 
     def handler(signum, frame):
         logger.info("SIGINT received, shutting down gracefully...")
-        ctl.stop()  # Call ctl's stop method to clean up
+        ctl.stop()
         sys.exit(0)
 
     return handler
@@ -55,10 +55,11 @@ def main():
     conf = control.load()
     ctl = control.DeckControl(conf)
 
+    # Register signal handler for SIGINT
     signal.signal(signal.SIGINT, signal_handler(ctl))
 
     try:
-        control.run(ctl, conf.update_rate)  # This runs the main loop
+        control.run(ctl, conf.update_rate)
     except Exception as e:
         logger.error(f"An error occurred: {e}")
         ctl.stop()
