@@ -22,7 +22,7 @@ pip install -r requirements.txt
 ### LibUSB HIDAPI
 
 The main difference is the **LibUSB HIDAPI** installation, which is really simple if
-your distribution has the package in its repository. 
+your distribution has the package in its repository.
 
 For example, on **Debian 12** you can simply run the following command:
 
@@ -30,13 +30,11 @@ For example, on **Debian 12** you can simply run the following command:
 sudo apt-get install libhidapi-libusb0
 ```
 
-and you are ready to go! If you are using a different distribution, 
+and you are ready to go! If you are using a different distribution,
 with a different package manager, the package name might be different.
 
 
 ### Usage
-
-After you have installed the dependencies, you can run the script by:
 
 Don't forget to activate the virtual environment first:
 ```bash
