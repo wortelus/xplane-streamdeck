@@ -138,14 +138,6 @@ to always see the up-to-date configuration state (or simply remove it, but the c
 - Backward compatible GUI Drag 'n Drop utility for managing the plane presets
 
 ### Known Issues
-- There was a bug in **pyxpudpserver** that sometimes caused the dataref updating of buttons to
-freeze, giving you a message:
-`
-RuntimeError: dictionary changed size during iteration
-`
-
-    The following proposed solution [has been merged](https://github.com/leleopard/pyXPUDPServer/pull/5) in version 1.2.8 of **pyxpudpserver**. If you get this error, update or reinstall your dependencies via *pip* instead of using the following [forked version with temporary fix](https://github.com/wortelus/pyXPUDPServer).
-
 - There is a known risk of crashes associated with running Stream Deck through USB hubs:
 ```
     raise TransportError("Failed to write out report (%d)" % result)
@@ -157,6 +149,9 @@ this message.
 ```
 The X-Plane UDP connection could not be initialized due to operating system error, this is probably caused by misconfiguration of port numbers or the xplane-streamdeck is launched twice.
 ```
+
+- Rarely, the button dataref state may freeze for the entire _xplane_streamdeck_ session. While key press actions continue to function, the icons remain stuck. The workaround is to restart either xplane_streamdeck or the simulator session. The underlying _pyxpudpserver_ library is deemed to be the cause. I am aware of this and plan to address it in the near future.
+
 ### Acknowledgments
 *IBMPlexMono* & *DSEG* 
 - Licensed under the SIL Open Font License 1.1.
