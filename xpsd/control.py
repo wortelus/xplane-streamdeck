@@ -9,6 +9,7 @@ import logging as logger
 
 from xpsd.assetio import load_global_cfg
 from xpsd.configuration import RunningConfig
+from StreamDeck.Devices.StreamDeck import DialEventType
 
 try:
     from yaml import CLoader as Loader, CDumper as Dumper
@@ -66,6 +67,8 @@ class ViewDomain(object):
         self.datarefs_all = preprocessing.load_datarefs(self.presets_all)
         self.images = load_images(conf, presets_all)
 
+        self.key_count = conf.key_count
+
         self.current_preset = self.presets_all[preprocessing.ACTION_CFG_ALIAS]
         self.current_preset_name = preprocessing.ACTION_CFG_ALIAS
         self.current_datarefs = self.datarefs_all[preprocessing.ACTION_CFG_ALIAS]
@@ -77,6 +80,8 @@ class ViewDomain(object):
     def deck_show(self, deck, datarefs):
         for dref in datarefs:
             sd_index = dref["index"]
+            if sd_index > self.key_count:
+                continue
             cur_val = xpudp.pyXPUDPServer.getData(dref["dataref"])
             cur_val *= dref["dataref-multiplier"]
             cur_val += dref["dataref-offset"]
@@ -96,6 +101,8 @@ class ViewDomain(object):
 
     def deck_show_static(self, deck):
         for index, dir_button in enumerate(self.current_preset):
+            if index > self.key_count:
+                continue
             if dir_button is None:
                 update_key_image(deck, index, self.images["none.png"])
                 continue
@@ -143,6 +150,8 @@ class PressDomain(object):
         self.presets_all = self.presets_all
         self.datarefs_all = preprocessing.load_datarefs(self.presets_all)
 
+
+        self.key_count = conf.key_count
         self.directory_stack = []
 
         self.view = ViewDomain(conf, self.presets_all, self.fetch_datarefs)
@@ -213,6 +222,31 @@ class PressDomain(object):
         self.view.deck_show_static(current_deck)
         self.view.deck_show(current_deck, self.view.current_datarefs)
 
+    def dial_change_callback(self, deck, dial_index, event, value):
+        key_index = dial_index + self.key_count
+        key = self.view.current_preset[key_index]
+        if key is None:
+            logger.debug(f"no dial with key index {key_index}")
+            return
+        if event == DialEventType.PUSH and value is False: #act on release
+            if key.cmd: #single
+                xpudp.pyXPUDPServer.sendXPCmd(key.cmd)
+            elif key.cmd_mul:
+                for _, cmd in enumerate(key.cmd_mul):
+                    xpudp.pyXPUDPServer.sendXPCmd(cmd)
+            elif key.cmd_on and key.cmd_off: #dual 
+                next_direction = self.move_up_down_button(key, key_index, key.switch_direction)
+                if next_direction == 1:
+                    xpudp.pyXPUDPServer.sendXPCmd(key.cmd_on)
+                else:
+                    xpudp.pyXPUDPServer.sendXPCmd(key.cmd_off)
+                key.switch_direction = next_direction
+        elif event == DialEventType.TURN:
+            if value > 0:
+                xpudp.pyXPUDPServer.sendXPCmd(key.cmd_dial_right)
+            elif value < 0:
+                xpudp.pyXPUDPServer.sendXPCmd(key.cmd_dial_left)
+
 
 # we have to catch an error during loading, we use this error logger handler for this purpose
 class XPUDPHandler(logger.StreamHandler):
@@ -233,7 +267,7 @@ def load_images(conf, presets_all):
         logger.info("note: caching is disabled, loading will be noticeably slower")
         logger.info("you can enable it by setting the field 'cache-path' in config.yaml")
         images = preprocessing.load_images_datarefs_all(
-            conf, presets_all, conf.local_cfg["only-uppercase"])
+            conf, presets_all[:conf.key_count], conf.local_cfg["only-uppercase"])
     elif conf.load_cached_img:
         # images are stored as cache, open and load
         logger.info("cache file {} is present, skipping pre-generation".format(conf.cache_path))
@@ -268,10 +302,13 @@ def load():
 def run(ctl: DeckControl, update_rate):
     ctl.start()
     ctl.configuration.active_deck.set_key_callback(ctl.press.key_change_callback)
+    if ctl.configuration.dial_count:
+        ctl.configuration.active_deck.set_dial_callback(ctl.press.dial_change_callback)
     logger.info("xplane-streamdeck ready...")
 
     # show deck and set fetch_datarefs
     ctl.update()
+    logger.info("xplane-streamdeck updated...")
 
     try:
         while True:
