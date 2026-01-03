@@ -24,4 +24,4 @@ cache-path: ./ # current folder
 stream-decks:
   - serial: secret.yaml # ! VERIFY THE SERIAL KEY IN THIS FILE IF YOU HAVE MORE THAN ONE STREAM DECK !
     brightness: 75 # Brightness of the Stream Deck (0-100)
-    active-preset: g430_530
+    active-preset: g1000

@@ -1,0 +1,145 @@
+actions:
+  - index: 0
+    type: single
+    icon: none-gray
+    name: CDI
+    command: sim/GPS/g430n1_cdi
+    special-labels:
+      - label: CDI
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 1
+    type: single
+    icon: none-gray
+    name: FPL
+    command: sim/GPS/g430n1_fpl
+    special-labels:
+      - label: FPL
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 2
+    type: single
+    icon: none-gray
+    name: DCT
+    command: sim/GPS/g430n1_direct
+    special-labels:
+      - label: DCT
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 3
+    type: single
+    icon: none-gray
+    name: CLR
+    command: sim/GPS/g430n1_clr
+    special-labels:
+      - label: CLR
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 4
+    type: single
+    icon: none-gray
+    name: OBS
+    command: sim/GPS/g430n1_obs
+    special-labels:
+      - label: OBS
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 5
+    type: single
+    icon: none-gray
+    name: PROC
+    command: sim/GPS/g430n1_proc
+    special-labels:
+      - label: PROC
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 46
+        color: white
+        direction: ltr
+        align: center
+  - index: 6
+    type: single
+    icon: none-gray
+    name: MENU
+    command: sim/GPS/g430n1_menu
+    special-labels:
+      - label: MENU
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 46
+        color: white
+        direction: ltr
+        align: center
+  - index: 7
+    type: single
+    icon: none-gray
+    name: ENT
+    command: sim/GPS/g430n1_ent
+    special-labels:
+      - label: ENT
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 8
+    type: dial
+    name: BARO
+    command-right: sim/instruments/barometer_up
+    command-left: sim/instruments/barometer_down
+    command: sim/instruments/barometer_std
+  - index: 9
+    type: dial
+    name: CHAPTER
+    command-right: sim/GPS/g430n1_zoom_in
+    command-left: sim/GPS/g430n1_zoom_out
+    command: sim/GPS/g430n1_popup
+  - index: 10
+    type: dial
+    name: CHAPTER
+    command-right: sim/GPS/g430n1_chapter_up
+    command-left: sim/GPS/g430n1_chapter_dn
+    command: sim/GPS/g430n1_cursor
+  - index: 11
+    type: dial
+    name: PAGE
+    command-right: sim/GPS/g430n1_page_up
+    command-left: sim/GPS/g430n1_page_dn
+    command: sim/GPS/g430n1_cursor

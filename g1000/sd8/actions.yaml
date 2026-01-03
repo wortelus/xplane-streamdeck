@@ -1,0 +1,145 @@
+actions:
+  - index: 0
+    type: single
+    icon: none-gray
+    name: CDI
+    command: sim/GPS/g1000n1_softkey6
+    special-labels:
+      - label: CDI
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 1
+    type: single
+    icon: none-gray
+    name: FPL
+    command: sim/GPS/g1000n3_fpl
+    special-labels:
+      - label: FPL
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 2
+    type: single
+    icon: none-gray
+    name: DCT
+    command: sim/GPS/g1000n3_direct
+    special-labels:
+      - label: DCT
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 3
+    type: single
+    icon: none-gray
+    name: CLR
+    command: sim/GPS/g1000n3_clr
+    special-labels:
+      - label: CLR
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 4
+    type: single
+    icon: none-gray
+    name: OBS
+    command: sim/GPS/g1000n1_softkey5
+    special-labels:
+      - label: OBS
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 5
+    type: single
+    icon: none-gray
+    name: PROC
+    command: sim/GPS/g1000n3_proc
+    special-labels:
+      - label: PROC
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 46
+        color: white
+        direction: ltr
+        align: center
+  - index: 6
+    type: single
+    icon: none-gray
+    name: MENU
+    command: sim/GPS/g1000n3_menu
+    special-labels:
+      - label: MENU
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 46
+        color: white
+        direction: ltr
+        align: center
+  - index: 7
+    type: single
+    icon: none-gray
+    name: ENT
+    command: sim/GPS/g1000n3_ent
+    special-labels:
+      - label: ENT
+        text-center:
+          x: center
+          y: center
+        font-path: IBMPlexMono-Bold.ttf
+        font-size: 48
+        color: white
+        direction: ltr
+        align: center
+  - index: 8
+    type: dial
+    name: BARO
+    command-right: sim/GPS/g1000n1_baro_up
+    command-left: sim/GPS/g1000n1_baro_down
+    command: sim/instruments/barometer_std
+  - index: 9
+    type: dial
+    name: RANGE
+    command-right: sim/GPS/g1000n3_range_up
+    command-left: sim/GPS/g1000n3_range_down
+    command: sim/GPS/g1000n3_popup
+  - index: 10
+    type: dial
+    name: OUTER
+    command-right: sim/GPS/g1000n3_fms_outer_up
+    command-left: sim/GPS/g1000n3_fms_outer_down
+    command: sim/GPS/g1000n3_cursor
+  - index: 11
+    type: dial
+    name: INNER
+    command-right: sim/GPS/g1000n3_fms_inner_up
+    command-left: sim/GPS/g1000n3_fms_inner_down
+    command: sim/GPS/g1000n3_cursor
