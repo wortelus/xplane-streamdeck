@@ -14,11 +14,13 @@ works the best together with other simulator peripherals (e.g. radio, A/P panel 
 
 **Supported planes:**
 
-| Aircraft       | 15 keys | 32 keys |
-|----------------|---------|---------|
-| Cessna 172SP   | ❌       | ✅✅      |
-| Zibo 737-800   | ✅       | ✅✅      |
-| JARDesign A320 | ✅       | ❌       |
+| Aircraft       | 15 keys | 32 keys | Steamdeck+ |
+|----------------|---------|---------|------------|
+| Cessna 172SP   | ❌       | ✅✅      | ❌  |
+| Zibo 737-800   | ✅       | ✅✅      | ❌  |
+| JARDesign A320 | ✅       | ❌       | ❌   |
+| Generic G430/530 avionics | ❌ | ❌ | ✅ |
+| Generic G1000 avionics | ❌ | ❌ | ✅ |
 
 ✅✅ - Stable configuration, expecting minor fixes only
 
