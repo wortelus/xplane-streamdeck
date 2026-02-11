@@ -21,7 +21,7 @@ ACTION_CFG = "actions.yaml"
 ACTION_CFG_ALIAS = "actions"
 
 VITAL_FIELDS = ["index", "name"]
-CMD_TYPES = ["none", "dir", "single", "dual"]
+CMD_TYPES = ["none", "dir", "single", "dual", "dial"]
 
 GAUGE_FIELDS = ["name", "background", "needle", "min", "max", "step", "needle-center", "range-degrees"]
 DISPLAY_FIELDS = ["name", "text-center", "font-path", "font-size", "zero-pad",

@@ -51,7 +51,7 @@ def label_check(index, name, label):
 # checks if the commands are set corresponding to its cmd_type
 # this just generates warnings, doesn't return anything
 def cmd2_check(index, name, cmd_type, cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
-               cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None):
+               cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None, cmd_dial_left=None, cmd_dial_right=None):
     if cmd_type == "none":
         if cmd or cmd_mul or cmd_release or cmd_release_mul or cmd_on or cmd_off or cmd_on_mul or cmd_off_mul:
             logging.warning("#{} {} has set type of 'none', but commands are set too. The commands won't work"
@@ -73,6 +73,10 @@ def cmd2_check(index, name, cmd_type, cmd=None, cmd_mul=None, cmd_release=None, 
             logging.warning("#{} {} has set type of 'dual' and release commands are set too. "
                             "The commands will be executed, but it's weird. "
                             "If it's intentional, you can ignore this message."
+                            .format(index, name))
+    elif cmd_type == "dial":
+        if not cmd_dial_left or not cmd_dial_right:
+            logging.warning("#{} {} has set type of 'dial', but commands left and right are not set"
                             .format(index, name))
     return
 

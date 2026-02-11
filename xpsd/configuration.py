@@ -17,11 +17,13 @@ class RunningConfig(object):
         self.only_uppercase = False
         self.active_config_path = join(assetio.ROOT_PATH, self.active_config)
         self.local_cfg = assetio.load_local_cfg(self.active_config_path)
+        assert self.local_cfg is not None
 
         # only the first configuration works for now
         serial = assetio.load_serial(current_preset["serial"])
         self.active_deck = None
         self.key_count = 0
+        self.dial_count = 0
         self.connect_streamdeck(serial, current_preset.get("brightness"))
 
         # load config paths
@@ -74,6 +76,7 @@ class RunningConfig(object):
                 deck.set_brightness(brightness)
                 self.active_deck = deck
                 self.key_count = deck.key_count()
+                self.dial_count = deck.dial_count()
                 logger.warning("Serial number not set in the secret file. "
                                "If you run only one Stream Deck, this shouldn't matter")
                 logger.info("Deck {} with {} keys setting as default for current session"
@@ -82,6 +85,7 @@ class RunningConfig(object):
             if s == serial:
                 self.active_deck = deck
                 self.key_count = deck.key_count()
+                self.dial_count = deck.dial_count()
                 logger.info("Deck {} with {} keys setting as default for the current session"
                             .format(index, self.key_count))
                 return
@@ -89,6 +93,7 @@ class RunningConfig(object):
         sys.exit(1)
 
     def read_local_cfg(self):
+        assert self.local_cfg is not None
         try:
             self.default_font, self.default_font_size = \
                 assetio.load_default_font(self.local_cfg["default-font"], self.local_cfg["default-font-size"])
@@ -102,6 +107,7 @@ class RunningConfig(object):
             sys.exit(1)
 
     def load_caching_options(self):
+        assert self.local_cfg is not None
         if self.local_cfg["caching-enabled"]:
             self.cache_path = join(self.active_config_path,
                                    assetio.get_keyset_cache_name(self.key_count, self.local_cfg["force-config"]))

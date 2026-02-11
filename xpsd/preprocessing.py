@@ -36,6 +36,7 @@ class Button(object):
                  dataref_states=None, dataref_default=None, file_names=None, auto_switch=True,
                  cmd=None, cmd_mul=None, cmd_release=None, cmd_release_mul=None,
                  cmd_on=None, cmd_off=None, cmd_on_mul=None, cmd_off_mul=None,
+                 cmd_dial_left=None, cmd_dial_right=None,
                  gauge=None, display=None, special_labels=None):
         # Constants
 
@@ -83,7 +84,7 @@ class Button(object):
 
         # generate warnings for weird commands
         sanity.cmd2_check(index, name, cmd_type, cmd, cmd_mul, cmd_release, cmd_release_mul,
-                          cmd_on, cmd_off, cmd_on_mul, cmd_off_mul)
+                          cmd_on, cmd_off, cmd_on_mul, cmd_off_mul, cmd_dial_left, cmd_dial_right)
 
         self.cmd = cmd
         self.cmd_mul = cmd_mul
@@ -95,6 +96,9 @@ class Button(object):
         self.cmd_on_mul = cmd_on_mul
         self.cmd_off_mul = cmd_off_mul
 
+        self.cmd_dial_left = cmd_dial_left
+        self.cmd_dial_right = cmd_dial_right
+
         # Runtime Variables
         self.current = dataref_default
 
@@ -103,7 +107,9 @@ class Button(object):
 
         self.gauge = None
         self.display = None
-        if file_names is not None:
+        if self.cmd_type == "dial":
+            self.file_names = np.empty(0, dtype=object)
+        elif file_names is not None:
             # sanity check file_names corresponding to dataref_states
             sanity.file_names_check(index, name, file_names, self.dataref_states)
 
@@ -168,8 +174,8 @@ def get_img_memory_name(file_name, label, special_labels, preload_pos=False, dec
         memory_img_name = label + memory_img_name
     if special_labels:
         if preload_pos:
-            for j, spec_label in enumerate(special_labels):
-                dynamic.get_text_pos(deck, special_labels[j])
+            for spec_label in special_labels:
+                dynamic.get_text_pos(deck, spec_label)
         prefix_state_name = dynamic.create_special_label_signature(special_labels)
         memory_img_name = prefix_state_name + memory_img_name
     return memory_img_name
@@ -186,7 +192,7 @@ def load_preset(conf: RunningConfig, yaml_keyset, preload_labels=False):
     keys = preset_cfg["actions"]
     # key_count = len(keys)
 
-    preset = np.empty(conf.key_count, dtype=object)
+    preset = np.empty(conf.key_count + conf.dial_count, dtype=object)
     other_keysets = np.empty(shape=0, dtype=str)
 
     for _, key in enumerate(keys):
@@ -203,7 +209,7 @@ def load_preset(conf: RunningConfig, yaml_keyset, preload_labels=False):
         if conf.local_cfg["force-config"] and conf.local_cfg["force-config"] == 'sd15':
             index = int(int(index / 5) * 8 + int(index % 5))
 
-        if index >= conf.key_count:
+        if index >= conf.key_count + conf.dial_count:
             logging.error("button with name {} has index {} which is too large for {} key device. "
                           "The configuration will still launch, but the layout will be broken."
                           .format(name, index, conf.key_count))
@@ -230,6 +236,8 @@ def load_preset(conf: RunningConfig, yaml_keyset, preload_labels=False):
             cmd_off=key.get("command-off"),
             cmd_on_mul=key.get("commands-on"),
             cmd_off_mul=key.get("commands-off"),
+            cmd_dial_left=key.get("command-left"),
+            cmd_dial_right=key.get("command-right"),
             gauge=key.get("gauge"),
             display=key.get("display"),
             special_labels=key.get("special-labels"),
@@ -262,6 +270,7 @@ def load_all_presets(conf: RunningConfig, preload_labels=False):
     preset, keysets = load_preset(conf, ACTION_CFG,
                                   preload_labels=preload_labels)
     presets_all[ACTION_CFG_ALIAS] = preset
+    print(presets_all)
     # execute while there are keysets to be read and loaded into presets
     while keysets.size > 0:
         for _, key_set in enumerate(keysets):
@@ -287,7 +296,7 @@ def load_datarefs(presets_all):
     datarefs_all = {}
     for key_set_name, preset in presets_all.items():
         set_datarefs = np.empty(shape=0, dtype=object)
-        for i, button in enumerate(preset):
+        for button in preset:
             if button is None:
                 continue
 
@@ -355,6 +364,9 @@ def load_images_datarefs(conf: RunningConfig, presets_dir: list[Button], only_up
         if button is None:
             continue
 
+        # special case - dial (nothing to visualize)
+        if button.cmd_type == "dial":
+            continue
         # special case - gauge
         if button.gauge:
             if button.gauge["name"] in IMAGES_ALREADY_GENERATED:
@@ -419,7 +431,10 @@ def load_images_datarefs_all(conf: RunningConfig, presets_all, only_uppercase):
 def convert_to_save_format(images_all):
     images_bytearray = {}
     for key, img in images_all.items():
-        images_bytearray[key] = img.tobytes()
+        if isinstance(img, bytes):
+            images_bytearray[key] = img
+        else:
+            images_bytearray[key] = img.tobytes()
 
     return images_bytearray
 
